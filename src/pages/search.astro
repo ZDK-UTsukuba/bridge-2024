@@ -1,0 +1,74 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>search</title>
+    </head>
+    <body>
+        <main>
+            <input type="text" id="searchText" />
+            <div id="resultArea"></div>
+        </main>
+    </body>
+</html>
+
+<style>
+    #resultArea {
+        white-space: pre;
+        font-family: "Courier New", Courier, monospace;
+    }
+</style>
+
+<script>
+    // 悪いコード
+    const maxResultLength = 1000;
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const searchText = document.getElementById(
+            "searchText",
+        ) as HTMLInputElement;
+        const resultArea = document.getElementById(
+            "resultArea",
+        ) as HTMLDivElement;
+        fetch("/bridge-2023.json")
+            .then((res) => res.json())
+            .then((res) => {
+                const masterData: {
+                    surveies: {
+                        course: {
+                            class_name?: string;
+                            course_name?: string;
+                        };
+                    }[];
+                } = res;
+                searchText.addEventListener("input", () => {
+                    const keyword = searchText.value + "";
+                    if (keyword.length <= 0) {
+                        return;
+                    }
+                    const results = [];
+                    for (const survey of masterData.surveies) {
+                        if (
+                            (
+                                survey.course?.course_name ??
+                                survey.course?.class_name ??
+                                ""
+                            ).includes(keyword)
+                        ) {
+                            results.push(survey);
+                            if (results.length >= maxResultLength) {
+                                break;
+                            }
+                        }
+                    }
+                    resultArea.textContent = JSON.stringify(results, null, 4);
+                });
+            });
+    });
+</script>
