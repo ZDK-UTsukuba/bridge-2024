@@ -36,7 +36,7 @@
         const resultArea = document.getElementById(
             "resultArea",
         ) as HTMLDivElement;
-        fetch("/bridge-2023.json")
+        fetch("/bridge-big.json")
             .then((res) => res.json())
             .then((res) => {
                 const masterData: {
@@ -67,6 +67,17 @@
                             }
                         }
                     }
+                    /*
+                    const results = masterData.surveies
+                        .filter((survey) =>
+                            (
+                                survey.course?.course_name ??
+                                survey.course?.class_name ??
+                                ""
+                            ).includes(keyword),
+                        )
+                        .slice(0, maxResultLength);
+                    */
                     resultArea.textContent = JSON.stringify(results, null, 4);
                 });
             });
