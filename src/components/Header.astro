@@ -1,0 +1,46 @@
+---
+interface Props {
+	menu: Menu
+}
+interface Menu {
+    menu: {
+        title: string;
+        slug: string;
+        children: Menu[]
+    }[]
+}
+
+const { menu } = Astro.props;
+---
+
+<header>
+    <nav>
+        <ul>
+            <!-- @todo 再帰的に回す -->
+            {menu.menu.map((item) => (
+                <li>
+                    <a href={item.slug}>{item.title}</a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+</header>
+<style>
+    header {
+        background-color: #23262d;
+        padding: 1rem;
+    }
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+    }
+    nav ul li {
+        margin: 0;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
