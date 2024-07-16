@@ -1,5 +1,6 @@
 ---
 import { summaryData } from "../../content/summary";
+import { kdbData } from "../../content/kdb-schema";
 import LabelParsent from "../../components/LabelParsent.astro";
 
 export function getStaticPaths() {
@@ -16,6 +17,8 @@ const subject = summaryData[subjectName];
 if (subject == undefined) {
     throw new Error("");
 }
+
+const kdbs = kdbData.subject.filter((v) => v.name === subjectName);
 ---
 
 <!doctype html>
@@ -43,6 +46,35 @@ if (subject == undefined) {
                 n={subject.class_format.回答人数}
                 data={subject.class_format}
             /><br />
+            <br />
+            <div style="display: flex;">
+                {
+                    kdbs.map((kdbSubject) => (
+                        <div>
+                            科目番号: {kdbSubject.number}
+                            <br />
+                            授業形態: {kdbSubject.instructionalType}
+                            <br />
+                            単位: {kdbSubject.credits}
+                            <br />
+                            標準履修年次: {kdbSubject.standardRegistrationYear}
+                            <br />
+                            学期: {kdbSubject.term}
+                            <br />
+                            曜時限: {kdbSubject.period}
+                            <br />
+                            教室: {kdbSubject.room}
+                            <br />
+                            担当教員: {kdbSubject.instructor}
+                            <br />
+                            授業概要: {kdbSubject.abstract}
+                            <br />
+                            備考: {kdbSubject.remarks}
+                            <br />
+                        </div>
+                    ))
+                }
+            </div>
             メールの対応{subject.teachers_email_response_evaluation}<br />
             授業の難易度{subject.class_difficulty_level}<br />
             単位の取りやすさ{subject.credit_earnability}<br />
