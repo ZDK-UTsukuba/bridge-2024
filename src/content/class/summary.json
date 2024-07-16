@@ -1,0 +1,1832 @@
+{
+    "みんなで創ろう「つくばアクションプロジェクト」": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "9127f7ff-f08d-46c5-906d-d9f8b870b499"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.666666666666667,
+        "credit_earnability": 4.333333333333333,
+        "class_preparation_workload": 3.6666666666666665,
+        "class_difficulty_level": 2.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 2,
+            "グループワーク": 2,
+            "発表": 2,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.6666666666666665,
+        "prerequisite_knowledge_for_this_class": [
+            "28da65d1-33d8-4dc8-aa3e-013d17f41904"
+        ]
+    },
+    "セルフマネジメント・ケア": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.6,
+        "credit_earnability": 4.6,
+        "class_preparation_workload": 1.6,
+        "class_difficulty_level": 1.8,
+        "are_materials_distributed_in_class": {
+            "True": 5,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 5
+        },
+        "class_format": {
+            "回答人数": 5,
+            "講義": 5,
+            "グループワーク": 3,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.8,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "ダイバーシティ＆インクルージョン入門": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "caca66e7-40c2-4bcd-aa77-7c1f2cda1a98"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "f8600ce6-8c5c-4fe7-95af-d4f16be35041"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "bfc04fef-5666-4c14-88d3-a74283f35558"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.7777777777777777,
+        "credit_earnability": 4.777777777777778,
+        "class_preparation_workload": 1.8888888888888888,
+        "class_difficulty_level": 2.2222222222222223,
+        "are_materials_distributed_in_class": {
+            "True": 6,
+            "False": 3
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 9
+        },
+        "class_format": {
+            "回答人数": 9,
+            "講義": 9,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.777777777777778,
+        "prerequisite_knowledge_for_this_class": [
+            "9515dd0d-52ec-46f8-8122-e941ca3423d6",
+            "71af4e7a-37ea-4cf7-9004-9a3da4c0c4f3"
+        ]
+    },
+    "おもてなし学ーグローバルマナーと異文化コミュニケーションー": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "e51444a5-faf8-4abb-83c6-4eda2ae79645"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "da0d4606-2341-4849-a009-261cbd522fde"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "e4e10906-4f9b-41bd-834e-88902c9e2597"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "63663c40-2b75-4f51-8055-234ae99391a0"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "3b3da779-0620-4272-b49f-a3671c40c33e"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.6,
+        "credit_earnability": 4.8,
+        "class_preparation_workload": 2.3,
+        "class_difficulty_level": 2.3,
+        "are_materials_distributed_in_class": {
+            "True": 10,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 2,
+            "False": 8
+        },
+        "class_format": {
+            "回答人数": 10,
+            "講義": 10,
+            "グループワーク": 5,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.8,
+        "prerequisite_knowledge_for_this_class": [
+            "737733ce-989d-46dd-b273-2e8a8d1535b9",
+            "9402f94d-c3c3-4a38-9b20-14845ed69a11",
+            "7bb8ea27-d8a2-4f1e-801c-c2a3035c1a28"
+        ]
+    },
+    "心理学概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 1,
+                "comment": "528f9a84-26d7-4958-a4d9-d214c23eb2ad"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "266218e9-6b4c-494d-991b-ab7fbd17673a"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "01f87e63-2b41-43d3-b926-ba324ce5c0c2"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "2996b65d-8614-40e2-9488-91f5022eff05"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.2857142857142856,
+        "credit_earnability": 1.8571428571428572,
+        "class_preparation_workload": 3.142857142857143,
+        "class_difficulty_level": 4.142857142857143,
+        "are_materials_distributed_in_class": {
+            "True": 7,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 7,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 7,
+            "講義": 7,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 2.0,
+        "prerequisite_knowledge_for_this_class": [
+            "caf88785-b325-4cd9-84db-0fdd2dec3de3"
+        ]
+    },
+    "心と体に安全で快適なキャンパスⅠ－心のヘルスリテラシー講座ー": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "ee34696c-a344-4363-a8f5-269be9f8f299"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "c8fcc0fb-1d16-43a9-bbca-1e912c12d573"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.75,
+        "class_preparation_workload": 1.75,
+        "class_difficulty_level": 1.75,
+        "are_materials_distributed_in_class": {
+            "True": 6,
+            "False": 2
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 8
+        },
+        "class_format": {
+            "回答人数": 8,
+            "講義": 8,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.25,
+        "prerequisite_knowledge_for_this_class": [
+            "2fe752b1-c54b-4124-a355-21ccac948b9d"
+        ]
+    },
+    "言語分析入門": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "1b1bb744-4a5f-4572-ae2e-62e54574118e"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "86e53a2b-f921-4d44-8d04-6a173378b309"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.25,
+        "credit_earnability": 3.25,
+        "class_preparation_workload": 3.75,
+        "class_difficulty_level": 3.25,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 4
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 1,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.25,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "共生のための日本語教育": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "155fa9ec-8f63-4304-930d-675d5a577e62"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "48de9cdb-3617-4fc3-84c8-b1f77826e6c9"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.0,
+        "class_preparation_workload": 3.8,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 2
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 5
+        },
+        "class_format": {
+            "回答人数": 5,
+            "講義": 5,
+            "グループワーク": 5,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "共生のための人類学": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "13f5fa3c-2e9f-4e7f-a9f6-b519efc2171e"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.5,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 4
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "数学リテラシー1": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 1,
+                "comment": "4c887f03-ff65-44ee-9c01-60884a6ad2b5"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "841102ff-e7bd-459e-97dd-e834b158a9b9"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "c482d156-ac8d-4c10-b14c-499df3b13880"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.5555555555555554,
+        "credit_earnability": 3.3333333333333335,
+        "class_preparation_workload": 2.2222222222222223,
+        "class_difficulty_level": 3.5555555555555554,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 5
+        },
+        "is_textbook_used_in_class": {
+            "True": 8,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 9,
+            "講義": 9,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 2.888888888888889,
+        "prerequisite_knowledge_for_this_class": [
+            "b21e504a-f51e-4c4b-b6ca-290d2185a58e"
+        ]
+    },
+    "障害科学I": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "13332251-c686-45d7-aeaf-45763305a91a"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "46d68abd-41d8-418e-af34-20059e78b1e9"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.333333333333333,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.6666666666666667,
+        "class_difficulty_level": 1.6666666666666667,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": [
+            "a7a0c50a-62b4-4d6b-8ef5-00335b01e8fd",
+            "27c3f7b0-640c-4bce-987c-08df193820c1"
+        ]
+    },
+    "社会基礎学Ⅰ－「グローバル化」と「地方の活性化」に貢献できる輝く人材の育成：世界に挑む産業界・官界トップリーダーによる連続リレー講義": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "1cf5ce8a-da9f-4060-a321-09f101fe83c8"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "a9d9f766-efc4-4fb1-889f-4230a46a938b"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "dd56c4b4-b538-4c37-8341-b04e31c685f5"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.5,
+        "class_preparation_workload": 1.25,
+        "class_difficulty_level": 1.75,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 4
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 1,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": [
+            "49c2c484-e53e-4cab-8b54-93f4d94d30c9"
+        ]
+    },
+    "哲学・宗教学入門": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "6fd11c83-ebd1-4b35-8c2f-4f30edfe0c78"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "fe3267b3-f5d3-4ade-a360-5bd1ecc5a3e0"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "ea5d80ef-1692-4edf-b9b1-d27c1070f08e"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.0,
+        "class_preparation_workload": 3.3333333333333335,
+        "class_difficulty_level": 4.166666666666667,
+        "are_materials_distributed_in_class": {
+            "True": 5,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 6
+        },
+        "class_format": {
+            "回答人数": 6,
+            "講義": 6,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 1,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.6666666666666665,
+        "prerequisite_knowledge_for_this_class": [
+            "9b0d290c-12be-4029-bef3-fff150656b62",
+            "c1336116-d726-48ea-b2ab-cd68093ffe90",
+            "78532ed5-6367-4491-b7b3-7030d4f45c69",
+            "6c590934-ca36-4c48-87eb-a62c1d53b82a"
+        ]
+    },
+    "知識情報概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "fa5e685d-79a9-4304-bad7-8357746726a5"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "4589455c-0885-4296-b2c0-25b38372945a"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 3.6666666666666665,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 2
+        },
+        "is_textbook_used_in_class": {
+            "True": 1,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.6666666666666665,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "数学概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "3aa2bd47-d243-40a6-b9ca-1727aecfa436"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "f73a6294-10e4-4594-a870-15edf51f114f"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "2894d099-db54-4077-a2ef-035fd6cb54b7"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.666666666666667,
+        "class_preparation_workload": 2.1666666666666665,
+        "class_difficulty_level": 2.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 4
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 6
+        },
+        "class_format": {
+            "回答人数": 6,
+            "講義": 6,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.166666666666667,
+        "prerequisite_knowledge_for_this_class": [
+            "571df8ac-f02c-4bfe-9398-fd1aa070c21b"
+        ]
+    },
+    "共生のための歴史学": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "088101e2-e4e0-490d-9edf-1c0164f3b581"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.6666666666666665,
+        "credit_earnability": 4.333333333333333,
+        "class_preparation_workload": 2.3333333333333335,
+        "class_difficulty_level": 1.6666666666666667,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": [
+            "e3989fa5-8ed7-4f6c-9443-d4e630dac85e"
+        ]
+    },
+    "アート&デザイン入門": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "6845c088-9a6e-4d82-873c-9f1fae52b23a"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 4.5,
+        "class_preparation_workload": 2.5,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.5,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "次世代起業家養成講座": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "9ca45f42-d6b6-4420-a95c-da9e7fa9d776"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.6666666666666665,
+        "credit_earnability": 3.6666666666666665,
+        "class_preparation_workload": 4.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 2,
+            "グループワーク": 3,
+            "発表": 3,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "森林": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "f5c60264-208b-459f-952d-d149a45d7656"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.1666666666666665,
+        "credit_earnability": 4.0,
+        "class_preparation_workload": 2.3333333333333335,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 5,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 5,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 6,
+            "講義": 6,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": [
+            "c1091c17-d424-4bc9-9e4d-e5a5853bea6f"
+        ]
+    },
+    "国際学II": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "e715fd06-db3a-4f07-b2cd-868ce0adaf97"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.25,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 3.5,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 4
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 1,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.75,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "法学の最前線": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "ba9064ab-4ece-45ea-b934-723678b6bf8d"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "5ed0cfe4-5ee4-4143-8c6b-6d10a8541089"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "300ae993-327a-4dfa-ab12-83b5e1cdb367"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 3.75,
+        "class_preparation_workload": 5.0,
+        "class_difficulty_level": 3.25,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 2
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 4
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 1
+        },
+        "recommendation_level_of_this_class": 3.25,
+        "prerequisite_knowledge_for_this_class": [
+            "8216727a-f4ee-4485-bc57-5accdf5f2af1"
+        ]
+    },
+    "化学概論": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.3333333333333335,
+        "credit_earnability": 3.6666666666666665,
+        "class_preparation_workload": 4.0,
+        "class_difficulty_level": 2.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "分子細胞生物学概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "9e3ba321-3931-462f-bd7a-dc783a0dd595"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "30662b0d-6fa7-4b12-8b56-994717b8bc9d"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.25,
+        "credit_earnability": 3.5,
+        "class_preparation_workload": 4.0,
+        "class_difficulty_level": 3.75,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.25,
+        "prerequisite_knowledge_for_this_class": [
+            "b9a908fc-ac45-42a8-871a-016de614f3d5",
+            "bbbdd792-bdd8-4600-96bf-0cfd4c8bd2da",
+            "88df20cf-ed4d-4b25-ab06-696dc8ffce9d"
+        ]
+    },
+    "物理学概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "8a4bddc7-24c2-4cda-bd96-5d050380ea9e"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "7fd6c6e8-55bd-4ec9-ba23-a63c812416bf"
+            }
+        ],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 2.6666666666666665,
+        "class_difficulty_level": 1.3333333333333333,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 1,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.666666666666667,
+        "prerequisite_knowledge_for_this_class": [
+            "62934abb-99de-4844-bddc-a75347d94442"
+        ]
+    },
+    "力学1": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "ad826099-76cf-42a2-977e-4703519bda22"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "a04b8699-cfad-4dd2-825b-60cea0e5ed88"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.4,
+        "credit_earnability": 4.4,
+        "class_preparation_workload": 3.0,
+        "class_difficulty_level": 2.8,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 3
+        },
+        "is_textbook_used_in_class": {
+            "True": 5,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 5,
+            "講義": 5,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": [
+            "b9b31aeb-77b9-44e3-bb25-ca1faa78092d",
+            "986f804c-110a-4ec3-9d02-4dd05d4d1d81",
+            "f46a8259-234b-4ebd-98f5-bb6dde7f856b",
+            "8870b8ab-e3ac-40aa-b84c-0b9e60e62fd5"
+        ]
+    },
+    "遺伝学概論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 1,
+                "comment": "702d74f2-58a7-43d7-b119-967ab6d1316f"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.6666666666666665,
+        "credit_earnability": 1.6666666666666667,
+        "class_preparation_workload": 1.6666666666666667,
+        "class_difficulty_level": 4.666666666666667,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 1.6666666666666667,
+        "prerequisite_knowledge_for_this_class": [
+            "1d746970-d2d4-48c6-935b-fb71cf881791",
+            "7149bc2d-17c6-41ce-b2f3-33f0a67eef0c",
+            "c5e290f2-3fdd-4068-acc0-95e1e5f4ce5c"
+        ]
+    },
+    "数学リテラシー2": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 1,
+                "comment": "9be11ce9-1260-43ec-ba38-ebd2a2ca4b51"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "20fffdd5-540a-4f4b-888b-8799531db9a4"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.4285714285714284,
+        "credit_earnability": 3.7142857142857144,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 3.5714285714285716,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 6
+        },
+        "is_textbook_used_in_class": {
+            "True": 6,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 7,
+            "講義": 7,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.4285714285714284,
+        "prerequisite_knowledge_for_this_class": [
+            "9c920966-40d0-4d74-b1ea-e66e8510871a",
+            "0633b3db-d456-4eae-a27d-3a6cd4c5d4b8"
+        ]
+    },
+    "力学2": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "6a00aaa9-0979-4e7f-9516-bdb397e11a9d"
+            },
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "19268dae-4d92-42c1-9d03-50d40e3043fb"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.75,
+        "credit_earnability": 3.0,
+        "class_preparation_workload": 1.75,
+        "class_difficulty_level": 3.5,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": [
+            "abe76ebc-b823-45f8-bcba-f735855c9602",
+            "af6e6a78-5158-42d2-8cfc-6b081fb92aa5",
+            "672a6904-6fe7-4d22-9ecc-534cfefda757"
+        ]
+    },
+    "線形代数1": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "1c270c3d-9048-45b1-9663-4ecf922646f1"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "b4ab9d7e-0f14-4658-8130-e9a35d052e4c"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.6666666666666665,
+        "credit_earnability": 3.3333333333333335,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 4.333333333333333,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 2.6666666666666665,
+        "prerequisite_knowledge_for_this_class": [
+            "fffc300e-f573-481e-a073-f11a92eb29ab",
+            "9b5fb9d5-791e-4c99-9f36-33dd97280f30",
+            "29ffcc62-b96e-4059-8cfc-24b1b57c0348"
+        ]
+    },
+    "経済学の数理": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "ed7aa242-80c2-4e06-9b29-cb556d918b55"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "4bb0f037-5574-4c2e-bb30-387f495e4765"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 2.5,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.5,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "生物学序説": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "01d8ee88-5264-40c9-907f-0f7c69993a12"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.6,
+        "credit_earnability": 3.0,
+        "class_preparation_workload": 3.8,
+        "class_difficulty_level": 3.4,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 2,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 5,
+            "講義": 5,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": [
+            "84c011b7-abc1-4c09-8c44-70c68473db0d"
+        ]
+    },
+    "医科生化学": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "c69ac3d2-4d79-4738-8f52-ecebac975a74"
+            },
+            {
+                "recommendation_level_of_this_class": 1,
+                "comment": "92623e93-a126-4dc8-9162-d190c5f5eab0"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.5,
+        "credit_earnability": 1.75,
+        "class_preparation_workload": 1.5,
+        "class_difficulty_level": 4.5,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 3,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 1.75,
+        "prerequisite_knowledge_for_this_class": [
+            "8dea29e8-376c-4065-9583-36cee0f5044d"
+        ]
+    },
+    "生物資源学にみる食品科学・技術の最前線": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "6fee124e-426f-46cf-81b9-605e2c633773"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "ef50d719-1b59-4eec-9301-f2123143c024"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "7327b5f1-a41e-453b-964b-8204aa61beb4"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 3.3333333333333335,
+        "class_preparation_workload": 1.3333333333333333,
+        "class_difficulty_level": 3.6666666666666665,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 2.3333333333333335,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "工学システム概論": {
+        "comment": [],
+        "teachers_email_response_evaluation": 5.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 1.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "地球環境学1": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "de3f00d4-bf75-4600-a35d-073324252dea"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.5,
+        "credit_earnability": 4.5,
+        "class_preparation_workload": 2.25,
+        "class_difficulty_level": 2.5,
+        "are_materials_distributed_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 4,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 4,
+            "講義": 4,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.25,
+        "prerequisite_knowledge_for_this_class": [
+            "2a521a27-6546-4627-88e6-d503945687ed",
+            "ec0601ac-2e7f-4010-94c9-953e54e22b97"
+        ]
+    },
+    "情報メディア入門": {
+        "comment": [],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 4.5,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 1.5,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "スポーツの技術を人文社会科学から考える": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "fbde0830-be64-4170-bdf3-65c616218db7"
+            }
+        ],
+        "teachers_email_response_evaluation": 5.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 1.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": [
+            "115dfde6-b2fa-4087-80b3-2b007c4bb6e5"
+        ]
+    },
+    "思想文化領域比較文化研究": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "3265cebc-71e8-4cb8-8380-edbed0a2861d"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "知能と情報科学": {
+        "comment": [],
+        "teachers_email_response_evaluation": 5.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 5.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "情報科学概論": {
+        "comment": [],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.3333333333333333,
+        "class_difficulty_level": 3.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.666666666666667,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "会計と経営": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "7c322c28-4fa8-406a-a141-37aa98e00de0"
+            },
+            {
+                "recommendation_level_of_this_class": 5,
+                "comment": "e4de2fc1-6e6f-4ff9-a91f-70a9bff4a1d1"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.3333333333333335,
+        "credit_earnability": 3.0,
+        "class_preparation_workload": 4.666666666666667,
+        "class_difficulty_level": 3.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 3
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.3333333333333335,
+        "prerequisite_knowledge_for_this_class": [
+            "87175c50-9454-4dd5-bc6d-94adf5d7dea6"
+        ]
+    },
+    "史学入門": {
+        "comment": [],
+        "teachers_email_response_evaluation": 5.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 1.0,
+        "class_difficulty_level": 1.0,
+        "are_materials_distributed_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "行動生理学の基礎": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.5,
+        "credit_earnability": 4.5,
+        "class_preparation_workload": 1.5,
+        "class_difficulty_level": 2.5,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.5,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "微積分1": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": [
+            "598fddbe-e090-4e72-b6c7-6c68f627787c"
+        ]
+    },
+    "化学1": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "a4180248-9383-4d78-b461-972d0412bdbc"
+            },
+            {
+                "recommendation_level_of_this_class": 3,
+                "comment": "77db2335-0b50-44cf-ad8c-9229d7bc2cb3"
+            },
+            {
+                "recommendation_level_of_this_class": 2,
+                "comment": "42b0b1d7-f9a2-44c2-ac8a-37d0513a7fb9"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.5,
+        "credit_earnability": 2.5,
+        "class_preparation_workload": 3.3333333333333335,
+        "class_difficulty_level": 4.833333333333333,
+        "are_materials_distributed_in_class": {
+            "True": 5,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 6,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 6,
+            "講義": 6,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 2.6666666666666665,
+        "prerequisite_knowledge_for_this_class": [
+            "18607cb8-edc9-4222-b555-b43bbe881318",
+            "5609a155-6bf0-411b-8a40-5040d8982b11",
+            "8ce18741-2cb9-4a07-b98b-161c7c5f1a6a"
+        ]
+    },
+    "社会学の最前線": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "ec25c5da-cb27-47e6-bd43-839625c0f868"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 4.0,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 2.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "地球進化学1": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.3333333333333335,
+        "credit_earnability": 4.333333333333333,
+        "class_preparation_workload": 2.3333333333333335,
+        "class_difficulty_level": 2.3333333333333335,
+        "are_materials_distributed_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 3,
+            "False": 0
+        },
+        "class_format": {
+            "回答人数": 3,
+            "講義": 3,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.333333333333333,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "基礎医学研究の最前線": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "4a735615-6514-4aa0-b6dc-a79ad2050139"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 3.5,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.5,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "医療・生命科学とテクノロジー": {
+        "comment": [],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 3.0,
+        "class_preparation_workload": 3.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 3.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "人間学I": {
+        "comment": [],
+        "teachers_email_response_evaluation": 4.0,
+        "credit_earnability": 5.0,
+        "class_preparation_workload": 2.0,
+        "class_difficulty_level": 1.5,
+        "are_materials_distributed_in_class": {
+            "True": 2,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 1,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": []
+    },
+    "教育基礎論": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "870a4ddd-7f12-4a2b-b5e4-1a66255e2e41"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.5,
+        "credit_earnability": 3.5,
+        "class_preparation_workload": 3.5,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 1
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 2
+        },
+        "class_format": {
+            "回答人数": 2,
+            "講義": 2,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 1,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": [
+            "e52e069d-011f-4311-86af-c5d9ba210ff7"
+        ]
+    },
+    "都市計画入門": {
+        "comment": [
+            {
+                "recommendation_level_of_this_class": 4,
+                "comment": "c0306340-6cee-48e9-b707-e7fe0c02f116"
+            }
+        ],
+        "teachers_email_response_evaluation": 3.0,
+        "credit_earnability": 2.0,
+        "class_preparation_workload": 4.0,
+        "class_difficulty_level": 3.0,
+        "are_materials_distributed_in_class": {
+            "True": 1,
+            "False": 0
+        },
+        "is_textbook_used_in_class": {
+            "True": 0,
+            "False": 1
+        },
+        "class_format": {
+            "回答人数": 1,
+            "講義": 1,
+            "グループワーク": 0,
+            "発表": 0,
+            "パネルディスカッション": 0,
+            "対話": 0,
+            "オンデマンド": 0,
+            "レポート提出のみ": 0
+        },
+        "recommendation_level_of_this_class": 4.0,
+        "prerequisite_knowledge_for_this_class": []
+    }
+}
