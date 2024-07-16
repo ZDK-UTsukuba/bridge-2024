@@ -1,0 +1,89 @@
+---
+import { summaryData } from "../../content/summary";
+import LabelParsent from "../../components/LabelParsent.astro";
+
+export function getStaticPaths() {
+    return [...Object.keys(summaryData)].map((subject) => ({
+        params: {
+            id: `${subject}`,
+        },
+    }));
+}
+
+const { id: subjectName } = Astro.params;
+
+const subject = summaryData[subjectName];
+if (subject == undefined) {
+    throw new Error("");
+}
+---
+
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>search</title>
+    </head>
+    <body>
+        <main>
+            {subjectName}<br />
+            授業形態<LabelParsent
+                labels={{
+                    講義: "講義",
+                    グループワーク: "グループワーク",
+                    発表: "発表",
+                    パネルディスカッション: "パネルディスカッション",
+                    対話: "対話",
+                    オンデマンド: "オンデマンド",
+                    レポート提出のみ: "レポート提出のみ",
+                }}
+                n={subject.class_format.回答人数}
+                data={subject.class_format}
+            /><br />
+            メールの対応{subject.teachers_email_response_evaluation}<br />
+            授業の難易度{subject.class_difficulty_level}<br />
+            単位の取りやすさ{subject.credit_earnability}<br />
+            授業の準備量{subject.class_preparation_workload}<br />
+            教科書 <LabelParsent
+                labels={{
+                    True: "使わない",
+                    False: "使わない",
+                }}
+                n={subject.is_textbook_used_in_class.True +
+                    subject.is_textbook_used_in_class.False}
+                data={subject.is_textbook_used_in_class}
+            /><br />
+            オススメ度{subject.recommendation_level_of_this_class}<br />
+            配布資料 <LabelParsent
+                labels={{
+                    True: "あり",
+                    False: "なし",
+                }}
+                n={subject.is_textbook_used_in_class.True +
+                    subject.is_textbook_used_in_class.False}
+                data={subject.are_materials_distributed_in_class}
+            /><br />
+            予備知識{
+                subject.prerequisite_knowledge_for_this_class.map((comment) => (
+                    <>
+                        {comment}
+                        <br />
+                    </>
+                ))
+            }<br />
+            {
+                subject.comment.map((comment) => (
+                    <>
+                        {"☆".repeat(comment.recommendation_level_of_this_class)}
+                        {comment.comment}
+                        <br />
+                    </>
+                ))
+            }
+            <br />
+        </main>
+    </body>
+</html>
