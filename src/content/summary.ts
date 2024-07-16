@@ -1,23 +1,6 @@
 import { z } from 'astro:content';
 import summaryJson from './class/summary.json';
 
-// type SummaryType = {
-//     updated: string,
-//     subject: [
-//         number: string,
-//         name: string,
-//         instructionalType: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8",
-//         credits: string,
-//         standardRegistrationYear: string,
-//         term: string,
-//         period: string,
-//         room: string,
-//         instructor: string,
-//         abstract: string,
-//         remarks: string,
-//     ][],
-// };
-
 const summarySchema = z.record(z.string(), z.object({
     teachers_email_response_evaluation: z.number(),
     credit_earnability: z.number(),
