@@ -4,7 +4,7 @@ interface Props {
   props?: Record<string, any>;
 }
 
-const { href,  ...props } = Astro.props;
+const { href, ...props } = Astro.props as Props;
 ---
 
 <>
