@@ -1,0 +1,989 @@
+{
+    "教育,心理,障害,数学,物理,化学,社工（2年次）": {
+        "応用体育フラッグフットボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "17fbde4e-38b2-438b-933a-374e0cf4833c"
+                }
+            ],
+            "proportion_of_experienced_students": 0.6666666666666666,
+            "consideration_for_inexperienced_students": 4.666666666666667,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.3333333333333335,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 3,
+                "detail": []
+            }
+        },
+        "応用体育ダンス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 3.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 3.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "応用体育ゴルフ(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "81ea76d4-12c7-4093-a833-72e711b98966"
+                },
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "5cc87f4d-04b7-4cec-b4b4-6afb165e9c0c"
+                }
+            ],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 2,
+                "False": 0,
+                "detail": [
+                    "ゴルフグローブ（1000円程度）、帽子（どんな帽子でもOK）、名札（100均にある）"
+                ]
+            }
+        },
+        "応用体育ソフトボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "e58dac1f-8492-4fdc-897e-dac98375625b"
+                }
+            ],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 4.5,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.5,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "応用体育サッカー(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 4.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 9.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "応用体育バレーボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "25c8030b-3422-47c1-97df-41953e3c7594"
+                }
+            ],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "応用体育バスケットボール(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 6.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 5.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "体育館シューズがない人は購入必須"
+                ]
+            }
+        },
+        "応用体育卓球(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "70cf58da-fe23-4a5c-ad7f-8fe2c45451eb"
+                }
+            ],
+            "proportion_of_experienced_students": 4.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "体育館シューズ(この科目を取らなくても基本大学生活で1足は必要です。高校時代のものでも大丈夫です。)"
+                ]
+            }
+        }
+    },
+    "生物,地球,数学,物理,化学,創成,医学,看護,医療,芸術,総学3,4組（1年次）": {
+        "基礎体育卓球(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "0c537df3-d0bf-4e02-97a8-772d3309d753"
+                }
+            ],
+            "proportion_of_experienced_students": 6.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.5,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "体育シューズを持っていない人は購入"
+                ]
+            }
+        },
+        "基礎体育バレーボール(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育トラック&フィールド(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "4c57d5cb-2c6e-47ac-a028-89050c87bfbf"
+                }
+            ],
+            "proportion_of_experienced_students": 7.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 5.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育柔道(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "9ad9a63b-d4aa-4096-9e4f-4136b185dfbf"
+                }
+            ],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.5,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育アスレティックトレーニング（春）": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 3,
+                    "comment": "52fd62d6-8532-4ba9-8b21-29cf3e9ef8a4"
+                }
+            ],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 7.5,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "室内用の靴"
+                ]
+            }
+        },
+        "基礎体育ダンス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 5.0,
+            "consideration_for_inexperienced_students": 4.5,
+            "credit_earnability": 4.5,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 2.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育水泳(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "5341240a-f67b-457d-978c-92d084181500"
+                }
+            ],
+            "proportion_of_experienced_students": 7.333333333333333,
+            "consideration_for_inexperienced_students": 4.333333333333333,
+            "credit_earnability": 4.666666666666667,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 2,
+                "detail": [
+                    "水着やゴーグル、帽子など（既に持っているもので大丈夫）"
+                ]
+            }
+        },
+        "基礎体育テニス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 6.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育インラインスケート(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 1.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.5,
+            "exercise_intensity": 2.0,
+            "male_to_female_ratio": 5.5,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 2,
+                "False": 0,
+                "detail": [
+                    "プロテクタ"
+                ]
+            }
+        },
+        "基礎体育フィットネストレーニング(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 1.6666666666666667,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.6666666666666665,
+            "male_to_female_ratio": 5.333333333333333,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 3,
+                "detail": []
+            }
+        },
+        "基礎体育ニュースポーツ(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 0.5,
+            "consideration_for_inexperienced_students": 4.5,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.5,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育器械運動(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "299c8c29-d01a-4d4f-b1e8-b3d4b214ec3d"
+                }
+            ],
+            "proportion_of_experienced_students": 4.5,
+            "consideration_for_inexperienced_students": 4.5,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.5,
+            "male_to_female_ratio": 3.5,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育剣道(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 3,
+                    "comment": "1d742dfb-2e08-489e-9c25-d3b522472a40"
+                }
+            ],
+            "proportion_of_experienced_students": 5.0,
+            "consideration_for_inexperienced_students": 4.8,
+            "credit_earnability": 4.4,
+            "exercise_intensity": 3.2,
+            "male_to_female_ratio": 4.2,
+            "reccomendation_level_of_this_class": 4.4,
+            "required_purchases": {
+                "True": 0,
+                "False": 5,
+                "detail": []
+            }
+        },
+        "基礎体育野外運動(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育ジョグ&ウォーク(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 3.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育ソフトボール(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 4.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育バドミントン(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 5.5,
+            "consideration_for_inexperienced_students": 3.5,
+            "credit_earnability": 4.5,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 4.0,
+            "reccomendation_level_of_this_class": 2.5,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "屋内用の運動靴"
+                ]
+            }
+        }
+    },
+    "国際,生物,地球,応理,工シス,看護（2年次）": {
+        "応用体育剣道(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 4.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 2.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "応用体育ソフトボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "fb476424-8a99-430d-bf02-da44d886b162"
+                }
+            ],
+            "proportion_of_experienced_students": 4.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "応用体育ハンドボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "6a8deb9b-c2cc-43ca-a0e5-2a565bcb2fae"
+                }
+            ],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 3.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 5.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "応用体育バスケットボール(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 5.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 5.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        }
+    },
+    "人文,比文,日日,応理,工シス,社工,総学1,2組（1年次）": {
+        "基礎体育フィットネストレーニング(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 1,
+                    "comment": "470f3cb3-cba8-494f-8e48-921a8a164d56"
+                }
+            ],
+            "proportion_of_experienced_students": 1.6666666666666667,
+            "consideration_for_inexperienced_students": 4.666666666666667,
+            "credit_earnability": 4.666666666666667,
+            "exercise_intensity": 3.3333333333333335,
+            "male_to_female_ratio": 5.333333333333333,
+            "reccomendation_level_of_this_class": 3.6666666666666665,
+            "required_purchases": {
+                "True": 0,
+                "False": 3,
+                "detail": []
+            }
+        },
+        "基礎体育剣道(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "67ddb7d9-ca9d-4e38-9e30-3e96d48406ff"
+                },
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "feac4b73-f29f-4352-aa33-029850c65fcc"
+                }
+            ],
+            "proportion_of_experienced_students": 3.6666666666666665,
+            "consideration_for_inexperienced_students": 4.666666666666667,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 6.333333333333333,
+            "reccomendation_level_of_this_class": 3.6666666666666665,
+            "required_purchases": {
+                "True": 0,
+                "False": 3,
+                "detail": []
+            }
+        },
+        "基礎体育ソフトボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "8ed6123f-dc67-4d4a-a802-a58e62ac5493"
+                }
+            ],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.5,
+            "male_to_female_ratio": 9.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育インラインスケート(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 0.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "プロテクター"
+                ]
+            }
+        },
+        "基礎体育水泳(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "45c95eec-8eba-4649-82d8-60dd176a6ce8"
+                }
+            ],
+            "proportion_of_experienced_students": 4.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 9.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "水泳用具：水着やゴーグル、帽子など。(今までの学校のものがあれば必要なし)"
+                ]
+            }
+        },
+        "基礎体育器械運動(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 4.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育野外運動(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 1.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "軍手"
+                ]
+            }
+        },
+        "基礎体育テニス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 3.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育サッカー(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "d3654847-957c-48d1-adab-9a1ee4ada06a"
+                }
+            ],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 8.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育柔道(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "25fa9994-851a-4c43-9c7f-96166e220af3"
+                }
+            ],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育ニュースポーツ(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 0.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 1.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        }
+    },
+    "社会,国際,教育,心理,障害,資源,情報,知識,総学5,6組（1年次）": {
+        "基礎体育フィットネストレーニング(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "93f01ce5-df3b-4a11-a381-afbd1b2ba268"
+                },
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "20ed5daa-be9e-4943-b805-3558cc451bbf"
+                }
+            ],
+            "proportion_of_experienced_students": 2.6666666666666665,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 5.333333333333333,
+            "reccomendation_level_of_this_class": 4.666666666666667,
+            "required_purchases": {
+                "True": 2,
+                "False": 1,
+                "detail": [
+                    "体育館シューズ（高校の物で充分）"
+                ]
+            }
+        },
+        "基礎体育フラッグフットボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "8da80f16-aac3-4fdc-820c-e323051b88c0"
+                }
+            ],
+            "proportion_of_experienced_students": 0.3333333333333333,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.666666666666667,
+            "required_purchases": {
+                "True": 0,
+                "False": 3,
+                "detail": []
+            }
+        },
+        "基礎体育リフレッシュ体操(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "1ed5b41f-3942-4fb7-989f-112cfbbeff31"
+                },
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "f87903b9-8ffe-42af-8140-b590593fc545"
+                }
+            ],
+            "proportion_of_experienced_students": 0.75,
+            "consideration_for_inexperienced_students": 4.75,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 1.5,
+            "male_to_female_ratio": 4.5,
+            "reccomendation_level_of_this_class": 4.75,
+            "required_purchases": {
+                "True": 0,
+                "False": 4,
+                "detail": []
+            }
+        },
+        "基礎体育バレーボール(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "a6479f4a-d315-46e3-8bb6-e3dcec3ad0b5"
+                }
+            ],
+            "proportion_of_experienced_students": 3.0,
+            "consideration_for_inexperienced_students": 3.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.5,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "体育館用シューズ（自前のものがすでにあればそれでもOK）"
+                ]
+            }
+        },
+        "基礎体育テニス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 5.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 7.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育弓道(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "93a1a6a0-a2a1-42ab-a7ac-798cb855bfd7"
+                },
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "bbc9f36f-9739-4ce6-9423-80695891db9b"
+                }
+            ],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育ニュースポーツ(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "57bfa071-2136-4e14-a022-4bb02032284f"
+                }
+            ],
+            "proportion_of_experienced_students": 1.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 1.5,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.5,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "基礎体育ボディ・ワーク(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 0.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 3.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "基礎体育ダンス(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 3.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 2.0,
+            "male_to_female_ratio": 1.5,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 1,
+                "detail": [
+                    "体育館シューズ,動ける服"
+                ]
+            }
+        }
+    },
+    "人文,比文,日日,情報,医学（2年次）": {
+        "応用体育ボディ・ワーク(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 4,
+                    "comment": "21b9b2c7-81dd-4e7f-b0a3-afeafdcd1a44"
+                }
+            ],
+            "proportion_of_experienced_students": 0.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 4.5,
+            "exercise_intensity": 2.5,
+            "male_to_female_ratio": 4.5,
+            "reccomendation_level_of_this_class": 4.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        },
+        "応用体育バドミントン(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 2.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "体育館シューズ"
+                ]
+            }
+        },
+        "応用体育水泳(春)": {
+            "comment": [],
+            "proportion_of_experienced_students": 6.0,
+            "consideration_for_inexperienced_students": 3.0,
+            "credit_earnability": 4.0,
+            "exercise_intensity": 5.0,
+            "male_to_female_ratio": 9.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "競泳用水着、ゴーグル、帽子"
+                ]
+            }
+        },
+        "応用体育リフレッシュ体操(春)": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "a9726571-2e71-4955-adc7-0210e7b40d8a"
+                },
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "6e824441-32c8-4515-b88c-bd935f6cfb77"
+                }
+            ],
+            "proportion_of_experienced_students": 0.5,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 1.0,
+            "male_to_female_ratio": 4.5,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 2,
+                "detail": []
+            }
+        }
+    },
+    "その他": {
+        "ウォールクライミング": {
+            "comment": [],
+            "proportion_of_experienced_students": 1.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 5.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 0,
+                "False": 1,
+                "detail": []
+            }
+        },
+        "マリンスポーツ": {
+            "comment": [
+                {
+                    "recommendation_level_of_this_class": 5,
+                    "comment": "8fa64e26-cd6e-4ca1-b95a-8f2c66c6b835"
+                }
+            ],
+            "proportion_of_experienced_students": 0.0,
+            "consideration_for_inexperienced_students": 5.0,
+            "credit_earnability": 5.0,
+            "exercise_intensity": 4.0,
+            "male_to_female_ratio": 6.0,
+            "reccomendation_level_of_this_class": 5.0,
+            "required_purchases": {
+                "True": 1,
+                "False": 0,
+                "detail": [
+                    "水着、下田までの往復の切符"
+                ]
+            }
+        }
+    }
+}
