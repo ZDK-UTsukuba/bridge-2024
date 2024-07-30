@@ -19,6 +19,10 @@ if (subject == undefined) {
 }
 
 const kdbs = kdbData.subject.filter((v) => v.name === subjectName);
+
+function syllabiUrl(number: string) {
+    return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
+}
 ---
 
 <!doctype html>
@@ -71,6 +75,9 @@ const kdbs = kdbData.subject.filter((v) => v.name === subjectName);
                             <br />
                             備考: {kdbSubject.remarks}
                             <br />
+                            <a href={syllabiUrl(kdbSubject.number)}>
+                                {kdbSubject.name}のシラバス
+                            </a>
                         </div>
                     ))
                 }
