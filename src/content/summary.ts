@@ -1,5 +1,5 @@
 import { z } from 'astro:content';
-import summaryJson from './class/summary.json';
+// import summaryJson from './class/summary.json';
 
 const summarySchema = z.record(z.string(), z.object({
     teachers_email_response_evaluation: z.number(),
