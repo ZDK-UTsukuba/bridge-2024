@@ -1,4 +1,3 @@
-/*
 import { z } from 'astro:content';
 import kdbJson from './class/kdb.json';
 
@@ -71,4 +70,3 @@ export const kdbData = {
         remarks: v[10],
     })),
 };
-*/
