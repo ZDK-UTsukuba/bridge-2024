@@ -1,0 +1,46 @@
+.bannerWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #ffffff;
+    .content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #ffffff;
+        margin: 20px 20px;
+        gap: 30px;
+        width: calc(100% - 40px);
+        max-width: 1200px;
+        .title {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 1;
+            margin-top: 6px;
+        }
+        .text {
+            font-family: "ZenKakuGothicNew Regular", sans-serif;
+            color: #000000;
+            text-decoration: underline transparent;
+            transition: .2s all;
+            font-size: 20px;
+            &:hover {
+                text-decoration-color: #FFDC27;
+            }
+        }
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        left: -20px;
+        right: -20px;
+        top: calc(100% - 10px);
+        bottom: 3px;
+        box-shadow: 0 0 20px 5px #00000017;
+        z-index: -1;
+    }
+}

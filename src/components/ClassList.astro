@@ -1,0 +1,57 @@
+---
+interface Props {
+	classProps: classList[];
+}
+interface classList {
+    title: string;
+    colleges: string[];
+    slug: string;
+    teachers: {
+        name: string;
+        image?: string;
+    }[];
+    rating: number;
+    reviewCount: number;
+}
+const { classProps } = Astro.props;
+import componentStyles from './ClassList.module.scss';
+---
+
+<div class={componentStyles.list}>
+    {
+        classProps.map((classProp) => (
+            <div class={componentStyles.item}>
+                <div class={componentStyles.title}>
+                    <a href={`/class/${classProp.slug}`}>
+                        {classProp.title}
+                    </a>
+                    {classProp.colleges.map((college) => (
+                        <span class={componentStyles.category}>{college}</span>
+                    ))}
+                </div>
+                <div class={componentStyles.info}>
+                    <div class={componentStyles.images}>
+                        {classProp.teachers.map((teacher, teacher_index) => (
+                            <div class={componentStyles.image} style={`background-image: url('${teacher.image ?? "/people-default.png"}');${!teacher.image && `background-color: #${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')};`} z-index: ${100 - teacher_index}`} title={`${teacher.name} さんのアイコン`}></div>
+                        ))}
+                    </div>
+                    <div class={componentStyles.names}>
+                        {classProp.teachers.map((teacher) => (
+                            <div class={componentStyles.name}>{teacher.name}</div>
+                        ))}
+                        {
+                            classProp.teachers.length > 1 && (
+                                <div class={`${componentStyles.name} ${componentStyles.others}`}>他 {classProp.teachers.length - 1} 名</div>
+                            )
+                        }
+                    </div>
+                    <div class={componentStyles.rating}>
+                        <div class={componentStyles.stars}>★★★★★</div>
+                        <div class={componentStyles.value}>{classProp.rating}</div>
+                        <div class={componentStyles.reviews}>({classProp.reviewCount})</div>
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+</div>

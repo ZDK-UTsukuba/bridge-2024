@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -21,21 +21,46 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
+	@font-face {
+		font-family: 'ZenKakuGothicNew Medium';
+		src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'ZenKakuGothicNew Regular';
+		src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Josefin Sans';
+		src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
+		--accent: 0, 193, 212;
+		--accent-light: 27, 218, 235;
+		--accent-dark: 6, 126, 137;
 		--accent-gradient: linear-gradient(
 			45deg,
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
 			white 60%
 		);
+		font-family: 'ZenKakuGothicNew Medium', sans-serif;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #F7F7F7;
 		background-size: 224px;
+	}
+	body {
+		font-family: 'ZenKakuGothicNew Medium', system-ui, sans-serif;
+		font-weight: normal;
 	}
 	code {
 		font-family:
