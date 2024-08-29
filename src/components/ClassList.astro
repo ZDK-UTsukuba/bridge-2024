@@ -22,7 +22,7 @@ import componentStyles from './ClassList.module.scss';
         classProps.map((classProp) => (
             <div class={componentStyles.item}>
                 <div class={componentStyles.title}>
-                    <a href={`/class/${classProp.slug}`}>
+                    <a href={`/details/${classProp.slug}`}>
                         {classProp.title}
                     </a>
                     {classProp.colleges.map((college) => (
@@ -32,7 +32,7 @@ import componentStyles from './ClassList.module.scss';
                 <div class={componentStyles.info}>
                     <div class={componentStyles.images}>
                         {classProp.teachers.map((teacher, teacher_index) => (
-                            <div class={componentStyles.image} style={`background-image: url('${teacher.image ?? "/people-default.png"}');${!teacher.image && `background-color: #${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')};`} z-index: ${100 - teacher_index}`} title={`${teacher.name} さんのアイコン`}></div>
+                            teacher_index < 5 && <div class={componentStyles.image} style={`background-image: url('${teacher.image ?? "/people-default.png"}');${!teacher.image && `background-color: #${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')};`} z-index: ${100 - teacher_index}`} title={`${teacher.name} さんのアイコン`}></div>
                         ))}
                     </div>
                     <div class={componentStyles.names}>
