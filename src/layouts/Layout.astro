@@ -3,7 +3,6 @@ interface Props {
 	title: string;
 }
 import 'bulma/css/bulma.min.css';
-import Header from '../components/Header.astro';
 const { title } = Astro.props;
 ---
 
@@ -18,25 +17,6 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header menu={{
-			menu: [
-				{
-					title: 'Home',
-					slug: '/',
-					children: []
-				},
-				{
-					title: 'About',
-					slug: '/about',
-					children: []
-				},
-				{
-					title: 'Contact',
-					slug: '/contact',
-					children: []
-				}
-			]
-		}} />
 		<slot />
 	</body>
 </html>
@@ -44,6 +24,20 @@ const { title } = Astro.props;
 	@font-face {
 		font-family: 'ZenKakuGothicNew Medium';
 		src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'ZenKakuGothicNew Regular';
+		src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Josefin Sans';
+		src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
@@ -61,7 +55,7 @@ const { title } = Astro.props;
 		font-family: 'ZenKakuGothicNew Medium', sans-serif;
 	}
 	html {
-		background: #13151a;
+		background: #F7F7F7;
 		background-size: 224px;
 	}
 	body {
