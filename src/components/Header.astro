@@ -8,10 +8,12 @@ import componentStyles from './Header.module.scss';
 ---
 
 <header class={`${componentStyles.header}  ${is_main && componentStyles.main}`}>
-    <div class={componentStyles.logoWrap}>
+    <div class={`${componentStyles.logoWrap}  ${is_main && componentStyles.main}`}>
         <p class={componentStyles.copy}>羽ばたけ､その先へ｡</p>
-        <img src="/logo.svg" alt="Logo" class={`${componentStyles.logo} ${is_main && componentStyles.large}`} />
-        <p class={componentStyles.badge}>Preview</p>
+        <div class={componentStyles.group}>
+            <img src="/logo.svg" alt="Logo" class={`${componentStyles.logo} ${is_main && componentStyles.large}`} />
+            <p class={componentStyles.badge}>Preview</p>
+        </div>
     </div>
     <div class={componentStyles.slot}>
         <slot />

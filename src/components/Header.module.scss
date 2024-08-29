@@ -2,7 +2,7 @@
 
 .header {
     background-color: #00C1D4;
-    padding: 10px 20px;
+    padding: 20px 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -10,10 +10,14 @@
     &.main {
         padding: 50px 20px;
     }
+    &:not(.main) {
+        align-items: flex-start;
+    }
     .logoWrap {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 30px;
         .copy {
             font-size: 20px;
             color: #ffffff;
@@ -23,31 +27,49 @@
                 display: none;
             }
         }
-        .logo {
-            width: auto;
-            height: 60px;
-            &.large {
-                height: 120px;
-                @include var.sp {
-                    height: 80px;
+        .group {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            .logo {
+                width: auto;
+                height: 60px;
+                &.large {
+                    height: 120px;
+                    @include var.sp {
+                        height: 80px;
+                    }
+                }
+            }
+            .badge {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 5px 20px;
+                border-radius: 20px;
+                background-color: #ffffff;
+                color: #5d5d5d;
+                font-size: 14px;
+                font-weight: 600;
+                margin: 0 0 10px 0;
+            }
+        }
+        &:not(.main) {
+            margin-bottom: 0;
+            .copy {
+                font-size: 14px;
+                margin: 0 0 5px;
+            }
+            .group {
+                flex-direction: row;
+                .badge {
+                    margin-bottom: 0;
                 }
             }
         }
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 5px 20px;
-            border-radius: 20px;
-            background-color: #ffffff;
-            color: #5d5d5d;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-        }
     }
     .slot {
-        margin-top: 30px;
         width: 100%;
         display: flex;
         justify-content: center;
