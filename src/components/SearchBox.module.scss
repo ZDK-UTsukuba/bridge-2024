@@ -1,0 +1,99 @@
+.searchBox {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: calc(100% - 50px);
+  max-width: 800px;
+  .inputWrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    --input-padding: 30px;
+    .icon {
+      position: absolute;
+      left: 20px;
+      top: calc(50% - 15px);
+      width: 30px;
+      height: 30px;
+    }
+    .input {
+      display: inline-block;
+      width: 100%;
+      height: calc(20px + 2 * var(--input-padding));
+      outline: none;
+      border: none;
+      padding: var(--input-padding) var(--input-padding) var(--input-padding) calc(40px + var(--input-padding));
+      line-height: 1;
+      font-size: 20px;
+      &:focus {
+        outline: 5px solid #ffdb276b;
+      }
+      z-index: 2;
+    }
+    .suggestions {
+      position: absolute;
+      top: 0;
+      left: calc(15px + var(--input-padding)); // アイコンとテキストの間に合わせる
+      right: 10px;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none; // 入力を妨げないようにする
+      z-index: 1;
+
+      .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        animation: scroll 20s linear infinite; // 4つの項目があるので、steps(4)を使用
+        .item {
+          height: 100%;
+          margin: 0;
+          font-size: 20px;
+          margin-top: -4px; // @todo なぜかずれるので調整
+          padding: var(--input-padding) var(--input-padding) var(--input-padding) var(--input-padding);
+          color: #999;
+          opacity: 0.5;
+        }
+      }
+    }
+    .input:not(:placeholder-shown) + .suggestions {
+      display: none;
+    }
+    --scroll-hight: calc(-1 * (1 / (4 + 1)) * 100%);
+    @keyframes scroll {
+      // @todo ちゃんと計算する or いい感じにしたい
+      0% {
+        transform: translateY( calc( var(--scroll-hight) * 0 ) );
+      }
+      15% {
+        transform: translateY( calc( var(--scroll-hight) * 0 ) );
+      }
+      20% {
+        transform: translateY( calc( var(--scroll-hight) * 1 ) );
+      }
+      35% {
+        transform: translateY( calc( var(--scroll-hight) * 1 ) );
+      }
+      40% {
+        transform: translateY( calc( var(--scroll-hight) * 2 ) );
+      }
+      55% {
+        transform: translateY( calc( var(--scroll-hight) * 2 ) );
+      }
+      60% {
+        transform: translateY( calc( var(--scroll-hight) * 3 ) );
+      }
+      75% {
+        transform: translateY( calc( var(--scroll-hight) * 3 ) );
+      }
+      80% {
+        transform: translateY( calc( var(--scroll-hight) * 4 ) );
+      }
+      100% {
+        transform: translateY( calc( var(--scroll-hight) * 4 ) );
+      }
+    }
+  }
+}

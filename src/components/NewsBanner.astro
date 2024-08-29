@@ -1,0 +1,18 @@
+---
+interface Props {
+    title: string;
+    link: string;
+}
+
+const { title, link } = Astro.props;
+import componentStyles from './NewsBanner.module.scss';
+---
+
+<div class={componentStyles.bannerWrap}>
+    <div class={componentStyles.content}>
+        <div class={componentStyles.title}>NEWS</div>
+        <a href="{link}" class={componentStyles.text}>
+            <p>{title}</p>
+        </a>
+    </div>
+</div>
