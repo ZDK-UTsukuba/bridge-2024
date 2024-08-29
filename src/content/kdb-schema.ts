@@ -1,5 +1,6 @@
+/*
 import { z } from 'astro:content';
-// import kdbJson from './class/kdb.json';
+import kdbJson from './class/kdb.json';
 
 type KdbType = {
     updated: string,
@@ -55,5 +56,4 @@ export const kdbData = {
         remarks: v[10],
     })),
 };
-
-
+*/

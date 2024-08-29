@@ -1,5 +1,6 @@
+/*
 import { z } from 'astro:content';
-// import summaryJson from './class/summary.json';
+import summaryJson from './class/summary.json';
 
 // type SummaryType = {
 //     updated: string,
@@ -54,3 +55,4 @@ const summarySchema = z.record(z.string(), z.object({
 }));
 
 export const summaryData = summarySchema.parse(summaryJson);
+*/
