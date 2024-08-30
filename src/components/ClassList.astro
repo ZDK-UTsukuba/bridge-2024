@@ -46,8 +46,17 @@ import componentStyles from './ClassList.module.scss';
                         }
                     </div>
                     <div class={componentStyles.rating}>
-                        <div class={componentStyles.stars}>★★★★★</div>
-                        <div class={componentStyles.value}>{classProp.rating}</div>
+                        <div class={componentStyles.stars}>
+                            {/* (Math.ceil(Number(classProp.rating)) - Math.floor(Number(classProp.rating))) * 100 */}
+                            {Array.from({ length: Math.ceil(Number(classProp.rating)) }, (_, i) => {
+                                return (<span class={componentStyles.star} style={(i === (Math.ceil(Number(classProp.rating)) - 1) && Math.ceil(Number(classProp.rating)) - Math.floor(Number(classProp.rating)) !== 0) ? `background: linear-gradient(to right, #ffd700 ${(Number(classProp.rating) - Math.floor(Number(classProp.rating))) * 100}%, #ddd ${(Number(classProp.rating) - Math.floor(Number(classProp.rating))) * 100}%);-webkit-background-clip: text;color: transparent;` : ""}>★</span>);
+                            })}{
+                                Array.from({ length: 5 - Math.ceil(Number(classProp.rating)) }, (_, i) => {
+                                    return (<span class={componentStyles.star} style="color: #ddd;">★</span>);
+                                })
+                            }
+                        </div>
+                        <div class={componentStyles.value}>{parseFloat(Number(classProp.rating).toFixed(1))}</div>
                         <div class={componentStyles.reviews}>({classProp.reviewCount})</div>
                     </div>
                 </div>
