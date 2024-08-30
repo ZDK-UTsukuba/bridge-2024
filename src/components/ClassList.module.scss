@@ -72,6 +72,7 @@
                 gap: 5px;
                 .name {
                     font-size: 14px;
+                    flex-shrink: 0;
                     &:not(.others) {
                         font-weight: 700;
                         font-size: 16px;
