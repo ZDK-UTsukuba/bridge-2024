@@ -1,16 +1,18 @@
 ---
 interface Props {
   defaultInput?: string;
+  styleAttr?: string;
 }
 
-const { defaultInput } = Astro.props;
+const { defaultInput, styleAttr } = Astro.props;
 import componentStyles from "./SearchBox.module.scss";
 ---
 
-<form class={componentStyles.searchBox}>
+<form class={componentStyles.searchBox} action="/search/" onsubmit="location.href = `/search/${document.getElementById('searchInput').value}`; return false;" style={styleAttr ?? ""}>
   <div class={componentStyles.inputWrap}>
     <img src="/search.svg" alt="Search" class={componentStyles.icon} />
     <input
+      id="searchInput"
       type="text"
       class={componentStyles.input}
       value={defaultInput ?? ""}
