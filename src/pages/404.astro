@@ -10,20 +10,13 @@ const currentUrl = Astro.url;
 ---
 
 <Layout title="brige">
-  <Header is_main={false}>
-    <SearchBox defaultInput={currentUrl.pathname.toString().startsWith("/search/") ? decodeURIComponent(currentUrl.pathname.toString().replace("/search/","")) : ""} styleAttr="margin: 40px 0 20px;" />
+  <Header isMain={false}>
+    <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
   </Header>
   <main class={pageStyles.main}>
     <div class={pageStyles.body}>
-      {
-        currentUrl.pathname.toString().startsWith("/search") ? (
-          <h1 class={pageStyles.title}>検索結果</h1>
-          <p>結果が見つかりませんでした</p>
-        ) : (
-          <h1 class={pageStyles.title}>404 Not Found</h1>
-          <p>アクセスしたページは見つかりませんでした</p>
-        )
-      }
+      <h1 class={pageStyles.title}>404 Not Found</h1>
+      <p>アクセスしたページは見つかりませんでした</p>
     </div>
     <div class={pageStyles.sidebar}>
       <SideMenu />

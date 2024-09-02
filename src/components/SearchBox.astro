@@ -8,7 +8,7 @@ const { defaultInput, styleAttr } = Astro.props;
 import componentStyles from "./SearchBox.module.scss";
 ---
 
-<form class={componentStyles.searchBox} action="/search/" onsubmit="location.href = `/search/${document.getElementById('searchInput').value}`; return false;" style={styleAttr ?? ""}>
+<form class={componentStyles.searchBox}  data-searchbox-form action="/search/" style={styleAttr ?? ""}>
   <div class={componentStyles.inputWrap}>
     <img src="/search.svg" alt="Search" class={componentStyles.icon} />
     <input
@@ -29,3 +29,17 @@ import componentStyles from "./SearchBox.module.scss";
     </div>
   </div>
 </form>
+
+<script>
+  if( window.location.pathname.toString().startsWith("/search/") ) {
+    const searchInput = document.getElementById("searchInput") as HTMLInputElement;
+    searchInput.value = decodeURIComponent(window.location.pathname.toString().replace("/search/",""));
+  }
+
+  const searchBoxForm = document.querySelector("[data-searchbox-form]") as HTMLFormElement;
+  const searchInput = document.getElementById("searchInput") as HTMLInputElement;
+  searchBoxForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    location.href = `/search/${encodeURIComponent(searchInput.value)}`;
+  });
+</script>
