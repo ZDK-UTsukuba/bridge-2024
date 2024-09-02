@@ -1,17 +1,17 @@
 ---
 interface Props {
-    is_main: boolean
+    isMain: boolean
 }
 
-const { is_main } = Astro.props;
+const { isMain } = Astro.props;
 import componentStyles from './Header.module.scss';
 ---
 
-<header class={`${componentStyles.header}  ${is_main && componentStyles.main}`}>
-    <div class={`${componentStyles.logoWrap}  ${is_main && componentStyles.main}`}>
+<header class={`${componentStyles.header}  ${isMain && componentStyles.main}`}>
+    <div class={`${componentStyles.logoWrap}  ${isMain && componentStyles.main}`}>
         <p class={componentStyles.copy}>羽ばたけ､その先へ｡</p>
         <a href="/" class={componentStyles.group}>
-            <img src="/logo.svg" alt="Logo" class={`${componentStyles.logo} ${is_main && componentStyles.large}`} />
+            <img src="/logo.svg" alt="Logo" class={`${componentStyles.logo} ${isMain && componentStyles.large}`} />
             <p class={componentStyles.badge}>Preview</p>
         </a>
     </div>
