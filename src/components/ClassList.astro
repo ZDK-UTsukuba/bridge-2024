@@ -1,66 +1,73 @@
 ---
 interface Props {
-	classProps: classList[];
+  classProps: classList[];
 }
 interface classList {
-    title: string;
-    colleges: string[];
-    slug: string;
-    teachers: {
-        name: string;
-        image?: string;
-    }[];
-    rating: number;
-    reviewCount: number;
+  title: string;
+  colleges: string[];
+  slug: string;
+  teachers: {
+    name: string;
+    image?: string;
+  }[];
+  rating: number;
+  reviewCount: number;
 }
 const { classProps } = Astro.props;
-import componentStyles from './ClassList.module.scss';
+import componentStyles from "./ClassList.module.scss";
+import Stars from "./Stars.ClassList.astro";
 ---
 
 <div class={componentStyles.list}>
-    {
-        classProps.map((classProp) => (
-            <div class={componentStyles.item}>
-                <div class={componentStyles.title}>
-                    <a href={`/details/${classProp.slug}`}>
-                        {classProp.title}
-                    </a>
-                    {classProp.colleges.map((college) => (
-                        <span class={componentStyles.category}>{college}</span>
-                    ))}
-                </div>
-                <div class={componentStyles.info}>
-                    <div class={componentStyles.images}>
-                        {classProp.teachers.map((teacher, teacher_index) => (
-                            teacher_index < 5 && <div class={componentStyles.image} style={`background-image: url('${teacher.image ?? "/people-default.png"}');${!teacher.image && `background-color: #${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')};`} z-index: ${100 - teacher_index}`} title={`${teacher.name} さんのアイコン`}></div>
-                        ))}
-                    </div>
-                    <div class={componentStyles.names}>
-                        {classProp.teachers.map((teacher) => (
-                            <div class={componentStyles.name}>{teacher.name}</div>
-                        ))}
-                        {
-                            classProp.teachers.length > 1 && (
-                                <div class={`${componentStyles.name} ${componentStyles.others}`}>他 {classProp.teachers.length - 1} 名</div>
-                            )
-                        }
-                    </div>
-                    <div class={componentStyles.rating}>
-                        <div class={componentStyles.stars}>
-                            {/* (Math.ceil(Number(classProp.rating)) - Math.floor(Number(classProp.rating))) * 100 */}
-                            {Array.from({ length: Math.ceil(Number(classProp.rating)) }, (_, i) => {
-                                return (<span class={componentStyles.star} style={(i === (Math.ceil(Number(classProp.rating)) - 1) && Math.ceil(Number(classProp.rating)) - Math.floor(Number(classProp.rating)) !== 0) ? `background: linear-gradient(to right, #ffd700 ${(Number(classProp.rating) - Math.floor(Number(classProp.rating))) * 100}%, #ddd ${(Number(classProp.rating) - Math.floor(Number(classProp.rating))) * 100}%);-webkit-background-clip: text;color: transparent;` : ""}>★</span>);
-                            })}{
-                                Array.from({ length: 5 - Math.ceil(Number(classProp.rating)) }, (_, i) => {
-                                    return (<span class={componentStyles.star} style="color: #ddd;">★</span>);
-                                })
-                            }
-                        </div>
-                        <div class={componentStyles.value}>{parseFloat(Number(classProp.rating).toFixed(1))}</div>
-                        <div class={componentStyles.reviews}>({classProp.reviewCount})</div>
-                    </div>
-                </div>
+  {
+    classProps.map((classProp) => (
+      <div class={componentStyles.item}>
+        <div class={componentStyles.title}>
+          <a href={`/details/${classProp.slug}`}>{classProp.title}</a>
+          {classProp.colleges.map((college) => (
+            <span class={componentStyles.category}>{college}</span>
+          ))}
+        </div>
+        <div class={componentStyles.info}>
+          <div class={componentStyles.images}>
+            {classProp.teachers.slice(0, 5).map((teacher, teacher_index) => (
+              <div
+                class={componentStyles.image}
+                style={{
+                  backgroundImage: `url('${teacher.image ?? "/people-default.png"}')`,
+                  backgroundColor: teacher.image
+                    ? "unset"
+                    : "#" +
+                      Math.floor(Math.random() * 0xffffff)
+                        .toString(16)
+                        .padStart(6, "0"),
+                  zIndex: 100 - teacher_index,
+                }}
+                title={`${teacher.name} さんのアイコン`}
+              />
+            ))}
+          </div>
+          <div class={componentStyles.names}>
+            {classProp.teachers.map((teacher) => (
+              <div class={componentStyles.name}>{teacher.name}</div>
+            ))}
+            {classProp.teachers.length > 1 && (
+              <div class={`${componentStyles.name} ${componentStyles.others}`}>
+                他 {classProp.teachers.length - 1} 名
+              </div>
+            )}
+          </div>
+          <div class={componentStyles.rating}>
+            <div class={componentStyles.stars}>
+              <Stars num={Number(classProp.rating)} />
             </div>
-        ))
-    }
+            <div class={componentStyles.value}>
+              {parseFloat(Number(classProp.rating).toFixed(1))}
+            </div>
+            <div class={componentStyles.reviews}>({classProp.reviewCount})</div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
 </div>
