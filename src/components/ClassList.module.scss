@@ -18,6 +18,8 @@
                 color: #101010;
                 text-decoration: none;
                 z-index: 0;
+                display: block;
+                width: fit-content;
                 &::after {
                     position: absolute;
                     content: "";
