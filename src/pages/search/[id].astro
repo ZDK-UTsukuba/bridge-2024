@@ -11,94 +11,94 @@ import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
     let subjectAllPattern: {
-    params: {
-        id: string;
-    };
+        params: {
+            id: string;
+        };
     }[] = [];
     [...Object.keys(summaryData)].map((subject) => {
-    for (let i = 0; i < subject.length; i++) {
-        for (let j = i + 1; j <= subject.length; j++) {
-        subjectAllPattern.push({
-            params: {
-            id: subject.slice(i, j),
-            },
-        });
+        for (let i = 0; i < subject.length; i++) {
+            for (let j = i + 1; j <= subject.length; j++) {
+                subjectAllPattern.push({
+                    params: {
+                        id: subject.slice(i, j),
+                    },
+                });
+            }
         }
-    }
     });
     return subjectAllPattern;
 }
 
-    const { id: subjectName } = Astro.params;
+const { id: subjectName } = Astro.params;
 
-    // summaryData から インデックスに subjectName が含まれるデータを取得
-    const subjects = Object.entries(summaryData).filter(([key, value]) =>
+// summaryData から インデックスに subjectName が含まれるデータを取得
+const subjects = Object.entries(summaryData).filter(([key, value]) =>
     key.includes(subjectName)
-    );
-    // const subject = summaryData[subjectName];
-    if (subjects == undefined) {
+);
+// const subject = summaryData[subjectName];
+if (subjects == undefined) {
     throw new Error("");
-    }
+}
 
-    const getKdb = (subjectId: string) => {
+const getKdb = (subjectId: string) => {
     return kdbData.subject.filter((v) => v.number === subjectId);
-    };
-    const getKdbByName = (subject: string) => {
+};
+const getKdbByName = (subject: string) => {
     return kdbData.subject.filter((v) => v.name === subject);
-    };
-    const getSyllabiUrl = (subjectId: string) => {
+};
+const getSyllabiUrl = (subjectId: string) => {
     return `https://kdb.tsukuba.ac.jp/syllabi/2024/${subjectId}/jpn`;
-    };
+};
 
-    interface classList {
+interface classList {
     title: string;
     colleges: string[];
     slug: string;
     teachers: {
-    name: string;
-    image?: string;
+        name: string;
+        image?: string;
     }[];
     rating: number;
     reviewCount: number;
-    }
-    let results: classList[] = [];
-    subjects.map(([subjectId, subject]) => {
+}
+let results: classList[] = [];
+subjects.map(([subjectId, subject]) => {
     let kdbs = getKdbByName(subjectId);
     let kdb_teachers: string[] = [];
     kdbs.map((kdb) => {
-    kdb.instructor.split(",").map((teacher) => {
-        teacher = teacher.trim();
-        if ( teacher === "" ) return;
-        if (kdb_teachers.includes(teacher)) return;
-        kdb_teachers.push(teacher);
-    });
+        kdb.instructor.split(",").map((teacher) => {
+            teacher = teacher.trim();
+            if ( teacher === "" ) return;
+            if (kdb_teachers.includes(teacher)) return;
+            kdb_teachers.push(teacher);
+        });
     });
     results.push({
-    title: subjectId,
-    colleges: [],
-    slug: subjectId,
-    teachers: kdb_teachers.map((teacher) => {
-        return { name: teacher };
-    }),
-    rating: subject.recommendation_level_of_this_class,
-    reviewCount: subject.comment.length,
+        title: subjectId,
+        colleges: [],
+        slug: subjectId,
+        teachers: kdb_teachers.map((teacher) => {
+            return { name: teacher };
+        }),
+        rating: subject.recommendation_level_of_this_class,
+        reviewCount: subject.comment.length,
     });
-    });
-    ---
+});
+---
 
-    <Layout title="brige">
+<Layout title="brige">
     <Header isMain={false}>
-    <SearchBox defaultInput={subjectName} styleAttr="margin: 40px 0 20px;" />
+        <SearchBox defaultInput={subjectName} styleAttr="margin: 40px 0 20px;" />
     </Header>
     <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-        <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
-        <div class={pageStyles.list}>
-        <ClassList classProps={results} />
+        <div class={pageStyles.body}>
+            <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
+            <div class={pageStyles.list}>
+                <ClassList classProps={results} />
+            </div>
         </div>
-    </div>
-    <div class={pageStyles.sidebar}>
-        <SideMenu />
-    </div>
+        <div class={pageStyles.sidebar}>
+            <SideMenu />
+        </div>
     </main>
 </Layout>
