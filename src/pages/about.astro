@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import SearchBox from "../components/SearchBox.astro";
+import SideMenu from "../components/SideMenu.astro";
+import pageStyles from "./about.module.scss";
+
+const currentUrl = Astro.url;
+
+---
+
+<Layout title="brige">
+    <Header isMain={false}>
+        <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
+    </Header>
+    <main class={pageStyles.main}>
+    <div class={pageStyles.body}>
+        <h1 class={pageStyles.title}>BRIDGEとは</h1>
+        <p>「BRIDGE」は、筑波大学 全学学類・専門学群・総合学域群代表者会議（以下、全代会）教育環境委員会および情報処理推進特別委員会が運営する授業評価サイトです<!-- 紙面でも発行しております-->。<b>学類と学類の架け橋になるように</b>、という意味で名付けられました。</p>
+        <p>筑波大学は総合大学で25もの学類・専門学群があり、本学ではそれらの様々な分野の授業を自由に履修することができます。しかし、これまで接点のなかった授業となると難易度や雰囲気など情報を得ることが難しく、履修をためらってしてしまう方も多いのではないでしょうか。そういった方々のために我々、教育環境委員会・情報処理推進特別委員会はこのBRIDGEを作成しています。</p>
+        <p>このサイトに掲載されている授業の情報は<b>すべて各学類等の学生達の目線で書かれたもの</b>です。そのためシラバスには書かれていないような情報が含まれています。このような新鮮な情報を見て、興味のある授業を気軽に履修してみましょう！</p>
+
+        <h2>運営者情報</h2>
+        <h3>全代会</h3>
+        <p><a href="https://www.zdk.tsukuba.ac.jp/" >全代会（全学学類・専門学群・総合学域群代表者会議）</a>は、筑波大学の公的な学生代表組織です。</p>
+        <p>学生の皆様の意見をまとめ、大学に届けることにより、学習環境や生活の改善を主な目的として活動しています。</p>
+        <p>全代会は、各学類等の教育組織から選出される学類等代表や、有志の学生で構成されており、定期的な会議やイベント等を通して、学生と大学との橋渡し役としての役割を果たしています。また、大学内での問題提起や改善に取り組むだけでなく、他大学の学生組織との交流や情報共有も行っております。</p>
+        <p>詳細は<a href="https://www.stb.tsukuba.ac.jp/~zdk/about">全代会Webサイト</a>をご覧ください。</p>
+        <h3>教育環境委員会</h3>
+        <p><a href="https://www.stb.tsukuba.ac.jp/~zdk/education-environment">教育環境委員会</a>は、全代会内部の「委員会（ワーキンググループ）」の1つで、学生の学習環境を向上させるための活動を行っています。主に講義の質や教室の設備、学習のサポートについて、大学に対し問題提起や改善を求めています。</p>
+        <p>基本的には、学生から集めた授業に関する意見や要望をアンケートを通じて収集し、定期的に大学側と協議して改善を図ります。また、アンケート結果をもとに教員との意見交換会や懇談会を開催し、教育方針や学習支援に関する具体的な改善策の検討も行っています。</p>
+        <h3>情報処理推進特別委員会</h3>
+        <p><a href="https://www.stb.tsukuba.ac.jp/~zdk/ipc">情報処理推進特別委員会（Information-technology Promotion Committee, IPC）</a>は全代会の委員会の一つで、本学における学生による情報処理に関する活動の推進を主な目的として設立された特別委員会です。</p>
+        <p>主な活動として、<a href="https://www.zdk.tsukuba.ac.jp/" >全代会Webサイト</a>の開発・管理、<a href="https://www.stb.tsukuba.ac.jp/~webgaku/">Webページ学生委員会</a>への人員派遣、<a href="https://shinkan-web.zdk.tsukuba.ac.jp/">新歓Web</a>の管理・運営、筑波大学に関連する情報系技術者コミュニティ「<a href="https://until-tsukuba.github.io/">UNTIL.</a>」の運営などを行っています。</p>
+    </div>
+    <div class={pageStyles.sidebar}>
+        <SideMenu />
+    </div>
+    </main>
+</Layout>
