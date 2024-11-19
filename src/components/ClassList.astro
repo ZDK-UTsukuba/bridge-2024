@@ -1,17 +1,17 @@
 ---
 interface Props {
-  classProps: classList[];
+    classProps: classList[];
 }
 interface classList {
-  title: string;
-  colleges: string[];
-  slug: string;
-  teachers: {
-    name: string;
-    image?: string;
-  }[];
-  rating: number;
-  reviewCount: number;
+    title: string;
+    colleges: string[];
+    slug: string;
+    teachers: {
+        name: string;
+        image?: string;
+    }[];
+    rating: number;
+    reviewCount: number;
 }
 const { classProps } = Astro.props;
 import componentStyles from "./ClassList.module.scss";

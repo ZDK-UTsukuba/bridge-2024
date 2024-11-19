@@ -1,27 +1,27 @@
 ---
 interface Props {
-  num: number;
+    num: number;
 }
 const { num } = Astro.props;
 ---
 
 <>
-  {
+    {
     Array.from({ length: Math.ceil(num) }, (_, i) => {
-      return (
+        return (
         <span
-          style={
+            style={
             i === Math.ceil(num) - 1 && Math.ceil(num) - Math.floor(num) !== 0
-              ? `background: linear-gradient(to right, #ffd700 ${(num - Math.floor(num)) * 100}%, #ddd ${(num - Math.floor(num)) * 100}%);-webkit-background-clip: text;color: transparent;`
-              : ""
-          }
+                ? `background: linear-gradient(to right, #ffd700 ${(num - Math.floor(num)) * 100}%, #ddd ${(num - Math.floor(num)) * 100}%);-webkit-background-clip: text;color: transparent;`
+                : ""
+            }
         >★</span>
-      );
+        );
     })
-  }
-  {
+    }
+    {
     Array.from({ length: 5 - Math.ceil(num) }, (_, i) => {
-      return <span style="color: #ddd;">★</span>;
+        return <span style="color: #ddd;">★</span>;
     })
-  }
+    }
 </>

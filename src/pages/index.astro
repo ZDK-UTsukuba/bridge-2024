@@ -10,48 +10,48 @@ import SideMenu from "../components/SideMenu.astro";
 ---
 
 <Layout title="brige">
-  <Header isMain={true}>
+    <Header isMain={true}>
     <SearchBox />
-  </Header>
-  <NewsBanner title="New feature released!" link="/news/1" />
-  <main class={pageStyles.main}>
+    </Header>
+    <NewsBanner title="New feature released!" link="/news/1" />
+    <main class={pageStyles.main}>
     <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
-      <ClassList classProps={[
-		{
-		  title: "線形代数1",
-		  colleges: ["応用理工学類", "工学システム学類","社会工学類","数学類","物理学類","化学類","地球学類","総合学域群"],
-		  slug: "線形代数1",
-		  teachers: [
-			{ name: "牧村 哲也" },
-			{ name: "江角 直道" },
-			{ name: "河合 新" },
-			{ name: "井澤 淳" },
-			{ name: "山本 芳嗣" },
-			{ name: "作道 真理" },
-			{ name: "木村 健一郎" },
-			{ name: "増岡 彰" },
-			{ name: "照井 章" },
-			{ name: "東郷 訓" },
-			{ name: "河本 浩明" },
-		  ],
-		  rating: 2.3,
-		  reviewCount: 2,
-		},
-		{
-		  title: "情報メディア入門",
-		  colleges: ["情報科学類"],
-		  slug: "情報メディア入門",
-		  teachers: [
-			{ name: "三末 和男" },
-			{ name: "津川 翔" },
-		  ],
-		  rating: 5,
-		  reviewCount: 0,
-		},
-	  ]} />
+        <ClassList classProps={[
+        {
+            title: "線形代数1",
+            colleges: ["応用理工学類", "工学システム学類","社会工学類","数学類","物理学類","化学類","地球学類","総合学域群"],
+            slug: "線形代数1",
+            teachers: [
+            { name: "牧村 哲也" },
+            { name: "江角 直道" },
+            { name: "河合 新" },
+            { name: "井澤 淳" },
+            { name: "山本 芳嗣" },
+            { name: "作道 真理" },
+            { name: "木村 健一郎" },
+            { name: "増岡 彰" },
+            { name: "照井 章" },
+            { name: "東郷 訓" },
+            { name: "河本 浩明" },
+            ],
+            rating: 2.3,
+            reviewCount: 2,
+        },
+        {
+            title: "情報メディア入門",
+            colleges: ["情報科学類"],
+            slug: "情報メディア入門",
+            teachers: [
+            { name: "三末 和男" },
+            { name: "津川 翔" },
+            ],
+            rating: 5,
+            reviewCount: 0,
+        },
+        ]} />
     </Card>
     <div class={pageStyles.sidebar}>
-		<SideMenu />
-	</div>
-  </main>
+        <SideMenu />
+    </div>
+    </main>
 </Layout>
