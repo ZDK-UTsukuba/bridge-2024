@@ -10,16 +10,16 @@ const currentUrl = Astro.url;
 ---
 
 <Layout title="brige">
-  <Header isMain={false}>
-    <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
-  </Header>
-  <main class={pageStyles.main}>
+    <Header isMain={false}>
+        <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
+    </Header>
+    <main class={pageStyles.main}>
     <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>404 Not Found</h1>
-      <p>アクセスしたページは見つかりませんでした</p>
+        <h1 class={pageStyles.title}>404 Not Found</h1>
+        <p>アクセスしたページは見つかりませんでした</p>
     </div>
     <div class={pageStyles.sidebar}>
-      <SideMenu />
+        <SideMenu />
     </div>
-  </main>
+    </main>
 </Layout>

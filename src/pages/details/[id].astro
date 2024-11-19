@@ -8,44 +8,44 @@ import LabelParsent from "../../components/LabelParsent.astro";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
-  return [...Object.keys(summaryData)].map((subject) => ({
+    return [...Object.keys(summaryData)].map((subject) => ({
     params: {
-      id: `${subject}`,
+        id: `${subject}`,
     },
-  }));
+    }));
 }
 
 const { id: subjectName } = Astro.params;
 
 const subject = summaryData[subjectName];
 if (subject == undefined) {
-  throw new Error("");
+    throw new Error("");
 }
 
 const kdbs = kdbData.subject.filter((v) => v.name === subjectName);
 
 function syllabiUrl(number: string) {
-  return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
+    return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
 }
 ---
 
-<Layout title="brige">
-  <Header isMain={false} />
-  <main class={pageStyles.main}>
+    <Layout title="brige">
+    <Header isMain={false} />
+    <main class={pageStyles.main}>
     <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>{subjectName}</h1>
+        <h1 class={pageStyles.title}>{subjectName}</h1>
 
-      <div class={pageStyles.tagWrap}>
+        <div class={pageStyles.tagWrap}>
         <div class={pageStyles.tag}>授業形態</div>
         {
-          kdbs.length > 1 && (
+            kdbs.length > 1 && (
             <p class={pageStyles.description}>※ 全ての科目の平均値</p>
-          )
+            )
         }
-      </div>
-      <div class={pageStyles.card}>
+        </div>
+        <div class={pageStyles.card}>
         <LabelParsent
-          labels={{
+            labels={{
             講義: "講義",
             グループワーク: "グループワーク",
             発表: "発表",
@@ -53,193 +53,193 @@ function syllabiUrl(number: string) {
             対話: "対話",
             オンデマンド: "オンデマンド",
             レポート提出のみ: "レポート提出のみ",
-          }}
-          n={subject.class_format.回答人数}
-          data={subject.class_format}
+            }}
+            n={subject.class_format.回答人数}
+            data={subject.class_format}
         />
-      </div>
+        </div>
 
-      <div class={pageStyles.tagWrap}>
+        <div class={pageStyles.tagWrap}>
         <div class={pageStyles.tag}>評価</div>
         {
-          kdbs.length > 1 && (
+            kdbs.length > 1 && (
             <p class={pageStyles.description}>※ 全ての科目の平均値</p>
-          )
+            )
         }
-      </div>
-      <div class={pageStyles.card}>
+        </div>
+        <div class={pageStyles.card}>
         <div class={pageStyles.lists}>
-          <div class={pageStyles.item}>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>メールの対応</div>
             <div class={pageStyles.content}>
-              {subject.teachers_email_response_evaluation}
+                {subject.teachers_email_response_evaluation}
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>授業の難易度</div>
             <div class={pageStyles.content}>
-              {subject.class_difficulty_level}
+                {subject.class_difficulty_level}
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>単位の取りやすさ</div>
             <div class={pageStyles.content}>{subject.credit_earnability}</div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>授業の準備量</div>
             <div class={pageStyles.content}>
-              {subject.class_preparation_workload}
+                {subject.class_preparation_workload}
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>教科書</div>
             <div class={pageStyles.content}>
-              <LabelParsent
+                <LabelParsent
                 labels={{
-                  True: "使わない",
-                  False: "使わない",
+                    True: "使わない",
+                    False: "使わない",
                 }}
                 n={subject.is_textbook_used_in_class.True +
-                  subject.is_textbook_used_in_class.False}
+                    subject.is_textbook_used_in_class.False}
                 data={subject.is_textbook_used_in_class}
-              />
+                />
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>オススメ度</div>
             <div class={pageStyles.content}>
-              {subject.recommendation_level_of_this_class}
+                {subject.recommendation_level_of_this_class}
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>配布資料</div>
             <div class={pageStyles.content}>
-              <LabelParsent
+                <LabelParsent
                 labels={{
-                  True: "あり",
-                  False: "なし",
+                    True: "あり",
+                    False: "なし",
                 }}
                 n={subject.is_textbook_used_in_class.True +
-                  subject.is_textbook_used_in_class.False}
+                    subject.is_textbook_used_in_class.False}
                 data={subject.are_materials_distributed_in_class}
-              />
+                />
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>予備知識</div>
             <div class={pageStyles.content}>
-              {
+                {
                 subject.prerequisite_knowledge_for_this_class.map((comment) => (
-                  <>
+                    <>
                     {comment}
                     <br />
-                  </>
+                    </>
                 ))
-              }
+                }
             </div>
-          </div>
-          <div class={pageStyles.item}>
+            </div>
+            <div class={pageStyles.item}>
             <div class={pageStyles.label}>コメント</div>
             <div class={`${pageStyles.content} ${pageStyles.comments}`}>
-              {
+                {
                 subject.comment.map((comment) => (
-                  <>
+                    <>
                     <div class={pageStyles.comment}>
-                      <p>{comment.comment}</p>
-                      <div class={pageStyles.recommendationLevel}>
+                        <p>{comment.comment}</p>
+                        <div class={pageStyles.recommendationLevel}>
                         {"★".repeat(comment.recommendation_level_of_this_class)}
-                      </div>
+                        </div>
                     </div>
-                  </>
+                    </>
                 ))
-              }
+                }
             </div>
-          </div>
+            </div>
         </div>
-      </div>
+        </div>
 
-      {
+        {
         kdbs.map((kdbSubject) => (
-          <>
+            <>
             <div class={pageStyles.tagWrap}>
-              <div class={pageStyles.tag}>科目番号 {kdbSubject.number}</div>
-              <a
+                <div class={pageStyles.tag}>科目番号 {kdbSubject.number}</div>
+                <a
                 href={syllabiUrl(kdbSubject.number)}
                 target="_blank"
                 rel="noopener noreferrer external"
-              >
+                >
                 シラバス (外部)
                 <div class={pageStyles.iconWrap}>
-                  <svg
+                    <svg
                     width="45"
                     height="45"
                     viewBox="0 0 45 45"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     class={pageStyles.icon}
-                  >
+                    >
                     <path
-                      d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
-                      fill="currentColor"
+                        d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
+                        fill="currentColor"
                     />
-                  </svg>
+                    </svg>
                 </div>
-              </a>
+                </a>
             </div>
             <div class={pageStyles.card}>
-              <div class={pageStyles.lists}>
+                <div class={pageStyles.lists}>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>授業形態</div>
-                  <div class={pageStyles.content}>
+                    <div class={pageStyles.label}>授業形態</div>
+                    <div class={pageStyles.content}>
                     {kdbSubject.instructionalType}
-                  </div>
+                    </div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>単位</div>
-                  <div class={pageStyles.content}>{kdbSubject.credits}</div>
+                    <div class={pageStyles.label}>単位</div>
+                    <div class={pageStyles.content}>{kdbSubject.credits}</div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>標準履修年次</div>
-                  <div class={pageStyles.content}>
+                    <div class={pageStyles.label}>標準履修年次</div>
+                    <div class={pageStyles.content}>
                     {kdbSubject.standardRegistrationYear}
-                  </div>
+                    </div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>学期</div>
-                  <div class={pageStyles.content}>{kdbSubject.term}</div>
+                    <div class={pageStyles.label}>学期</div>
+                    <div class={pageStyles.content}>{kdbSubject.term}</div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>曜時限</div>
-                  <div class={pageStyles.content}>{kdbSubject.period}</div>
+                    <div class={pageStyles.label}>曜時限</div>
+                    <div class={pageStyles.content}>{kdbSubject.period}</div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>教室</div>
-                  <div class={pageStyles.content}>{kdbSubject.room}</div>
+                    <div class={pageStyles.label}>教室</div>
+                    <div class={pageStyles.content}>{kdbSubject.room}</div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>担当教員</div>
-                  <div class={pageStyles.content}>{kdbSubject.instructor}</div>
+                    <div class={pageStyles.label}>担当教員</div>
+                    <div class={pageStyles.content}>{kdbSubject.instructor}</div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>授業概要</div>
-                  <div class={pageStyles.content}>
+                    <div class={pageStyles.label}>授業概要</div>
+                    <div class={pageStyles.content}>
                     {kdbSubject.abstract.replace(/\n/g, "<br>")}
-                  </div>
+                    </div>
                 </div>
                 <div class={pageStyles.item}>
-                  <div class={pageStyles.label}>備考</div>
-                  <div class={pageStyles.content}>
+                    <div class={pageStyles.label}>備考</div>
+                    <div class={pageStyles.content}>
                     {kdbSubject.remarks.replace(/\n/g, "<br>")}
-                  </div>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
-          </>
+            </>
         ))
-      }
+        }
     </div>
     <div class={pageStyles.sidebar}>
-      <SideMenu />
+        <SideMenu />
     </div>
-  </main>
+    </main>
 </Layout>
