@@ -14,12 +14,12 @@ const currentUrl = Astro.url;
         <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
     </Header>
     <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-        <h1 class={pageStyles.title}>404 Not Found</h1>
-        <p>アクセスしたページは見つかりませんでした</p>
-    </div>
-    <div class={pageStyles.sidebar}>
-        <SideMenu />
-    </div>
+        <div class={pageStyles.body}>
+            <h1 class={pageStyles.title}>404 Not Found</h1>
+            <p>アクセスしたページは見つかりませんでした</p>
+        </div>
+        <div class={pageStyles.sidebar}>
+            <SideMenu />
+        </div>
     </main>
 </Layout>
