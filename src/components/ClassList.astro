@@ -15,59 +15,9 @@ interface classList {
 }
 const { classProps } = Astro.props;
 import componentStyles from "./ClassList.module.scss";
-import Stars from "./Stars.ClassList.astro";
+import ClassListItem from "./ClassListItem.astro";
 ---
 
 <div class={componentStyles.list}>
-  {
-    classProps.map((classProp) => (
-      <div class={componentStyles.item}>
-        <div class={componentStyles.title}>
-          <a href={`/details/${classProp.slug}`}>{classProp.title}</a>
-          {classProp.colleges.map((college) => (
-            <span class={componentStyles.category}>{college}</span>
-          ))}
-        </div>
-        <div class={componentStyles.info}>
-          <div class={componentStyles.images}>
-            {classProp.teachers.slice(0, 5).map((teacher, teacher_index) => (
-              <div
-                class={componentStyles.image}
-                style={{
-                  backgroundImage: `url('${teacher.image ?? "/people-default.png"}')`,
-                  backgroundColor: teacher.image
-                    ? "unset"
-                    : "#" +
-                      Math.floor(Math.random() * 0xffffff)
-                        .toString(16)
-                        .padStart(6, "0"),
-                  zIndex: 100 - teacher_index,
-                }}
-                title={`${teacher.name} さんのアイコン`}
-              />
-            ))}
-          </div>
-          <div class={componentStyles.names}>
-            {classProp.teachers.map((teacher) => (
-              <div class={componentStyles.name}>{teacher.name}</div>
-            ))}
-            {classProp.teachers.length > 1 && (
-              <div class={`${componentStyles.name} ${componentStyles.others}`}>
-                他 {classProp.teachers.length - 1} 名
-              </div>
-            )}
-          </div>
-          <div class={componentStyles.rating}>
-            <div class={componentStyles.stars}>
-              <Stars num={Number(classProp.rating)} />
-            </div>
-            <div class={componentStyles.value}>
-              {parseFloat(Number(classProp.rating).toFixed(1))}
-            </div>
-            <div class={componentStyles.reviews}>({classProp.reviewCount})</div>
-          </div>
-        </div>
-      </div>
-    ))
-  }
+    {classProps.map((classProp) => <ClassListItem classProp={classProp} />)}
 </div>
