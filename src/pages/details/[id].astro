@@ -4,7 +4,7 @@ import Header from "../../components/Header.astro";
 import SideMenu from "../../components/SideMenu.astro";
 import { summaryData } from "../../content/summary";
 import { kdbData } from "../../content/kdb-schema";
-import LabelParsent from "../../components/LabelParsent.astro";
+import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
@@ -44,7 +44,7 @@ function syllabiUrl(number: string) {
                 }
             </div>
             <div class={pageStyles.card}>
-                <LabelParsent
+                <LabelPercent
                     labels={{
                         講義: "講義",
                         グループワーク: "グループワーク",
@@ -94,7 +94,7 @@ function syllabiUrl(number: string) {
                     <div class={pageStyles.item}>
                         <div class={pageStyles.label}>教科書</div>
                         <div class={pageStyles.content}>
-                            <LabelParsent
+                            <LabelPercent
                                 labels={{
                                     True: "使わない",
                                     False: "使わない",
@@ -114,7 +114,7 @@ function syllabiUrl(number: string) {
                     <div class={pageStyles.item}>
                         <div class={pageStyles.label}>配布資料</div>
                         <div class={pageStyles.content}>
-                            <LabelParsent
+                            <LabelPercent
                                 labels={{
                                     True: "あり",
                                     False: "なし",
