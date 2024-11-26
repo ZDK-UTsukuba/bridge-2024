@@ -9,10 +9,9 @@ import pageStyles from "./ranking.module.scss";
 
 // summaryData から インデックスに subjectName が含まれるデータを取得
 const subjects = Object.entries(summaryData)
-    .sort(
-        (a, b) =>
-            a[1].recommendation_level_of_this_class -
-            b[1].recommendation_level_of_this_class,
+    .sort((a, b) =>
+        b[1].recommendation_level_of_this_class -
+        a[1].recommendation_level_of_this_class,
     )
     .map(([id]) => id)
     .slice(0, 50);
