@@ -16,7 +16,7 @@ import SideMenu from "../components/SideMenu.astro";
     <NewsBanner title="New feature released!" link="/news/1" />
         <main class={pageStyles.main}>
         <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
-            <ClassList classProps={["線形代数1", "情報メディア入門"]} />
+            <ClassList subjects={["線形代数1", "情報メディア入門"]} />
         </Card>
         <div class={pageStyles.sidebar}>
             <SideMenu />

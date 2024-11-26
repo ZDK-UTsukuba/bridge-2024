@@ -44,7 +44,7 @@ const subjects = Object.keys(summaryData).filter((key) =>
         <div class={pageStyles.body}>
             <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
             <div class={pageStyles.list}>
-                <ClassList classProps={subjects} />
+                <ClassList subjects={subjects} />
             </div>
         </div>
         <div class={pageStyles.sidebar}>
