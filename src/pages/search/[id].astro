@@ -5,7 +5,6 @@ import SearchBox from "../../components/SearchBox.astro";
 import SideMenu from "../../components/SideMenu.astro";
 import ClassList from "../../components/ClassList.astro";
 import { summaryData } from "../../content/summary";
-import { kdbData } from "../../content/kdb-schema";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
@@ -31,42 +30,10 @@ export function getStaticPaths() {
 const { id: subjectName } = Astro.params;
 
 // summaryData から インデックスに subjectName が含まれるデータを取得
-const subjects = Object.entries(summaryData).filter(([key, value]) =>
+const subjects = Object.keys(summaryData).filter((key) =>
     key.includes(subjectName)
 );
 
-const getKdbByName = (subject: string) => {
-    return kdbData.subject.filter((v) => v.name === subject);
-};
-
-interface classList {
-    title: string;
-    colleges: string[];
-    slug: string;
-    teachers: {
-        name: string;
-        image?: string;
-    }[];
-    rating: number;
-    reviewCount: number;
-}
-const results: classList[] = subjects.map(([subjectId, subject]) => {
-    const kdbs = getKdbByName(subjectId);
-    const kdbTeachers = [...new Set(
-        kdbs
-            .flatMap((kdb) => kdb.instructor.split(","))
-            .map((teacher) => teacher.trim())
-            .filter((teacher) => teacher)
-    )];
-    return {
-        title: subjectId,
-        colleges: [],
-        slug: subjectId,
-        teachers: kdbTeachers.map((teacher) => ({ name: teacher })),
-        rating: subject.recommendation_level_of_this_class,
-        reviewCount: subject.comment.length,
-    };
-});
 ---
 
 <Layout title="検索結果">
@@ -77,7 +44,7 @@ const results: classList[] = subjects.map(([subjectId, subject]) => {
         <div class={pageStyles.body}>
             <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
             <div class={pageStyles.list}>
-                <ClassList classProps={results} />
+                <ClassList classProps={subjects} />
             </div>
         </div>
         <div class={pageStyles.sidebar}>

@@ -1,23 +1,13 @@
 ---
 interface Props {
-    classProps: classList[];
+    subjects: string[];
 }
-interface classList {
-    title: string;
-    colleges: string[];
-    slug: string;
-    teachers: {
-        name: string;
-        image?: string;
-    }[];
-    rating: number;
-    reviewCount: number;
-}
-const { classProps } = Astro.props;
+
+const { subjects } = Astro.props;
 import componentStyles from "./ClassList.module.scss";
 import ClassListItem from "./ClassListItem.astro";
 ---
 
 <div class={componentStyles.list}>
-    {classProps.map((classProp) => <ClassListItem classProp={classProp} />)}
+    {subjects.map((subjectId) => <ClassListItem subjectId={subjectId} />)}
 </div>
