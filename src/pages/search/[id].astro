@@ -34,19 +34,9 @@ const { id: subjectName } = Astro.params;
 const subjects = Object.entries(summaryData).filter(([key, value]) =>
     key.includes(subjectName)
 );
-// const subject = summaryData[subjectName];
-if (subjects == undefined) {
-    throw new Error("");
-}
 
-const getKdb = (subjectId: string) => {
-    return kdbData.subject.filter((v) => v.number === subjectId);
-};
 const getKdbByName = (subject: string) => {
     return kdbData.subject.filter((v) => v.name === subject);
-};
-const getSyllabiUrl = (subjectId: string) => {
-    return `https://kdb.tsukuba.ac.jp/syllabi/2024/${subjectId}/jpn`;
 };
 
 interface classList {
@@ -60,28 +50,22 @@ interface classList {
     rating: number;
     reviewCount: number;
 }
-let results: classList[] = [];
-subjects.map(([subjectId, subject]) => {
-    let kdbs = getKdbByName(subjectId);
-    let kdb_teachers: string[] = [];
-    kdbs.map((kdb) => {
-        kdb.instructor.split(",").map((teacher) => {
-            teacher = teacher.trim();
-            if ( teacher === "" ) return;
-            if (kdb_teachers.includes(teacher)) return;
-            kdb_teachers.push(teacher);
-        });
-    });
-    results.push({
+const results: classList[] = subjects.map(([subjectId, subject]) => {
+    const kdbs = getKdbByName(subjectId);
+    const kdbTeachers = [...new Set(
+        kdbs
+            .flatMap((kdb) => kdb.instructor.split(","))
+            .map((teacher) => teacher.trim())
+            .filter((teacher) => teacher)
+    )];
+    return {
         title: subjectId,
         colleges: [],
         slug: subjectId,
-        teachers: kdb_teachers.map((teacher) => {
-            return { name: teacher };
-        }),
+        teachers: kdbTeachers.map((teacher) => ({ name: teacher })),
         rating: subject.recommendation_level_of_this_class,
         reviewCount: subject.comment.length,
-    });
+    };
 });
 ---
 
