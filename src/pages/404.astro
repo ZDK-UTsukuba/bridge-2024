@@ -4,12 +4,9 @@ import Header from "../components/Header.astro";
 import SearchBox from "../components/SearchBox.astro";
 import SideMenu from "../components/SideMenu.astro";
 import pageStyles from "./404.module.scss";
-
-const currentUrl = Astro.url;
-
 ---
 
-<Layout title="brige">
+<Layout title="ページが見つかりません">
     <Header isMain={false}>
         <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
     </Header>
