@@ -33,7 +33,9 @@ import componentStyles from "./SearchBox.module.scss";
 <script>
     if( window.location.pathname.toString().startsWith("/search/") ) {
         const searchInput = document.getElementById("searchInput") as HTMLInputElement;
-        searchInput.value = decodeURIComponent(window.location.pathname.toString().replace("/search/","").replace("/",""));
+        const searchKeywords = decodeURIComponent(window.location.pathname.toString().replace("/search/","").replace("/",""));
+        searchInput.value = searchKeywords;
+        document.title = searchKeywords;
     }
 
     const searchBoxForm = document.querySelector("[data-searchbox-form]") as HTMLFormElement;
