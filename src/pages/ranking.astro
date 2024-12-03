@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import SearchBox from "../components/SearchBox.astro";
+import SideMenu from "../components/SideMenu.astro";
+import ClassList from "../components/ClassList.astro";
+import { summaryData } from "../content/summary";
+import pageStyles from "./ranking.module.scss";
+
+// summaryData から インデックスに subjectName が含まれるデータを取得
+const subjects = Object.entries(summaryData)
+    .sort((a, b) =>
+        b[1].recommendation_level_of_this_class -
+        a[1].recommendation_level_of_this_class,
+    )
+    .map(([id]) => id)
+    .slice(0, 50);
+---
+
+<Layout title="総合評価が高い科目">
+    <Header isMain={false}>
+        <SearchBox />
+    </Header>
+    <main class={pageStyles.main}>
+        <div class={pageStyles.body}>
+            <h1 class={pageStyles.title}>総合評価が高い科目</h1>
+            <div class={pageStyles.list}>
+                <ClassList subjects={subjects} />
+            </div>
+        </div>
+        <div class={pageStyles.sidebar}>
+            <SideMenu />
+        </div>
+    </main>
+</Layout>

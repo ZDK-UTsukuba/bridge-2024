@@ -5,7 +5,6 @@ import SearchBox from "../../components/SearchBox.astro";
 import SideMenu from "../../components/SideMenu.astro";
 import ClassList from "../../components/ClassList.astro";
 import { summaryData } from "../../content/summary";
-import { kdbData } from "../../content/kdb-schema";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
@@ -31,58 +30,10 @@ export function getStaticPaths() {
 const { id: subjectName } = Astro.params;
 
 // summaryData から インデックスに subjectName が含まれるデータを取得
-const subjects = Object.entries(summaryData).filter(([key, value]) =>
+const subjects = Object.keys(summaryData).filter((key) =>
     key.includes(subjectName)
 );
-// const subject = summaryData[subjectName];
-if (subjects == undefined) {
-    throw new Error("");
-}
 
-const getKdb = (subjectId: string) => {
-    return kdbData.subject.filter((v) => v.number === subjectId);
-};
-const getKdbByName = (subject: string) => {
-    return kdbData.subject.filter((v) => v.name === subject);
-};
-const getSyllabiUrl = (subjectId: string) => {
-    return `https://kdb.tsukuba.ac.jp/syllabi/2024/${subjectId}/jpn`;
-};
-
-interface classList {
-    title: string;
-    colleges: string[];
-    slug: string;
-    teachers: {
-        name: string;
-        image?: string;
-    }[];
-    rating: number;
-    reviewCount: number;
-}
-let results: classList[] = [];
-subjects.map(([subjectId, subject]) => {
-    let kdbs = getKdbByName(subjectId);
-    let kdb_teachers: string[] = [];
-    kdbs.map((kdb) => {
-        kdb.instructor.split(",").map((teacher) => {
-            teacher = teacher.trim();
-            if ( teacher === "" ) return;
-            if (kdb_teachers.includes(teacher)) return;
-            kdb_teachers.push(teacher);
-        });
-    });
-    results.push({
-        title: subjectId,
-        colleges: [],
-        slug: subjectId,
-        teachers: kdb_teachers.map((teacher) => {
-            return { name: teacher };
-        }),
-        rating: subject.recommendation_level_of_this_class,
-        reviewCount: subject.comment.length,
-    });
-});
 ---
 
 <Layout title="検索結果">
@@ -93,7 +44,7 @@ subjects.map(([subjectId, subject]) => {
         <div class={pageStyles.body}>
             <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
             <div class={pageStyles.list}>
-                <ClassList classProps={results} />
+                <ClassList subjects={subjects} />
             </div>
         </div>
         <div class={pageStyles.sidebar}>
