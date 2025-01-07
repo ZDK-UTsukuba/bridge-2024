@@ -7,6 +7,16 @@ import NewsBanner from "../components/NewsBanner.astro";
 import Card from "../components/Card.astro";
 import ClassList from "../components/ClassList.astro";
 import SideMenu from "../components/SideMenu.astro";
+import { summaryData } from "../content/summary";
+
+// summaryData から インデックスに subjectName が含まれるデータを取得
+const subjects = Object.entries(summaryData)
+    .sort((a, b) =>
+        b[1].recommendation_level_of_this_class -
+        a[1].recommendation_level_of_this_class,
+    )
+    .map(([id]) => id)
+    .slice(0, 2);
 ---
 
 <Layout>
@@ -16,7 +26,7 @@ import SideMenu from "../components/SideMenu.astro";
     <NewsBanner title="New feature released!" link="/news/1" />
         <main class={pageStyles.main}>
         <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
-            <ClassList subjects={["線形代数1", "情報メディア入門"]} />
+            <ClassList subjects={subjects} />
         </Card>
         <div class={pageStyles.sidebar}>
             <SideMenu />
