@@ -131,7 +131,7 @@ const summarySchema = z.object({
         )
     ),
     "専門・専門基礎": z.record(z.string(), z.object({
-        teachers_email_response_evaluation: z.number(),
+        teachers_email_response_evaluation: z.nullable(z.number()),
         credit_earnability: z.number(),
         class_preparation_workload: z.number(),
         class_difficulty_level: z.number(),
