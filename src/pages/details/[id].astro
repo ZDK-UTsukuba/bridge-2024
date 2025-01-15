@@ -140,26 +140,31 @@ const params =
             n:
                 subject.subject.required_purchases.True +
                 subject.subject.required_purchases.False,
+            detail: subject.subject.required_purchases.detail,
         },
         rain: {
             data: subject.subject.rain,
             n: subject.subject.rain.True + subject.subject.rain.False,
+            detail: subject.subject.rain.detail,
         },
         final: {
             data: subject.subject.final,
             n: subject.subject.final.True + subject.subject.final.False,
+            detail: subject.subject.final.detail,
         },
         weekly_assignments: {
             data: subject.subject.weekly_assignments,
             n:
                 subject.subject.weekly_assignments.True +
                 subject.subject.weekly_assignments.False,
+            detail: subject.subject.weekly_assignments.detail,
         },
         overtime_assignments: {
             data: subject.subject.overtime_assignments,
             n:
                 subject.subject.overtime_assignments.True +
                 subject.subject.overtime_assignments.False,
+            detail: subject.subject.overtime_assignments.detail,
         },
         activity: subject.subject.activity,
     };
@@ -361,6 +366,13 @@ const params =
                                         n={params.required_purchases.n}
                                         data={params.required_purchases.data}
                                     />
+                                    <ul>
+                                        {params.required_purchases.detail.map(val => (
+                                            <li>
+                                                {val}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )
@@ -380,6 +392,13 @@ const params =
                                         n={params.rain.n}
                                         data={params.rain.data}
                                     />
+                                    <ul>
+                                        {params.rain.detail.map(val => (
+                                            <li>
+                                                {val}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )
@@ -397,6 +416,13 @@ const params =
                                         n={params.final.n}
                                         data={params.final.data}
                                     />
+                                    <ul>
+                                        {params.final.detail.map(val => (
+                                            <li>
+                                                {val}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )
@@ -414,6 +440,13 @@ const params =
                                         n={params.weekly_assignments.n}
                                         data={params.weekly_assignments.data}
                                     />
+                                    <ul>
+                                        {params.weekly_assignments.detail.map(val => (
+                                            <li>
+                                                {val}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )
@@ -431,6 +464,13 @@ const params =
                                         n={params.overtime_assignments.n}
                                         data={params.overtime_assignments.data}
                                     />
+                                    <ul>
+                                        {params.overtime_assignments.detail.map(val => (
+                                            <li>
+                                                {val}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )
