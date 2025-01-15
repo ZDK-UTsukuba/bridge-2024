@@ -1,6 +1,6 @@
 ---
 import { kdbData } from "../content/kdb-schema";
-import { summaryData } from "../content/summary";
+import { subjectMap } from "../content/subjectsData";
 import componentStyles from "./ClassListItem.module.scss";
 import Stars from "./Stars.ClassList.astro";
 
@@ -14,7 +14,10 @@ const getKdbByName = (subject: string) => {
     return kdbData.subject.filter((v) => v.name === subject);
 };
 
-const subject = summaryData[subjectId];
+const subject = subjectMap.get(subjectId);
+if (subject == undefined) {
+    throw new Error("");
+}
 const kdbs = getKdbByName(subjectId);
 const kdbTeachers = [
     ...new Set(
@@ -30,8 +33,8 @@ const teachers: {
     name: string;
     image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
-const rating = subject.recommendation_level_of_this_class;
-const reviewCount = subject.comment.length;
+const rating = subject.subject.recommendation_level_of_this_class;
+const reviewCount = subject.subject.comment.length;
 ---
 
 <div class={componentStyles.item}>
