@@ -163,6 +163,9 @@ const summarySchema = z.object({
             オンデマンド: z.number(),
             レポート提出のみ: z.number(),
         }),
+        course_college: z.array(
+            z.string(),
+        )
     }))
 });
 

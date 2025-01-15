@@ -37,7 +37,7 @@ const calcAve = (numOrObj: number | { sum: number; count: number }) => {
         : numOrObj.sum / numOrObj.count;
 };
 
-const colleges: string[] = subject.type === "体育" ? [subject.subject_category] : [];
+const colleges: string[] = subject.type === "体育" ? [subject.subject_category] : subject.type === '専門・専門基礎' ? subject.subject.course_college : [];
 const teachers: {
     name: string;
     image?: string;
