@@ -2,13 +2,99 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import SideMenu from "../../components/SideMenu.astro";
-import { summaryData } from "../../content/summary";
+import { summaryData } from "../../content/summary_merged";
 import { kdbData } from "../../content/kdb-schema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
 
+type valueof<T> = T[keyof T];
+
+const subjectMap = new Map<
+    string,
+    {
+        type: "専門・専門基礎";
+        name: string;
+        subject: valueof<(typeof summaryData)["専門・専門基礎"]>;
+    } | {
+        type: "一般";
+        name: string;
+        subject_category: string;
+        subject: valueof<valueof<(typeof summaryData)["一般"]>>;
+    } | {
+        type: "体育";
+        name: string;
+        subject_category: string;
+        subject_number: string;
+        subject: valueof<valueof<(typeof summaryData)["体育"]>>;
+    }
+>([
+    ...[...Object.entries(summaryData["専門・専門基礎"])].map<
+        [
+            string,
+            {
+                type: "専門・専門基礎";
+                name: string;
+                subject: valueof<(typeof summaryData)["専門・専門基礎"]>;
+            },
+        ]
+    >(([name, subject]) => [
+        name,
+        {
+            type: "専門・専門基礎",
+            name,
+            subject,
+        },
+    ]),
+    ...[...Object.entries(summaryData["一般"])].flatMap(
+        ([subject_category, subjects]) =>
+            [...Object.entries(subjects)].map<
+                [
+                    string,
+                    {
+                        type: "一般";
+                        name: string;
+                        subject_category: string;
+                        subject: valueof<valueof<(typeof summaryData)["一般"]>>;
+                    },
+                ]
+            >(([subject_name, subject]) => [
+                subject_name,
+                {
+                    type: "一般",
+                    name: subject_name,
+                    subject_category,
+                    subject,
+                },
+            ]),
+    ),
+    ...[...Object.entries(summaryData["体育"])].flatMap(
+        ([subject_category, subjects]) =>
+            [...Object.entries(subjects)].map<
+                [
+                    string,
+                    {
+                        type: "体育";
+                        name: string;
+                        subject_category: string;
+                        subject_number: string;
+                        subject: valueof<valueof<(typeof summaryData)["体育"]>>;
+                    },
+                ]
+            >(([subject_number, subject]) => [
+                subject.name,
+                {
+                    type: "体育",
+                    name: subject.name,
+                    subject_category,
+                    subject_number,
+                    subject,
+                },
+            ]),
+    ),
+]);
+
 export function getStaticPaths() {
-    return [...Object.keys(summaryData)].map((subject) => ({
+    return [...subjectMap.keys()].map((subject) => ({
         params: {
             id: `${subject}`,
         },
@@ -17,7 +103,7 @@ export function getStaticPaths() {
 
 const { id: subjectName } = Astro.params;
 
-const subject = summaryData[subjectName];
+const subject = subjectMap.get(subjectName);
 if (subject == undefined) {
     throw new Error("");
 }
@@ -27,6 +113,118 @@ const kdbs = kdbData.subject.filter((v) => v.name === subjectName);
 function syllabiUrl(number: string) {
     return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
 }
+
+const params =
+    subject.type === "一般" ? {
+        credit_earnability:
+            subject.subject.credit_earnability.sum /
+            subject.subject.credit_earnability.count,
+        teachers_email_response_evaluation:
+            subject.subject.teachers_email_response_evaluation.sum /
+            subject.subject.teachers_email_response_evaluation.count,
+        class_preparation_workload:
+            subject.subject.class_preparation_workload.sum /
+            subject.subject.class_preparation_workload.count,
+        class_difficulty_level:
+            subject.subject.class_difficulty_level.sum /
+            subject.subject.class_difficulty_level.count,
+        recommendation_level_of_this_class:
+            subject.subject.recommendation_level_of_this_class.sum /
+            subject.subject.recommendation_level_of_this_class.count,
+        are_materials_distributed_in_class: {
+            data: subject.subject.are_materials_distributed_in_class,
+            n:
+                subject.subject.are_materials_distributed_in_class.True +
+                subject.subject.are_materials_distributed_in_class.False,
+        },
+        is_textbook_used_in_class: {
+            data: subject.subject.is_textbook_used_in_class,
+            n:
+                subject.subject.is_textbook_used_in_class.True +
+                subject.subject.is_textbook_used_in_class.False,
+        },
+        prerequisite_knowledge_for_this_class:
+            subject.subject.prerequisite_knowledge_for_this_class,
+        class_format:
+            subject.subject.class_format,
+        proportion_of_experienced_students: null,
+        consideration_for_inexperienced_students: null,
+        exercise_intensity: null,
+        male_to_female_ratio: null,
+        required_purchases: null,
+        rain: null,
+        final: null,
+        weekly_assignments: null,
+        overtime_assignments: null,
+        activity: null,
+    } : subject.type === "専門・専門基礎" ? {
+        credit_earnability: subject.subject.credit_earnability,
+        teachers_email_response_evaluation:
+            subject.subject.teachers_email_response_evaluation,
+        class_preparation_workload:
+            subject.subject.class_preparation_workload,
+        class_difficulty_level: subject.subject.class_difficulty_level,
+        recommendation_level_of_this_class:
+            subject.subject.recommendation_level_of_this_class,
+        are_materials_distributed_in_class: {
+            data: subject.subject.are_materials_distributed_in_class,
+            n:
+                subject.subject.are_materials_distributed_in_class.True +
+                subject.subject.are_materials_distributed_in_class.False,
+        },
+        is_textbook_used_in_class: {
+            data: subject.subject.is_textbook_used_in_class,
+            n:
+                subject.subject.is_textbook_used_in_class.True +
+                subject.subject.is_textbook_used_in_class.False,
+        },
+        prerequisite_knowledge_for_this_class:
+            subject.subject.prerequisite_knowledge_for_this_class,
+        class_format:
+            subject.subject.class_format,
+        proportion_of_experienced_students: null,
+        consideration_for_inexperienced_students: null,
+        exercise_intensity: null,
+        male_to_female_ratio: null,
+        required_purchases: null,
+        rain: null,
+        final: null,
+        weekly_assignments: null,
+        overtime_assignments: null,
+        activity: null,
+    } : {
+        credit_earnability:
+            subject.subject.credit_earnability.sum /
+            subject.subject.credit_earnability.count,
+        teachers_email_response_evaluation: null,
+        class_preparation_workload: null,
+        class_difficulty_level: null,
+        recommendation_level_of_this_class:
+            subject.subject.recommendation_level_of_this_class.sum /
+            subject.subject.recommendation_level_of_this_class.count,
+        are_materials_distributed_in_class: null,
+        is_textbook_used_in_class: null,
+        prerequisite_knowledge_for_this_class: null,
+        class_format: null,
+        proportion_of_experienced_students:
+            subject.subject.proportion_of_experienced_students.sum /
+            subject.subject.proportion_of_experienced_students.count,
+        consideration_for_inexperienced_students:
+            subject.subject.consideration_for_inexperienced_students.sum /
+            subject.subject.consideration_for_inexperienced_students.count,
+        exercise_intensity:
+            subject.subject.exercise_intensity.sum /
+            subject.subject.exercise_intensity.count,
+        male_to_female_ratio:
+            subject.subject.male_to_female_ratio.sum /
+            subject.subject.male_to_female_ratio.count,
+        required_purchases: subject.subject.required_purchases,
+        rain: subject.subject.rain,
+        final: subject.subject.final,
+        weekly_assignments: subject.subject.weekly_assignments,
+        overtime_assignments: subject.subject.overtime_assignments,
+        activity: subject.subject.activity,
+    };
 ---
 
 <Layout title={subjectName}>
