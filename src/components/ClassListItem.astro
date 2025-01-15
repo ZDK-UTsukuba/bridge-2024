@@ -18,7 +18,7 @@ const subject = subjectMap.get(subjectId);
 if (subject == undefined) {
     throw new Error("");
 }
-const kdbs = getKdbByName(subjectId);
+const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [
     ...new Set(
         kdbs

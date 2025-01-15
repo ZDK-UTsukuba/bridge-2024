@@ -74,7 +74,7 @@ export const subjectMap = new Map<
                     },
                 ]
             >(([subject_number, subject]) => [
-                subject.name,
+                `${subject_category}-${subject.name}`,
                 {
                     type: "体育",
                     name: subject.name,
