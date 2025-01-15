@@ -28,12 +28,21 @@ const kdbTeachers = [
     ),
 ];
 
+const calcAve = (numOrObj: number | { sum: number; count: number }) => {
+    if (typeof numOrObj === "number") {
+        return numOrObj;
+    }
+    return Number.isNaN(numOrObj.sum / numOrObj.count)
+        ? 0
+        : numOrObj.sum / numOrObj.count;
+};
+
 const colleges: string[] = [];
 const teachers: {
     name: string;
     image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
-const rating = subject.subject.recommendation_level_of_this_class;
+const rating = calcAve(subject.subject.recommendation_level_of_this_class);
 const reviewCount = subject.subject.comment.length;
 ---
 
