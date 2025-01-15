@@ -37,7 +37,7 @@ const calcAve = (numOrObj: number | { sum: number; count: number }) => {
         : numOrObj.sum / numOrObj.count;
 };
 
-const colleges: string[] = [];
+const colleges: string[] = subject.type === "体育" ? [subject.subject_category] : [];
 const teachers: {
     name: string;
     image?: string;
@@ -48,7 +48,7 @@ const reviewCount = subject.subject.comment.length;
 
 <div class={componentStyles.item}>
     <div class={componentStyles.title}>
-        <a href={`/details/${subjectId}`}>{subjectId}</a>
+        <a href={`/details/${subjectId}`}>{subject.name}</a>
         {
             colleges.map((college) => (
                 <span class={componentStyles.category}>{college}</span>
