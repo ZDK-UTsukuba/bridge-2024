@@ -1,6 +1,6 @@
 ---
 import { kdbData } from "../content/kdb-schema";
-import { summaryData } from "../content/summary";
+import { subjectMap } from "../content/subjectsData";
 import componentStyles from "./ClassListItem.module.scss";
 import Stars from "./Stars.ClassList.astro";
 
@@ -14,8 +14,11 @@ const getKdbByName = (subject: string) => {
     return kdbData.subject.filter((v) => v.name === subject);
 };
 
-const subject = summaryData[subjectId];
-const kdbs = getKdbByName(subjectId);
+const subject = subjectMap.get(subjectId);
+if (subject == undefined) {
+    throw new Error("");
+}
+const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [
     ...new Set(
         kdbs
@@ -25,18 +28,27 @@ const kdbTeachers = [
     ),
 ];
 
-const colleges: string[] = [];
+const calcAve = (numOrObj: number | { sum: number; count: number }) => {
+    if (typeof numOrObj === "number") {
+        return numOrObj;
+    }
+    return Number.isNaN(numOrObj.sum / numOrObj.count)
+        ? 0
+        : numOrObj.sum / numOrObj.count;
+};
+
+const colleges: string[] = subject.type === "体育" ? [subject.subject_category] : subject.type === '専門・専門基礎' ? subject.subject.course_college : [];
 const teachers: {
     name: string;
     image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
-const rating = subject.recommendation_level_of_this_class;
-const reviewCount = subject.comment.length;
+const rating = calcAve(subject.subject.recommendation_level_of_this_class);
+const reviewCount = subject.subject.comment.length;
 ---
 
 <div class={componentStyles.item}>
     <div class={componentStyles.title}>
-        <a href={`/details/${subjectId}`}>{subjectId}</a>
+        <a href={`/details/${subjectId}`}>{subject.name}</a>
         {
             colleges.map((college) => (
                 <span class={componentStyles.category}>{college}</span>
