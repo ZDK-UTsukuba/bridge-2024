@@ -301,13 +301,6 @@ const params =
                             <div class={pageStyles.item}>
                                 <div class={pageStyles.label}>予備知識</div>
                                 <div class={pageStyles.content}>
-                                    {params.prerequisite_knowledge_for_this_class.map((comment) => (
-                                            <>
-                                                {comment}
-                                                <br />
-                                            </>
-                                        ),
-                                    )}
                                 </div>
                             </div>
                         )
@@ -370,11 +363,6 @@ const params =
                                         data={params.required_purchases.data}
                                     />
                                     <ul>
-                                        {params.required_purchases.detail.map(val => (
-                                            <li>
-                                                {val}
-                                            </li>
-                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -396,11 +384,6 @@ const params =
                                         data={params.rain.data}
                                     />
                                     <ul>
-                                        {params.rain.detail.map(val => (
-                                            <li>
-                                                {val}
-                                            </li>
-                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -420,11 +403,6 @@ const params =
                                         data={params.final.data}
                                     />
                                     <ul>
-                                        {params.final.detail.map(val => (
-                                            <li>
-                                                {val}
-                                            </li>
-                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -444,11 +422,6 @@ const params =
                                         data={params.weekly_assignments.data}
                                     />
                                     <ul>
-                                        {params.weekly_assignments.detail.map(val => (
-                                            <li>
-                                                {val}
-                                            </li>
-                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -468,11 +441,6 @@ const params =
                                         data={params.overtime_assignments.data}
                                     />
                                     <ul>
-                                        {params.overtime_assignments.detail.map(val => (
-                                            <li>
-                                                {val}
-                                            </li>
-                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -483,12 +451,6 @@ const params =
                             <div class={pageStyles.item}>
                                 <div class={pageStyles.label}>実際の活動</div>
                                 <div class={pageStyles.content}>
-                                    {params.activity.map((comment) => (
-                                        <>
-                                            {comment}
-                                            <br />
-                                        </>
-                                    ))}
                                 </div>
                             </div>
                         )
@@ -500,7 +462,6 @@ const params =
                                 subject.subject.comment.map((comment) => (
                                     <>
                                         <div class={pageStyles.comment}>
-                                            <p>{comment.comment}</p>
                                             <div class={pageStyles.recommendationLevel}>
                                                 {"★".repeat(comment.recommendation_level_of_this_class)}
                                             </div>
