@@ -1,17 +1,23 @@
 {
-  "name": "",
+  "name": "bridge",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "./scripts/fetchKdB.sh && ./scripts/fetchSummary.sh",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.10.3",
     "@astrojs/check": "^0.7.0",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^4.10.3",
+    "bulma": "^1.0.1",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
   }
 }

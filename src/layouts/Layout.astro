@@ -1,26 +1,77 @@
 ---
 interface Props {
-	title: string;
+    title?: string;
 }
-
+import "bulma/css/bulma.min.css";
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="BRIDGE" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <title>{title ? `${title} - BRIDGE` : 'BRIDGE'}</title>
+    </head>
+    <body>
+        <slot />
+    </body>
 </html>
 <style is:global>
-	html {
-		font-family: system-ui, sans-serif;
-	}
+    @font-face {
+        font-family: 'ZenKakuGothicNew Medium';
+        src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'ZenKakuGothicNew Regular';
+        src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Josefin Sans';
+        src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    :root {
+        --accent: 0, 193, 212;
+        --accent-light: 27, 218, 235;
+        --accent-dark: 6, 126, 137;
+        --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+        );
+        font-family: 'ZenKakuGothicNew Medium', sans-serif;
+    }
+    html {
+        background: #F7F7F7;
+        background-size: 224px;
+    }
+    body {
+        font-family: 'ZenKakuGothicNew Medium', system-ui, sans-serif;
+        font-weight: normal;
+    }
+    code {
+        font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
+    }
 </style>

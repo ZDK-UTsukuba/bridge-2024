@@ -1,0 +1,13 @@
+---
+interface Props {
+    subjects: string[];
+}
+
+const { subjects } = Astro.props;
+import componentStyles from "./ClassList.module.scss";
+import ClassListItem from "./ClassListItem.astro";
+---
+
+<div class={componentStyles.list}>
+    {subjects.map((subjectId) => <ClassListItem subjectId={subjectId} />)}
+</div>

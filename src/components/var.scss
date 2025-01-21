@@ -1,0 +1,6 @@
+$sp: 700px;
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}

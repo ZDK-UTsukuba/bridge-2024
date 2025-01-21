@@ -1,54 +1,38 @@
-# Astro Starter Kit: Basics
+# BRIDGE 2024年版
 
+他学類の講義の学生による評価を確認できるシステム 
+
+## 使い方
+BRIDGEサイト内「BRIDGEとは」をご覧ください。
+
+## 開発者向け情報
+
+### 開発を行うためには
 ```sh
-npm create astro@latest -- --template basics
+git clone https://github.com/ZDK-UTsukuba/bridge-2024.git
+cd bridge-2024
+npm install
+npm run dev
 ```
+まずお手元のPC等でシェルを開き、上記を実行してください。正常にWebブラウザ等で開くことが出来るかどうかを確認してください。
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### フレームワーク
+フロントエンドのフレームワークは[Astro](https://astro.build)を採用しています。
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+#### CSSについて
+フレームワークとして[Bulma v1](https://bulma.io)を使用している他、適宜SCSSを用いています。
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### 主要なページ
+主要なページとして
 
-## 🚀 Project Structure
+* `index`ページ
+* BRIDGEについてのページ
+* 科目ごとの詳細ページ
+* ランキングページ
 
-Inside of your Astro project, you'll see the following folders and files:
+が存在します。
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 管理者
+「BRIDGE」は[全学学類・専門学群・総合学域群代表者会議（全代会）](https://www.zdk.tsukuba.ac.jp)情報処理推進特別委員会（IPC）が管理しています。
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+アンケート内容や冊子版については教育環境委員会が管掌しています。

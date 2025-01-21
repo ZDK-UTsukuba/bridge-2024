@@ -1,34 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import pageStyles from "./index.module.scss";
+import SearchBox from "../components/SearchBox.astro";
+import NewsBanner from "../components/NewsBanner.astro";
+import Card from "../components/Card.astro";
+import ClassList from "../components/ClassList.astro";
+import SideMenu from "../components/SideMenu.astro";
+import { getTopNSubject } from "../content/ranking";
+
+// summaryData から インデックスに subjectName が含まれるデータを取得
+const subjects = getTopNSubject(2);
 ---
 
-<Layout title="BRIDGE">
-	<main>
-		<h1>BRIDGE のホームページへようこそ</h1>
-
-		<p>BRIDGE は授業内容や評価をまとめるサイトです。</p>
-
-		<p>BRIDGE は現在開発中です。公開まで今しばらくお待ちください。</p>
-
-		<p><a href="https://www.zdk.tsukuba.ac.jp">全学学類・専門学群・総合学域群代表者会議</a> zdk(at)stb.tsukuba.ac.jp</p>
-	</main>
+<Layout>
+    <Header isMain={true}>
+        <SearchBox />
+    </Header>
+    <NewsBanner title="BRIDGEをリリースしました！"/>
+        <main class={pageStyles.main}>
+        <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
+            <ClassList subjects={subjects} />
+        </Card>
+        <div class={pageStyles.sidebar}>
+            <SideMenu />
+        </div>
+    </main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	p {
-		text-align: center;
-	}
-</style>
