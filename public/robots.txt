@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bridge.zdk.tsukuba.ac.jp/sitemap-index.xml
