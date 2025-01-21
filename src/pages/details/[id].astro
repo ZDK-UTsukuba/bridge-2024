@@ -2,13 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import SideMenu from "../../components/SideMenu.astro";
-// import { summaryData } from "../../content/summary_merged";
-import { subjectMap } from '../../content/subjectsData';
+import { subjectMap } from "../../content/subjectsData";
 import { kdbData } from "../../content/kdb-schema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
-
-
 
 export function getStaticPaths() {
     return [...subjectMap.keys()].map((subject) => ({
@@ -174,8 +171,14 @@ const params =
     <Header isMain={false} />
     <main class={pageStyles.main}>
         <div class={pageStyles.body}>
-            <h1 class={pageStyles.title}>{subjectName}</h1>
-
+            <h1 class={pageStyles.title}>{subject.name}</h1>
+            {
+                subject.type === "体育" && (
+                    <span class={pageStyles.category}>
+                        {subject.subject_category}
+                    </span>
+                )
+            }
             {
                 params.class_format && (
                     <>

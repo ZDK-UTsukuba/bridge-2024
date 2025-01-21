@@ -16,6 +16,17 @@
             font-weight: 600;
             margin: 0 0 20px;
         }
+        .category {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid #00C1D4;
+            background-color: #ffffff;
+            color: #101010;
+            margin-left: 10px;
+        }
         .tagWrap {
             display: flex;
             gap: 30px;
