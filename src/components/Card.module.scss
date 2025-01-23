@@ -56,3 +56,19 @@
         }
     }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+    .card {
+        background-color: #222119;
+        color: #ffffff;
+        .title {
+            color: #00C1D4;
+        }
+        .actions .button {
+            color: #222119;
+            &:hover {
+                color: #ffffff;
+            }
+        }
+    }
+}
