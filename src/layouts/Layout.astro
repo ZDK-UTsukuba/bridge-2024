@@ -8,7 +8,6 @@ interface Props {
     }
     twitter?: {
         card?: string;
-        site?: string;
     }
 }
 import "bulma/css/bulma.min.css";
@@ -17,13 +16,12 @@ const metadata = {
     title: title? `${title} - BRIDGE` : 'BRIDGE',
     description: description ? description : "各学類等の学生達の目線で書かれた授業評価サイト",
     og: {
-        type: og.type ? og.type : "website",
-        image: new URL("people-default.png", Astro.site),
+        type: og?.type ?? "website",
+        image: og?.image ?? new URL("people-default.png", Astro.site),
         site_name: "BRIDGE"
     },
     twitter: {
-        card: twitter.card ? twitter.card : "summary_large_image",
-        site: twitter.site ? twitter.site : ""
+        card: twitter?.card ?? "summary_large_image",
     }
 }
 ---
