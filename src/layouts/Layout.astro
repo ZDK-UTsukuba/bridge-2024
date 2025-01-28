@@ -17,7 +17,7 @@ const metadata = {
     description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
     og: {
         type: og?.type ?? "website",
-        image: og?.image ?? new URL("og.png", "https://add-og-image.bridge-2024.pages.dev"),
+        image: og?.image ?? new URL("og.png", Astro.site),
         site_name: "BRIDGE",
     },
     twitter: {
