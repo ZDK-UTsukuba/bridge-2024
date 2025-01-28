@@ -71,3 +71,19 @@
         font-weight: 400;
     }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+    .menu .items .item .link {
+        background-color: #575757;
+        border-color: #454242;
+        &:hover {
+            border-color: #00C1D4;
+            .icon {
+                color: #00C1D4;
+            }
+            .title {
+                color: #00C1D4;
+            }
+        }
+    }
+}

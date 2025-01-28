@@ -44,3 +44,18 @@
         z-index: -1;
     }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+    .bannerWrap {
+        background-color: #222119;
+        color: #ffffff;
+        .content {
+            background-color: #222119;
+            .text {
+                &:hover {
+                    text-decoration-color: #FFDC27;
+                }
+            }
+        }
+    }
+}
