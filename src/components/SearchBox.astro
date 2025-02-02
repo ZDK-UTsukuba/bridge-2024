@@ -9,25 +9,25 @@ import componentStyles from "./SearchBox.module.scss";
 ---
 
 <form class={componentStyles.searchBox}  data-searchbox-form action="/search/" style={styleAttr ?? ""}>
-  <div class={componentStyles.inputWrap}>
-    <img src="/search.svg" alt="Search" class={componentStyles.icon} />
-    <input
-      id="searchInput"
-      type="text"
-      class={componentStyles.input}
-      value={defaultInput ?? ""}
-      placeholder=" "
-    />
-    <div class={componentStyles.suggestions}>
-      <div class={`${componentStyles.container}`}>
-        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>微分積分</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>線形代数</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>統計学</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
-      </div>
+    <div class={componentStyles.inputWrap}>
+        <img src="/search.svg" alt="Search" class={componentStyles.icon} />
+            <input
+                id="searchInput"
+                type="text"
+                class={componentStyles.input}
+                value={defaultInput ?? ""}
+                placeholder=" "
+            />
+            <div class={componentStyles.suggestions}>
+            <div class={`${componentStyles.container}`}>
+                <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
+                <p class={`suggestion-item ${componentStyles.item}`}>微分積分</p>
+                <p class={`suggestion-item ${componentStyles.item}`}>線形代数</p>
+                <p class={`suggestion-item ${componentStyles.item}`}>統計学</p>
+                <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
+            </div>
+        </div>
     </div>
-  </div>
 </form>
 
 <script>
