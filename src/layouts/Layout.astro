@@ -5,16 +5,17 @@ interface Props {
     og?: {
         type?: string;
         image?: string;
-    }
+    };
     twitter?: {
         card?: string;
-    }
-};
+    };
+}
 import "bulma/css/bulma.min.css";
 const { title, description, og, twitter } = Astro.props;
 const metadata = {
-    title: title? `${title} - BRIDGE` : 'BRIDGE',
-    description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
+    title: title ? `${title} - BRIDGE` : "BRIDGE",
+    description:
+        description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
     og: {
         type: og?.type ?? "website",
         image: og?.image ?? new URL("og.png", Astro.site),
@@ -22,8 +23,9 @@ const metadata = {
     },
     twitter: {
         card: twitter?.card ?? "summary_large_image",
-    }
+    },
 };
+
 ---
 
 <!doctype html>
@@ -47,22 +49,22 @@ const metadata = {
 </html>
 <style is:global>
     @font-face {
-        font-family: 'ZenKakuGothicNew Medium';
-        src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
+        font-family: "ZenKakuGothicNew Medium";
+        src: url("/fonts/ZenKakuGothicNew-Medium.ttf") format("truetype");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
-        font-family: 'ZenKakuGothicNew Regular';
-        src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
+        font-family: "ZenKakuGothicNew Regular";
+        src: url("/fonts/ZenKakuGothicNew-Regular.ttf") format("truetype");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
     }
     @font-face {
-        font-family: 'Josefin Sans';
-        src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+        font-family: "Josefin Sans";
+        src: url("/fonts/JosefinSans-VariableFont_wght.ttf") format("truetype");
         font-weight: normal;
         font-style: normal;
         font-display: swap;
@@ -77,14 +79,14 @@ const metadata = {
             rgb(var(--accent-light)) 30%,
             white 60%
         );
-        font-family: 'ZenKakuGothicNew Medium', sans-serif;
+        font-family: "ZenKakuGothicNew Medium", sans-serif;
     }
     html {
-        background: #F7F7F7;
+        background: #f7f7f7;
         background-size: 224px;
     }
     body {
-        font-family: 'ZenKakuGothicNew Medium', system-ui, sans-serif;
+        font-family: "ZenKakuGothicNew Medium", system-ui, sans-serif;
         font-weight: normal;
     }
     code {
@@ -99,3 +101,7 @@ const metadata = {
             monospace;
     }
 </style>
+
+<script>
+    console.log("%c私たちと一緒に開発をしませんか?\nぜひ全代会のIPCに入ってください!\nお待ちしております。\n%c興味のある方は https://www.stb.tsukuba.ac.jp/~zdk/recruit まで", "font-size: 2em;", "font-size: 1.5em;");
+</script>
