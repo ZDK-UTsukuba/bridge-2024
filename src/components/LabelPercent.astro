@@ -3,9 +3,11 @@ const { labels, data, n } = Astro.props;
 ---
 
 <span>
-    {
-        Object.entries(labels).map(
-            ([k, v]) => <div>{v}: {(data[k] / n) * 100}% ({data[k]}人)</div>,
-        )
-    }
+  {
+    Object.entries(labels).map(([k, v]) => (
+      <div>
+        {v}: {(data[k] / n) * 100}% ({data[k]}人)
+      </div>
+    ))
+  }
 </span>

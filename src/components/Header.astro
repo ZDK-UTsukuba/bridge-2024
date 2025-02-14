@@ -1,21 +1,25 @@
 ---
 interface Props {
-    isMain: boolean
+  isMain: boolean;
 }
 
 const { isMain } = Astro.props;
-import componentStyles from './Header.module.scss';
+import componentStyles from "./Header.module.scss";
 ---
 
 <header class={`${componentStyles.header}  ${isMain && componentStyles.main}`}>
-    <div class={`${componentStyles.logoWrap}  ${isMain && componentStyles.main}`}>
-        <p class={componentStyles.copy}>シラバスだけでは、わからない｡</p>
-        <a href="/" class={componentStyles.group}>
-            <img src="/logo.svg" alt="Logo" class={`${componentStyles.logo} ${isMain && componentStyles.large}`} />
-            <p class={componentStyles.badge}>Preview</p>
-        </a>
-    </div>
-    <div class={componentStyles.slot}>
-        <slot />
-    </div>
+  <div class={`${componentStyles.logoWrap}  ${isMain && componentStyles.main}`}>
+    <p class={componentStyles.copy}>シラバスだけでは、わからない｡</p>
+    <a href="/" class={componentStyles.group}>
+      <img
+        src="/logo.svg"
+        alt="Logo"
+        class={`${componentStyles.logo} ${isMain && componentStyles.large}`}
+      />
+      <p class={componentStyles.badge}>Preview</p>
+    </a>
+  </div>
+  <div class={componentStyles.slot}>
+    <slot />
+  </div>
 </header>
