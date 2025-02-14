@@ -1,7 +1,9 @@
 ---
+import type { JSX } from 'astro/jsx-runtime';
+
 interface Props {
-    href?: string;
-    props?: Record<string, any>;
+  href?: string;
+  props?: JSX.IntrinsicElements['button'];
 }
 
 const { href, ...props } = Astro.props as Props;
@@ -9,7 +11,7 @@ const { href, ...props } = Astro.props as Props;
 
 <>
   {
-    typeof href !== undefined ? (
+    href !== undefined ? (
       <a href={href}>
         <button class="button" {...props}><slot /></button>
       </a>
