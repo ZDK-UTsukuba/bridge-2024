@@ -20,7 +20,7 @@ const { num } = Astro.props;
     })
     }
     {
-    Array.from({ length: 5 - Math.ceil(num) }, (_, i) => {
+    Array.from({ length: 5 - Math.ceil(num) }, () => {
         return <span style="color: #ddd;">★</span>;
     })
     }
