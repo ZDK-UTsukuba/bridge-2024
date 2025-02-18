@@ -1,74 +1,74 @@
 .card {
-  background-color: #fff;
-  border-radius: 36px;
-  padding: 40px 46px;
-  box-shadow: 0 5px 20px #00000002;
-  .title {
-    font-family: "ZenKakuGothicNew Midium", sans-serif;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 1.2;
-    color: #00c1d4;
-    margin-bottom: 20px;
-  }
-  .actions {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    .button {
-      position: relative;
-      display: inline-block;
-      background-color: #00c1d4;
-      border-radius: 100px;
-      color: #fff;
-      font-family: "ZenKakuGothicNew Midium", sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 1.2;
-      padding: 16px 40px;
-      text-align: center;
-      flex: none;
-      transition: all 0.3s;
-      overflow: hidden;
-      z-index: 0;
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: calc(50% - 100px);
-        left: calc((-1 * 500px * 1.414 / 2) + 80px);
-        width: 500px;
-        height: 500px;
-        background-color: #00a2b7;
-        border-right: 10px solid #ffdc27;
-        transition: all 0.3s;
-        transform: translate(-50%, -50%) rotate(45deg);
-        z-index: -1;
-      }
-      &:hover {
-        transform: scale(1.1);
-        &::after {
-          left: 0;
-          right: 100%;
-        }
-      }
+    background-color: #fff;
+    border-radius: 36px;
+    padding: 40px 46px;
+    box-shadow: 0 5px 20px #00000002;
+    .title {
+        font-family: "ZenKakuGothicNew Midium", sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.2;
+        color: #00C1D4;
+        margin-bottom: 20px;
     }
-  }
+    .actions {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        .button {
+            position: relative;
+            display: inline-block;
+            background-color: #00C1D4;
+            border-radius: 100px;
+            color: #fff;
+            font-family: "ZenKakuGothicNew Midium", sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.2;
+            padding: 16px 40px;
+            text-align: center;
+            flex: none;
+            transition: all .3s;
+            overflow: hidden;
+            z-index: 0;
+            &::after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: calc( (-1 * 500px * 1.414 / 2) + 80px );
+                width: 500px;
+                height: 500px;
+                background-color: #00a2b7;
+                border-right: 10px solid #FFDC27;
+                transition: all .3s;
+                transform: translate(-50%, -50%) rotate(45deg);
+                z-index: -1;
+            }
+            &:hover {
+                transform: scale(1.1);
+                &::after {
+                    left: 0;
+                    right: 100%;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .card {
-    background-color: #222119;
-    color: #ffffff;
-    .title {
-      color: #00c1d4;
-    }
-    .actions .button {
-      color: #222119;
-      &:hover {
+    .card {
+        background-color: #222119;
         color: #ffffff;
-      }
+        .title {
+            color: #00C1D4;
+        }
+        .actions .button {
+            color: #222119;
+            &:hover {
+                color: #ffffff;
+            }
+        }
     }
-  }
 }

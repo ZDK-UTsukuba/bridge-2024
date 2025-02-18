@@ -1,6 +1,5 @@
 $sp: 700px;
-html,
-body {
+html, body {
   color: #404654;
 }
 @mixin sp {
@@ -9,8 +8,7 @@ body {
   }
 }
 @media screen and (prefers-color-scheme: dark) {
-  html,
-  body {
+  html, body {
     background-color: #363636;
     color: #f0f0f0;
   }

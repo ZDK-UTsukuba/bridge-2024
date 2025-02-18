@@ -23,8 +23,7 @@
       height: calc(20px + 2 * var(--input-padding));
       outline: none;
       border: none;
-      padding: var(--input-padding) var(--input-padding) var(--input-padding)
-        calc(40px + var(--input-padding));
+      padding: var(--input-padding) var(--input-padding) var(--input-padding) calc(40px + var(--input-padding));
       line-height: 1;
       font-size: 20px;
       &:focus {
@@ -35,9 +34,7 @@
     .suggestions {
       position: absolute;
       top: 0;
-      left: calc(
-        15px + var(--input-padding)
-      ); // アイコンとテキストの間に合わせる
+      left: calc(15px + var(--input-padding)); // アイコンとテキストの間に合わせる
       right: 10px;
       height: 100%;
       overflow: hidden;
@@ -55,8 +52,7 @@
           margin: 0;
           font-size: 20px;
           margin-top: -4px; // @todo なぜかずれるので調整
-          padding: var(--input-padding) var(--input-padding)
-            var(--input-padding) var(--input-padding);
+          padding: var(--input-padding) var(--input-padding) var(--input-padding) var(--input-padding);
           color: #999;
           opacity: 0.5;
         }
@@ -69,34 +65,34 @@
     @keyframes scroll {
       // @todo ちゃんと計算する or いい感じにしたい
       0% {
-        transform: translateY(calc(var(--scroll-hight) * 0));
+        transform: translateY( calc( var(--scroll-hight) * 0 ) );
       }
       15% {
-        transform: translateY(calc(var(--scroll-hight) * 0));
+        transform: translateY( calc( var(--scroll-hight) * 0 ) );
       }
       20% {
-        transform: translateY(calc(var(--scroll-hight) * 1));
+        transform: translateY( calc( var(--scroll-hight) * 1 ) );
       }
       35% {
-        transform: translateY(calc(var(--scroll-hight) * 1));
+        transform: translateY( calc( var(--scroll-hight) * 1 ) );
       }
       40% {
-        transform: translateY(calc(var(--scroll-hight) * 2));
+        transform: translateY( calc( var(--scroll-hight) * 2 ) );
       }
       55% {
-        transform: translateY(calc(var(--scroll-hight) * 2));
+        transform: translateY( calc( var(--scroll-hight) * 2 ) );
       }
       60% {
-        transform: translateY(calc(var(--scroll-hight) * 3));
+        transform: translateY( calc( var(--scroll-hight) * 3 ) );
       }
       75% {
-        transform: translateY(calc(var(--scroll-hight) * 3));
+        transform: translateY( calc( var(--scroll-hight) * 3 ) );
       }
       80% {
-        transform: translateY(calc(var(--scroll-hight) * 4));
+        transform: translateY( calc( var(--scroll-hight) * 4 ) );
       }
       100% {
-        transform: translateY(calc(var(--scroll-hight) * 4));
+        transform: translateY( calc( var(--scroll-hight) * 4 ) );
       }
     }
   }
