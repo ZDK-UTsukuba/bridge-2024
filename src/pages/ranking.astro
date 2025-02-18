@@ -13,18 +13,18 @@ const subjects = getTopNSubject(50);
 ---
 
 <Layout title="総合評価が高い科目">
-    <Header isMain={false}>
-        <SearchBox />
-    </Header>
-    <main class={pageStyles.main}>
-        <div class={pageStyles.body}>
-            <h1 class={pageStyles.title}>総合評価が高い科目</h1>
-            <div class={pageStyles.list}>
-                <ClassList subjects={subjects} />
-            </div>
-        </div>
-        <div class={pageStyles.sidebar}>
-            <SideMenu />
-        </div>
-    </main>
+  <Header isMain={false}>
+    <SearchBox />
+  </Header>
+  <main class={pageStyles.main}>
+    <div class={pageStyles.body}>
+      <h1 class={pageStyles.title}>総合評価が高い科目</h1>
+      <div class={pageStyles.list}>
+        <ClassList subjects={subjects} />
+      </div>
+    </div>
+    <div class={pageStyles.sidebar}>
+      <SideMenu />
+    </div>
+  </main>
 </Layout>

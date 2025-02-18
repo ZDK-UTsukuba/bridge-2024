@@ -1,6 +1,6 @@
 ---
 interface Props {
-    title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,8 +8,8 @@ import componentStyles from "./NewsBanner.module.scss";
 ---
 
 <div class={componentStyles.bannerWrap}>
-    <div class={componentStyles.content}>
-        <div class={componentStyles.title}>NEWS</div>
-        <p>{title}</p>
-    </div>
+  <div class={componentStyles.content}>
+    <div class={componentStyles.title}>NEWS</div>
+    <p>{title}</p>
+  </div>
 </div>

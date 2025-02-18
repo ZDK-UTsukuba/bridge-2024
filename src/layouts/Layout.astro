@@ -1,101 +1,48 @@
 ---
-interface Props {
-    title?: string;
-    description?: string;
-    og?: {
-        type?: string;
-        image?: string;
-    }
-    twitter?: {
-        card?: string;
-    }
-};
 import "bulma/css/bulma.min.css";
+import "./global.css";
+interface Props {
+  title?: string;
+  description?: string;
+  og?: {
+    type?: string;
+    image?: string;
+  };
+  twitter?: {
+    card?: string;
+  };
+}
 const { title, description, og, twitter } = Astro.props;
 const metadata = {
-    title: title? `${title} - BRIDGE` : 'BRIDGE',
-    description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
-    og: {
-        type: og?.type ?? "website",
-        image: og?.image ?? new URL("og.png", Astro.site),
-        site_name: "BRIDGE",
-    },
-    twitter: {
-        card: twitter?.card ?? "summary_large_image",
-    }
+  title: title ? `${title} - BRIDGE` : "BRIDGE",
+  description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
+  og: {
+    type: og?.type ?? "website",
+    image: og?.image ?? new URL("og.png", Astro.site),
+    site_name: "BRIDGE",
+  },
+  twitter: {
+    card: twitter?.card ?? "summary_large_image",
+  },
 };
 ---
 
 <!doctype html>
 <html lang="ja" prefix="og: https://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta property="og:type" content={metadata.og.type} />
-        <meta property="og:image" content={metadata.og.image} />
-        <meta property="og:site_name" content={metadata.og.site_name} />
-        <meta name="twitter:card" content={metadata.twitter.card} />
-    </head>
-    <body>
-        <slot />
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{metadata.title}</title>
+    <meta name="description" content={metadata.description} />
+    <meta property="og:type" content={metadata.og.type} />
+    <meta property="og:image" content={metadata.og.image} />
+    <meta property="og:site_name" content={metadata.og.site_name} />
+    <meta name="twitter:card" content={metadata.twitter.card} />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<style is:global>
-    @font-face {
-        font-family: 'ZenKakuGothicNew Medium';
-        src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'ZenKakuGothicNew Regular';
-        src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Josefin Sans';
-        src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    :root {
-        --accent: 0, 193, 212;
-        --accent-light: 27, 218, 235;
-        --accent-dark: 6, 126, 137;
-        --accent-gradient: linear-gradient(
-            45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%
-        );
-        font-family: 'ZenKakuGothicNew Medium', sans-serif;
-    }
-    html {
-        background: #F7F7F7;
-        background-size: 224px;
-    }
-    body {
-        font-family: 'ZenKakuGothicNew Medium', system-ui, sans-serif;
-        font-weight: normal;
-    }
-    code {
-        font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-    }
-</style>
