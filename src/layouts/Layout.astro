@@ -1,5 +1,6 @@
 ---
 import "bulma/css/bulma.min.css";
+import "./global.css";
 interface Props {
     title?: string;
     description?: string;
@@ -41,66 +42,11 @@ const metadata = {
         <meta property="og:image" content={metadata.og.image} />
         <meta property="og:site_name" content={metadata.og.site_name} />
         <meta name="twitter:card" content={metadata.twitter.card} />
+        <script>
+            console.log("%cこの画面をご覧の方へ\n「BRIDGE」は全代会のIPCによって開発されました。\n一緒に大学を情報技術の力で便利にしていきませんか？ お待ちしております。\n%c興味のある方は https://www.stb.tsukuba.ac.jp/~zdk/recruit まで", "font-size: 2em;", "font-size: 1.5em;");
+        </script>
     </head>
     <body>
         <slot />
     </body>
 </html>
-<style>
-    @font-face {
-    font-family: 'ZenKakuGothicNew Medium';
-    src: url('/fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'ZenKakuGothicNew Regular';
-    src: url('/fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Josefin Sans';
-    src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-:root {
-    --accent: 0, 193, 212;
-    --accent-light: 27, 218, 235;
-    --accent-dark: 6, 126, 137;
-    --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
-    );
-    font-family: 'ZenKakuGothicNew Medium', sans-serif;
-}
-html {
-    background: #F7F7F7;
-    background-size: 224px;
-}
-body {
-    font-family: 'ZenKakuGothicNew Medium', system-ui, sans-serif;
-    font-weight: normal;
-}
-code {
-    font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
-}
-</style>
-
-<script>
-    console.log("%cこの画面をご覧の方へ\n「BRIDGE」は全代会のIPCによって開発されました。\n一緒に大学を情報技術の力で便利にしていきませんか？ お待ちしております。\n%c興味のある方は https://www.stb.tsukuba.ac.jp/~zdk/recruit まで", "font-size: 2em;", "font-size: 1.5em;");
-</script>
