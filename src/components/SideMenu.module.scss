@@ -36,6 +36,21 @@
           line-height: 1.2;
           color: #00c1d4;
         }
+      }
+    }
+    .footer {
+      display: flex;
+      gap: 20px;
+      justify-content: end;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      a {
+        color: #101010;
+        @media screen and (prefers-color-scheme: dark) {
+          color: #00C1D4;
+        }
+        text-decoration: none;
+        font-weight: 500;
         &:hover {
           box-shadow:
             0 5px 20px #00000008,
