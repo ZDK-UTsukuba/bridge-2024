@@ -1,77 +1,77 @@
-@use "./var";
+@use './var';
 
 .header {
-  background-color: #00c1d4;
-  padding: 20px 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  &.main {
-    padding: 50px 20px;
-  }
-  &:not(.main) {
-    align-items: flex-start;
-  }
-  .logoWrap {
+    background-color: #00C1D4;
+    padding: 20px 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    .copy {
-      font-size: 20px;
-      color: #ffffff;
-      margin: 10px 0 20px;
-      font-weight: 600;
-      @include var.sp {
-        display: none;
-      }
-    }
-    .group {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      gap: 5px;
-      .logo {
-        width: auto;
-        height: 60px;
-        &.large {
-          height: 120px;
-          @include var.sp {
-            height: 80px;
-          }
-        }
-      }
-      .badge {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        padding: 5px 20px;
-        border-radius: 20px;
-        background-color: #ffffff;
-        color: #5d5d5d;
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0 0 10px 0;
-      }
+    flex-direction: column;
+    justify-content: space-between;
+    &.main {
+        padding: 50px 20px;
     }
     &:not(.main) {
-      margin-bottom: 0;
-      .copy {
-        font-size: 14px;
-        margin: 0 0 5px;
-      }
-      .group {
-        flex-direction: row;
-        .badge {
-          margin-bottom: 0;
-        }
-      }
+        align-items: flex-start;
     }
-  }
-  .slot {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+    .logoWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        .copy {
+            font-size: 20px;
+            color: #ffffff;
+            margin: 10px 0 20px;
+            font-weight: 600;
+            @include var.sp {
+                display: none;
+            }
+        }
+        .group {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            .logo {
+                width: auto;
+                height: 60px;
+                &.large {
+                    height: 120px;
+                    @include var.sp {
+                        height: 80px;
+                    }
+                }
+            }
+            .badge {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                padding: 5px 20px;
+                border-radius: 20px;
+                background-color: #ffffff;
+                color: #5d5d5d;
+                font-size: 14px;
+                font-weight: 600;
+                margin: 0 0 10px 0;
+            }
+        }
+        &:not(.main) {
+            margin-bottom: 0;
+            .copy {
+                font-size: 14px;
+                margin: 0 0 5px;
+            }
+            .group {
+                flex-direction: row;
+                .badge {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .slot {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 }

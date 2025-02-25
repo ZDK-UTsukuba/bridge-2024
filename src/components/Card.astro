@@ -1,19 +1,19 @@
 ---
 interface Props {
-  title: string;
-  href: string;
-  moreText: string;
+	title: string;
+	href: string;
+	moreText: string;
 }
 const { href, title, moreText } = Astro.props;
-import componentStyles from "./Card.module.scss";
+import componentStyles from './Card.module.scss';
 ---
 
 <div class={componentStyles.card}>
-  <h2 class={componentStyles.title}>
-    {title}
-  </h2>
-  <slot />
-  <div class={componentStyles.actions}>
-    <a href={href} class={componentStyles.button} role="button">{moreText}</a>
-  </div>
+	<h2 class={componentStyles.title}>
+		{title}
+	</h2>
+	<slot />
+	<div class={componentStyles.actions}>
+		<a href={href} class={componentStyles.button} role="button">{moreText}</a>
+	</div>
 </div>

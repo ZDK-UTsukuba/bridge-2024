@@ -8,46 +8,47 @@ import { subjectMap } from "../../content/subjectsData";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
-  let subjectAllPattern: {
-    params: {
-      id: string;
-    };
-  }[] = [];
-  [...subjectMap.keys()].map((subject) => {
-    for (let i = 0; i < subject.length; i++) {
-      for (let j = i + 1; j <= subject.length; j++) {
-        subjectAllPattern.push({
-          params: {
-            id: subject.slice(i, j),
-          },
-        });
-      }
-    }
-  });
-  return subjectAllPattern;
+    let subjectAllPattern: {
+        params: {
+            id: string;
+        };
+    }[] = [];
+    [...subjectMap.keys()].map((subject) => {
+        for (let i = 0; i < subject.length; i++) {
+            for (let j = i + 1; j <= subject.length; j++) {
+                subjectAllPattern.push({
+                    params: {
+                        id: subject.slice(i, j),
+                    },
+                });
+            }
+        }
+    });
+    return subjectAllPattern;
 }
 
 const { id: subjectName } = Astro.params;
 
 // summaryData から インデックスに subjectName が含まれるデータを取得
 const subjects = [...subjectMap.keys()].filter((key) =>
-  key.includes(subjectName),
+    key.includes(subjectName)
 );
+
 ---
 
 <Layout title="検索結果">
-  <Header isMain={false}>
-    <SearchBox defaultInput={subjectName} styleAttr="margin: 40px 0 20px;" />
-  </Header>
-  <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
-      <div class={pageStyles.list}>
-        <ClassList subjects={subjects} />
-      </div>
-    </div>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+    <Header isMain={false}>
+        <SearchBox defaultInput={subjectName} styleAttr="margin: 40px 0 20px;" />
+    </Header>
+    <main class={pageStyles.main}>
+        <div class={pageStyles.body}>
+            <h1 class={pageStyles.title}>{subjectName} の検索結果</h1>
+            <div class={pageStyles.list}>
+                <ClassList subjects={subjects} />
+            </div>
+        </div>
+        <div class={pageStyles.sidebar}>
+            <SideMenu />
+        </div>
+    </main>
 </Layout>
