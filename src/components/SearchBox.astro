@@ -1,47 +1,63 @@
 ---
 interface Props {
-    defaultInput?: string;
-    styleAttr?: string;
+  defaultInput?: string;
+  styleAttr?: string;
 }
 
 const { defaultInput, styleAttr } = Astro.props;
 import componentStyles from "./SearchBox.module.scss";
 ---
 
-<form class={componentStyles.searchBox}  data-searchbox-form action="/search/" style={styleAttr ?? ""}>
-    <div class={componentStyles.inputWrap}>
-        <img src="/search.svg" alt="Search" class={componentStyles.icon} />
-            <input
-                id="searchInput"
-                type="text"
-                class={componentStyles.input}
-                value={defaultInput ?? ""}
-                placeholder=" "
-            />
-            <div class={componentStyles.suggestions}>
-            <div class={`${componentStyles.container}`}>
-                <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
-                <p class={`suggestion-item ${componentStyles.item}`}>微分積分</p>
-                <p class={`suggestion-item ${componentStyles.item}`}>線形代数</p>
-                <p class={`suggestion-item ${componentStyles.item}`}>統計学</p>
-                <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
-            </div>
-        </div>
+<form
+  class={componentStyles.searchBox}
+  data-searchbox-form
+  action="/search/"
+  style={styleAttr ?? ""}
+>
+  <div class={componentStyles.inputWrap}>
+    <img src="/search.svg" alt="Search" class={componentStyles.icon} />
+    <input
+      id="searchInput"
+      type="text"
+      class={componentStyles.input}
+      value={defaultInput ?? ""}
+      placeholder=" "
+    />
+    <div class={componentStyles.suggestions}>
+      <div class={`${componentStyles.container}`}>
+        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
+        <p class={`suggestion-item ${componentStyles.item}`}>微分積分</p>
+        <p class={`suggestion-item ${componentStyles.item}`}>線形代数</p>
+        <p class={`suggestion-item ${componentStyles.item}`}>統計学</p>
+        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
+      </div>
     </div>
+  </div>
 </form>
 
 <script>
-    if( window.location.pathname.toString().startsWith("/search/") ) {
-        const searchInput = document.getElementById("searchInput") as HTMLInputElement;
-        const searchKeywords = decodeURIComponent(window.location.pathname.toString().replace("/search/","").replace("/",""));
-        searchInput.value = searchKeywords;
-        document.title = searchKeywords;
-    }
+  if (window.location.pathname.toString().startsWith("/search/")) {
+    const searchInput = document.getElementById(
+      "searchInput",
+    ) as HTMLInputElement;
+    const searchKeywords = decodeURIComponent(
+      window.location.pathname
+        .toString()
+        .replace("/search/", "")
+        .replace("/", ""),
+    );
+    searchInput.value = searchKeywords;
+    document.title = searchKeywords;
+  }
 
-    const searchBoxForm = document.querySelector("[data-searchbox-form]") as HTMLFormElement;
-    const searchInput = document.getElementById("searchInput") as HTMLInputElement;
-    searchBoxForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        location.href = `/search/${encodeURIComponent(searchInput.value)}`;
-    });
+  const searchBoxForm = document.querySelector(
+    "[data-searchbox-form]",
+  ) as HTMLFormElement;
+  const searchInput = document.getElementById(
+    "searchInput",
+  ) as HTMLInputElement;
+  searchBoxForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    location.href = `/search/${encodeURIComponent(searchInput.value)}`;
+  });
 </script>

@@ -14,16 +14,16 @@ const subjects = getTopNSubject(5);
 ---
 
 <Layout>
-    <Header isMain={true}>
-        <SearchBox />
-    </Header>
-    <NewsBanner title="BRIDGEをリリースしました！"/>
-        <main class={pageStyles.main}>
-        <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
-            <ClassList subjects={subjects} />
-        </Card>
-        <div class={pageStyles.sidebar}>
-            <SideMenu />
-        </div>
-    </main>
+  <Header isMain={true}>
+    <SearchBox />
+  </Header>
+  <NewsBanner title="BRIDGEをリリースしました！" />
+  <main class={pageStyles.main}>
+    <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
+      <ClassList subjects={subjects} />
+    </Card>
+    <div class={pageStyles.sidebar}>
+      <SideMenu />
+    </div>
+  </main>
 </Layout>

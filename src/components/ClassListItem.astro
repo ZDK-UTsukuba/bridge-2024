@@ -5,101 +5,104 @@ import componentStyles from "./ClassListItem.module.scss";
 import Stars from "./Stars.ClassList.astro";
 
 interface Props {
-    subjectId: string;
+  subjectId: string;
 }
 
 const { subjectId } = Astro.props;
 
 const getKdbByName = (subject: string) => {
-    return kdbData.subject.filter((v) => v.name === subject);
+  return kdbData.subject.filter((v) => v.name === subject);
 };
 
 const subject = subjectMap.get(subjectId);
 if (subject == undefined) {
-    throw new Error("");
+  throw new Error("");
 }
 const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [
-    ...new Set(
-        kdbs
-            .flatMap((kdb) => kdb.instructor.split(","))
-            .map((teacher) => teacher.trim())
-            .filter((teacher) => teacher),
-    ),
+  ...new Set(
+    kdbs
+      .flatMap((kdb) => kdb.instructor.split(","))
+      .map((teacher) => teacher.trim())
+      .filter((teacher) => teacher),
+  ),
 ];
 
 const calcAve = (numOrObj: number | { sum: number; count: number }) => {
-    if (typeof numOrObj === "number") {
-        return numOrObj;
-    }
-    return Number.isNaN(numOrObj.sum / numOrObj.count)
-        ? 0
-        : numOrObj.sum / numOrObj.count;
+  if (typeof numOrObj === "number") {
+    return numOrObj;
+  }
+  return Number.isNaN(numOrObj.sum / numOrObj.count)
+    ? 0
+    : numOrObj.sum / numOrObj.count;
 };
 
-const colleges: string[] = subject.type === "体育" ? [subject.subject_category] : subject.type === '専門・専門基礎' ? subject.subject.course_college : [];
+const colleges: string[] =
+  subject.type === "体育"
+    ? [subject.subject_category]
+    : subject.type === "専門・専門基礎"
+      ? subject.subject.course_college
+      : [];
 const teachers: {
-    name: string;
-    image?: string;
+  name: string;
+  image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
 const rating = calcAve(subject.subject.recommendation_level_of_this_class);
 const reviewCount = subject.subject.comment.length;
 ---
 
 <div class={componentStyles.item}>
-    <div class={componentStyles.title}>
-        <a href={`/details/${subjectId}`}>{subject.name}</a>
-        {
-            colleges.map((college) => (
-                <span class={componentStyles.category}>{college}</span>
-            ))
-        }
+  <div class={componentStyles.title}>
+    <a href={`/details/${subjectId}`}>{subject.name}</a>
+    {
+      colleges.map((college) => (
+        <span class={componentStyles.category}>{college}</span>
+      ))
+    }
+  </div>
+  <div class={componentStyles.info}>
+    <div class={componentStyles.images}>
+      {
+        teachers.slice(0, 5).map((teacher, teacher_index) => (
+          <div
+            class={componentStyles.image}
+            style={{
+              backgroundImage: `url('${teacher.image ?? "/people-default.png"}')`,
+              backgroundColor: teacher.image
+                ? "unset"
+                : "#" +
+                  Math.floor(Math.random() * 0xffffff)
+                    .toString(16)
+                    .padStart(6, "0"),
+              zIndex: 100 - teacher_index,
+            }}
+            title={`${teacher.name} さんのアイコン`}
+          />
+        ))
+      }
     </div>
-    <div class={componentStyles.info}>
-        <div class={componentStyles.images}>
-            {
-                teachers.slice(0, 5).map((teacher, teacher_index) => (
-                    <div
-                        class={componentStyles.image}
-                        style={{
-                            backgroundImage: `url('${teacher.image ?? "/people-default.png"}')`,
-                            backgroundColor: teacher.image
-                                ? "unset"
-                                : "#" +
-                                  Math.floor(Math.random() * 0xffffff)
-                                      .toString(16)
-                                      .padStart(6, "0"),
-                            zIndex: 100 - teacher_index,
-                        }}
-                        title={`${teacher.name} さんのアイコン`}
-                    />
-                ))
-            }
-        </div>
-        <div class={componentStyles.names}>
-            {
-                teachers.map((teacher) => (
-                    <div class={componentStyles.name}>{teacher.name}</div>
-                ))
-            }
-            {
-                teachers.length > 1 && (
-                    <div
-                        class={`${componentStyles.name} ${componentStyles.others}`}
-                    >
-                        他 {teachers.length - 1} 名
-                    </div>
-                )
-            }
-        </div>
-        <div class={componentStyles.rating}>
-            <div class={componentStyles.stars}>
-                <Stars num={Number(rating)} />
-            </div>
-            <div class={componentStyles.value}>
-                {parseFloat(Number(rating).toFixed(1))}
-            </div>
-            <div class={componentStyles.reviews}>({reviewCount})</div>
-        </div>
+    <div class={componentStyles.names}>
+      {
+        teachers.map((teacher) => (
+          <div class={componentStyles.name}>{teacher.name}</div>
+        ))
+      }
+      {
+        teachers.length > 1 && (
+          <div class={`${componentStyles.name} ${componentStyles.others}`}>
+            他 {teachers.length - 1} 名
+          </div>
+        )
+      }
     </div>
+    <div class={componentStyles.rating}>
+      <div class={componentStyles.stars}>
+        <Stars num={Number(rating)} />
+      </div>
+      <div class={componentStyles.value}>
+        {parseFloat(Number(rating).toFixed(1))}
+      </div>
+      <div class={componentStyles.reviews}>({reviewCount})</div>
+    </div>
+  </div>
 </div>

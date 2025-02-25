@@ -1,6 +1,6 @@
 ---
 interface Props {
-    subjects: string[];
+  subjects: string[];
 }
 
 const { subjects } = Astro.props;
@@ -9,5 +9,5 @@ import ClassListItem from "./ClassListItem.astro";
 ---
 
 <div class={componentStyles.list}>
-    {subjects.map((subjectId) => <ClassListItem subjectId={subjectId} />)}
+  {subjects.map((subjectId) => <ClassListItem subjectId={subjectId} />)}
 </div>
