@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "ZenKakuGothicNew Medium";
+  src: url("/fonts/ZenKakuGothicNew-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ZenKakuGothicNew Regular";
+  src: url("/fonts/ZenKakuGothicNew-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("/fonts/JosefinSans-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  font-family: "ZenKakuGothicNew Medium", sans-serif;
+}
+html {
+  background: #f7f7f7;
+  background-size: 224px;
+}
+body {
+  font-family: "ZenKakuGothicNew Medium", system-ui, sans-serif;
+  font-weight: normal;
+}
+code {
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+html,
+body {
+  color: #404654;
+}
+@media screen and (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: #363636;
+    color: #f0f0f0;
+  }
+}

@@ -1,45 +1,50 @@
 ---
 import componentStyles from "./SideMenu.module.scss";
 const menu = [
-    {
-        title: "BRIDGEとは",
-        link: "/about/",
-    },
-    {
-        title: "使い方",
-        link: "/how-to-use/",
-    },
+  {
+    title: "BRIDGEとは",
+    link: "/about/",
+  },
+  {
+    title: "お問い合わせ",
+    link: "/inquiry/",
+  },
 ];
 ---
 
 <>
-    <nav class={componentStyles.menu}>
+  <nav class={componentStyles.menu}>
     <ul class={componentStyles.items}>
-        {
+      {
         menu.map((item) => (
-            <li class={componentStyles.item}>
+          <li class={componentStyles.item}>
             <a href={item.link} class={componentStyles.link}>
-                <svg
+              <svg
                 width="18"
                 height="22"
                 viewBox="0 0 18 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 class={componentStyles.icon}
-                >
+              >
                 <path
-                    d="M18 11L-9.78799e-07 21.3923L-7.02746e-08 0.607695L18 11Z"
-                    fill="currentColor"
+                  d="M18 11L-9.78799e-07 21.3923L-7.02746e-08 0.607695L18 11Z"
+                  fill="currentColor"
                 />
-                </svg>
-                <span class={componentStyles.title}>{item.title}</span>
+              </svg>
+              <span class={componentStyles.title}>{item.title}</span>
             </a>
-            </li>
+          </li>
         ))
-        }
+      }
     </ul>
-    </nav>
-    <footer class={componentStyles.footer}>
-    <p class={componentStyles.copyright}>(C) 2024 全代会.</p>
-    </footer>
+  </nav>
+  <footer class={componentStyles.footer}>
+    <p class={componentStyles.copyright}>
+      (C) 2024 <a
+        class={componentStyles.title}
+        href="https://www.zdk.tsukuba.ac.jp">全代会</a
+      >.
+    </p>
+  </footer>
 </>

@@ -8,59 +8,59 @@ import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
 
 export function getStaticPaths() {
-    return [...subjectMap.keys()].map((subject) => ({
-        params: {
-            id: `${subject}`,
-        },
-    }));
+  return [...subjectMap.keys()].map((subject) => ({
+    params: {
+      id: `${subject}`,
+    },
+  }));
 }
 
 const { id: subjectName } = Astro.params;
 
 const subject = subjectMap.get(subjectName);
 if (subject == undefined) {
-    throw new Error("");
+  throw new Error("");
 }
 
 const kdbs = kdbData.subject.filter((v) => v.name === subject.name);
 
 function syllabiUrl(number: string) {
-    return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
+  return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
 }
 
 const params =
-    subject.type === "一般" ? {
+  subject.type === "一般"
+    ? {
         credit_earnability:
-            subject.subject.credit_earnability.sum /
-            subject.subject.credit_earnability.count,
+          subject.subject.credit_earnability.sum /
+          subject.subject.credit_earnability.count,
         teachers_email_response_evaluation:
-            subject.subject.teachers_email_response_evaluation.sum /
-            subject.subject.teachers_email_response_evaluation.count,
+          subject.subject.teachers_email_response_evaluation.sum /
+          subject.subject.teachers_email_response_evaluation.count,
         class_preparation_workload:
-            subject.subject.class_preparation_workload.sum /
-            subject.subject.class_preparation_workload.count,
+          subject.subject.class_preparation_workload.sum /
+          subject.subject.class_preparation_workload.count,
         class_difficulty_level:
-            subject.subject.class_difficulty_level.sum /
-            subject.subject.class_difficulty_level.count,
+          subject.subject.class_difficulty_level.sum /
+          subject.subject.class_difficulty_level.count,
         recommendation_level_of_this_class:
-            subject.subject.recommendation_level_of_this_class.sum /
-            subject.subject.recommendation_level_of_this_class.count,
+          subject.subject.recommendation_level_of_this_class.sum /
+          subject.subject.recommendation_level_of_this_class.count,
         are_materials_distributed_in_class: {
-            data: subject.subject.are_materials_distributed_in_class,
-            n:
-                subject.subject.are_materials_distributed_in_class.True +
-                subject.subject.are_materials_distributed_in_class.False,
+          data: subject.subject.are_materials_distributed_in_class,
+          n:
+            subject.subject.are_materials_distributed_in_class.True +
+            subject.subject.are_materials_distributed_in_class.False,
         },
         is_textbook_used_in_class: {
-            data: subject.subject.is_textbook_used_in_class,
-            n:
-                subject.subject.is_textbook_used_in_class.True +
-                subject.subject.is_textbook_used_in_class.False,
+          data: subject.subject.is_textbook_used_in_class,
+          n:
+            subject.subject.is_textbook_used_in_class.True +
+            subject.subject.is_textbook_used_in_class.False,
         },
         prerequisite_knowledge_for_this_class:
-            subject.subject.prerequisite_knowledge_for_this_class,
-        class_format:
-            subject.subject.class_format,
+          subject.subject.prerequisite_knowledge_for_this_class,
+        class_format: subject.subject.class_format,
         proportion_of_experienced_students: null,
         consideration_for_inexperienced_students: null,
         exercise_intensity: null,
@@ -71,505 +71,505 @@ const params =
         weekly_assignments: null,
         overtime_assignments: null,
         activity: null,
-    } : subject.type === "専門・専門基礎" ? {
-        credit_earnability: subject.subject.credit_earnability,
-        teachers_email_response_evaluation:
+      }
+    : subject.type === "専門・専門基礎"
+      ? {
+          credit_earnability: subject.subject.credit_earnability,
+          teachers_email_response_evaluation:
             subject.subject.teachers_email_response_evaluation,
-        class_preparation_workload:
+          class_preparation_workload:
             subject.subject.class_preparation_workload,
-        class_difficulty_level: subject.subject.class_difficulty_level,
-        recommendation_level_of_this_class:
+          class_difficulty_level: subject.subject.class_difficulty_level,
+          recommendation_level_of_this_class:
             subject.subject.recommendation_level_of_this_class,
-        are_materials_distributed_in_class: {
+          are_materials_distributed_in_class: {
             data: subject.subject.are_materials_distributed_in_class,
             n:
-                subject.subject.are_materials_distributed_in_class.True +
-                subject.subject.are_materials_distributed_in_class.False,
-        },
-        is_textbook_used_in_class: {
+              subject.subject.are_materials_distributed_in_class.True +
+              subject.subject.are_materials_distributed_in_class.False,
+          },
+          is_textbook_used_in_class: {
             data: subject.subject.is_textbook_used_in_class,
             n:
-                subject.subject.is_textbook_used_in_class.True +
-                subject.subject.is_textbook_used_in_class.False,
-        },
-        prerequisite_knowledge_for_this_class:
+              subject.subject.is_textbook_used_in_class.True +
+              subject.subject.is_textbook_used_in_class.False,
+          },
+          prerequisite_knowledge_for_this_class:
             subject.subject.prerequisite_knowledge_for_this_class,
-        class_format:
-            subject.subject.class_format,
-        proportion_of_experienced_students: null,
-        consideration_for_inexperienced_students: null,
-        exercise_intensity: null,
-        male_to_female_ratio: null,
-        required_purchases: null,
-        rain: null,
-        final: null,
-        weekly_assignments: null,
-        overtime_assignments: null,
-        activity: null,
-    } : {
-        credit_earnability:
+          class_format: subject.subject.class_format,
+          proportion_of_experienced_students: null,
+          consideration_for_inexperienced_students: null,
+          exercise_intensity: null,
+          male_to_female_ratio: null,
+          required_purchases: null,
+          rain: null,
+          final: null,
+          weekly_assignments: null,
+          overtime_assignments: null,
+          activity: null,
+        }
+      : {
+          credit_earnability:
             subject.subject.credit_earnability.sum /
             subject.subject.credit_earnability.count,
-        teachers_email_response_evaluation: null,
-        class_preparation_workload: null,
-        class_difficulty_level: null,
-        recommendation_level_of_this_class:
+          teachers_email_response_evaluation: null,
+          class_preparation_workload: null,
+          class_difficulty_level: null,
+          recommendation_level_of_this_class:
             subject.subject.recommendation_level_of_this_class.sum /
             subject.subject.recommendation_level_of_this_class.count,
-        are_materials_distributed_in_class: null,
-        is_textbook_used_in_class: null,
-        prerequisite_knowledge_for_this_class: null,
-        class_format: null,
-        proportion_of_experienced_students:
+          are_materials_distributed_in_class: null,
+          is_textbook_used_in_class: null,
+          prerequisite_knowledge_for_this_class: null,
+          class_format: null,
+          proportion_of_experienced_students:
             subject.subject.proportion_of_experienced_students.sum /
             subject.subject.proportion_of_experienced_students.count,
-        consideration_for_inexperienced_students:
+          consideration_for_inexperienced_students:
             subject.subject.consideration_for_inexperienced_students.sum /
             subject.subject.consideration_for_inexperienced_students.count,
-        exercise_intensity:
+          exercise_intensity:
             subject.subject.exercise_intensity.sum /
             subject.subject.exercise_intensity.count,
-        male_to_female_ratio:
+          male_to_female_ratio:
             subject.subject.male_to_female_ratio.sum /
             subject.subject.male_to_female_ratio.count,
-        required_purchases: {
+          required_purchases: {
             data: subject.subject.required_purchases,
             n:
-                subject.subject.required_purchases.True +
-                subject.subject.required_purchases.False,
+              subject.subject.required_purchases.True +
+              subject.subject.required_purchases.False,
             detail: subject.subject.required_purchases.detail,
-        },
-        rain: {
+          },
+          rain: {
             data: subject.subject.rain,
             n: subject.subject.rain.True + subject.subject.rain.False,
             detail: subject.subject.rain.detail,
-        },
-        final: {
+          },
+          final: {
             data: subject.subject.final,
             n: subject.subject.final.True + subject.subject.final.False,
             detail: subject.subject.final.detail,
-        },
-        weekly_assignments: {
+          },
+          weekly_assignments: {
             data: subject.subject.weekly_assignments,
             n:
-                subject.subject.weekly_assignments.True +
-                subject.subject.weekly_assignments.False,
+              subject.subject.weekly_assignments.True +
+              subject.subject.weekly_assignments.False,
             detail: subject.subject.weekly_assignments.detail,
-        },
-        overtime_assignments: {
+          },
+          overtime_assignments: {
             data: subject.subject.overtime_assignments,
             n:
-                subject.subject.overtime_assignments.True +
-                subject.subject.overtime_assignments.False,
+              subject.subject.overtime_assignments.True +
+              subject.subject.overtime_assignments.False,
             detail: subject.subject.overtime_assignments.detail,
-        },
-        activity: subject.subject.activity,
-    };
+          },
+          activity: subject.subject.activity,
+        };
 ---
 
 <Layout title={subjectName}>
-    <Header isMain={false} />
-    <main class={pageStyles.main}>
-        <div class={pageStyles.body}>
-            <h1 class={pageStyles.title}>{subject.name}</h1>
-            {
-                subject.type === "体育" && (
-                    <span class={pageStyles.category}>
-                        {subject.subject_category}
-                    </span>
-                )
-            }
-            {
-                params.class_format && (
-                    <>
-                        <div class={pageStyles.tagWrap}>
-                            <div class={pageStyles.tag}>授業形態</div>
-                            {kdbs.length > 1 && (
-                                <p class={pageStyles.description}>
-                                    ※ 全ての科目の平均値
-                                </p>
-                            )}
-                        </div>
-                        <div class={pageStyles.card}>
-                            <LabelPercent
-                                labels={{
-                                    講義: "講義",
-                                    グループワーク: "グループワーク",
-                                    発表: "発表",
-                                    パネルディスカッション:
-                                        "パネルディスカッション",
-                                    対話: "対話",
-                                    オンデマンド: "オンデマンド",
-                                    レポート提出のみ: "レポート提出のみ",
-                                }}
-                                n={params.class_format.回答人数}
-                                data={params.class_format}
-                            />
-                        </div>
-                    </>
-                )
-            }
-
+  <Header isMain={false} />
+  <main class={pageStyles.main}>
+    <div class={pageStyles.body}>
+      <h1 class={pageStyles.title}>{subject.name}</h1>
+      {
+        subject.type === "体育" && (
+          <span class={pageStyles.category}>{subject.subject_category}</span>
+        )
+      }
+      {
+        params.class_format && (
+          <>
             <div class={pageStyles.tagWrap}>
-                <div class={pageStyles.tag}>評価</div>
-                {
-                    kdbs.length > 1 && (
-                        <p class={pageStyles.description}>※ 全ての科目の平均値</p>
-                    )
-                }
+              <div class={pageStyles.tag}>授業形態</div>
+              {kdbs.length > 1 && (
+                <p class={pageStyles.description}>※ 全ての科目の平均値</p>
+              )}
             </div>
             <div class={pageStyles.card}>
-                <div class={pageStyles.lists}>
-                    {
-                        params.teachers_email_response_evaluation && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>メールの対応</div>
-                                <div class={pageStyles.content}>
-                                    {params.teachers_email_response_evaluation}
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.class_difficulty_level && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>授業の難易度</div>
-                                <div class={pageStyles.content}>
-                                    {params.class_difficulty_level}
-                                </div>
-                            </div>
-                        )
-                    }
-                    <div class={pageStyles.item}>
-                        <div class={pageStyles.label}>単位の取りやすさ</div>
-                        <div class={pageStyles.content}>
-                            {params.credit_earnability}
-                        </div>
-                    </div>
-                    {
-                        params.class_preparation_workload && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>授業の準備量</div>
-                                <div class={pageStyles.content}>
-                                    {params.class_preparation_workload}
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.is_textbook_used_in_class && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>教科書</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "使う",
-                                            False: "使わない",
-                                        }}
-                                        n={params.is_textbook_used_in_class.n}
-                                        data={params.is_textbook_used_in_class.data}
-                                    />
-                                </div>
-                            </div>
-                        )
-                    }
-                    <div class={pageStyles.item}>
-                        <div class={pageStyles.label}>オススメ度</div>
-                        <div class={pageStyles.content}>
-                            {params.recommendation_level_of_this_class}
-                        </div>
-                    </div>
-                    {
-                        params.are_materials_distributed_in_class && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>配布資料</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "あり",
-                                            False: "なし",
-                                        }}
-                                        n={params.are_materials_distributed_in_class.n}
-                                        data={params.are_materials_distributed_in_class.data}
-                                    />
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.prerequisite_knowledge_for_this_class && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>予備知識</div>
-                                <div class={pageStyles.content}>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.proportion_of_experienced_students && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>経験者の割合</div>
-                                <div class={pageStyles.content}>
-                                    {params.proportion_of_experienced_students}
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.consideration_for_inexperienced_students && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>
-                                    未経験者に対する配慮
-                                </div>
-                                <div class={pageStyles.content}>
-                                    {
-                                        params.consideration_for_inexperienced_students
-                                    }
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.exercise_intensity && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>運動の強度</div>
-                                <div class={pageStyles.content}>
-                                    {params.exercise_intensity}
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.male_to_female_ratio && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>男女比</div>
-                                <div class={pageStyles.content}>
-                                    {params.male_to_female_ratio}
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.required_purchases && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>必要な購入物</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "あり",
-                                            False: "なし",
-                                        }}
-                                        n={params.required_purchases.n}
-                                        data={params.required_purchases.data}
-                                    />
-                                    <ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.rain && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>
-                                    雨天時の授業内容
-                                </div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "晴天時と同一",
-                                            False: "晴天時と異なる",
-                                        }}
-                                        n={params.rain.n}
-                                        data={params.rain.data}
-                                    />
-                                    <ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.final && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>期末課題</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "あり",
-                                            False: "なし",
-                                        }}
-                                        n={params.final.n}
-                                        data={params.final.data}
-                                    />
-                                    <ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.weekly_assignments && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>毎週提出する課題</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "あり",
-                                            False: "なし",
-                                        }}
-                                        n={params.weekly_assignments.n}
-                                        data={params.weekly_assignments.data}
-                                    />
-                                    <ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.overtime_assignments && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>課題や授業時間外の実習</div>
-                                <div class={pageStyles.content}>
-                                    <LabelPercent
-                                        labels={{
-                                            True: "あり",
-                                            False: "なし",
-                                        }}
-                                        n={params.overtime_assignments.n}
-                                        data={params.overtime_assignments.data}
-                                    />
-                                    <ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    }
-                    {
-                        params.activity && (
-                            <div class={pageStyles.item}>
-                                <div class={pageStyles.label}>実際の活動</div>
-                                <div class={pageStyles.content}>
-                                </div>
-                            </div>
-                        )
-                    }
-                    <div class={pageStyles.item}>
-                        <div class={pageStyles.label}>コメント</div>
-                        <div class={`${pageStyles.content} ${pageStyles.comments}`}>
-                            {
-                                subject.subject.comment.map((comment) => (
-                                    <>
-                                        <div class={pageStyles.comment}>
-                                            <div class={pageStyles.recommendationLevel}>
-                                                {"★".repeat(comment.recommendation_level_of_this_class)}
-                                            </div>
-                                        </div>
-                                    </>
-                                ))
-                            }
-                        </div>
-                    </div>
-                </div>
+              <LabelPercent
+                labels={{
+                  講義: "講義",
+                  グループワーク: "グループワーク",
+                  発表: "発表",
+                  パネルディスカッション: "パネルディスカッション",
+                  対話: "対話",
+                  オンデマンド: "オンデマンド",
+                  レポート提出のみ: "レポート提出のみ",
+                }}
+                n={params.class_format.回答人数}
+                data={params.class_format}
+              />
             </div>
+          </>
+        )
+      }
 
-            {
-                kdbs.map((kdbSubject) => (
-                    <>
-                        <div class={pageStyles.tagWrap}>
-                            <div class={pageStyles.tag}>
-                                科目番号 {kdbSubject.number}
-                            </div>
-                            <a
-                                href={syllabiUrl(kdbSubject.number)}
-                                target="_blank"
-                                rel="noopener noreferrer external"
-                            >
-                                シラバス (外部)
-                                <div class={pageStyles.iconWrap}>
-                                    <svg
-                                        width="45"
-                                        height="45"
-                                        viewBox="0 0 45 45"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class={pageStyles.icon}
-                                    >
-                                        <path
-                                            d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
-                                            fill="currentColor"
-                                        />
-                                    </svg>
-                                </div>
-                            </a>
-                        </div>
-                        <div class={pageStyles.card}>
-                            <div class={pageStyles.lists}>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>授業形態</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.instructionalType}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>単位</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.credits}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>
-                                        標準履修年次
-                                    </div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.standardRegistrationYear}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>学期</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.term}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>曜時限</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.period}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>教室</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.room}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>担当教員</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.instructor}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>授業概要</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.abstract}
-                                    </div>
-                                </div>
-                                <div class={pageStyles.item}>
-                                    <div class={pageStyles.label}>備考</div>
-                                    <div class={pageStyles.content}>
-                                        {kdbSubject.remarks}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </>
+      <div class={pageStyles.tagWrap}>
+        <div class={pageStyles.tag}>評価</div>
+        {
+          kdbs.length > 1 && (
+            <p class={pageStyles.description}>※ 全ての科目の平均値</p>
+          )
+        }
+      </div>
+      <div class={pageStyles.card}>
+        <div class={pageStyles.lists}>
+          {
+            params.teachers_email_response_evaluation && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>メールの対応</div>
+                <div class={pageStyles.content}>
+                  {params.teachers_email_response_evaluation}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.class_difficulty_level && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>授業の難易度</div>
+                <div class={pageStyles.content}>
+                  {params.class_difficulty_level}
+                </div>
+              </div>
+            )
+          }
+          <div class={pageStyles.item}>
+            <div class={pageStyles.label}>単位の取りやすさ</div>
+            <div class={pageStyles.content}>
+              {params.credit_earnability}
+            </div>
+          </div>
+          {
+            params.class_preparation_workload && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>授業の準備量</div>
+                <div class={pageStyles.content}>
+                  {params.class_preparation_workload}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.is_textbook_used_in_class && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>教科書</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "使う",
+                      False: "使わない",
+                    }}
+                    n={params.is_textbook_used_in_class.n}
+                    data={params.is_textbook_used_in_class.data}
+                  />
+                </div>
+              </div>
+            )
+          }
+          <div class={pageStyles.item}>
+            <div class={pageStyles.label}>オススメ度</div>
+            <div class={pageStyles.content}>
+              {params.recommendation_level_of_this_class}
+            </div>
+          </div>
+          {
+            params.are_materials_distributed_in_class && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>配布資料</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "あり",
+                      False: "なし",
+                    }}
+                    n={params.are_materials_distributed_in_class.n}
+                    data={params.are_materials_distributed_in_class.data}
+                  />
+                </div>
+              </div>
+            )
+          }
+          {
+            params.prerequisite_knowledge_for_this_class && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>予備知識</div>
+                <div class={pageStyles.content}>
+                  {params.prerequisite_knowledge_for_this_class.map((val) => (
+                    <li class={pageStyles.detail}>{val}</li>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.proportion_of_experienced_students && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>経験者の割合</div>
+                <div class={pageStyles.content}>
+                  {params.proportion_of_experienced_students}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.consideration_for_inexperienced_students && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>未経験者に対する配慮</div>
+                <div class={pageStyles.content}>
+                  {params.consideration_for_inexperienced_students}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.exercise_intensity && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>運動の強度</div>
+                <div class={pageStyles.content}>
+                  {params.exercise_intensity}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.male_to_female_ratio && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>男女比</div>
+                <div class={pageStyles.content}>
+                  {params.male_to_female_ratio}
+                </div>
+              </div>
+            )
+          }
+          {
+            params.required_purchases && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>必要な購入物</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "あり",
+                      False: "なし",
+                    }}
+                    n={params.required_purchases.n}
+                    data={params.required_purchases.data}
+                  />
+                  <ul>
+                    {params.required_purchases.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+          {
+            params.rain && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>雨天時の授業内容</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "晴天時と同一",
+                      False: "晴天時と異なる",
+                    }}
+                    n={params.rain.n}
+                    data={params.rain.data}
+                  />
+                  <ul>
+                    {params.rain.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+          {
+            params.final && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>期末課題</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "あり",
+                      False: "なし",
+                    }}
+                    n={params.final.n}
+                    data={params.final.data}
+                  />
+                  <ul>
+                    {params.final.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+          {
+            params.weekly_assignments && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>毎週提出する課題</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "あり",
+                      False: "なし",
+                    }}
+                    n={params.weekly_assignments.n}
+                    data={params.weekly_assignments.data}
+                  />
+                  <ul>
+                    {params.weekly_assignments.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+          {
+            params.overtime_assignments && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>課題や授業時間外の実習</div>
+                <div class={pageStyles.content}>
+                  <LabelPercent
+                    labels={{
+                      True: "あり",
+                      False: "なし",
+                    }}
+                    n={params.overtime_assignments.n}
+                    data={params.overtime_assignments.data}
+                  />
+                  <ul>
+                    {params.overtime_assignments.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
+                </div>
+              </div>
+            )
+          }
+          {
+            params.activity && (
+              <div class={pageStyles.item}>
+                <div class={pageStyles.label}>実際の活動</div>
+                <div class={pageStyles.content}>
+                  {params.activity.map((val) => (
+                    <li class={pageStyles.detail}>{val}</li>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          <div class={pageStyles.item}>
+            <div class={pageStyles.label}>コメント</div>
+            <div class={`${pageStyles.content} ${pageStyles.comments}`}>
+              {
+                subject.subject.comment.map((comment) => (
+                  <>
+                    <div class={pageStyles.comment}>
+                      <div class={pageStyles.recommendationLevel}>
+                        {"★".repeat(comment.recommendation_level_of_this_class)}
+                      </div>
+                      {comment.comment}
+                    </div>
+                  </>
                 ))
-            }
+              }
+            </div>
+          </div>
         </div>
-        <div class={pageStyles.sidebar}>
-            <SideMenu />
-        </div>
-    </main>
+      </div>
+
+      {
+        kdbs.map((kdbSubject) => (
+          <>
+            <div class={pageStyles.tagWrap}>
+              <div class={pageStyles.tag}>科目番号 {kdbSubject.number}</div>
+              <a
+                href={syllabiUrl(kdbSubject.number)}
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                シラバス (外部)
+                <div class={pageStyles.iconWrap}>
+                  <svg
+                    width="45"
+                    height="45"
+                    viewBox="0 0 45 45"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class={pageStyles.icon}
+                  >
+                    <path
+                      d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <div class={pageStyles.card}>
+              <div class={pageStyles.lists}>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>授業形態</div>
+                  <div class={pageStyles.content}>
+                    {kdbSubject.instructionalType}
+                  </div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>単位</div>
+                  <div class={pageStyles.content}>{kdbSubject.credits}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>標準履修年次</div>
+                  <div class={pageStyles.content}>
+                    {kdbSubject.standardRegistrationYear}
+                  </div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>学期</div>
+                  <div class={pageStyles.content}>{kdbSubject.term}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>曜時限</div>
+                  <div class={pageStyles.content}>{kdbSubject.period}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>教室</div>
+                  <div class={pageStyles.content}>{kdbSubject.room}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>担当教員</div>
+                  <div class={pageStyles.content}>{kdbSubject.instructor}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>授業概要</div>
+                  <div class={pageStyles.content}>{kdbSubject.abstract}</div>
+                </div>
+                <div class={pageStyles.item}>
+                  <div class={pageStyles.label}>備考</div>
+                  <div class={pageStyles.content}>{kdbSubject.remarks}</div>
+                </div>
+              </div>
+            </div>
+          </>
+        ))
+      }
+    </div>
+    <div class={pageStyles.sidebar}>
+      <SideMenu />
+    </div>
+  </main>
 </Layout>

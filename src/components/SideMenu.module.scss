@@ -1,89 +1,106 @@
 .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  .items {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 300px;
-    .items {
+    gap: 16px;
+    width: 100%;
+    .item {
+      .link {
         display: flex;
-        flex-direction: column;
-        gap: 16px;
+        align-items: center;
+        gap: 20px;
         width: 100%;
-        .item {
-            .link {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-                width: 100%;
-                height: 100%;
-                padding: 20px 30px 20px 30px;
-                box-shadow: 0 5px 20px #00000008;
-                border-radius: 100px;
-                border: 3px solid #00C1D4;
-                background-color: #ffffff;
-                overflow: hidden;
-                transition: .2s;
-                .icon {
-                    width: 16px;
-                    height: 16px;
-                    color: #00C1D4;
-                    transition: .2s;
-                }
-                .title {
-                    font-family: "ZenKakuGothicNew Regular", sans-serif;
-                    font-size: 20px;
-                    font-weight: 600;
-                    line-height: 1.2;
-                    color: #00C1D4;
-                }
-                &:hover {
-                    box-shadow: 0 5px 20px #00000008, 0 5px 20px #00000014;
-                    transform: translateY(-2px);
-                    .icon {
-                        margin-left: 5px;
-                        margin-right: -5px;
-                        color: #00a2b7;
-                    }
-                    .title {
-                        color: #00a2b7;
-                    }
-                }
-            }
+        height: 100%;
+        padding: 20px 30px 20px 30px;
+        box-shadow: 0 5px 20px #00000008;
+        border-radius: 100px;
+        border: 3px solid #00c1d4;
+        background-color: #ffffff;
+        overflow: hidden;
+        transition: 0.2s;
+        .icon {
+          width: 16px;
+          height: 16px;
+          color: #00c1d4;
+          transition: 0.2s;
         }
+        .title {
+          font-family: "ZenKakuGothicNew Regular", sans-serif;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 1.2;
+          color: #00c1d4;
+        }
+      }
     }
-}
-.footer {
-    display: flex;
-    gap: 20px;
-    justify-content: end;
-    margin: 20px 0;
-    flex-wrap: wrap;
-    a {
+    .footer {
+      display: flex;
+      gap: 20px;
+      justify-content: end;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      a {
         color: #101010;
+        @media screen and (prefers-color-scheme: dark) {
+          color: #00c1d4;
+        }
         text-decoration: none;
         font-weight: 500;
         &:hover {
-            color: #00C1D4;
+          box-shadow:
+            0 5px 20px #00000008,
+            0 5px 20px #00000014;
+          transform: translateY(-2px);
+          .icon {
+            margin-left: 5px;
+            margin-right: -5px;
+            color: #00a2b7;
+          }
+          .title {
+            color: #00a2b7;
+          }
         }
+      }
     }
-    .copyright {
-        color: #606060;
-        font-weight: 400;
+  }
+}
+.footer {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  a {
+    color: #101010;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover {
+      color: #00c1d4;
     }
+  }
+  .copyright {
+    color: #606060;
+    font-weight: 400;
+  }
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    .menu .items .item .link {
-        background-color: #575757;
-        border-color: #454242;
-        &:hover {
-            border-color: #00C1D4;
-            .icon {
-                color: #00C1D4;
-            }
-            .title {
-                color: #00C1D4;
-            }
-        }
+  .menu .items .item .link {
+    background-color: #575757;
+    border-color: #454242;
+    &:hover {
+      border-color: #00c1d4;
+      .icon {
+        color: #00c1d4;
+      }
+      .title {
+        color: #00c1d4;
+      }
     }
+  }
 }

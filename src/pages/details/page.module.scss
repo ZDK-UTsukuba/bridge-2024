@@ -111,6 +111,10 @@
             min-width: 120px;
             margin-right: 5px;
           }
+          .detail {
+            list-style: square;
+            margin-left: 25px;
+          }
           &:not(:last-child)::after {
             content: "";
             position: absolute;
