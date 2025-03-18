@@ -43,7 +43,7 @@ code {
 }
 html,
 body {
-    color: #404654;
+  color: #404654;
 }
 @media screen and (prefers-color-scheme: dark) {
   html,
