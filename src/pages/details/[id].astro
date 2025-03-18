@@ -297,7 +297,11 @@ const params =
             params.prerequisite_knowledge_for_this_class && (
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>予備知識</div>
-                <div class={pageStyles.content} />
+                <div class={pageStyles.content}>
+                  {params.prerequisite_knowledge_for_this_class.map((val) => (
+                    <li class={pageStyles.detail}>{val}</li>
+                  ))}
+                </div>
               </div>
             )
           }
@@ -354,7 +358,12 @@ const params =
                     n={params.required_purchases.n}
                     data={params.required_purchases.data}
                   />
-                  <ul />
+                  <ul>
+                    {params.required_purchases.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
                 </div>
               </div>
             )
@@ -372,7 +381,12 @@ const params =
                     n={params.rain.n}
                     data={params.rain.data}
                   />
-                  <ul />
+                  <ul>
+                    {params.rain.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
                 </div>
               </div>
             )
@@ -390,7 +404,12 @@ const params =
                     n={params.final.n}
                     data={params.final.data}
                   />
-                  <ul />
+                  <ul>
+                    {params.final.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
                 </div>
               </div>
             )
@@ -408,7 +427,12 @@ const params =
                     n={params.weekly_assignments.n}
                     data={params.weekly_assignments.data}
                   />
-                  <ul />
+                  <ul>
+                    {params.weekly_assignments.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
                 </div>
               </div>
             )
@@ -426,7 +450,12 @@ const params =
                     n={params.overtime_assignments.n}
                     data={params.overtime_assignments.data}
                   />
-                  <ul />
+                  <ul>
+                    {params.overtime_assignments.detail.map((val) => (
+                      <li class={pageStyles.detail}>{val}</li>
+                    ))}
+                    <li />
+                  </ul>
                 </div>
               </div>
             )
@@ -435,7 +464,11 @@ const params =
             params.activity && (
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>実際の活動</div>
-                <div class={pageStyles.content} />
+                <div class={pageStyles.content}>
+                  {params.activity.map((val) => (
+                    <li class={pageStyles.detail}>{val}</li>
+                  ))}
+                </div>
               </div>
             )
           }
@@ -449,6 +482,7 @@ const params =
                       <div class={pageStyles.recommendationLevel}>
                         {"★".repeat(comment.recommendation_level_of_this_class)}
                       </div>
+                      {comment.comment}
                     </div>
                   </>
                 ))
