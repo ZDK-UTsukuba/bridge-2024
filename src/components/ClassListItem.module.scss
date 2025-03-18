@@ -25,10 +25,10 @@
         position: absolute;
         content: "";
         display: block;
-        top: 0;
+        top: -3px;
         left: -5px;
         right: calc(100% + 5px);
-        bottom: 0;
+        bottom: -4px;
         background-color: #00c1d4;
         transition: right 0.3s;
         z-index: -1;
