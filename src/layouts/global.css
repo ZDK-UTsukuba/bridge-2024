@@ -41,14 +41,14 @@ code {
     Courier New,
     monospace;
 }
+html,
+body {
+    color: #404654;
+}
 @media screen and (prefers-color-scheme: dark) {
   html,
   body {
     background-color: #363636;
     color: #f0f0f0;
   }
-}
-html,
-body {
-  color: #404654;
 }
