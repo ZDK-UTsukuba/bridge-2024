@@ -1,17 +1,6 @@
 $sp: 700px;
-html,
-body {
-  color: #404654;
-}
 @mixin sp {
   @media screen and (max-width: ($sp)) {
     @content;
-  }
-}
-@media screen and (prefers-color-scheme: dark) {
-  html,
-  body {
-    background-color: #363636;
-    color: #f0f0f0;
   }
 }

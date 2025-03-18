@@ -20,15 +20,6 @@
   font-display: swap;
 }
 :root {
-  --accent: 0, 193, 212;
-  --accent-light: 27, 218, 235;
-  --accent-dark: 6, 126, 137;
-  --accent-gradient: linear-gradient(
-    45deg,
-    rgb(var(--accent)),
-    rgb(var(--accent-light)) 30%,
-    white 60%
-  );
   font-family: "ZenKakuGothicNew Medium", sans-serif;
 }
 html {
@@ -49,4 +40,15 @@ code {
     Bitstream Vera Sans Mono,
     Courier New,
     monospace;
+}
+html,
+body {
+  color: #404654;
+}
+@media screen and (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: #363636;
+    color: #f0f0f0;
+  }
 }
