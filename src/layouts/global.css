@@ -42,14 +42,13 @@ code {
     monospace;
 }
 @media screen and (prefers-color-scheme: dark) {
-
-    html,
-    body {
-        background-color: #363636;
-        color: #f0f0f0;
-    }
+  html,
+  body {
+    background-color: #363636;
+    color: #f0f0f0;
+  }
 }
 html,
 body {
-    color: #404654;
+  color: #404654;
 }
