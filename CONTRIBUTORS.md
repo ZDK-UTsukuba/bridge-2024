@@ -5,4 +5,4 @@ BRIDGE Contributors
 - 8128-33550336 [GitHub](https://github.com/8128-33550336)
 - naohanpen [GitHub](https://github.com/naohanpen)
 - oageo [GitHub](https://github.com/oageo)
--
+- Zect [Github](https://github.com/Zect3279)
