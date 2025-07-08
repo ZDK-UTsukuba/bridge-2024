@@ -1,7 +1,10 @@
 ---
 import "bulma/css/bulma.min.css";
 import "./global.css";
+import Header from "../components/Header.astro";
+import SearchBox from "../components/SearchBox.astro";
 interface Props {
+  isMain?: boolean;
   title?: string;
   description?: string;
   og?: {
@@ -12,7 +15,7 @@ interface Props {
     card?: string;
   };
 }
-const { title, description, og, twitter } = Astro.props;
+const { isMain, title, description, og, twitter } = Astro.props;
 const metadata = {
   title: title ? `${title} - BRIDGE` : "BRIDGE",
   description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
@@ -50,6 +53,9 @@ const metadata = {
     </script>
   </head>
   <body>
+    <Header isMain={isMain ?? false}>
+      <SearchBox />
+    </Header>
     <slot />
   </body>
 </html>

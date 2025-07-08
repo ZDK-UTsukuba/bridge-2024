@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import pageStyles from "./index.module.scss";
-import SearchBox from "../components/SearchBox.astro";
 import NewsBanner from "../components/NewsBanner.astro";
 import Card from "../components/Card.astro";
 import ClassList from "../components/ClassList.astro";
@@ -13,10 +11,7 @@ import { getTopNSubject } from "../content/ranking";
 const subjects = getTopNSubject(5);
 ---
 
-<Layout>
-  <Header isMain={true}>
-    <SearchBox />
-  </Header>
+<Layout isMain={true}>
   <NewsBanner title="BRIDGEをリリースしました！" />
   <main class={pageStyles.main}>
     <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">

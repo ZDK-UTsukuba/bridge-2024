@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
 import SideMenu from "../../components/SideMenu.astro";
 import { subjectMap } from "../../content/subjectsData";
 import { kdbData } from "../../content/kdb-schema";
@@ -170,7 +169,6 @@ const params =
 ---
 
 <Layout title={subjectName}>
-  <Header isMain={false} />
   <main class={pageStyles.main}>
     <div class={pageStyles.body}>
       <h1 class={pageStyles.title}>{subject.name}</h1>
