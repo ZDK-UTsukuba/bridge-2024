@@ -1,17 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import SideMenu from "../../components/SideMenu.astro";
 import pageStyles from "./404.module.scss";
 ---
 
 <Layout title="検索結果がありません">
-  <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>検索結果</h1>
-      <p>結果が見つかりませんでした</p>
-    </div>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+  <div class={pageStyles.body}>
+    <h1 class={pageStyles.title}>検索結果</h1>
+    <p>結果が見つかりませんでした</p>
+  </div>
 </Layout>

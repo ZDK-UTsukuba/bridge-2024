@@ -1,10 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import pageStyles from "./index.module.scss";
+// import pageStyles from "./index.module.scss";
 import NewsBanner from "../components/NewsBanner.astro";
 import Card from "../components/Card.astro";
 import ClassList from "../components/ClassList.astro";
-import SideMenu from "../components/SideMenu.astro";
 import { getTopNSubject } from "../content/ranking";
 
 // summaryData から インデックスに subjectName が含まれるデータを取得
@@ -12,13 +11,8 @@ const subjects = getTopNSubject(5);
 ---
 
 <Layout isMain={true}>
-  <NewsBanner title="BRIDGEをリリースしました！" />
-  <main class={pageStyles.main}>
-    <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
-      <ClassList subjects={subjects} />
-    </Card>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+  <NewsBanner title="BRIDGEをリリースしました！" slot="banner" />
+  <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
+    <ClassList subjects={subjects} />
+  </Card>
 </Layout>

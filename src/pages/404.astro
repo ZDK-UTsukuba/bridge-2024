@@ -1,17 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SideMenu from "../components/SideMenu.astro";
 import pageStyles from "./404.module.scss";
 ---
 
 <Layout title="ページが見つかりません">
-  <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>404 Not Found</h1>
-      <p>アクセスしたページは見つかりませんでした</p>
-    </div>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+  <div class={pageStyles.body}>
+    <h1 class={pageStyles.title}>404 Not Found</h1>
+    <p>アクセスしたページは見つかりませんでした</p>
+  </div>
 </Layout>

@@ -1,8 +1,10 @@
 ---
 import "bulma/css/bulma.min.css";
 import "./global.css";
+import pageStyles from "./layout.module.scss";
 import Header from "../components/Header.astro";
 import SearchBox from "../components/SearchBox.astro";
+import SideMenu from '../components/SideMenu.astro';
 interface Props {
   isMain?: boolean;
   title?: string;
@@ -56,6 +58,13 @@ const metadata = {
     <Header isMain={isMain ?? false}>
       <SearchBox />
     </Header>
-    <slot />
+    <!-- <main class={}></main> -->
+    <slot name="banner" />
+    <main class={pageStyles.main}>
+      <slot />
+      <div class={pageStyles.sidebar}>
+        <SideMenu />
+      </div>
+    </main>
   </body>
 </html>
