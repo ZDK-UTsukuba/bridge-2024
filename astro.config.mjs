@@ -12,4 +12,14 @@ export default defineConfig({
       filter: (page) => !page.includes("/search/"),
     }),
   ],
+  vite: {
+    resolve: {
+      alias: {
+        "@components": "/src/components",
+        "@layouts": "/src/layouts",
+        "@content": "/src/content",
+        "@pages": "/src/pages",
+      },
+    },
+  },
 });
