@@ -8,5 +8,5 @@
       "@content/*": ["src/content/*"],
       "@pages/*": ["src/pages/*"]
     }
-  },
+  }
 }
