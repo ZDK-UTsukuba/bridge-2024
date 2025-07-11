@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import pageStyles from "./about.module.scss";
 
 const bridgeFormUrl = {
-  kibanFreePe: "https://forms.office.com/r/kVFgpvauXV", //2024
-  senmon: "https://forms.office.com/r/BhTs4HJ73r", //2024
+  common:
+    "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=_V1bnp1m-E6yQEIpy_SoPbKnoP8qCEREtpRJ6KkvoW5UOVBEOUFGQlJIUFlXOEtZSkVFUzYxUFBDRSQlQCN0PWcu", // 2025
 }; //フォームの回答可能範囲が@u.tsukuba.ac.jpに限定されているか？ 指さし確認！ヨシ！
 ---
 
@@ -24,11 +24,8 @@ const bridgeFormUrl = {
       BRIDGEに掲載されている各講義へのコメントや評価は、学生の皆さんによるものです。学生の皆様が講義を受けられました場合、是非BRIDGEへその講義のコメントや評価を追加してください。
     </p>
     <p>
-      受講された科目が<a href={bridgeFormUrl.kibanFreePe}
-        >学士基盤科目・自由科目・体育の場合はこちら</a
-      >から、<a href={bridgeFormUrl.senmon}
-        >専門基礎科目・専門科目（標準履修年次2年以下）・専門導入科目の場合はこちら</a
-      >からご回答いただけますと幸いです。
+      こちらの<a href={bridgeFormUrl.common}>BRIDGE 回答フォーム</a>
+      からご回答いただけますと幸いです。
     </p>
     <p>
       いただきましたコメントや評価は、教育環境委員会による確認後に掲載されます。掲載まで若干お時間を頂戴しますこと、ご容赦ください。
