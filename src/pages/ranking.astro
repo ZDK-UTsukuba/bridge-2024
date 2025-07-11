@@ -1,8 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import SearchBox from "../components/SearchBox.astro";
-import SideMenu from "../components/SideMenu.astro";
 import ClassList from "../components/ClassList.astro";
 import { getTopNSubject } from "../content/ranking";
 import pageStyles from "./ranking.module.scss";
@@ -13,18 +10,10 @@ const subjects = getTopNSubject(Infinity);
 ---
 
 <Layout title="総合評価が高い科目">
-  <Header isMain={false}>
-    <SearchBox />
-  </Header>
-  <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>総合評価が高い科目</h1>
-      <div class={pageStyles.list}>
-        <ClassList subjects={subjects} />
-      </div>
+  <div class={pageStyles.body}>
+    <h1 class={pageStyles.title}>総合評価が高い科目</h1>
+    <div class={pageStyles.list}>
+      <ClassList subjects={subjects} />
     </div>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+  </div>
 </Layout>

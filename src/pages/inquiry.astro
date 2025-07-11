@@ -1,8 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import SearchBox from "../components/SearchBox.astro";
-import SideMenu from "../components/SideMenu.astro";
 import pageStyles from "./about.module.scss";
 
 const bridgeFormUrl = {
@@ -12,68 +9,59 @@ const bridgeFormUrl = {
 ---
 
 <Layout title="お問い合わせ">
-  <Header isMain={false}>
-    <SearchBox defaultInput={""} styleAttr="margin: 40px 0 20px;" />
-  </Header>
-  <main class={pageStyles.main}>
-    <div class={pageStyles.body}>
-      <h1 class={pageStyles.title}>お問い合わせ</h1>
-      <h2>BRIDGEへのフィードバック</h2>
-      <p>BRIDGEをご利用いただきありがとうございます。</p>
-      <p>
-        ご利用いただく中で、「このようにした方が良い」、「こういったデザインの方が良い」などのご意見が生まれるかと思います。その場合は<a
-          class="has-text-weight-semibold"
-          href="mailto:edu@zdk.tsukuba.ac.jp">edu@zdk.tsukuba.ac.jp</a
-        >へメールをいただきますと幸いです。
-      </p>
-      <h2>BRIDGEにコメントや評価を追加する</h2>
-      <p>
-        BRIDGEに掲載されている各講義へのコメントや評価は、学生の皆さんによるものです。学生の皆様が講義を受けられました場合、是非BRIDGEへその講義のコメントや評価を追加してください。
-      </p>
-      <p>
-        受講された科目が<a href={bridgeFormUrl.kibanFreePe}
-          >学士基盤科目・自由科目・体育の場合はこちら</a
-        >から、<a href={bridgeFormUrl.senmon}
-          >専門基礎科目・専門科目（標準履修年次2年以下）・専門導入科目の場合はこちら</a
-        >からご回答いただけますと幸いです。
-      </p>
-      <p>
-        いただきましたコメントや評価は、教育環境委員会による確認後に掲載されます。掲載まで若干お時間を頂戴しますこと、ご容赦ください。
-      </p>
-      <h2>教育生活環境調査</h2>
-      <p>
-        BRIDGEを運営しております<a href="https://www.zdk.tsukuba.ac.jp"
-          >全代会</a
-        >は、学群生を対象とした「<a
-          href="https://www.stb.tsukuba.ac.jp/~zdk/opinion">教育生活環境調査</a
-        >」を常時開設しております。
-      </p>
-      <p>
-        教育生活環境調査では、筑波大学の環境改善のために学生の意見を集約しております。いただきました意見は、全代会の委員会や本会議で取り扱われ、全代会自身による対応が行われたり大学へと伝達することを行われたりしております。例えば、以下のような意見をいただき、全代会として対応を行っております。
-      </p>
-      <ul>
-        <li>
-          <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/4168"
-            >TWINSにおける抽選中事前登録科目について</a
-          >
-        </li>
-        <li>
-          <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/5437"
-            >学内の自動販売機や券売機での新札対応について</a
-          >
-        </li>
-        <li>
-          <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/5287"
-            >夜間に宿舎周辺で騒ぐ集団への対処方法</a
-          >
-        </li>
-      </ul>
-      <p>
-        授業や学生生活の中で困りごとがありましたら、お気軽に回答いただければと思います。
-      </p>
-    </div>
-    <div class={pageStyles.sidebar}>
-      <SideMenu />
-    </div>
-  </main>
+  <div class={pageStyles.body}>
+    <h1 class={pageStyles.title}>お問い合わせ</h1>
+    <h2>BRIDGEへのフィードバック</h2>
+    <p>BRIDGEをご利用いただきありがとうございます。</p>
+    <p>
+      ご利用いただく中で、「このようにした方が良い」、「こういったデザインの方が良い」などのご意見が生まれるかと思います。その場合は<a
+        class="has-text-weight-semibold"
+        href="mailto:edu@zdk.tsukuba.ac.jp">edu@zdk.tsukuba.ac.jp</a
+      >へメールをいただきますと幸いです。
+    </p>
+    <h2>BRIDGEにコメントや評価を追加する</h2>
+    <p>
+      BRIDGEに掲載されている各講義へのコメントや評価は、学生の皆さんによるものです。学生の皆様が講義を受けられました場合、是非BRIDGEへその講義のコメントや評価を追加してください。
+    </p>
+    <p>
+      受講された科目が<a href={bridgeFormUrl.kibanFreePe}
+        >学士基盤科目・自由科目・体育の場合はこちら</a
+      >から、<a href={bridgeFormUrl.senmon}
+        >専門基礎科目・専門科目（標準履修年次2年以下）・専門導入科目の場合はこちら</a
+      >からご回答いただけますと幸いです。
+    </p>
+    <p>
+      いただきましたコメントや評価は、教育環境委員会による確認後に掲載されます。掲載まで若干お時間を頂戴しますこと、ご容赦ください。
+    </p>
+    <h2>教育生活環境調査</h2>
+    <p>
+      BRIDGEを運営しております<a href="https://www.zdk.tsukuba.ac.jp">全代会</a
+      >は、学群生を対象とした「<a
+        href="https://www.stb.tsukuba.ac.jp/~zdk/opinion">教育生活環境調査</a
+      >」を常時開設しております。
+    </p>
+    <p>
+      教育生活環境調査では、筑波大学の環境改善のために学生の意見を集約しております。いただきました意見は、全代会の委員会や本会議で取り扱われ、全代会自身による対応が行われたり大学へと伝達することを行われたりしております。例えば、以下のような意見をいただき、全代会として対応を行っております。
+    </p>
+    <ul>
+      <li>
+        <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/4168"
+          >TWINSにおける抽選中事前登録科目について</a
+        >
+      </li>
+      <li>
+        <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/5437"
+          >学内の自動販売機や券売機での新札対応について</a
+        >
+      </li>
+      <li>
+        <a href="https://www.stb.tsukuba.ac.jp/~zdk/archives/5287"
+          >夜間に宿舎周辺で騒ぐ集団への対処方法</a
+        >
+      </li>
+    </ul>
+    <p>
+      授業や学生生活の中で困りごとがありましたら、お気軽に回答いただければと思います。
+    </p>
+  </div>
 </Layout>
