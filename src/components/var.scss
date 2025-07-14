@@ -4,3 +4,12 @@ $sp: 700px;
     @content;
   }
 }
+@mixin JosefinSans {
+  font-family: "Josefin Sans", sans-serif;
+}
+@mixin ZenKakuGothicNewMedium {
+  font-family: "ZenKakuGothicNew Medium", sans-serif;
+}
+@mixin ZenKakuGothicNewRegular {
+  font-family: "ZenKakuGothicNew Regular", sans-serif;
+}
