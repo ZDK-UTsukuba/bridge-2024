@@ -73,16 +73,11 @@
       display: flex;
       align-items: baseline;
       gap: 5px;
+      font-size: 14px;
+      flex-shrink: 0;
       .name {
-        font-size: 14px;
-        flex-shrink: 0;
-        &:not(.others) {
-          font-weight: 700;
-          font-size: 16px;
-        }
-        &:not(:first-child):not(.others) {
-          display: none;
-        }
+        font-weight: 700;
+        font-size: 16px;
       }
     }
     .rating {

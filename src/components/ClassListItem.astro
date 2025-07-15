@@ -87,17 +87,11 @@ const getRandomColor = () => {
     </div>
     <div class={componentStyles.names}>
       {
-        teachers.map((teacher) => (
-          <div class={componentStyles.name}>{teacher.name}</div>
-        ))
-      }
-      {
-        teachers.length > 1 && (
-          <div class:list={[componentStyles.name, componentStyles.others]}>
-            他 {teachers.length - 1} 名
-          </div>
+        teachers[0] && (
+          <div class={componentStyles.name}>{teachers[0].name}</div>
         )
       }
+      {teachers.length > 1 && <div>他 {teachers.length - 1} 名</div>}
     </div>
     <div class={componentStyles.rating}>
       <div class={componentStyles.stars}>
