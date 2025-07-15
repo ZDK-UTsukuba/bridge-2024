@@ -1,7 +1,7 @@
 @use "../components/var";
 
 .body {
-  & > .title {
+  .title {
     font-size: 40px;
     font-weight: 600;
     margin: 0 0 20px;
