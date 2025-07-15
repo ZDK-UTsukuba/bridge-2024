@@ -60,17 +60,17 @@
   justify-content: end;
   margin: 20px 0;
   flex-wrap: wrap;
-  a {
-    color: #101010;
-    text-decoration: none;
-    font-weight: 500;
-    &:hover {
-      color: #00c1d4;
-    }
-  }
   .copyright {
     color: #606060;
     font-weight: 400;
+    .title {
+      color: #101010;
+      text-decoration: none;
+      font-weight: 500;
+      &:hover {
+        color: #00c1d4;
+      }
+    }
   }
 }
 
