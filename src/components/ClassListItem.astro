@@ -101,10 +101,10 @@ const getRandomColor = () => {
     </div>
     <div class={componentStyles.rating}>
       <div class={componentStyles.stars}>
-        <Stars num={Number(rating)} />
+        <Stars num={rating} />
       </div>
       <div class={componentStyles.value}>
-        {parseFloat(Number(rating).toFixed(1))}
+        {rating.toFixed(1)}
       </div>
       <div class={componentStyles.reviews}>({reviewCount})</div>
     </div>
