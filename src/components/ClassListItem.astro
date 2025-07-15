@@ -2,7 +2,7 @@
 import { kdbData } from "../content/kdb-schema";
 import { subjectMap } from "../content/subjectsData";
 import componentStyles from "./ClassListItem.module.scss";
-import Stars from "./Stars.ClassList.astro";
+import Rating from "./Rating.astro";
 
 interface Props {
   subjectId: string;
@@ -49,6 +49,15 @@ const teachers: {
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
 const rating = calcAve(subject.subject.recommendation_level_of_this_class);
 const reviewCount = subject.subject.comment.length;
+
+const getRandomColor = () => {
+  return (
+    "#" +
+    Math.floor(Math.random() * 0xffffff)
+      .toString(16)
+      .padStart(6, "0")
+  );
+};
 ---
 
 <div class={componentStyles.item}>
@@ -68,12 +77,7 @@ const reviewCount = subject.subject.comment.length;
             class={componentStyles.image}
             style={{
               backgroundImage: `url('${teacher.image ?? "/people-default.png"}')`,
-              backgroundColor: teacher.image
-                ? "unset"
-                : "#" +
-                  Math.floor(Math.random() * 0xffffff)
-                    .toString(16)
-                    .padStart(6, "0"),
+              backgroundColor: teacher.image ? "unset" : getRandomColor(),
               zIndex: 100 - teacher_index,
             }}
             title={`${teacher.name} さんのアイコン`}
@@ -83,26 +87,12 @@ const reviewCount = subject.subject.comment.length;
     </div>
     <div class={componentStyles.names}>
       {
-        teachers.map((teacher) => (
-          <div class={componentStyles.name}>{teacher.name}</div>
-        ))
-      }
-      {
-        teachers.length > 1 && (
-          <div class={`${componentStyles.name} ${componentStyles.others}`}>
-            他 {teachers.length - 1} 名
-          </div>
+        teachers[0] && (
+          <div class={componentStyles.name}>{teachers[0].name}</div>
         )
       }
+      {teachers.length > 1 && <div>他 {teachers.length - 1} 名</div>}
     </div>
-    <div class={componentStyles.rating}>
-      <div class={componentStyles.stars}>
-        <Stars num={Number(rating)} />
-      </div>
-      <div class={componentStyles.value}>
-        {parseFloat(Number(rating).toFixed(1))}
-      </div>
-      <div class={componentStyles.reviews}>({reviewCount})</div>
-    </div>
+    <Rating rating={rating} reviewCount={reviewCount} />
   </div>
 </div>

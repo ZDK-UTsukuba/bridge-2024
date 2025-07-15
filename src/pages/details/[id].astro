@@ -468,7 +468,7 @@ const params =
         }
         <div class={pageStyles.item}>
           <div class={pageStyles.label}>コメント</div>
-          <div class={`${pageStyles.content} ${pageStyles.comments}`}>
+          <div class:list={[pageStyles.content, pageStyles.comments]}>
             {
               subject.subject.comment.map((comment) => (
                 <>

@@ -1,0 +1,40 @@
+.rating {
+  --rating-stars-color-light: #ffd700;
+  --rating-stars-color-dark: #ffd700;
+  --rating-stars-color: var(--rating-stars-color-light);
+  --rating-value-color-light: #666;
+  --rating-value-color-dark: #ffd700;
+  --rating-value-color: var(--rating-value-color-light);
+  --rating-reviews-color-light: #999;
+  --rating-reviews-color-dark: #ffd700;
+  --rating-reviews-color: var(--rating-reviews-color-light);
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .stars {
+    color: var(--rating-stars-color);
+    font-size: 18px;
+    margin-left: 10px;
+    display: inline-flex;
+    gap: 0;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .value {
+    font-size: 14px;
+    color: var(--rating-value-color);
+  }
+  .reviews {
+    font-size: 12px;
+    color: var(--rating-reviews-color);
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .rating {
+    --rating-stars-color: var(--rating-stars-color-dark);
+    --rating-value-color: var(--rating-value-color-dark);
+    --rating-reviews-color: var(--rating-reviews-color-dark);
+  }
+}
