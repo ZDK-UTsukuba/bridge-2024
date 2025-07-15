@@ -1,26 +1,14 @@
 ---
-interface Props {
-  defaultInput?: string;
-  styleAttr?: string;
-}
-
-const { defaultInput, styleAttr } = Astro.props;
 import componentStyles from "./SearchBox.module.scss";
 ---
 
-<form
-  class={componentStyles.searchBox}
-  data-searchbox-form
-  action="/search/"
-  style={styleAttr ?? ""}
->
+<form class={componentStyles.searchBox} data-searchbox-form action="/search/">
   <div class={componentStyles.inputWrap}>
     <img src="/search.svg" alt="Search" class={componentStyles.icon} />
     <input
       id="searchInput"
       type="text"
       class={componentStyles.input}
-      value={defaultInput ?? ""}
       placeholder=" "
     />
     <div class={componentStyles.suggestions}>
