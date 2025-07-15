@@ -2,7 +2,7 @@
 import { kdbData } from "../content/kdb-schema";
 import { subjectMap } from "../content/subjectsData";
 import componentStyles from "./ClassListItem.module.scss";
-import Stars from "./Stars.ClassList.astro";
+import Rating from "./Rating.astro";
 
 interface Props {
   subjectId: string;
@@ -93,14 +93,6 @@ const getRandomColor = () => {
       }
       {teachers.length > 1 && <div>他 {teachers.length - 1} 名</div>}
     </div>
-    <div class={componentStyles.rating}>
-      <div class={componentStyles.stars}>
-        <Stars num={rating} />
-      </div>
-      <div class={componentStyles.value}>
-        {rating.toFixed(1)}
-      </div>
-      <div class={componentStyles.reviews}>({reviewCount})</div>
-    </div>
+    <Rating rating={rating} reviewCount={reviewCount} />
   </div>
 </div>

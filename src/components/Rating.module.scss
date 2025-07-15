@@ -1,0 +1,33 @@
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .stars {
+    color: #ffd700;
+    font-size: 18px;
+    margin-left: 10px;
+    display: inline-flex;
+    gap: 0;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .value {
+    font-size: 14px;
+    color: #666;
+  }
+  .reviews {
+    font-size: 12px;
+    color: #999;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .rating {
+    .value {
+      color: #ffd700;
+    }
+    .reviews {
+      color: #ffd700;
+    }
+  }
+}
