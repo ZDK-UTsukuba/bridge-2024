@@ -89,7 +89,7 @@ const reviewCount = subject.subject.comment.length;
       }
       {
         teachers.length > 1 && (
-          <div class={`${componentStyles.name} ${componentStyles.others}`}>
+          <div class:list={[componentStyles.name, componentStyles.others]}>
             他 {teachers.length - 1} 名
           </div>
         )

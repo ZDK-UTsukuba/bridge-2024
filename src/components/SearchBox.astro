@@ -12,12 +12,12 @@ import componentStyles from "./SearchBox.module.scss";
       placeholder=" "
     />
     <div class={componentStyles.suggestions}>
-      <div class={`${componentStyles.container}`}>
-        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>微分積分</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>線形代数</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>統計学</p>
-        <p class={`suggestion-item ${componentStyles.item}`}>確率論</p>
+      <div class={componentStyles.container}>
+        <p class:list={['suggestion-item', componentStyles.item]}>確率論</p>
+        <p class:list={['suggestion-item', componentStyles.item]}>微分積分</p>
+        <p class:list={['suggestion-item', componentStyles.item]}>線形代数</p>
+        <p class:list={['suggestion-item', componentStyles.item]}>統計学</p>
+        <p class:list={['suggestion-item', componentStyles.item]}>確率論</p>
       </div>
     </div>
   </div>
