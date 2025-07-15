@@ -16,6 +16,8 @@
   width: 100%;
   background-color: var(--news-banner-background-color);
   color: var(--news-banner-text-color);
+
+  box-shadow: 0 0 20px 5px var(--news-banner-shadow-color);
   .content {
     display: flex;
     justify-content: flex-start;
@@ -35,17 +37,6 @@
       @include var.ZenKakuGothicNewRegular;
       font-size: 20px;
     }
-  }
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    left: -20px;
-    right: -20px;
-    top: calc(100% - 10px);
-    bottom: 3px;
-    box-shadow: 0 0 20px 5px var(--news-banner-shadow-color);
-    z-index: -1;
   }
 }
 
