@@ -1,5 +1,35 @@
 .card {
-  background-color: #fff;
+  --card-background-color-light: #ffffff;
+  --card-background-color-dark: #222119;
+  --card-background-color: var(--card-background-color-light);
+  --card-title-text-color-light: #00c1d4;
+  --card-title-text-color-dark: #ffffff;
+  --card-title-text-color: var(--card-title-text-color-light);
+  --card-actions-button-background-color-light: #00c1d4;
+  --card-actions-button-background-color-dark: #00c1d4;
+  --card-actions-button-background-color: var(
+    --card-actions-button-background-color-light
+  );
+  --card-actions-button-text-color-light: #ffffff;
+  --card-actions-button-text-color-dark: #222119;
+  --card-actions-button-text-color: var(--card-actions-button-text-color-light);
+  --card-actions-button-text-color-hover-light: #ffffff;
+  --card-actions-button-text-color-hover-dark: #ffffff;
+  --card-actions-button-text-color-hover: var(
+    --card-actions-button-text-color-hover-light
+  );
+  --card-actions-button-hover-background-color-light: #00a2b7;
+  --card-actions-button-hover-background-color-dark: #00a2b7;
+  --card-actions-button-hover-background-color: var(
+    --card-actions-button-hover-background-color-light
+  );
+  --card-actions-button-hover-border-color-light: #ffdc27;
+  --card-actions-button-hover-border-color-dark: #ffdc27;
+  --card-actions-button-hover-border-color: var(
+    --card-actions-button-hover-border-color-light
+  );
+
+  background-color: var(--card-background-color);
   border-radius: 36px;
   padding: 40px 46px;
   box-shadow: 0 5px 20px #00000002;
@@ -8,7 +38,7 @@
     font-weight: 700;
     font-size: 30px;
     line-height: 1.2;
-    color: #00c1d4;
+    color: var(--card-title-text-color);
     margin-bottom: 20px;
   }
   .actions {
@@ -19,9 +49,9 @@
     .button {
       position: relative;
       display: inline-block;
-      background-color: #00c1d4;
+      background-color: var(--card-actions-button-background-color);
       border-radius: 100px;
-      color: #fff;
+      color: var(--card-actions-button-text-color);
       font-family: "ZenKakuGothicNew Midium", sans-serif;
       font-weight: 700;
       font-size: 20px;
@@ -40,13 +70,14 @@
         left: calc((-1 * 500px * 1.414 / 2) + 80px);
         width: 500px;
         height: 500px;
-        background-color: #00a2b7;
-        border-right: 10px solid #ffdc27;
+        background-color: var(--card-actions-button-hover-background-color);
+        border-right: 10px solid var(--card-actions-button-hover-border-color);
         transition: all 0.3s;
         transform: translate(-50%, -50%) rotate(45deg);
         z-index: -1;
       }
       &:hover {
+        color: var(--card-actions-button-text-color-hover);
         transform: scale(1.1);
         &::after {
           left: 0;
@@ -59,16 +90,19 @@
 
 @media screen and (prefers-color-scheme: dark) {
   .card {
-    background-color: #222119;
-    color: #ffffff;
-    .title {
-      color: #00c1d4;
-    }
-    .actions .button {
-      color: #222119;
-      &:hover {
-        color: #ffffff;
-      }
-    }
+    --card-background-color: var(--card-background-color-dark);
+    --card-title-text-color: var(--card-title-text-color-dark);
+    --card-actions-button-background-color: var(
+      --card-actions-button-background-color-dark
+    );
+    --card-actions-button-text-color: var(
+      --card-actions-button-text-color-dark
+    );
+    --card-actions-button-hover-background-color: var(
+      --card-actions-button-hover-background-color-dark
+    );
+    --card-actions-button-hover-border-color: var(
+      --card-actions-button-hover-border-color-dark
+    );
   }
 }
