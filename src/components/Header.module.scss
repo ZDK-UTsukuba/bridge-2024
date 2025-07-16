@@ -1,7 +1,12 @@
 @use "./var";
 
 .header {
-  background-color: #00c1d4;
+  --header-background-color: #00c1d4;
+  --header-copy-text-color: #ffffff;
+  --header-badge-background-color: #ffffff;
+  --header-badge-text-color: #5d5d5d;
+
+  background-color: var(--header-background-color);
   padding: 20px 20px;
   display: flex;
   align-items: center;
@@ -20,7 +25,7 @@
     margin-bottom: 30px;
     .copy {
       font-size: 20px;
-      color: #ffffff;
+      color: var(--header-copy-text-color);
       margin: 10px 0 20px;
       font-weight: 600;
       @include var.sp {
@@ -48,8 +53,8 @@
         gap: 5px;
         padding: 5px 20px;
         border-radius: 20px;
-        background-color: #ffffff;
-        color: #5d5d5d;
+        background-color: var(--header-badge-background-color);
+        color: var(--header-badge-text-color);
         font-size: 14px;
         font-weight: 600;
         margin: 0 0 10px 0;
