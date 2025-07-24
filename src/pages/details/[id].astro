@@ -133,31 +133,46 @@ const params =
             subject.subject.male_to_female_ratio.sum /
             subject.subject.male_to_female_ratio.count,
           required_purchases: {
-            data: subject.subject.required_purchases,
+            data: {
+              True: subject.subject.required_purchases.True,
+              False: subject.subject.required_purchases.False,
+            },
             n:
               subject.subject.required_purchases.True +
               subject.subject.required_purchases.False,
             detail: subject.subject.required_purchases.detail,
           },
           rain: {
-            data: subject.subject.rain,
+            data: {
+              True: subject.subject.rain.True,
+              False: subject.subject.rain.False,
+            },
             n: subject.subject.rain.True + subject.subject.rain.False,
             detail: subject.subject.rain.detail,
           },
           final: {
-            data: subject.subject.final,
+            data: {
+              True: subject.subject.final.True,
+              False: subject.subject.final.False,
+            },
             n: subject.subject.final.True + subject.subject.final.False,
             detail: subject.subject.final.detail,
           },
           weekly_assignments: {
-            data: subject.subject.weekly_assignments,
+            data: {
+              True: subject.subject.weekly_assignments.True,
+              False: subject.subject.weekly_assignments.False,
+            },
             n:
               subject.subject.weekly_assignments.True +
               subject.subject.weekly_assignments.False,
             detail: subject.subject.weekly_assignments.detail,
           },
           overtime_assignments: {
-            data: subject.subject.overtime_assignments,
+            data: {
+              True: subject.subject.overtime_assignments.True,
+              False: subject.subject.overtime_assignments.False,
+            },
             n:
               subject.subject.overtime_assignments.True +
               subject.subject.overtime_assignments.False,
