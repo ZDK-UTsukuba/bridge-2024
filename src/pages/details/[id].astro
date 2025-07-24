@@ -4,6 +4,7 @@ import { subjectMap } from "../../content/subjectsData";
 import { kdbData } from "../../content/kdb-schema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
+import Stars from "../../components/Stars.ClassList.astro";
 
 export function getStaticPaths() {
   return [...subjectMap.keys()].map((subject) => ({
@@ -488,8 +489,9 @@ const params =
               subject.subject.comment.map((comment) => (
                 <>
                   <div class={pageStyles.comment}>
-                    <div class={pageStyles.recommendationLevel}>
-                      {"★".repeat(comment.recommendation_level_of_this_class)}
+                    <div class={pageStyles.commentHeader}>
+                      <Stars num={comment.recommendation_level_of_this_class} />
+                      <div>{comment.recommendation_level_of_this_class}</div>
                     </div>
                     {comment.comment}
                   </div>

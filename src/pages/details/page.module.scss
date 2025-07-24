@@ -14,6 +14,31 @@
   --detail-category-background-color: var(
     --detail-category-background-color-light
   );
+
+  --detail-category-border-color: #00c1d4;
+
+  --detail-tag-text-color-light: #5d5d5d;
+  --detail-tag-text-color-dark: #ffffff;
+  --detail-tag-text-color: var(--detail-tag-text-color-light);
+  --detail-tag-background-color-light: #ffffff;
+  --detail-tag-background-color-dark: #101010;
+  --detail-tag-background-color: var(--detail-tag-background-color-light);
+  --detail-tag-description-text-color-light: #bdbdbd;
+  --detail-tag-description-text-color-dark: #ffffff;
+  --detail-tag-description-text-color: var(
+    --detail-tag-description-text-color-light
+  );
+
+  --detail-tag-link-text-color: #00c1d4;
+
+  --detail-tag-link-hover-background-color-light: #ffffff;
+  --detail-tag-link-hover-background-color-dark: #0000008a;
+  --detail-tag-link-hover-background-color: var(
+    --detail-tag-link-hover-background-color-light
+  );
+
+  --detail-card-border-color: #0000003a;
+
   .title {
     font-size: 40px;
     font-weight: 600;
@@ -25,7 +50,7 @@
     font-weight: bold;
     padding: 6px 18px;
     border-radius: 20px;
-    border: 1px solid #00c1d4;
+    border: 1px solid var(--detail-category-border-color);
     background-color: var(--detail-category-background-color);
     color: var(--detail-category-text-color);
     margin-left: 10px;
@@ -37,19 +62,19 @@
     .tag {
       display: inline-block;
       padding: 10px 20px;
-      background-color: #ffffff;
-      color: #5d5d5d;
+      background-color: var(--detail-tag-background-color);
+      color: var(--detail-tag-text-color);
       font-size: 18px;
       font-weight: 600;
       margin: 20px 0 10px 0;
     }
     .description {
-      color: #bdbdbd;
+      color: var(--detail-tag-description-text-color);
       font-size: 14px;
       font-weight: 500;
     }
     a {
-      color: #00c1d4;
+      color: var(--detail-tag-link-text-color);
       font-family: "ZenKakuGothicNew Medium", sans-serif;
       font-weight: 600;
       text-decoration: none;
@@ -75,7 +100,7 @@
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background-color: #ffffff;
+          background-color: var(--detail-tag-link-hover-background-color);
           transform: scale(0);
           z-index: -1;
           transition: 0.2s;
@@ -126,7 +151,7 @@
           right: -5px;
           width: calc(100% + 10px);
           height: 1px;
-          background-color: #0000003a;
+          background-color: var(--detail-card-border-color);
         }
       }
     }
@@ -151,10 +176,10 @@
         margin-left: 0;
         margin-right: auto;
       }
-      .recommendationLevel {
-        line-height: 1;
-        font-size: 14px;
-        color: #ffdc27;
+      .commentHeader {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
       }
     }
   }
@@ -169,17 +194,13 @@
     --detail-category-background-color: var(
       --detail-category-background-color-dark
     );
-    .tagWrap {
-      .tag {
-        background-color: #101010;
-        color: #ffffff;
-      }
-      .description {
-        color: #ffffff;
-      }
-      a .iconWrap::before {
-        background-color: #0000008a;
-      }
-    }
+    --detail-tag-text-color: var(--detail-tag-text-color-dark);
+    --detail-tag-background-color: var(--detail-tag-background-color-dark);
+    --detail-tag-description-text-color: var(
+      --detail-tag-description-text-color-dark
+    );
+    --detail-tag-link-hover-background-color: var(
+      --detail-tag-link-hover-background-color-dark
+    );
   }
 }
