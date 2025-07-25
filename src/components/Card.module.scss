@@ -29,10 +29,12 @@
     --card-actions-button-hover-border-color-light
   );
 
+  --card-shadow-color: #00000002;
+
   background-color: var(--card-background-color);
   border-radius: 36px;
   padding: 40px 46px;
-  box-shadow: 0 5px 20px #00000002;
+  box-shadow: 0 5px 20px var(--card-shadow-color);
   .title {
     font-family: "ZenKakuGothicNew Midium", sans-serif;
     font-weight: 700;
