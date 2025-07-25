@@ -83,6 +83,7 @@
     margin-bottom: 5px;
     gap: 10px;
     color: var(--class-list-item-info-text-color);
+    flex-wrap: wrap;
     .images {
       display: flex;
       .image {

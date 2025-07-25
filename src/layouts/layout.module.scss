@@ -8,11 +8,22 @@
   flex-direction: row;
   gap: 40px;
   & > :not(.sidebar) {
-    flex: 1;
+    flex: 1 1 500px;
   }
   @include var.sp {
     flex-direction: column;
+    width: calc(100% - 30px);
+    margin: 15px auto;
+    gap: 20px;
   }
   .sidebar {
+    width: 250px;
+    min-width: 250px;
+    max-width: 300px;
+    @include var.sp {
+      width: 100%;
+      max-width: 100%;
+    }
+    flex-grow: 1;
   }
 }

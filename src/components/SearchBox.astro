@@ -9,7 +9,7 @@ import componentStyles from "./SearchBox.module.scss";
       id="searchInput"
       type="text"
       class={componentStyles.input}
-      placeholder=""
+      placeholder={" " /* "" にすると webkit でうまく動作しない */}
     />
     <div class={componentStyles.suggestions}>
       <div class={componentStyles.container}>
