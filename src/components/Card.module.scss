@@ -1,3 +1,5 @@
+@use "./var";
+
 .card {
   --card-background-color-light: #ffffff;
   --card-background-color-dark: #222119;
@@ -35,6 +37,10 @@
   border-radius: 36px;
   padding: 40px 46px;
   box-shadow: 0 5px 20px var(--card-shadow-color);
+  @include var.sp {
+    border-radius: 20px;
+    padding: 20px 20px;
+  }
   .title {
     font-family: "ZenKakuGothicNew Midium", sans-serif;
     font-weight: 700;
