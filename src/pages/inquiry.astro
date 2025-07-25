@@ -1,11 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import pageStyles from "./about.module.scss";
-
-const bridgeFormUrl = {
-  common:
-    "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=_V1bnp1m-E6yQEIpy_SoPbKnoP8qCEREtpRJ6KkvoW5UOVBEOUFGQlJIUFlXOEtZSkVFUzYxUFBDRSQlQCN0PWcu", // 2025
-}; //フォームの回答可能範囲が@u.tsukuba.ac.jpに限定されているか？ 指さし確認！ヨシ！
 ---
 
 <Layout title="お問い合わせ">
@@ -24,7 +19,7 @@ const bridgeFormUrl = {
       BRIDGEに掲載されている各講義へのコメントや評価は、学生の皆さんによるものです。学生の皆様が講義を受けられました場合、是非BRIDGEへその講義のコメントや評価を追加してください。
     </p>
     <p>
-      こちらの<a href={bridgeFormUrl.common}>BRIDGE 回答フォーム</a>
+      こちらの<a href="/form">BRIDGE 回答フォーム</a>
       からご回答いただけますと幸いです。
     </p>
     <p>
