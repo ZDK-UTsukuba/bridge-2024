@@ -9,9 +9,7 @@ const { rating, reviewCount } = Astro.props;
 ---
 
 <div class={componentStyles.rating}>
-  <div class={componentStyles.stars}>
-    <Stars num={rating} />
-  </div>
+  <Stars num={rating} />
   <div class={componentStyles.value}>
     {rating.toFixed(1)}
   </div>
