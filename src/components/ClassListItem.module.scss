@@ -1,5 +1,34 @@
 .item {
-  border-bottom: 1px solid #e0e0e0;
+  --class-list-item-title-text-color-light: #101010;
+  --class-list-item-title-text-color-dark: #ffffff;
+  --class-list-item-title-text-color: var(
+    --class-list-item-title-text-color-light
+  );
+  --class-list-item-title-text-color-hover-light: #ffffff;
+  --class-list-item-title-text-color-hover-dark: #000000;
+  --class-list-item-title-text-color-hover: var(
+    --class-list-item-title-text-color-hover-light
+  );
+  --class-list-item-title-background-color-hover-light: #00c1d4;
+  --class-list-item-title-background-color-hover-dark: #00c1d4;
+  --class-list-item-title-background-color-hover: var(
+    --class-list-item-title-background-color-hover-light
+  );
+  --class-list-item-info-text-color-light: #101010;
+  --class-list-item-info-text-color-dark: #e5e5e5;
+  --class-list-item-info-text-color: var(
+    --class-list-item-info-text-color-light
+  );
+  --class-list-item-category-border-color-light: #00c1d4;
+  --class-list-item-category-border-color-dark: #00c1d4;
+  --class-list-item-category-border-color: var(
+    --class-list-item-category-border-color-light
+  );
+  --class-list-item-border-color-light: #e0e0e0;
+  --class-list-item-border-color-dark: #e0e0e0;
+  --class-list-item-border-color: var(--class-list-item-border-color-light);
+
+  border-bottom: 1px solid var(--class-list-item-border-color);
   padding: 15px 0;
   &:last-child {
     border-bottom: none;
@@ -10,14 +39,13 @@
     line-height: 1.2;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #101010;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     a {
       display: inline-block;
       position: relative;
-      color: #101010;
+      color: var(--class-list-item-title-text-color);
       text-decoration: none;
       z-index: 0;
       width: fit-content;
@@ -29,12 +57,12 @@
         left: -5px;
         right: calc(100% + 5px);
         bottom: -4px;
-        background-color: #00c1d4;
+        background-color: var(--class-list-item-title-background-color-hover);
         transition: right 0.3s;
         z-index: -1;
       }
       &:hover {
-        color: #ffffff;
+        color: var(--class-list-item-title-text-color-hover);
         &::after {
           right: -5px;
         }
@@ -45,9 +73,7 @@
       font-size: 14px;
       padding: 6px 18px;
       border-radius: 20px;
-      border: 1px solid #00c1d4;
-      background-color: #ffffff;
-      color: #101010;
+      border: 1px solid var(--class-list-item-category-border-color);
       margin-left: 10px;
     }
   }
@@ -56,6 +82,8 @@
     align-items: center;
     margin-bottom: 5px;
     gap: 10px;
+    color: var(--class-list-item-info-text-color);
+    flex-wrap: wrap;
     .images {
       display: flex;
       .image {
@@ -73,38 +101,11 @@
       display: flex;
       align-items: baseline;
       gap: 5px;
+      font-size: 14px;
+      flex-shrink: 0;
       .name {
-        font-size: 14px;
-        flex-shrink: 0;
-        &:not(.others) {
-          font-weight: 700;
-          font-size: 16px;
-        }
-        &:not(:first-child):not(.others) {
-          display: none;
-        }
-      }
-    }
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      .stars {
-        color: #ffd700;
-        font-size: 18px;
-        margin-left: 10px;
-        display: inline-flex;
-        gap: 0;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .value {
-        font-size: 14px;
-        color: #666;
-      }
-      .reviews {
-        font-size: 12px;
-        color: #999;
+        font-weight: 700;
+        font-size: 16px;
       }
     }
   }
@@ -112,28 +113,21 @@
 
 @media screen and (prefers-color-scheme: dark) {
   .item {
-    .title {
-      a {
-        color: #ffffff;
-        &:hover {
-          color: #000000;
-        }
-      }
-      .category {
-        color: #ffffff;
-        background: transparent;
-      }
-    }
-    .info {
-      color: #e5e5e5;
-      .rating {
-        .value {
-          color: #ffd700;
-        }
-        .reviews {
-          color: #ffd700;
-        }
-      }
-    }
+    --class-list-item-title-text-color: var(
+      --class-list-item-title-text-color-dark
+    );
+    --class-list-item-title-text-color-hover: var(
+      --class-list-item-title-text-color-hover-dark
+    );
+    --class-list-item-title-background-color-hover: var(
+      --class-list-item-title-background-color-hover-dark
+    );
+    --class-list-item-info-text-color: var(
+      --class-list-item-info-text-color-dark
+    );
+    --class-list-item-category-border-color: var(
+      --class-list-item-category-border-color-dark
+    );
+    --class-list-item-border-color: var(--class-list-item-border-color-dark);
   }
 }

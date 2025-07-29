@@ -7,14 +7,14 @@ const { isMain } = Astro.props;
 import componentStyles from "./Header.module.scss";
 ---
 
-<header class={`${componentStyles.header}  ${isMain && componentStyles.main}`}>
-  <div class={`${componentStyles.logoWrap}  ${isMain && componentStyles.main}`}>
-    <p class={componentStyles.copy}>シラバスだけでは、わからない｡</p>
+<header class:list={[componentStyles.header, isMain && componentStyles.main]}>
+  <div class:list={[componentStyles.logoWrap]}>
+    <p class={componentStyles.copy}>シラバスだけでは、わからない。</p>
     <a href="/" class={componentStyles.group}>
       <img
         src="/logo.svg"
         alt="Logo"
-        class={`${componentStyles.logo} ${isMain && componentStyles.large}`}
+        class:list={[componentStyles.logo, isMain && componentStyles.large]}
       />
       <p class={componentStyles.badge}>Preview</p>
     </a>

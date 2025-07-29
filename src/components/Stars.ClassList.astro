@@ -1,29 +1,39 @@
 ---
+import componentStyles from "./Stars.module.scss";
+
 interface Props {
   num: number;
 }
 const { num } = Astro.props;
+
+const calcClass = (i: number) => {
+  if (i <= Math.floor(num) - 1) {
+    return componentStyles.filled;
+  } else if (i >= Math.ceil(num)) {
+    return componentStyles.unfilled;
+  } else {
+    return componentStyles.partial;
+  }
+};
 ---
 
-<>
+<div class={componentStyles.stars}>
   {
-    Array.from({ length: Math.ceil(num) }, (_, i) => {
-      return (
-        <span
-          style={
-            i === Math.ceil(num) - 1 && Math.ceil(num) - Math.floor(num) !== 0
-              ? `background: linear-gradient(to right, #ffd700 ${(num - Math.floor(num)) * 100}%, #ddd ${(num - Math.floor(num)) * 100}%);-webkit-background-clip: text;color: transparent;`
-              : ""
-          }
-        >
-          ★
-        </span>
-      );
-    })
+    [...Array(5)]
+      .map((_, i) => calcClass(i))
+      .map((cssClass) => (
+        <>
+          <span
+            class={cssClass}
+            style={
+              cssClass === componentStyles.partial
+                ? `--rating-stars-part: ${(num - Math.floor(num)) * 100}%;`
+                : null
+            }
+          >
+            ★
+          </span>
+        </>
+      ))
   }
-  {
-    Array.from({ length: 5 - Math.ceil(num) }, () => {
-      return <span style="color: #ddd;">★</span>;
-    })
-  }
-</>
+</div>

@@ -1,4 +1,8 @@
 .searchBox {
+  --search-box-input-background-color: #ffffff;
+  --search-box-input-focus-outline-color: #ffdb276b;
+  --search-box-input-suggestions-color: #999;
+
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -8,7 +12,7 @@
     position: relative;
     display: block;
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--search-box-input-background-color);
     --input-padding: 30px;
     .icon {
       position: absolute;
@@ -28,7 +32,7 @@
       line-height: 1;
       font-size: 20px;
       &:focus {
-        outline: 5px solid #ffdb276b;
+        outline: 5px solid var(--search-box-input-focus-outline-color);
       }
       z-index: 2;
     }
@@ -57,7 +61,7 @@
           margin-top: -4px; // @todo なぜかずれるので調整
           padding: var(--input-padding) var(--input-padding)
             var(--input-padding) var(--input-padding);
-          color: #999;
+          color: var(--search-box-input-suggestions-color);
           opacity: 0.5;
         }
       }
@@ -65,7 +69,7 @@
     .input:not(:placeholder-shown) + .suggestions {
       display: none;
     }
-    --scroll-hight: calc(-1 * (1 / (4 + 1)) * 100%);
+    --scroll-hight: calc(-1 * (1 / (5 + 1)) * 100%);
     @keyframes scroll {
       // @todo ちゃんと計算する or いい感じにしたい
       0% {
@@ -95,8 +99,11 @@
       80% {
         transform: translateY(calc(var(--scroll-hight) * 4));
       }
-      100% {
+      95% {
         transform: translateY(calc(var(--scroll-hight) * 4));
+      }
+      100% {
+        transform: translateY(calc(var(--scroll-hight) * 5));
       }
     }
   }

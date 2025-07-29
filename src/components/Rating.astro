@@ -1,0 +1,17 @@
+---
+import componentStyles from "./Rating.module.scss";
+import Stars from "./Stars.ClassList.astro";
+interface Props {
+  rating: number;
+  reviewCount: number;
+}
+const { rating, reviewCount } = Astro.props;
+---
+
+<div class={componentStyles.rating}>
+  <Stars num={rating} />
+  <div class={componentStyles.value}>
+    {rating.toFixed(1)}
+  </div>
+  <div class={componentStyles.reviews}>({reviewCount})</div>
+</div>

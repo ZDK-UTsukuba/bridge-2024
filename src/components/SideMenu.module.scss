@@ -1,9 +1,28 @@
+@use "@components/var";
+
 .menu {
+  --side-menu-background-color-light: #ffffff;
+  --side-menu-background-color-dark: #575757;
+  --side-menu-background-color: var(--side-menu-background-color-light);
+  --side-menu-text-color-light: #00c1d4;
+  --side-menu-text-color-dark: #00c1d4;
+  --side-menu-text-color: var(--side-menu-text-color-light);
+  --side-menu-text-color-light-hover: #00a2b7;
+  --side-menu-text-color-dark-hover: #00c1d4;
+  --side-menu-text-color-hover: var(--side-menu-text-color-light-hover);
+  --side-menu-border-color-light: #00c1d4;
+  --side-menu-border-color-dark: #454242;
+  --side-menu-border-color: var(--side-menu-border-color-light);
+  --side-menu-border-color-light-hover: #00c1d4;
+  --side-menu-border-color-dark-hover: #00c1d4;
+  --side-menu-border-color-hover: var(--side-menu-border-color-light-hover);
+  --side-menu-shadow-color: #00000008;
+  --side-menu-shadow-color-hover: #0000001b;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 300px;
   .items {
     display: flex;
     flex-direction: column;
@@ -17,16 +36,16 @@
         width: 100%;
         height: 100%;
         padding: 20px 30px 20px 30px;
-        box-shadow: 0 5px 20px #00000008;
         border-radius: 100px;
-        border: 3px solid #00c1d4;
-        background-color: #ffffff;
         overflow: hidden;
         transition: 0.2s;
+        border: 3px solid var(--side-menu-border-color);
+        box-shadow: 0 5px 20px var(--side-menu-shadow-color);
+        color: var(--side-menu-text-color);
+        background-color: var(--side-menu-background-color);
         .icon {
           width: 16px;
           height: 16px;
-          color: #00c1d4;
           transition: 0.2s;
         }
         .title {
@@ -34,35 +53,15 @@
           font-size: 20px;
           font-weight: 600;
           line-height: 1.2;
-          color: #00c1d4;
         }
-      }
-    }
-    .footer {
-      display: flex;
-      gap: 20px;
-      justify-content: end;
-      margin: 20px 0;
-      flex-wrap: wrap;
-      a {
-        color: #101010;
-        @media screen and (prefers-color-scheme: dark) {
-          color: #00c1d4;
-        }
-        text-decoration: none;
-        font-weight: 500;
         &:hover {
-          box-shadow:
-            0 5px 20px #00000008,
-            0 5px 20px #00000014;
+          border: 3px solid var(--side-menu-border-color-hover);
+          box-shadow: 0 5px 20px var(--side-menu-shadow-color-hover);
+          color: var(--side-menu-text-color-hover);
           transform: translateY(-2px);
           .icon {
             margin-left: 5px;
             margin-right: -5px;
-            color: #00a2b7;
-          }
-          .title {
-            color: #00a2b7;
           }
         }
       }
@@ -70,37 +69,46 @@
   }
 }
 .footer {
+  --footer-text-color-light: #606060;
+  --footer-text-color-dark: #ffffff;
+  --footer-text-color: var(--footer-text-color-light);
+  --footer-text-color-light-title: #101010;
+  --footer-text-color-dark-title: #ffffff;
+  --footer-text-color-title: vat(--footer-text-color-light-title);
+  --footer-text-color-light-hover: #00c1d4;
+  --footer-text-color-dark-hover: #00c1d4;
+  --footer-text-color-hover: vat(--footer-text-color-light-hover);
+
   display: flex;
   gap: 20px;
   justify-content: end;
   margin: 20px 0;
   flex-wrap: wrap;
-  a {
-    color: #101010;
-    text-decoration: none;
-    font-weight: 500;
-    &:hover {
-      color: #00c1d4;
-    }
-  }
   .copyright {
-    color: #606060;
+    color: var(--footer-text-color);
     font-weight: 400;
+    .title {
+      color: var(--footer-text-color-title);
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      &:hover {
+        color: var(--footer-text-color-hover);
+      }
+    }
   }
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .menu .items .item .link {
-    background-color: #575757;
-    border-color: #454242;
-    &:hover {
-      border-color: #00c1d4;
-      .icon {
-        color: #00c1d4;
-      }
-      .title {
-        color: #00c1d4;
-      }
-    }
+  .menu {
+    --side-menu-background-color: var(--side-menu-background-color-dark);
+    --side-menu-text-color: var(--side-menu-text-color-dark);
+    --side-menu-text-color-hover: var(--side-menu-text-color-dark-hover);
+    --side-menu-border-color: var(--side-menu-border-color-dark);
+  }
+  .footer {
+    --footer-text-color: var(--footer-text-color-dark);
+    --footer-text-color-title: var(--footer-text-color-dark-title);
+    --footer-text-color-hover: var(--footer-text-color-dark-hover);
   }
 }

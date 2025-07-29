@@ -1,5 +1,10 @@
 ---
 const { labels, data, n } = Astro.props;
+interface Props {
+  labels: Record<string, string>;
+  data: Record<string, number>;
+  n: number;
+}
 ---
 
 <span>

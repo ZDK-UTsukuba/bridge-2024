@@ -1,7 +1,13 @@
 ---
 import "bulma/css/bulma.min.css";
 import "./global.css";
+import pageStyles from "./layout.module.scss";
+import Header from "../components/Header.astro";
+import SearchBox from "../components/SearchBox.astro";
+import SideMenu from "../components/SideMenu.astro";
+
 interface Props {
+  isMain?: boolean;
   title?: string;
   description?: string;
   og?: {
@@ -12,7 +18,7 @@ interface Props {
     card?: string;
   };
 }
-const { title, description, og, twitter } = Astro.props;
+const { isMain, title, description, og, twitter } = Astro.props;
 const metadata = {
   title: title ? `${title} - BRIDGE` : "BRIDGE",
   description: description ?? "各学類等の学生達の目線で書かれた授業評価サイト",
@@ -41,15 +47,25 @@ const metadata = {
     <meta property="og:image" content={metadata.og.image} />
     <meta property="og:site_name" content={metadata.og.site_name} />
     <meta name="twitter:card" content={metadata.twitter.card} />
-    <script>
-      console.log(
-        "%cこの画面をご覧の方へ\n「BRIDGE」は全代会のIPCによって開発されました。\n一緒に大学を情報技術の力で便利にしていきませんか？ お待ちしております。\n%c興味のある方は https://www.stb.tsukuba.ac.jp/~zdk/recruit まで",
-        "font-size: 2em;",
-        "font-size: 1.5em;",
-      );
-    </script>
   </head>
   <body>
-    <slot />
+    <Header isMain={isMain ?? false}>
+      <SearchBox />
+    </Header>
+    <slot name="banner" />
+    <main class={pageStyles.main}>
+      <slot />
+      <div class={pageStyles.sidebar}>
+        <SideMenu />
+      </div>
+    </main>
   </body>
 </html>
+
+<script>
+  console.log(
+    "%cこの画面をご覧の方へ\n「BRIDGE」は全代会のIPCによって開発されました。\n一緒に大学を情報技術の力で便利にしていきませんか？ お待ちしております。\n%c興味のある方は https://www.stb.tsukuba.ac.jp/~zdk/recruit まで",
+    "font-size: 2em;",
+    "font-size: 1.5em;",
+  );
+</script>

@@ -1,0 +1,27 @@
+.rating {
+  --rating-value-color-light: #666;
+  --rating-value-color-dark: #ffd700;
+  --rating-value-color: var(--rating-value-color-light);
+  --rating-reviews-color-light: #999;
+  --rating-reviews-color-dark: #ffd700;
+  --rating-reviews-color: var(--rating-reviews-color-light);
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .value {
+    font-size: 14px;
+    color: var(--rating-value-color);
+  }
+  .reviews {
+    font-size: 12px;
+    color: var(--rating-reviews-color);
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .rating {
+    --rating-value-color: var(--rating-value-color-dark);
+    --rating-reviews-color: var(--rating-reviews-color-dark);
+  }
+}
