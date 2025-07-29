@@ -47,12 +47,7 @@ const rating = calcAve(subject.subject.recommendation_level_of_this_class);
 const reviewCount = subject.subject.comment.length;
 
 const getRandomColor = () => {
-  return (
-    "#" +
-    Math.floor(Math.random() * 0xffffff)
-      .toString(16)
-      .padStart(6, "0")
-  );
+  return `oklch(75% 0.20 ${Math.random() * 360})`;
 };
 ---
 
