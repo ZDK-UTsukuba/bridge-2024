@@ -12,11 +12,14 @@ import SearchBox from "./SearchBox.astro";
   <div class:list={[componentStyles.logoWrap]}>
     <p class={componentStyles.copy}>シラバスだけでは、わからない。</p>
     <a href="/" class={componentStyles.group}>
-      <img
-        src="/logo.svg"
-        alt="Logo"
-        class:list={[componentStyles.logo, isMain && componentStyles.large]}
-      />
+      <picture>
+        <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+        <img
+          src="/logo-light.svg"
+          alt="Logo"
+          class:list={[componentStyles.logo, isMain && componentStyles.large]}
+        />
+      </picture>
       <p class={componentStyles.badge}>Preview</p>
     </a>
   </div>

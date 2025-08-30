@@ -1,10 +1,18 @@
 @use "./var";
 
 .header {
-  --header-background-color: #00c1d4;
-  --header-copy-text-color: #5d5d5d;
-  --header-badge-background-color: #ffffff;
-  --header-badge-text-color: #5d5d5d;
+  --header-background-color-light: #fafafa;
+  --header-background-color-dark: #434343;
+  --header-background-color: var(--header-background-color-light);
+  --header-copy-text-color-light: #5d5d5d;
+  --header-copy-text-color-dark: #ffffff;
+  --header-copy-text-color: var(--header-copy-text-color-light);
+  --header-badge-background-color-light: #777777;
+  --header-badge-background-color-dark: #ffffff;
+  --header-badge-background-color: var(--header-badge-background-color-light);
+  --header-badge-text-color-light: #ffffff;
+  --header-badge-text-color-dark: #5d5d5d;
+  --header-badge-text-color: var(--header-badge-text-color-light);
 
   background-color: var(--header-background-color);
   padding: 20px 30px;
@@ -12,6 +20,8 @@
   align-items: center;
   flex-flow: row wrap;
   justify-content: space-between;
+
+  box-shadow: 0 0 20px 5px #00000017;
   .logoWrap {
     flex: none;
     display: flex;
@@ -73,5 +83,14 @@
         }
       }
     }
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .header {
+    --header-background-color: var(--header-background-color-dark);
+    --header-copy-text-color: var(--header-copy-text-color-dark);
+    --header-badge-background-color: var(--header-badge-background-color-dark);
+    --header-badge-text-color: var(--header-badge-text-color-dark);
   }
 }
