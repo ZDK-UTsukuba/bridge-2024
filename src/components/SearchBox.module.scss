@@ -8,12 +8,14 @@
   flex-direction: column;
   width: calc(100% - 50px);
   max-width: 800px;
+  min-width: 400px;
+  flex: 1 1;
   .inputWrap {
     position: relative;
     display: block;
     width: 100%;
     background-color: var(--search-box-input-background-color);
-    --input-padding: 30px;
+    --input-padding: 25px;
     .icon {
       position: absolute;
       left: 20px;
