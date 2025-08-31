@@ -3,7 +3,6 @@ import "bulma/css/bulma.min.css";
 import "./global.css";
 import pageStyles from "./layout.module.scss";
 import Header from "../components/Header.astro";
-import SearchBox from "../components/SearchBox.astro";
 import SideMenu from "../components/SideMenu.astro";
 
 interface Props {
@@ -49,9 +48,7 @@ const metadata = {
     <meta name="twitter:card" content={metadata.twitter.card} />
   </head>
   <body>
-    <Header isMain={isMain ?? false}>
-      <SearchBox />
-    </Header>
+    <Header isMain={isMain ?? false} />
     <slot name="banner" />
     <main class={pageStyles.main}>
       <slot />

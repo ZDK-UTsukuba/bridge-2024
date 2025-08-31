@@ -1,25 +1,36 @@
 @use "./var";
 
 .header {
-  --header-background-color: #00c1d4;
-  --header-copy-text-color: #ffffff;
-  --header-badge-background-color: #ffffff;
-  --header-badge-text-color: #5d5d5d;
+  --header-background-color-light: #fafafa;
+  --header-background-color-dark: #434343;
+  --header-background-color: var(--header-background-color-light);
+  --header-copy-text-color-light: #5d5d5d;
+  --header-copy-text-color-dark: #ffffff;
+  --header-copy-text-color: var(--header-copy-text-color-light);
+  --header-badge-background-color-light: #777777;
+  --header-badge-background-color-dark: #ffffff;
+  --header-badge-background-color: var(--header-badge-background-color-light);
+  --header-badge-text-color-light: #ffffff;
+  --header-badge-text-color-dark: #5d5d5d;
+  --header-badge-text-color: var(--header-badge-text-color-light);
 
   background-color: var(--header-background-color);
-  padding: 20px 20px;
+  padding: 20px 30px;
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  flex-flow: row wrap;
   justify-content: space-between;
+
+  box-shadow: 0 0 20px 5px #00000017;
   .logoWrap {
+    flex: none;
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     align-items: center;
-    margin-bottom: 0;
+    margin: 15px;
+    color: var(--header-copy-text-color);
     .copy {
       font-size: 14px;
-      color: var(--header-copy-text-color);
       margin: 0 0 5px;
       font-weight: 600;
       @include var.sp {
@@ -29,7 +40,7 @@
     .group {
       display: flex;
       align-items: center;
-      flex-direction: row;
+      flex-flow: row nowrap;
       gap: 5px;
       .logo {
         width: auto;
@@ -58,6 +69,7 @@
   &.main {
     align-items: center;
     padding: 50px 20px;
+    flex-flow: column nowrap;
     .logoWrap {
       margin-bottom: 30px;
       .copy {
@@ -72,9 +84,13 @@
       }
     }
   }
-  .slot {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .header {
+    --header-background-color: var(--header-background-color-dark);
+    --header-copy-text-color: var(--header-copy-text-color-dark);
+    --header-badge-background-color: var(--header-badge-background-color-dark);
+    --header-badge-text-color: var(--header-badge-text-color-dark);
   }
 }
