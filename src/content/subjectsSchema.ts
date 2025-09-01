@@ -225,7 +225,13 @@ const MergedSubjectSchema = z.object({
 
 const SubjectsSchema = z.array(MergedSubjectSchema);
 
-const parsedSubjects: readonly MergedSubject[] =
-  SubjectsSchema.parse(subjectsMergedJson);
+const parsedSubjects: readonly MergedSubject[] = (() => {
+  try {
+    return SubjectsSchema.parse(subjectsMergedJson);
+  } catch (error) {
+    console.error("Failed to parse subjects:", JSON.stringify(error, null, 4));
+    throw new Error("Failed to parse subjects");
+  }
+})();
 
 export const subjectsData = parsedSubjects;
