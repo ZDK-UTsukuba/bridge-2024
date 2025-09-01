@@ -7,12 +7,6 @@
   --header-copy-text-color-light: #5d5d5d;
   --header-copy-text-color-dark: #ffffff;
   --header-copy-text-color: var(--header-copy-text-color-light);
-  --header-badge-background-color-light: #777777;
-  --header-badge-background-color-dark: #ffffff;
-  --header-badge-background-color: var(--header-badge-background-color-light);
-  --header-badge-text-color-light: #ffffff;
-  --header-badge-text-color-dark: #5d5d5d;
-  --header-badge-text-color: var(--header-badge-text-color-light);
 
   background-color: var(--header-background-color);
   padding: 20px 30px;
@@ -52,19 +46,10 @@
           }
         }
       }
-      .badge {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        padding: 5px 20px;
-        border-radius: 20px;
-        background-color: var(--header-badge-background-color);
-        color: var(--header-badge-text-color);
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0;
-      }
     }
+  }
+  @include var.sp {
+    padding: 20px 10px;
   }
   &.main {
     align-items: center;
@@ -78,10 +63,10 @@
       }
       .group {
         flex-direction: column;
-        .badge {
-          margin-bottom: 10px;
-        }
       }
+    }
+    @include var.sp {
+      padding: 20px 0;
     }
   }
 }
@@ -90,7 +75,5 @@
   .header {
     --header-background-color: var(--header-background-color-dark);
     --header-copy-text-color: var(--header-copy-text-color-dark);
-    --header-badge-background-color: var(--header-badge-background-color-dark);
-    --header-badge-text-color: var(--header-badge-text-color-dark);
   }
 }
