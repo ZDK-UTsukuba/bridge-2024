@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "./scripts/fetchKdB.sh && ./scripts/fetchSummary.sh",
+    "prebuild": "./scripts/fetchSubjects.sh && ./scripts/fetchSummary.sh",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",

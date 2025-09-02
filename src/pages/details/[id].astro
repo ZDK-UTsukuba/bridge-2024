@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { subjectMap } from "../../content/subjectsData";
-import { kdbData } from "../../content/kdb-schema";
+import { subjectsData } from "../../content/subjectsSchema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
 import Stars from "../../components/Stars.ClassList.astro";
@@ -21,7 +21,7 @@ if (subject == undefined) {
   throw new Error("");
 }
 
-const kdbs = kdbData.subject.filter((v) => v.name === subject.name);
+const kdbs = subjectsData.filter((v) => v.name === subject.name);
 
 function syllabiUrl(number: string) {
   return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
@@ -507,9 +507,9 @@ const params =
       kdbs.map((kdbSubject) => (
         <>
           <div class={pageStyles.tagWrap}>
-            <div class={pageStyles.tag}>科目番号 {kdbSubject.number}</div>
+            <div class={pageStyles.tag}>科目番号 {kdbSubject.code}</div>
             <a
-              href={syllabiUrl(kdbSubject.number)}
+              href={syllabiUrl(kdbSubject.code)}
               target="_blank"
               rel="noopener noreferrer external"
             >
@@ -536,38 +536,47 @@ const params =
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>授業形態</div>
                 <div class={pageStyles.content}>
-                  {kdbSubject.instructionalType}
+                  {kdbSubject.instructionalType.value?.text ?? ""}
                 </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>単位</div>
-                <div class={pageStyles.content}>{kdbSubject.credits}</div>
+                <div class={pageStyles.content}>
+                  {kdbSubject.credits.value === null
+                    ? ""
+                    : kdbSubject.credits.value.type === "number"
+                      ? kdbSubject.credits.value?.value
+                      : "-"}
+                </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>標準履修年次</div>
                 <div class={pageStyles.content}>
-                  {kdbSubject.standardRegistrationYear}
+                  {kdbSubject.year.value.join(", ")}
                 </div>
               </div>
               <div class={pageStyles.item}>
-                <div class={pageStyles.label}>学期</div>
-                <div class={pageStyles.content}>{kdbSubject.term}</div>
-              </div>
-              <div class={pageStyles.item}>
-                <div class={pageStyles.label}>曜時限</div>
-                <div class={pageStyles.content}>{kdbSubject.period}</div>
+                <div class={pageStyles.label}>学期 曜時限</div>
+                <div class={pageStyles.content}>
+                  {kdbSubject.terms.twinsRaw?.module ??
+                    `${kdbSubject.terms.module} ${kdbSubject.terms.weekdayAndPeriod}`}
+                </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>担当教員</div>
-                <div class={pageStyles.content}>{kdbSubject.instructor}</div>
+                <div class={pageStyles.content}>
+                  {kdbSubject.instructor.value.join(", ")}
+                </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>授業概要</div>
-                <div class={pageStyles.content}>{kdbSubject.abstract}</div>
+                <div class={pageStyles.content}>
+                  {kdbSubject.overview ?? ""}
+                </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>備考</div>
-                <div class={pageStyles.content}>{kdbSubject.remarks}</div>
+                <div class={pageStyles.content}>{kdbSubject.remarks ?? ""}</div>
               </div>
             </div>
           </div>
