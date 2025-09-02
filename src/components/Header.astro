@@ -5,21 +5,22 @@ interface Props {
 
 const { isMain } = Astro.props;
 import componentStyles from "./Header.module.scss";
+import SearchBox from "./SearchBox.astro";
 ---
 
 <header class:list={[componentStyles.header, isMain && componentStyles.main]}>
   <div class:list={[componentStyles.logoWrap]}>
     <p class={componentStyles.copy}>シラバスだけでは、わからない。</p>
     <a href="/" class={componentStyles.group}>
-      <img
-        src="/logo.svg"
-        alt="Logo"
-        class:list={[componentStyles.logo, isMain && componentStyles.large]}
-      />
-      <p class={componentStyles.badge}>Preview</p>
+      <picture>
+        <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+        <img
+          src="/logo-light.svg"
+          alt="Logo"
+          class:list={[componentStyles.logo, isMain && componentStyles.large]}
+        />
+      </picture>
     </a>
   </div>
-  <div class={componentStyles.slot}>
-    <slot />
-  </div>
+  <SearchBox />
 </header>

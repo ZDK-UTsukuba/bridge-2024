@@ -3,7 +3,6 @@ import "bulma/css/bulma.min.css";
 import "./global.css";
 import pageStyles from "./layout.module.scss";
 import Header from "../components/Header.astro";
-import SearchBox from "../components/SearchBox.astro";
 import SideMenu from "../components/SideMenu.astro";
 
 interface Props {
@@ -29,6 +28,8 @@ const metadata = {
   },
   twitter: {
     card: twitter?.card ?? "summary_large_image",
+    site: "@public_zdk",
+    creator: "@bridge_zdk",
   },
 };
 ---
@@ -47,11 +48,11 @@ const metadata = {
     <meta property="og:image" content={metadata.og.image} />
     <meta property="og:site_name" content={metadata.og.site_name} />
     <meta name="twitter:card" content={metadata.twitter.card} />
+    <meta name="twitter:site" content={metadata.twitter.site} />
+    <meta name="twitter:creator" content={metadata.twitter.creator} />
   </head>
   <body>
-    <Header isMain={isMain ?? false}>
-      <SearchBox />
-    </Header>
+    <Header isMain={isMain ?? false} />
     <slot name="banner" />
     <main class={pageStyles.main}>
       <slot />

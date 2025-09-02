@@ -1,5 +1,5 @@
 ---
-import { kdbData } from "../content/kdb-schema";
+import { subjectsData } from "../content/subjectsSchema";
 import { subjectMap } from "../content/subjectsData";
 import componentStyles from "./ClassListItem.module.scss";
 import Rating from "./Rating.astro";
@@ -11,7 +11,7 @@ interface Props {
 const { subjectId } = Astro.props;
 
 const getKdbByName = (subject: string) => {
-  return kdbData.subject.filter((v) => v.name === subject);
+  return subjectsData.filter((v) => v.name === subject);
 };
 
 const subject = subjectMap.get(subjectId);
@@ -19,14 +19,7 @@ if (subject == undefined) {
   throw new Error("");
 }
 const kdbs = getKdbByName(subject.name);
-const kdbTeachers = [
-  ...new Set(
-    kdbs
-      .flatMap((kdb) => kdb.instructor.split(","))
-      .map((teacher) => teacher.trim())
-      .filter((teacher) => teacher),
-  ),
-];
+const kdbTeachers = [...new Set(kdbs.flatMap((kdb) => kdb.instructor.value))];
 
 const calcAve = (numOrObj: number | { sum: number; count: number }) => {
   if (typeof numOrObj === "number") {

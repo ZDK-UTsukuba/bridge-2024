@@ -1,19 +1,21 @@
 .searchBox {
-  --search-box-input-background-color: #ffffff;
   --search-box-input-focus-outline-color: #ffdb276b;
   --search-box-input-suggestions-color: #999;
+  --search-box-border-color: #ccc;
 
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   width: calc(100% - 50px);
   max-width: 800px;
+  min-width: 350px;
+  flex: 1 1;
+
   .inputWrap {
     position: relative;
     display: block;
     width: 100%;
-    background-color: var(--search-box-input-background-color);
-    --input-padding: 30px;
+    --input-padding: 25px;
     .icon {
       position: absolute;
       left: 20px;
@@ -22,10 +24,12 @@
       height: 30px;
     }
     .input {
+      background: none;
       display: inline-block;
       width: 100%;
       height: calc(20px + 2 * var(--input-padding));
-      outline: none;
+      border-radius: 20px;
+      outline: solid 1px var(--search-box-border-color);
       border: none;
       padding: var(--input-padding) var(--input-padding) var(--input-padding)
         calc(40px + var(--input-padding));
