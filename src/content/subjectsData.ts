@@ -1,4 +1,4 @@
-import { summaryData } from "./summary_merged";
+import { summaryData } from "./summary2024";
 
 type valueof<T> = T[keyof T];
 
