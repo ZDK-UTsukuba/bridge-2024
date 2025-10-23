@@ -1,4 +1,4 @@
-import { subjectMap } from "./subjectsData";
+import { subjectMap } from "./subjectsData2024";
 
 const calcAve = (numOrObj: number | { sum: number; count: number }) => {
   if (typeof numOrObj === "number") {
