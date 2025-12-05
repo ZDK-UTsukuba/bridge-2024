@@ -16,7 +16,7 @@ const getKdbByName = (subject: string) => {
 
 const subject = subjectMap.get(subjectId);
 if (subject == undefined) {
-  throw new Error("");
+  throw new Error("unknown subject name " + subjectId);
 }
 const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [...new Set(kdbs.flatMap((kdb) => kdb.instructor.value))];

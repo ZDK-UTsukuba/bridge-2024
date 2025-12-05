@@ -18,7 +18,7 @@ const { id: subjectName } = Astro.params;
 
 const subject = subjectMap.get(subjectName);
 if (subject == undefined) {
-  throw new Error("");
+  throw new Error("unknown subject name " + subjectName);
 }
 
 const kdbs = subjectsData.filter((v) => v.name === subject.name);
