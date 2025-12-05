@@ -12,7 +12,7 @@ const summarySchema = z.object({
           name: z.string(),
           num: z.number(),
           subject_code: z.array(z.string()),
-          subject_term: z.string().nullable(),
+          subject_term: z.string(),
           college_year: z.string(),
           comment: z.array(
             z.object({
@@ -84,7 +84,7 @@ const summarySchema = z.object({
           name: z.string(),
           num: z.number(),
           subject_code: z.array(z.string()),
-          subject_term: z.string().nullable(),
+          subject_term: z.string(),
           subject_affiliation: z.string(),
           subject_category: z.string(),
           comment: z.array(
@@ -136,4 +136,4 @@ const summarySchema = z.object({
   ),
 });
 
-export const summaryData2025 = summarySchema.parse(summaryJson);
+export const summaryData = summarySchema.parse(summaryJson);

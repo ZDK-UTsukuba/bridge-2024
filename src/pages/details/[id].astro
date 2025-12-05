@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { subjectMap } from "../../content/subjectsData2024";
+import { subjectMap } from "../../content/subjectsData2025";
 import { subjectsData } from "../../content/subjectsSchema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
@@ -30,12 +30,10 @@ function syllabiUrl(number: string) {
 const params =
   subject.type === "一般"
     ? {
+        // 一般
         credit_earnability:
           subject.subject.credit_earnability.sum /
           subject.subject.credit_earnability.count,
-        teachers_email_response_evaluation:
-          subject.subject.teachers_email_response_evaluation.sum /
-          subject.subject.teachers_email_response_evaluation.count,
         class_preparation_workload:
           subject.subject.class_preparation_workload.sum /
           subject.subject.class_preparation_workload.count,
@@ -47,19 +45,14 @@ const params =
           subject.subject.recommendation_level_of_this_class.count,
         are_materials_distributed_in_class: {
           data: subject.subject.are_materials_distributed_in_class,
-          n:
-            subject.subject.are_materials_distributed_in_class.True +
-            subject.subject.are_materials_distributed_in_class.False,
         },
         is_textbook_used_in_class: {
           data: subject.subject.is_textbook_used_in_class,
-          n:
-            subject.subject.is_textbook_used_in_class.True +
-            subject.subject.is_textbook_used_in_class.False,
         },
         prerequisite_knowledge_for_this_class:
           subject.subject.prerequisite_knowledge_for_this_class,
         class_format: subject.subject.class_format,
+        mode_class_format: subject.subject.mode_class_format,
         proportion_of_experienced_students: null,
         consideration_for_inexperienced_students: null,
         exercise_intensity: null,
@@ -71,116 +64,55 @@ const params =
         overtime_assignments: null,
         activity: null,
       }
-    : subject.type === "専門・専門基礎"
-      ? {
-          credit_earnability: subject.subject.credit_earnability,
-          teachers_email_response_evaluation:
-            subject.subject.teachers_email_response_evaluation,
-          class_preparation_workload:
-            subject.subject.class_preparation_workload,
-          class_difficulty_level: subject.subject.class_difficulty_level,
-          recommendation_level_of_this_class:
-            subject.subject.recommendation_level_of_this_class,
-          are_materials_distributed_in_class: {
-            data: subject.subject.are_materials_distributed_in_class,
-            n:
-              subject.subject.are_materials_distributed_in_class.True +
-              subject.subject.are_materials_distributed_in_class.False,
-          },
-          is_textbook_used_in_class: {
-            data: subject.subject.is_textbook_used_in_class,
-            n:
-              subject.subject.is_textbook_used_in_class.True +
-              subject.subject.is_textbook_used_in_class.False,
-          },
-          prerequisite_knowledge_for_this_class:
-            subject.subject.prerequisite_knowledge_for_this_class,
-          class_format: subject.subject.class_format,
-          proportion_of_experienced_students: null,
-          consideration_for_inexperienced_students: null,
-          exercise_intensity: null,
-          male_to_female_ratio: null,
-          required_purchases: null,
-          rain: null,
-          final: null,
-          weekly_assignments: null,
-          overtime_assignments: null,
-          activity: null,
-        }
-      : {
-          credit_earnability:
-            subject.subject.credit_earnability.sum /
-            subject.subject.credit_earnability.count,
-          teachers_email_response_evaluation: null,
-          class_preparation_workload: null,
-          class_difficulty_level: null,
-          recommendation_level_of_this_class:
-            subject.subject.recommendation_level_of_this_class.sum /
-            subject.subject.recommendation_level_of_this_class.count,
-          are_materials_distributed_in_class: null,
-          is_textbook_used_in_class: null,
-          prerequisite_knowledge_for_this_class: null,
-          class_format: null,
-          proportion_of_experienced_students:
-            subject.subject.proportion_of_experienced_students.sum /
-            subject.subject.proportion_of_experienced_students.count,
-          consideration_for_inexperienced_students:
-            subject.subject.consideration_for_inexperienced_students.sum /
-            subject.subject.consideration_for_inexperienced_students.count,
-          exercise_intensity:
-            subject.subject.exercise_intensity.sum /
-            subject.subject.exercise_intensity.count,
-          male_to_female_ratio:
-            subject.subject.male_to_female_ratio.sum /
-            subject.subject.male_to_female_ratio.count,
-          required_purchases: {
-            data: {
-              True: subject.subject.required_purchases.True,
-              False: subject.subject.required_purchases.False,
-            },
-            n:
-              subject.subject.required_purchases.True +
-              subject.subject.required_purchases.False,
-            detail: subject.subject.required_purchases.detail,
-          },
-          rain: {
-            data: {
-              True: subject.subject.rain.True,
-              False: subject.subject.rain.False,
-            },
-            n: subject.subject.rain.True + subject.subject.rain.False,
-            detail: subject.subject.rain.detail,
-          },
-          final: {
-            data: {
-              True: subject.subject.final.True,
-              False: subject.subject.final.False,
-            },
-            n: subject.subject.final.True + subject.subject.final.False,
-            detail: subject.subject.final.detail,
-          },
-          weekly_assignments: {
-            data: {
-              True: subject.subject.weekly_assignments.True,
-              False: subject.subject.weekly_assignments.False,
-            },
-            n:
-              subject.subject.weekly_assignments.True +
-              subject.subject.weekly_assignments.False,
-            detail: subject.subject.weekly_assignments.detail,
-          },
-          overtime_assignments: {
-            data: {
-              True: subject.subject.overtime_assignments.True,
-              False: subject.subject.overtime_assignments.False,
-            },
-            n:
-              subject.subject.overtime_assignments.True +
-              subject.subject.overtime_assignments.False,
-            detail: subject.subject.overtime_assignments.detail,
-          },
-          activity: subject.subject.activity,
-        };
+    : {
+        // 体育
+        credit_earnability:
+          subject.subject.credit_earnability.sum /
+          subject.subject.credit_earnability.count,
+        class_preparation_workload: null,
+        class_difficulty_level: null,
+        recommendation_level_of_this_class:
+          subject.subject.recommendation_level_of_this_class.sum /
+          subject.subject.recommendation_level_of_this_class.count,
+        are_materials_distributed_in_class: null,
+        is_textbook_used_in_class: null,
+        prerequisite_knowledge_for_this_class: null,
+        class_format: null,
+        mode_class_format: null,
+        proportion_of_experienced_students:
+          subject.subject.proportion_of_experienced_students.sum /
+          subject.subject.proportion_of_experienced_students.count,
+        consideration_for_inexperienced_students:
+          subject.subject.consideration_for_inexperienced_students.sum /
+          subject.subject.consideration_for_inexperienced_students.count,
+        exercise_intensity:
+          subject.subject.exercise_intensity.sum /
+          subject.subject.exercise_intensity.count,
+        male_to_female_ratio:
+          subject.subject.male_to_female_ratio.sum /
+          subject.subject.male_to_female_ratio.count,
+        required_purchases: {
+          data: subject.subject.required_purchases,
+          detail: subject.subject.required_purchases.detail,
+        },
+        rain: {
+          data: subject.subject.rain,
+          detail: subject.subject.rain.detail,
+        },
+        final: {
+          data: subject.subject.final,
+          detail: subject.subject.final.detail,
+        },
+        weekly_assignments: {
+          data: subject.subject.weekly_assignments,
+          detail: subject.subject.weekly_assignments.detail,
+        },
+        overtime_assignments: {
+          data: subject.subject.overtime_assignments,
+          detail: subject.subject.overtime_assignments.detail,
+        },
+        activity: subject.subject.activity,
+      };
 ---
 
 <Layout title={subjectName}>
@@ -206,14 +138,57 @@ const params =
                 講義: "講義",
                 グループワーク: "グループワーク",
                 発表: "発表",
-                パネルディスカッション: "パネルディスカッション",
-                対話: "対話",
-                オンデマンド: "オンデマンド",
-                レポート提出のみ: "レポート提出のみ",
               }}
-              n={params.class_format.回答人数}
-              data={params.class_format}
+              n={subject.subject.num}
+              data={{
+                講義: params.class_format.講義,
+                グループワーク: params.class_format.グループワーク,
+                発表: params.class_format.発表,
+              }}
             />
+            <div class={pageStyles.item}>
+              <div class={pageStyles.label}>その他</div>
+              <div class={pageStyles.content}>
+                {params.class_format.other.map((val) => (
+                  <li class={pageStyles.detail}>{val}</li>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )
+    }
+    {
+      params.mode_class_format && (
+        <>
+          <div class={pageStyles.tagWrap}>
+            <div class={pageStyles.tag}>最も多い授業形態</div>
+            {kdbs.length > 1 && (
+              <p class={pageStyles.description}>※ 全ての科目の平均値</p>
+            )}
+          </div>
+          <div class={pageStyles.card}>
+            <LabelPercent
+              labels={{
+                講義: "講義",
+                グループワーク: "グループワーク",
+                発表: "発表",
+              }}
+              n={subject.subject.num}
+              data={{
+                講義: params.class_format.講義,
+                グループワーク: params.class_format.グループワーク,
+                発表: params.class_format.発表,
+              }}
+            />
+            <div class={pageStyles.item}>
+              <div class={pageStyles.label}>その他</div>
+              <div class={pageStyles.content}>
+                {params.class_format.other.map((val) => (
+                  <li class={pageStyles.detail}>{val}</li>
+                ))}
+              </div>
+            </div>
           </div>
         </>
       )
@@ -229,16 +204,6 @@ const params =
     </div>
     <div class={pageStyles.card}>
       <div class={pageStyles.lists}>
-        {
-          params.teachers_email_response_evaluation && (
-            <div class={pageStyles.item}>
-              <div class={pageStyles.label}>メールの対応</div>
-              <div class={pageStyles.content}>
-                {params.teachers_email_response_evaluation}
-              </div>
-            </div>
-          )
-        }
         {
           params.class_difficulty_level && (
             <div class={pageStyles.item}>
@@ -275,7 +240,7 @@ const params =
                     True: "使う",
                     False: "使わない",
                   }}
-                  n={params.is_textbook_used_in_class.n}
+                  n={subject.subject.num}
                   data={params.is_textbook_used_in_class.data}
                 />
               </div>
@@ -298,7 +263,7 @@ const params =
                     True: "あり",
                     False: "なし",
                   }}
-                  n={params.are_materials_distributed_in_class.n}
+                  n={subject.subject.num}
                   data={params.are_materials_distributed_in_class.data}
                 />
               </div>
@@ -349,9 +314,9 @@ const params =
           params.male_to_female_ratio && (
             <div class={pageStyles.item}>
               <div class={pageStyles.label}>男女比</div>
-              <div class={pageStyles.content}>
-                {`${params.male_to_female_ratio} : ${10 - params.male_to_female_ratio}`}
-              </div>
+              <div
+                class={pageStyles.content}
+              >{`${params.male_to_female_ratio} : ${10 - params.male_to_female_ratio}`}</div>
             </div>
           )
         }
@@ -365,7 +330,7 @@ const params =
                     True: "あり",
                     False: "なし",
                   }}
-                  n={params.required_purchases.n}
+                  n={subject.subject.num}
                   data={params.required_purchases.data}
                 />
                 <ul>
@@ -388,7 +353,7 @@ const params =
                     True: "晴天時と同一",
                     False: "晴天時と異なる",
                   }}
-                  n={params.rain.n}
+                  n={subject.subject.num}
                   data={params.rain.data}
                 />
                 <ul>
@@ -411,7 +376,7 @@ const params =
                     True: "あり",
                     False: "なし",
                   }}
-                  n={params.final.n}
+                  n={subject.subject.num}
                   data={params.final.data}
                 />
                 <ul>
@@ -434,7 +399,7 @@ const params =
                     True: "あり",
                     False: "なし",
                   }}
-                  n={params.weekly_assignments.n}
+                  n={subject.subject.num}
                   data={params.weekly_assignments.data}
                 />
                 <ul>
@@ -457,7 +422,7 @@ const params =
                     True: "あり",
                     False: "なし",
                   }}
-                  n={params.overtime_assignments.n}
+                  n={subject.subject.num}
                   data={params.overtime_assignments.data}
                 />
                 <ul>

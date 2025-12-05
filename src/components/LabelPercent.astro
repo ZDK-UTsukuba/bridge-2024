@@ -2,7 +2,7 @@
 const { labels, data, n } = Astro.props;
 interface Props {
   labels: Record<string, string>;
-  data: Record<string, number>;
+  data: Record<string, number | string[]>;
   n: number;
 }
 ---
@@ -11,7 +11,9 @@ interface Props {
   {
     Object.entries(labels).map(([k, v]) => (
       <div>
-        {v}: {(data[k] / n) * 100}% ({data[k]}人)
+        {v}:{" "}
+        {((typeof data[k] === "number" ? data[k] : data[k].length) / n) * 100}%
+        ({data[k]}人)
       </div>
     ))
   }
