@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import summaryJson from "./class/summary_merged.json";
+import summaryJson from "./class/summary2024.json";
 
 const summarySchema = z.object({
   体育: z.record(
