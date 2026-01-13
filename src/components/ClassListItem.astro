@@ -30,8 +30,9 @@ const calcAve = (numOrObj: number | { sum: number; count: number }) => {
     : numOrObj.sum / numOrObj.count;
 };
 
-const colleges: string[] =
-  subject.type === "体育" ? [subject.subject_category] : [];
+const colleges: string[] = [
+  ...new Set(kdbs.map((v) => v.affiliation.name)),
+].flatMap((v) => (v ? [v] : []));
 const teachers: {
   name: string;
   image?: string;
