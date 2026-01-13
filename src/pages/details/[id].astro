@@ -119,8 +119,8 @@ const params =
   <div class={pageStyles.body}>
     <h1 class={pageStyles.title}>{subject.name}</h1>
     {
-      subject.type === "体育" && (
-        <span class={pageStyles.category}>{subject.subject_category}</span>
+      [...new Set(kdbs.map((v) => v.affiliation.name))].map(
+        (v) => v && <span class={pageStyles.category}>{v}</span>,
       )
     }
     {
