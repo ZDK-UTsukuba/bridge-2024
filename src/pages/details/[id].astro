@@ -507,17 +507,20 @@ const params =
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>単位</div>
                 <div class={pageStyles.content}>
-                  {kdbSubject.credits.value === null
+                  {kdbSubject.credits.value === null ||
+                  kdbSubject.credits.value.type === "unknown"
                     ? ""
-                    : kdbSubject.credits.value.type === "number"
-                      ? kdbSubject.credits.value?.value
-                      : "-"}
+                    : kdbSubject.credits.value.type === "none"
+                      ? "-"
+                      : kdbSubject.credits.value.value}
                 </div>
               </div>
               <div class={pageStyles.item}>
                 <div class={pageStyles.label}>標準履修年次</div>
                 <div class={pageStyles.content}>
-                  {kdbSubject.year.value.join(", ")}
+                  {kdbSubject.year.value.type === "unknown"
+                    ? "-"
+                    : kdbSubject.year.value.value.join(", ")}
                 </div>
               </div>
               <div class={pageStyles.item}>
