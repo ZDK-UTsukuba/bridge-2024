@@ -49,4 +49,11 @@ import componentStyles from "./SearchBox.module.scss";
     e.preventDefault();
     location.href = `/search/${encodeURIComponent(searchInput.value)}`;
   });
+
+  window.document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
 </script>
