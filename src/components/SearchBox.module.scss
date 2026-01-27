@@ -1,3 +1,5 @@
+@use "./var";
+
 .searchBox {
   --search-box-input-focus-outline-color: #ffdb276b;
   --search-box-input-suggestions-color: #999;
@@ -51,6 +53,9 @@
       overflow: hidden;
       pointer-events: none; // 入力を妨げないようにする
       z-index: 1;
+      font-size: 20px;
+      color: var(--search-box-input-suggestions-color);
+      opacity: 0.5;
 
       .container {
         position: absolute;
@@ -61,12 +66,21 @@
         .item {
           height: 100%;
           margin: 0;
-          font-size: 20px;
-          margin-top: -4px; // @todo なぜかずれるので調整
-          padding: var(--input-padding) var(--input-padding)
-            var(--input-padding) var(--input-padding);
-          color: var(--search-box-input-suggestions-color);
-          opacity: 0.5;
+          padding: calc(var(--input-padding) - 5px);
+        }
+      }
+      .hint {
+        @include var.sp {
+          display: none;
+        }
+        position: absolute;
+        top: 0;
+        right: 0;
+        // height: 100%;
+        p {
+          margin: 0;
+          height: 100%;
+          padding: calc(var(--input-padding) - 5px);
         }
       }
     }

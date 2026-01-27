@@ -20,6 +20,9 @@ import componentStyles from "./SearchBox.module.scss";
         <p class={componentStyles.item}>数学概論</p>
         <p class={componentStyles.item}>確率論</p>
       </div>
+      <div class={componentStyles.hint}>
+        <p>/ キーでフォーカス</p>
+      </div>
     </div>
   </div>
 </form>
@@ -48,5 +51,16 @@ import componentStyles from "./SearchBox.module.scss";
   searchBoxForm.addEventListener("submit", (e) => {
     e.preventDefault();
     location.href = `/search/${encodeURIComponent(searchInput.value)}`;
+  });
+
+  window.document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+    if (e.key === "Escape" && document.activeElement === searchInput) {
+      e.preventDefault();
+      searchInput.blur();
+    }
   });
 </script>
