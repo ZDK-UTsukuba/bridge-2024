@@ -58,5 +58,9 @@ import componentStyles from "./SearchBox.module.scss";
       e.preventDefault();
       searchInput.focus();
     }
+    if (e.key === "Escape" && document.activeElement === searchInput) {
+      e.preventDefault();
+      searchInput.blur();
+    }
   });
 </script>
