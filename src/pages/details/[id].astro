@@ -5,6 +5,8 @@ import { subjectsData } from "../../content/subjectsSchema";
 import LabelPercent from "../../components/LabelPercent.astro";
 import pageStyles from "./page.module.scss";
 import Stars from "../../components/Stars.ClassList.astro";
+import ClassListItem from "../../components/ClassListItem.astro";
+import { similarSubjectsMap } from "../../content/similarSubjects";
 
 export function getStaticPaths() {
   return [...subjectMap.keys()].map((subject) => ({
@@ -113,6 +115,9 @@ const params =
         },
         activity: subject.subject.activity,
       };
+
+// 似た評価の講義を取得
+const similarSubjects = similarSubjectsMap.get(subjectName) || [];
 ---
 
 <Layout title={subjectName}>
@@ -550,6 +555,20 @@ const params =
           </div>
         </>
       ))
+    }
+    {
+      similarSubjects.length > 0 && (
+        <>
+          <div class={pageStyles.tagWrap}>
+            <div class={pageStyles.tag}>似た評価の講義</div>
+          </div>
+          <div class={pageStyles.card}>
+            {similarSubjects.map((similarSubjectId) => (
+              <ClassListItem subjectId={similarSubjectId} />
+            ))}
+          </div>
+        </>
+      )
     }
   </div>
 </Layout>
