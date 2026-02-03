@@ -233,7 +233,7 @@ const calculateAffiliationBonus = (
   // 共通する所属があるかチェック
   for (const aff1 of affiliations1) {
     if (affiliations2.has(aff1)) {
-      return 1.2; // 同じ所属がある場合は1.2倍
+      return 1.5; // 同じ所属がある場合は1.5倍
     }
   }
 
@@ -282,13 +282,13 @@ const calculateSimilarityScore = (
   const schedule2 = getModuleTimeTable(subject2.name);
   const scheduleSimilarity = calculateScheduleSimilarity(schedule1, schedule2);
 
-  // 基本スコア
-  const baseScore = evalSimilarity * 0.7 + scheduleSimilarity * 0.3;
+  // 基本スコア（評価40%、時程60%）
+  const baseScore = evalSimilarity * 0.4 + scheduleSimilarity * 0.6;
 
   // タイプ一致ボーナス
   const typeBonus = type1 === type2 ? 2.0 : 1.0;
 
-  // 所属一致ボーナス
+  // 所属一致ボーナス（1.5倍）
   const affiliations1 = getAffiliations(subject1.name);
   const affiliations2 = getAffiliations(subject2.name);
   const affiliationBonus = calculateAffiliationBonus(
@@ -296,10 +296,10 @@ const calculateSimilarityScore = (
     affiliations2,
   );
 
-  // 評価数調整係数（log10を使用）
+  // 評価数調整係数（評価数が多いほど抑制）
   const count2 = getEvaluationCount(subject2.subject);
-  const maxCount = 100; // 想定される最大評価数
-  const countAdjustment = Math.log10(count2 + 1) / Math.log10(maxCount + 1);
+  // log10(count)を使用：評価数が多いほど大きな値で除算し、スコアを抑制
+  const countAdjustment = 1 / (1 + Math.log10(count2 + 1));
 
   // 最終スコア
   const finalScore = baseScore * typeBonus * affiliationBonus * countAdjustment;
