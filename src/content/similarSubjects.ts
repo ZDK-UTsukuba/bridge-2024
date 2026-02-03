@@ -296,10 +296,10 @@ const calculateSimilarityScore = (
     affiliations2,
   );
 
-  // 評価数調整係数（評価数が多いほど抑制）
+  // 評価数調整係数（評価数が多いほど信頼性が高いが、増加速度を対数的に抑制）
   const count2 = getEvaluationCount(subject2.subject);
-  // log10(count)を使用：評価数が多いほど大きな値で除算し、スコアを抑制
-  const countAdjustment = 1 / (1 + Math.log10(count2 + 1));
+  // 評価数が多いほど係数が大きくなるが、対数的な増加で緩やかに（1.3で割って影響を抑制）
+  const countAdjustment = (1 + Math.log10(count2 + 1)) / 1.3;
 
   // 最終スコア
   const finalScore = baseScore * typeBonus * affiliationBonus * countAdjustment;
