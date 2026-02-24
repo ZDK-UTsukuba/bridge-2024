@@ -11,7 +11,10 @@ const subjects = getTopNSubject(5);
 ---
 
 <Layout isMain={true}>
-  <NewsBanner title="BRIDGEをリリースしました！" slot="banner" />
+  <NewsBanner
+    title="2025年度春学期のアンケートの回答を反映しました!"
+    slot="banner"
+  />
   <Card title="総合評価が高い科目" href="/ranking" moreText="もっと見る">
     <ClassList subjects={subjects} />
   </Card>

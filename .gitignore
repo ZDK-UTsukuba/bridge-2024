@@ -23,5 +23,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Claude Code
+.claude/
+
 src/content/class/*
 !src/content/class/.gitkeep

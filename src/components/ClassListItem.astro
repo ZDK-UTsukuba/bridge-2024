@@ -1,6 +1,6 @@
 ---
 import { subjectsData } from "../content/subjectsSchema";
-import { subjectMap } from "../content/subjectsData";
+import { subjectMap } from "../content/subjectsData2025";
 import componentStyles from "./ClassListItem.module.scss";
 import Rating from "./Rating.astro";
 
@@ -16,7 +16,7 @@ const getKdbByName = (subject: string) => {
 
 const subject = subjectMap.get(subjectId);
 if (subject == undefined) {
-  throw new Error("");
+  throw new Error("unknown subject name " + subjectId);
 }
 const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [...new Set(kdbs.flatMap((kdb) => kdb.instructor.value))];
@@ -30,8 +30,9 @@ const calcAve = (numOrObj: number | { sum: number; count: number }) => {
     : numOrObj.sum / numOrObj.count;
 };
 
-const colleges: string[] =
-  subject.type === "体育" ? [subject.subject_category] : [];
+const colleges: string[] = [
+  ...new Set(kdbs.map((v) => v.affiliation.name)),
+].flatMap((v) => (v ? [v] : []));
 const teachers: {
   name: string;
   image?: string;
