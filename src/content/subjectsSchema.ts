@@ -4,7 +4,7 @@ import subjectsMergedJson from "./class/subjects.merged.json";
 type Terms = { text: "春学期"; code: "A" } | { text: "秋学期"; code: "B" };
 type DaysOfWeek = "月" | "火" | "水" | "木" | "金" | "土" | "日" | "他";
 type Periods = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-type TimeTable = {
+export type TimeTable = {
   day: DaysOfWeek; // 曜日
   period: Periods | null; // 時限
 };
@@ -17,7 +17,7 @@ type Module =
   | "fallB"
   | "fallC"
   | "springVacation";
-type ModuleTimeTable = Record<Module, readonly TimeTable[]>;
+export type ModuleTimeTable = Record<Module, readonly TimeTable[]>;
 
 type Requisite = {
   id: string;
