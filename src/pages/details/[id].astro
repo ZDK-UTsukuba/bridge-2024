@@ -214,7 +214,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
             <div class={pageStyles.item}>
               <div class={pageStyles.label}>授業の難易度</div>
               <div class={pageStyles.content}>
-                {params.class_difficulty_level}
+                {params.class_difficulty_level.toFixed(1)}
               </div>
             </div>
           )
@@ -222,7 +222,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
         <div class={pageStyles.item}>
           <div class={pageStyles.label}>単位の取りやすさ</div>
           <div class={pageStyles.content}>
-            {params.credit_earnability}
+            {params.credit_earnability.toFixed(1)}
           </div>
         </div>
         {
@@ -230,7 +230,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
             <div class={pageStyles.item}>
               <div class={pageStyles.label}>授業の準備量</div>
               <div class={pageStyles.content}>
-                {params.class_preparation_workload}
+                {params.class_preparation_workload.toFixed(1)}
               </div>
             </div>
           )
@@ -255,7 +255,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
         <div class={pageStyles.item}>
           <div class={pageStyles.label}>オススメ度</div>
           <div class={pageStyles.content}>
-            {params.recommendation_level_of_this_class}
+            {params.recommendation_level_of_this_class.toFixed(1)}
           </div>
         </div>
         {
@@ -292,7 +292,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
             <div class={pageStyles.item}>
               <div class={pageStyles.label}>経験者の割合</div>
               <div class={pageStyles.content}>
-                {params.proportion_of_experienced_students}
+                {params.proportion_of_experienced_students.toFixed(1)}
               </div>
             </div>
           )
