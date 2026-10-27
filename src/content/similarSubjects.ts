@@ -1,4 +1,4 @@
-import { subjectMap } from "./subjectsData2025";
+import { subjectMap } from "./subjectsData2025spring";
 import { subjectsData } from "./subjectsSchema";
 import type { ModuleTimeTable, TimeTable } from "./subjectsSchema";
 

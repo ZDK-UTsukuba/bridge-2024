@@ -1,4 +1,4 @@
-import { subjectMap } from "./subjectsData2025";
+import { subjectMap } from "./subjectsData2025spring";
 
 const calcAve = (numOrObj: number | { sum: number; count: number }) => {
   if (typeof numOrObj === "number") {

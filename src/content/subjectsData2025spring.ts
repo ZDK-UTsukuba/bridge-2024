@@ -1,4 +1,4 @@
-import { summaryData } from "./summary2025";
+import { summaryData } from "./summary2025spring";
 
 type valueof<T> = T[keyof T];
 
