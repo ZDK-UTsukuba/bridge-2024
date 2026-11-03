@@ -27,7 +27,7 @@ export const booleanSummaryWithDetailSchema = booleanSummarySchema
   })
   .strict();
 
-export const modernClassFormatSchema = z
+export const classFormatWithOtherSchema = z
   .object({
     講義: z.number(),
     グループワーク: z.number(),
@@ -60,6 +60,6 @@ export const modernGeneralSurveyShape = {
   are_materials_distributed_in_class: booleanSummarySchema,
   is_textbook_used_in_class: booleanSummarySchema,
   prerequisite_knowledge_for_this_class: z.array(z.string()),
-  class_format: modernClassFormatSchema,
-  mode_class_format: modernClassFormatSchema,
+  class_format: classFormatWithOtherSchema,
+  mode_class_format: classFormatWithOtherSchema,
 };
