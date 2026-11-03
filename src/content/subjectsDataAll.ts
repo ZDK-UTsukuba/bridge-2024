@@ -1,3 +1,4 @@
+import { subjectMap as subjectMap2023 } from "./subjectsData2023";
 import { subjectMap as subjectMap2024spring } from "./subjectsData2024spring";
 import { subjectMap as subjectMap2025spring } from "./subjectsData2025spring";
 import { subjectMap as subjectMap2025fall } from "./subjectsData2025fall";
@@ -9,6 +10,7 @@ import type {
 } from "./subjectsDataTypes";
 
 export const subjectPeriods = [
+  "2023",
   "2024spring",
   "2025spring",
   "2025fall",
@@ -33,7 +35,7 @@ export type subj =
     }
   | {
       readonly type: "体育";
-      readonly term: string;
+      readonly term: string | null;
       readonly subject_category: string;
       readonly name: string;
       readonly subject: GroupedSubject<SportSubjectData>;
@@ -59,7 +61,7 @@ type AggregatedSubject =
     }
   | {
       readonly type: "体育";
-      readonly term: string;
+      readonly term: string | null;
       readonly subject_category: string;
       readonly name: string;
       readonly subject: AggregatedSubjectParameters;
@@ -134,6 +136,11 @@ const mergeIntoMap = (
   ]);
 
 const subjectsByPeriod: readonly PeriodSubject[] = [
+  ...Array.from(subjectMap2023, ([key, value]) => ({
+    key,
+    period: "2023" as const,
+    value,
+  })),
   ...Array.from(subjectMap2024spring, ([key, value]) => ({
     key,
     period: "2024spring" as const,

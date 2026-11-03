@@ -2,13 +2,11 @@ import { z } from "astro:content";
 import summaryJson from "./class/summary2024spring.json";
 import {
   basicCommentSchema,
-  booleanSummarySchema,
-  scoreSummarySchema,
+  legacyGeneralSurveyShape,
   sportSurveyShape,
 } from "./summarySchemaParts";
 import {
   aggregateScore,
-  averageScore,
   classFormatWithoutOther,
   normalizeSportName,
 } from "./subjectsDataTypes";
@@ -19,28 +17,19 @@ import type {
   SubjectComment,
 } from "./subjectsDataTypes";
 
-const classFormatWithoutOtherSchema = z
-  .object({
-    回答人数: z.number(),
-    講義: z.number(),
-    グループワーク: z.number(),
-    発表: z.number(),
-    パネルディスカッション: z.number(),
-    対話: z.number(),
-    オンデマンド: z.number(),
-    レポート提出のみ: z.number(),
-  })
-  .strict();
-
 const generalCommentSchema = basicCommentSchema
   .extend({
-    subject_number: z.string(),
+    subject_number: z.string().optional(),
   })
   .strict();
 
 const sportSubjectSchema = z
   .object({
     name: z.string(),
+    num: z.number(),
+    subject_code: z.array(z.string()),
+    subject_term: z.string(),
+    college_year: z.string(),
     ...sportSurveyShape,
   })
   .strict();
@@ -48,206 +37,140 @@ const sportSubjectSchema = z
 const generalSubjectSchema = z
   .object({
     name: z.string(),
+    num: z.number(),
+    subject_code: z.array(z.string()),
+    subject_term: z.string(),
+    subject_affiliation: z.string(),
+    subject_category: z.string(),
     comment: z.array(generalCommentSchema),
-    teachers_email_response_evaluation: scoreSummarySchema,
-    credit_earnability: scoreSummarySchema,
-    class_preparation_workload: scoreSummarySchema,
-    class_difficulty_level: scoreSummarySchema,
-    recommendation_level_of_this_class: scoreSummarySchema,
-    are_materials_distributed_in_class: booleanSummarySchema,
-    is_textbook_used_in_class: booleanSummarySchema,
-    prerequisite_knowledge_for_this_class: z.array(z.string()),
-    class_format: classFormatWithoutOtherSchema,
+    course_college: z.array(z.string()).optional(),
+    ...legacyGeneralSurveyShape,
   })
   .strict();
 
-const specializedSubjectSchema = z
-  .object({
-    teachers_email_response_evaluation: z.number().nullable(),
-    credit_earnability: z.number(),
-    class_preparation_workload: z.number(),
-    class_difficulty_level: z.number(),
-    recommendation_level_of_this_class: z.number(),
-    prerequisite_knowledge_for_this_class: z.array(z.string()),
-    comment: z.array(basicCommentSchema),
-    are_materials_distributed_in_class: booleanSummarySchema,
-    is_textbook_used_in_class: booleanSummarySchema,
-    class_format: classFormatWithoutOtherSchema,
-    course_college: z.array(z.string()),
-  })
-  .strict();
+const subjectSchema = z.discriminatedUnion("type", [
+  z
+    .object({
+      type: z.literal("一般"),
+      subject_category: z.string(),
+      affiliation: z.string(),
+      name: z.string(),
+      subject: generalSubjectSchema,
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("体育"),
+      term: z.string(),
+      subject_category: z.string(),
+      name: z.string(),
+      subject: sportSubjectSchema,
+    })
+    .strict(),
+]);
 
-const summarySchema = z
-  .object({
-    体育: z.record(z.string(), z.record(z.string(), sportSubjectSchema)),
-    一般: z.record(z.string(), z.record(z.string(), generalSubjectSchema)),
-    "専門・専門基礎": z.record(z.string(), specializedSubjectSchema),
-  })
-  .strict();
+type SourceSubject = z.infer<typeof subjectSchema>;
 
-const summaryData = summarySchema.parse(summaryJson);
-
-type ValueOf<T> = T[keyof T];
-
-type SpecializedSource = ValueOf<(typeof summaryData)["専門・専門基礎"]>;
-type GeneralSource = ValueOf<ValueOf<(typeof summaryData)["一般"]>>;
-type SportSource = ValueOf<ValueOf<(typeof summaryData)["体育"]>>;
-
-const basicComment = (
-  comment: {
-    recommendation_level_of_this_class: number;
-    comment: string;
-  },
-  subjectCode: string | null,
-): SubjectComment => ({
-  subject_code: subjectCode,
+const normalizeComment = (comment: {
+  subject_number?: string;
+  recommendation_level_of_this_class: number;
+  comment: string;
+}): SubjectComment => ({
+  subject_code: comment.subject_number ?? null,
   recommendation_level_of_this_class:
     comment.recommendation_level_of_this_class,
   comment: comment.comment,
 });
 
-const specializedSubject = (
-  name: string,
-  source: SpecializedSource,
+const normalizeGeneralSubject = (
+  source: Extract<SourceSubject, { type: "一般" }>,
 ): GeneralSubject => ({
   type: "一般",
-  subject_category: "専門・専門基礎",
-  affiliation: source.course_college.join(", "),
-  name,
+  subject_category: source.subject_category,
+  affiliation: source.affiliation,
+  name: source.name,
   subject: {
-    name,
-    num: null,
-    subject_code: [],
-    subject_term: "春学期",
-    subject_affiliation: source.course_college.join(", "),
-    subject_category: "専門・専門基礎",
-    comment: source.comment.map((comment) => basicComment(comment, null)),
-    teachers_email_response_evaluation: averageScore(
-      source.teachers_email_response_evaluation,
-    ),
-    credit_earnability: averageScore(source.credit_earnability),
-    credit_fairness: null,
-    class_preparation_workload: averageScore(source.class_preparation_workload),
-    class_difficulty_level: averageScore(source.class_difficulty_level),
-    recommendation_level_of_this_class: averageScore(
-      source.recommendation_level_of_this_class,
-    ),
-    are_materials_distributed_in_class:
-      source.are_materials_distributed_in_class,
-    is_textbook_used_in_class: source.is_textbook_used_in_class,
-    prerequisite_knowledge_for_this_class:
-      source.prerequisite_knowledge_for_this_class,
-    class_format: classFormatWithoutOther(source.class_format),
-    mode_class_format: null,
-    course_college: source.course_college,
-  },
-});
-
-const generalSubject = (
-  name: string,
-  subjectCategory: string,
-  source: GeneralSource,
-): GeneralSubject => ({
-  type: "一般",
-  subject_category: subjectCategory,
-  affiliation: null,
-  name,
-  subject: {
-    name: source.name,
-    num: null,
-    subject_code: [
-      ...new Set(source.comment.map((comment) => comment.subject_number)),
-    ],
-    subject_term: "春学期",
-    subject_affiliation: null,
-    subject_category: subjectCategory,
-    comment: source.comment.map((comment) =>
-      basicComment(comment, comment.subject_number),
-    ),
+    name: source.subject.name,
+    num: source.subject.num,
+    subject_code: source.subject.subject_code,
+    subject_term: source.subject.subject_term,
+    subject_affiliation: source.subject.subject_affiliation,
+    subject_category: source.subject.subject_category,
+    comment: source.subject.comment.map(normalizeComment),
     teachers_email_response_evaluation: aggregateScore(
-      source.teachers_email_response_evaluation,
+      source.subject.teachers_email_response_evaluation,
     ),
-    credit_earnability: aggregateScore(source.credit_earnability),
+    credit_earnability: aggregateScore(source.subject.credit_earnability),
     credit_fairness: null,
     class_preparation_workload: aggregateScore(
-      source.class_preparation_workload,
+      source.subject.class_preparation_workload,
     ),
-    class_difficulty_level: aggregateScore(source.class_difficulty_level),
+    class_difficulty_level: aggregateScore(
+      source.subject.class_difficulty_level,
+    ),
     recommendation_level_of_this_class: aggregateScore(
-      source.recommendation_level_of_this_class,
+      source.subject.recommendation_level_of_this_class,
     ),
     are_materials_distributed_in_class:
-      source.are_materials_distributed_in_class,
-    is_textbook_used_in_class: source.is_textbook_used_in_class,
+      source.subject.are_materials_distributed_in_class,
+    is_textbook_used_in_class: source.subject.is_textbook_used_in_class,
     prerequisite_knowledge_for_this_class:
-      source.prerequisite_knowledge_for_this_class,
-    class_format: classFormatWithoutOther(source.class_format),
+      source.subject.prerequisite_knowledge_for_this_class,
+    class_format: classFormatWithoutOther(source.subject.class_format),
     mode_class_format: null,
-    course_college: [],
+    course_college: source.subject.course_college ?? [],
   },
 });
 
-const sportSubject = (
-  name: string,
-  subjectCategory: string,
-  subjectNumber: string,
-  source: SportSource,
+const normalizeSportSubject = (
+  source: Extract<SourceSubject, { type: "体育" }>,
 ): SportSubject => ({
   type: "体育",
-  term: "春学期",
-  subject_category: subjectCategory,
-  name: normalizeSportName(name),
+  term: source.term,
+  subject_category: source.subject_category,
+  name: normalizeSportName(source.name),
   subject: {
-    name: normalizeSportName(source.name),
-    num: null,
-    subject_code: [subjectNumber],
-    subject_term: "春学期",
-    college_year: null,
-    comment: source.comment.map((comment) => basicComment(comment, null)),
+    name: normalizeSportName(source.subject.name),
+    num: source.subject.num,
+    subject_code: source.subject.subject_code,
+    subject_term: source.subject.subject_term,
+    college_year: source.subject.college_year,
+    comment: source.subject.comment.map(normalizeComment),
     proportion_of_experienced_students: aggregateScore(
-      source.proportion_of_experienced_students,
+      source.subject.proportion_of_experienced_students,
     ),
     consideration_for_inexperienced_students: aggregateScore(
-      source.consideration_for_inexperienced_students,
+      source.subject.consideration_for_inexperienced_students,
     ),
-    credit_earnability: aggregateScore(source.credit_earnability),
-    exercise_intensity: aggregateScore(source.exercise_intensity),
-    male_to_female_ratio: aggregateScore(source.male_to_female_ratio),
+    credit_earnability: aggregateScore(source.subject.credit_earnability),
+    exercise_intensity: aggregateScore(source.subject.exercise_intensity),
+    male_to_female_ratio: aggregateScore(source.subject.male_to_female_ratio),
     recommendation_level_of_this_class: aggregateScore(
-      source.recommendation_level_of_this_class,
+      source.subject.recommendation_level_of_this_class,
     ),
-    required_purchases: source.required_purchases,
-    rain: source.rain,
-    final: source.final,
-    weekly_assignments: source.weekly_assignments,
-    overtime_assignments: source.overtime_assignments,
-    activity: source.activity,
+    required_purchases: source.subject.required_purchases,
+    rain: source.subject.rain,
+    final: source.subject.final,
+    weekly_assignments: source.subject.weekly_assignments,
+    overtime_assignments: source.subject.overtime_assignments,
+    activity: source.subject.activity,
   },
 });
+
+const subjects = z.array(subjectSchema).parse(summaryJson);
 
 export const subjectMap: ReadonlyMap<string, Subject> = new Map<
   string,
   Subject
->([
-  ...Object.entries(summaryData["専門・専門基礎"]).map<
-    [string, GeneralSubject]
-  >(([name, subject]) => [name, specializedSubject(name, subject)]),
-  ...Object.entries(summaryData["一般"]).flatMap(
-    ([subjectCategory, subjects]) =>
-      Object.entries(subjects).map<[string, GeneralSubject]>(
-        ([name, subject]) => [
-          name,
-          generalSubject(name, subjectCategory, subject),
-        ],
-      ),
-  ),
-  ...Object.entries(summaryData["体育"]).flatMap(
-    ([subjectCategory, subjects]) =>
-      Object.entries(subjects).map<[string, SportSubject]>(
-        ([subjectNumber, subject]) => [
-          `${normalizeSportName(subject.name)}-${subjectCategory}`,
-          sportSubject(subject.name, subjectCategory, subjectNumber, subject),
-        ],
-      ),
-  ),
-]);
+>(
+  subjects.map<[string, Subject]>((source) => {
+    if (source.type === "一般") {
+      return [source.name, normalizeGeneralSubject(source)];
+    }
+
+    return [
+      `${source.term}-${source.subject_category}-${normalizeSportName(source.name)}`,
+      normalizeSportSubject(source),
+    ];
+  }),
+);

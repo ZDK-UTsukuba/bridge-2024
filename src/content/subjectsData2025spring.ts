@@ -5,7 +5,6 @@ import {
   modernGeneralSurveyShape,
   sportSurveyShape,
 } from "./summarySchemaParts";
-
 import {
   aggregateScore,
   classFormatWithOther,
@@ -42,25 +41,28 @@ const generalSubjectSchema = z
   })
   .strict();
 
-const summarySchema = z
-  .object({
-    体育: z.record(
-      z.string(),
-      z.record(z.string(), z.record(z.string(), sportSubjectSchema)),
-    ),
-    一般: z.record(
-      z.string(),
-      z.record(z.string(), z.record(z.string(), generalSubjectSchema)),
-    ),
-  })
-  .strict();
+const subjectSchema = z.discriminatedUnion("type", [
+  z
+    .object({
+      type: z.literal("一般"),
+      subject_category: z.string(),
+      affiliation: z.string(),
+      name: z.string(),
+      subject: generalSubjectSchema,
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("体育"),
+      term: z.string(),
+      subject_category: z.string(),
+      name: z.string(),
+      subject: sportSubjectSchema,
+    })
+    .strict(),
+]);
 
-const summaryData = summarySchema.parse(summaryJson);
-
-type ValueOf<T> = T[keyof T];
-
-type GeneralSource = ValueOf<ValueOf<ValueOf<(typeof summaryData)["一般"]>>>;
-type SportSource = ValueOf<ValueOf<ValueOf<(typeof summaryData)["体育"]>>>;
+type SourceSubject = z.infer<typeof subjectSchema>;
 
 const commentWithoutCode = (comment: {
   recommendation_level_of_this_class: number;
@@ -72,106 +74,93 @@ const commentWithoutCode = (comment: {
   comment: comment.comment,
 });
 
-const generalSubject = (
-  name: string,
-  subjectCategory: string,
-  affiliation: string,
-  source: GeneralSource,
+const normalizeGeneralSubject = (
+  source: Extract<SourceSubject, { type: "一般" }>,
 ): GeneralSubject => ({
   type: "一般",
-  subject_category: subjectCategory,
-  affiliation,
-  name,
+  subject_category: source.subject_category,
+  affiliation: source.affiliation,
+  name: source.name,
   subject: {
-    name: source.name,
-    num: source.num,
-    subject_code: source.subject_code,
-    subject_term: source.subject_term,
-    subject_affiliation: source.subject_affiliation,
-    subject_category: source.subject_category,
-    comment: source.comment.map(commentWithoutCode),
+    name: source.subject.name,
+    num: source.subject.num,
+    subject_code: source.subject.subject_code,
+    subject_term: source.subject.subject_term,
+    subject_affiliation: source.subject.subject_affiliation,
+    subject_category: source.subject.subject_category,
+    comment: source.subject.comment.map(commentWithoutCode),
     teachers_email_response_evaluation: null,
-    credit_earnability: aggregateScore(source.credit_earnability),
+    credit_earnability: aggregateScore(source.subject.credit_earnability),
     credit_fairness: null,
     class_preparation_workload: aggregateScore(
-      source.class_preparation_workload,
+      source.subject.class_preparation_workload,
     ),
-    class_difficulty_level: aggregateScore(source.class_difficulty_level),
+    class_difficulty_level: aggregateScore(
+      source.subject.class_difficulty_level,
+    ),
     recommendation_level_of_this_class: aggregateScore(
-      source.recommendation_level_of_this_class,
+      source.subject.recommendation_level_of_this_class,
     ),
     are_materials_distributed_in_class:
-      source.are_materials_distributed_in_class,
-    is_textbook_used_in_class: source.is_textbook_used_in_class,
+      source.subject.are_materials_distributed_in_class,
+    is_textbook_used_in_class: source.subject.is_textbook_used_in_class,
     prerequisite_knowledge_for_this_class:
-      source.prerequisite_knowledge_for_this_class,
-    class_format: classFormatWithOther(source.class_format),
-    mode_class_format: classFormatWithOther(source.mode_class_format),
+      source.subject.prerequisite_knowledge_for_this_class,
+    class_format: classFormatWithOther(source.subject.class_format),
+    mode_class_format: classFormatWithOther(source.subject.mode_class_format),
     course_college: [],
   },
 });
 
-const sportSubject = (
-  name: string,
-  term: string,
-  subjectCategory: string,
-  source: SportSource,
+const normalizeSportSubject = (
+  source: Extract<SourceSubject, { type: "体育" }>,
 ): SportSubject => ({
   type: "体育",
-  term,
-  subject_category: subjectCategory,
-  name: normalizeSportName(name),
+  term: source.term,
+  subject_category: source.subject_category,
+  name: normalizeSportName(source.name),
   subject: {
-    name: normalizeSportName(source.name),
-    num: source.num,
-    subject_code: source.subject_code,
-    subject_term: source.subject_term,
-    college_year: source.college_year,
-    comment: source.comment.map(commentWithoutCode),
+    name: normalizeSportName(source.subject.name),
+    num: source.subject.num,
+    subject_code: source.subject.subject_code,
+    subject_term: source.subject.subject_term,
+    college_year: source.subject.college_year,
+    comment: source.subject.comment.map(commentWithoutCode),
     proportion_of_experienced_students: aggregateScore(
-      source.proportion_of_experienced_students,
+      source.subject.proportion_of_experienced_students,
     ),
     consideration_for_inexperienced_students: aggregateScore(
-      source.consideration_for_inexperienced_students,
+      source.subject.consideration_for_inexperienced_students,
     ),
-    credit_earnability: aggregateScore(source.credit_earnability),
-    exercise_intensity: aggregateScore(source.exercise_intensity),
-    male_to_female_ratio: aggregateScore(source.male_to_female_ratio),
+    credit_earnability: aggregateScore(source.subject.credit_earnability),
+    exercise_intensity: aggregateScore(source.subject.exercise_intensity),
+    male_to_female_ratio: aggregateScore(source.subject.male_to_female_ratio),
     recommendation_level_of_this_class: aggregateScore(
-      source.recommendation_level_of_this_class,
+      source.subject.recommendation_level_of_this_class,
     ),
-    required_purchases: source.required_purchases,
-    rain: source.rain,
-    final: source.final,
-    weekly_assignments: source.weekly_assignments,
-    overtime_assignments: source.overtime_assignments,
-    activity: source.activity,
+    required_purchases: source.subject.required_purchases,
+    rain: source.subject.rain,
+    final: source.subject.final,
+    weekly_assignments: source.subject.weekly_assignments,
+    overtime_assignments: source.subject.overtime_assignments,
+    activity: source.subject.activity,
   },
 });
+
+const subjects = z.array(subjectSchema).parse(summaryJson);
 
 export const subjectMap: ReadonlyMap<string, Subject> = new Map<
   string,
   Subject
->([
-  ...Object.entries(summaryData["一般"]).flatMap(
-    ([subjectCategory, affiliations]) =>
-      Object.entries(affiliations).flatMap(([affiliation, subjects]) =>
-        Object.entries(subjects).map<[string, GeneralSubject]>(
-          ([name, subject]) => [
-            name,
-            generalSubject(name, subjectCategory, affiliation, subject),
-          ],
-        ),
-      ),
-  ),
-  ...Object.entries(summaryData["体育"]).flatMap(([term, categories]) =>
-    Object.entries(categories).flatMap(([subjectCategory, subjects]) =>
-      Object.entries(subjects).map<[string, SportSubject]>(
-        ([name, subject]) => [
-          `${term}-${subjectCategory}-${normalizeSportName(name)}`,
-          sportSubject(name, term, subjectCategory, subject),
-        ],
-      ),
-    ),
-  ),
-]);
+>(
+  subjects.map<[string, Subject]>((source) => {
+    if (source.type === "一般") {
+      return [source.name, normalizeGeneralSubject(source)];
+    }
+
+    return [
+      `${source.term}-${source.subject_category}-${normalizeSportName(source.name)}`,
+      normalizeSportSubject(source),
+    ];
+  }),
+);

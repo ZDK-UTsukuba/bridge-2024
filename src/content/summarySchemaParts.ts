@@ -36,6 +36,31 @@ export const classFormatWithOtherSchema = z
   })
   .strict();
 
+export const classFormatWithoutOtherSchema = z
+  .object({
+    回答人数: z.number(),
+    講義: z.number(),
+    グループワーク: z.number(),
+    発表: z.number(),
+    パネルディスカッション: z.number(),
+    対話: z.number(),
+    オンデマンド: z.number(),
+    レポート提出のみ: z.number(),
+  })
+  .strict();
+
+export const legacyGeneralSurveyShape = {
+  teachers_email_response_evaluation: scoreSummarySchema,
+  credit_earnability: scoreSummarySchema,
+  class_preparation_workload: scoreSummarySchema,
+  class_difficulty_level: scoreSummarySchema,
+  recommendation_level_of_this_class: scoreSummarySchema,
+  are_materials_distributed_in_class: booleanSummarySchema,
+  is_textbook_used_in_class: booleanSummarySchema,
+  prerequisite_knowledge_for_this_class: z.array(z.string()),
+  class_format: classFormatWithoutOtherSchema,
+};
+
 export const sportSurveyShape = {
   comment: z.array(basicCommentSchema),
   proportion_of_experienced_students: scoreSummarySchema,

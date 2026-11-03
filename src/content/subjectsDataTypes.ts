@@ -52,7 +52,7 @@ export type GeneralSubjectData = {
   readonly name: string;
   readonly num: number | null;
   readonly subject_code: readonly string[];
-  readonly subject_term: string;
+  readonly subject_term: string | null;
   readonly subject_affiliation: string | null;
   readonly subject_category: string;
   readonly comment: readonly SubjectComment[];
@@ -74,7 +74,7 @@ export type SportSubjectData = {
   readonly name: string;
   readonly num: number | null;
   readonly subject_code: readonly string[];
-  readonly subject_term: string;
+  readonly subject_term: string | null;
   readonly college_year: string | null;
   readonly comment: readonly SubjectComment[];
   readonly proportion_of_experienced_students: ScoreValue;
@@ -84,11 +84,11 @@ export type SportSubjectData = {
   readonly male_to_female_ratio: ScoreValue;
   readonly recommendation_level_of_this_class: ScoreValue;
   readonly required_purchases: BooleanSummaryWithDetail;
-  readonly rain: BooleanSummaryWithDetail;
-  readonly final: BooleanSummaryWithDetail;
-  readonly weekly_assignments: BooleanSummaryWithDetail;
-  readonly overtime_assignments: BooleanSummaryWithDetail;
-  readonly activity: readonly string[];
+  readonly rain: BooleanSummaryWithDetail | null;
+  readonly final: BooleanSummaryWithDetail | null;
+  readonly weekly_assignments: BooleanSummaryWithDetail | null;
+  readonly overtime_assignments: BooleanSummaryWithDetail | null;
+  readonly activity: readonly string[] | null;
 };
 
 export type GeneralSubject = {
@@ -101,7 +101,7 @@ export type GeneralSubject = {
 
 export type SportSubject = {
   readonly type: "体育";
-  readonly term: string;
+  readonly term: string | null;
   readonly subject_category: string;
   readonly name: string;
   readonly subject: SportSubjectData;
