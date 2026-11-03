@@ -108,3 +108,37 @@ export type SportSubject = {
 };
 
 export type Subject = GeneralSubject | SportSubject;
+
+export const averageScore = (value: number | null): AverageScore => ({
+  type: "average",
+  value,
+});
+
+export const aggregateScore = (value: {
+  readonly sum: number;
+  readonly count: number;
+}): AggregateScore => ({
+  type: "aggregate",
+  sum: value.sum,
+  count: value.count,
+});
+
+export const getScoreCount = (score: ScoreValue): number =>
+  score.type === "aggregate" ? score.count : 0;
+
+export const classFormatWithoutOther = (
+  value: Omit<ClassFormatWithoutOther, "type">,
+): ClassFormatWithoutOther => ({
+  type: "without_other",
+  ...value,
+});
+
+export const classFormatWithOther = (
+  value: Omit<ClassFormatWithOther, "type">,
+): ClassFormatWithOther => ({
+  type: "with_other",
+  ...value,
+});
+
+export const normalizeSportName = (name: string) =>
+  name.replaceAll("（", "(").replaceAll("）", ")");
