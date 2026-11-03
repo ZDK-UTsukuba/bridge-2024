@@ -6,6 +6,18 @@ import {
   sportSurveyShape,
 } from "./summarySchemaParts";
 
+import {
+  aggregateScore,
+  classFormatWithOther,
+  normalizeSportName,
+} from "./subjectsDataTypes";
+import type {
+  GeneralSubject,
+  SportSubject,
+  Subject,
+  SubjectComment,
+} from "./subjectsDataTypes";
+
 const sportSubjectSchema = z
   .object({
     name: z.string(),
@@ -45,54 +57,119 @@ const summarySchema = z
 
 const summaryData = summarySchema.parse(summaryJson);
 
-type valueof<T> = T[keyof T];
+type ValueOf<T> = T[keyof T];
 
-type subj =
-  | {
-      type: "一般";
-      subject_category: string;
-      affiliation: string;
-      name: string;
-      subject: valueof<valueof<valueof<(typeof summaryData)["一般"]>>>;
-    }
-  | {
-      type: "体育";
-      term: string;
-      subject_category: string;
-      name: string;
-      subject: valueof<valueof<valueof<(typeof summaryData)["体育"]>>>;
-    };
+type GeneralSource = ValueOf<ValueOf<ValueOf<(typeof summaryData)["一般"]>>>;
+type SportSource = ValueOf<ValueOf<ValueOf<(typeof summaryData)["体育"]>>>;
 
-export const subjectMap = new Map<string, subj>([
-  ...[...Object.entries(summaryData["一般"])].flatMap(
-    ([subject_category, subjects]) =>
-      [...Object.entries(subjects)].flatMap(([affiliation, subjects]) =>
-        [...Object.entries(subjects)].map<[string, subj]>(
-          ([subject_name, subject]) => [
-            subject_name,
-            {
-              type: "一般",
-              subject_category,
-              affiliation,
-              name: subject_name,
-              subject,
-            },
+const commentWithoutCode = (comment: {
+  recommendation_level_of_this_class: number;
+  comment: string;
+}): SubjectComment => ({
+  subject_code: null,
+  recommendation_level_of_this_class:
+    comment.recommendation_level_of_this_class,
+  comment: comment.comment,
+});
+
+const generalSubject = (
+  name: string,
+  subjectCategory: string,
+  affiliation: string,
+  source: GeneralSource,
+): GeneralSubject => ({
+  type: "一般",
+  subject_category: subjectCategory,
+  affiliation,
+  name,
+  subject: {
+    name: source.name,
+    num: source.num,
+    subject_code: source.subject_code,
+    subject_term: source.subject_term,
+    subject_affiliation: source.subject_affiliation,
+    subject_category: source.subject_category,
+    comment: source.comment.map(commentWithoutCode),
+    teachers_email_response_evaluation: null,
+    credit_earnability: aggregateScore(source.credit_earnability),
+    credit_fairness: null,
+    class_preparation_workload: aggregateScore(
+      source.class_preparation_workload,
+    ),
+    class_difficulty_level: aggregateScore(source.class_difficulty_level),
+    recommendation_level_of_this_class: aggregateScore(
+      source.recommendation_level_of_this_class,
+    ),
+    are_materials_distributed_in_class:
+      source.are_materials_distributed_in_class,
+    is_textbook_used_in_class: source.is_textbook_used_in_class,
+    prerequisite_knowledge_for_this_class:
+      source.prerequisite_knowledge_for_this_class,
+    class_format: classFormatWithOther(source.class_format),
+    mode_class_format: classFormatWithOther(source.mode_class_format),
+    course_college: [],
+  },
+});
+
+const sportSubject = (
+  name: string,
+  term: string,
+  subjectCategory: string,
+  source: SportSource,
+): SportSubject => ({
+  type: "体育",
+  term,
+  subject_category: subjectCategory,
+  name: normalizeSportName(name),
+  subject: {
+    name: normalizeSportName(source.name),
+    num: source.num,
+    subject_code: source.subject_code,
+    subject_term: source.subject_term,
+    college_year: source.college_year,
+    comment: source.comment.map(commentWithoutCode),
+    proportion_of_experienced_students: aggregateScore(
+      source.proportion_of_experienced_students,
+    ),
+    consideration_for_inexperienced_students: aggregateScore(
+      source.consideration_for_inexperienced_students,
+    ),
+    credit_earnability: aggregateScore(source.credit_earnability),
+    exercise_intensity: aggregateScore(source.exercise_intensity),
+    male_to_female_ratio: aggregateScore(source.male_to_female_ratio),
+    recommendation_level_of_this_class: aggregateScore(
+      source.recommendation_level_of_this_class,
+    ),
+    required_purchases: source.required_purchases,
+    rain: source.rain,
+    final: source.final,
+    weekly_assignments: source.weekly_assignments,
+    overtime_assignments: source.overtime_assignments,
+    activity: source.activity,
+  },
+});
+
+export const subjectMap: ReadonlyMap<string, Subject> = new Map<
+  string,
+  Subject
+>([
+  ...Object.entries(summaryData["一般"]).flatMap(
+    ([subjectCategory, affiliations]) =>
+      Object.entries(affiliations).flatMap(([affiliation, subjects]) =>
+        Object.entries(subjects).map<[string, GeneralSubject]>(
+          ([name, subject]) => [
+            name,
+            generalSubject(name, subjectCategory, affiliation, subject),
           ],
         ),
       ),
   ),
-  ...[...Object.entries(summaryData["体育"])].flatMap(([term, subjects]) =>
-    [...Object.entries(subjects)].flatMap(([subject_category, subjects]) =>
-      [...Object.entries(subjects)].map<[string, subj]>(
-        ([subject_name, subject]) => [
-          `${term}-${subject_category}-${subject_name}`,
-          {
-            type: "体育",
-            term: term,
-            subject_category,
-            name: subject_name,
-            subject,
-          },
+  ...Object.entries(summaryData["体育"]).flatMap(([term, categories]) =>
+    Object.entries(categories).flatMap(([subjectCategory, subjects]) =>
+      Object.entries(subjects).map<[string, SportSubject]>(
+        ([name, subject]) => [
+          `${term}-${subjectCategory}-${normalizeSportName(name)}`,
+          sportSubject(name, term, subjectCategory, subject),
         ],
       ),
     ),
