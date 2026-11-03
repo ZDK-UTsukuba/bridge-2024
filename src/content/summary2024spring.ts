@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import summaryJson from "./class/summary2024.json";
+import summaryJson from "./class/summary2024spring.json";
 import {
   basicCommentSchema,
   booleanSummarySchema,
@@ -7,7 +7,7 @@ import {
   sportSurveyShape,
 } from "./summarySchemaParts";
 
-const legacyClassFormatSchema = z
+const classFormatWithoutOtherSchema = z
   .object({
     回答人数: z.number(),
     講義: z.number(),
@@ -45,7 +45,7 @@ const generalSubjectSchema = z
     are_materials_distributed_in_class: booleanSummarySchema,
     is_textbook_used_in_class: booleanSummarySchema,
     prerequisite_knowledge_for_this_class: z.array(z.string()),
-    class_format: legacyClassFormatSchema,
+    class_format: classFormatWithoutOtherSchema,
   })
   .strict();
 
@@ -60,7 +60,7 @@ const specializedSubjectSchema = z
     comment: z.array(basicCommentSchema),
     are_materials_distributed_in_class: booleanSummarySchema,
     is_textbook_used_in_class: booleanSummarySchema,
-    class_format: legacyClassFormatSchema,
+    class_format: classFormatWithoutOtherSchema,
     course_college: z.array(z.string()),
   })
   .strict();

@@ -36,17 +36,36 @@ const generalSubjectSchema = z
   })
   .strict();
 
-const summarySchema = z
-  .object({
-    体育: z.record(
-      z.string(),
-      z.record(z.string(), z.record(z.string(), sportSubjectSchema)),
-    ),
-    一般: z.record(
-      z.string(),
-      z.record(z.string(), z.record(z.string(), generalSubjectSchema)),
-    ),
-  })
-  .strict();
+const subjectSchema = z.discriminatedUnion("type", [
+  z
+    .object({
+      type: z.literal("一般"),
+      subject_category: z.string(),
+      affiliation: z.string(),
+      name: z.string(),
+      subject: generalSubjectSchema,
+    })
+    .strict(),
+  z
+    .object({
+      type: z.literal("体育"),
+      term: z.string(),
+      subject_category: z.string(),
+      name: z.string(),
+      subject: sportSubjectSchema,
+    })
+    .strict(),
+]);
 
-export const summaryData = summarySchema.parse(summaryJson);
+type subj = z.infer<typeof subjectSchema>;
+
+const subjects = z.array(subjectSchema).parse(summaryJson);
+
+export const subjectMap = new Map<string, subj>(
+  subjects.map<[string, subj]>((subject) => [
+    subject.type === "一般"
+      ? subject.name
+      : `${subject.term}-${subject.subject_category}-${subject.name}`,
+    subject,
+  ]),
+);
