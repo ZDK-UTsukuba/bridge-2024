@@ -1,19 +1,11 @@
 import { subjectMap } from "./subjectsData2025spring";
-
-const calcAve = (numOrObj: number | { sum: number; count: number }) => {
-  if (typeof numOrObj === "number") {
-    return numOrObj;
-  }
-  return Number.isNaN(numOrObj.sum / numOrObj.count)
-    ? 0
-    : numOrObj.sum / numOrObj.count;
-};
+import { calcScoreAverage } from "./subjectsDataTypes";
 
 export const getTopNSubject = (n: number) => {
   return [...subjectMap.entries()]
     .map<[string, number]>(([name, subj]) => [
       name,
-      calcAve(subj.subject.recommendation_level_of_this_class),
+      calcScoreAverage(subj.subject.recommendation_level_of_this_class) ?? 0,
     ])
     .sort((a, b) => b[1] - a[1])
     .map(([id]) => id)

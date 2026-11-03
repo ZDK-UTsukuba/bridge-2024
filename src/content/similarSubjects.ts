@@ -1,40 +1,41 @@
 import { subjectMap } from "./subjectsData2025spring";
 import { subjectsData } from "./subjectsSchema";
 import type { ModuleTimeTable, TimeTable } from "./subjectsSchema";
+import {
+  calcScoreAverage,
+  getScoreCount,
+  type ScoreValue,
+} from "./subjectsDataTypes";
 
 // subjectMapの値の型を取得
 type SubjectMapValue = NonNullable<ReturnType<typeof subjectMap.get>>;
 type SubjectData = SubjectMapValue["subject"];
 
-// 平均値を計算（省略可能なプロパティに対応）
-const calcAve = (
-  numOrObj: number | { sum?: number; count?: number } | undefined,
-): number => {
-  if (typeof numOrObj === "number") {
-    return numOrObj;
-  }
-  if (!numOrObj || numOrObj.sum === undefined || numOrObj.count === undefined) {
-    return 0;
-  }
-  return Number.isNaN(numOrObj.sum / numOrObj.count)
-    ? 0
-    : numOrObj.sum / numOrObj.count;
-};
+const calcAve = (score: ScoreValue | undefined): number =>
+  score ? (calcScoreAverage(score) ?? 0) : 0;
 
-// 安全にプロパティにアクセスする補助関数
-const safeGetProperty = <T extends Record<string, unknown>>(
-  obj: T,
+const safeGetProperty = (
+  subject: SubjectData,
   key: string,
-): { sum?: number; count?: number } | undefined => {
-  return key in obj
-    ? (obj[key] as { sum?: number; count?: number })
-    : undefined;
+): ScoreValue | undefined => {
+  const value = (subject as unknown as Record<string, unknown>)[key];
+
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "type" in value &&
+    (value.type === "average" || value.type === "aggregate")
+  ) {
+    return value as ScoreValue;
+  }
+
+  return undefined;
 };
 
 // 評価数を取得
 const getEvaluationCount = (subject: SubjectData): number => {
-  const prop = safeGetProperty(subject, "recommendation_level_of_this_class");
-  return prop?.count || 0;
+  const score = safeGetProperty(subject, "recommendation_level_of_this_class");
+  return score ? getScoreCount(score) : 0;
 };
 
 // 評価類似度を計算（0-1の範囲）
@@ -67,18 +68,14 @@ const calculateEvaluationSimilarity = (
       calcAve(safeGetProperty(subj1, "credit_earnability")),
       calcAve(safeGetProperty(subj1, "recommendation_level_of_this_class")),
       calcAve(safeGetProperty(subj1, "proportion_of_experienced_students")),
-      calcAve(
-        safeGetProperty(subj1, "consideration_for_inexperienced_students"),
-      ),
+      calcAve(safeGetProperty(subj1, "consideration_for_inexperienced_students")),
       calcAve(safeGetProperty(subj1, "exercise_intensity")),
     );
     metrics2.push(
       calcAve(safeGetProperty(subj2, "credit_earnability")),
       calcAve(safeGetProperty(subj2, "recommendation_level_of_this_class")),
       calcAve(safeGetProperty(subj2, "proportion_of_experienced_students")),
-      calcAve(
-        safeGetProperty(subj2, "consideration_for_inexperienced_students"),
-      ),
+      calcAve(safeGetProperty(subj2, "consideration_for_inexperienced_students")),
       calcAve(safeGetProperty(subj2, "exercise_intensity")),
     );
   } else {

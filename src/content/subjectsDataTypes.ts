@@ -65,7 +65,7 @@ export type GeneralSubjectData = {
   readonly are_materials_distributed_in_class: BooleanSummary;
   readonly is_textbook_used_in_class: BooleanSummary;
   readonly prerequisite_knowledge_for_this_class: readonly string[];
-  readonly class_format: ClassFormat;
+  readonly class_format: ClassFormatWithOther | ClassFormatWithoutOther | null;
   readonly mode_class_format: ClassFormatWithOther | null;
   readonly course_college: readonly string[];
 };
@@ -122,6 +122,12 @@ export const aggregateScore = (value: {
   sum: value.sum,
   count: value.count,
 });
+
+export const calcScoreAverage = (score: ScoreValue): number | null => {
+  if (score.type === "average") return score.value;
+  if (score.count === 0) return null;
+  return score.sum / score.count;
+};
 
 export const getScoreCount = (score: ScoreValue): number =>
   score.type === "aggregate" ? score.count : 0;

@@ -1,6 +1,7 @@
 ---
 import { subjectsData } from "../content/subjectsSchema";
 import { subjectMap } from "../content/subjectsData2025spring";
+import { calcScoreAverage } from "../content/subjectsDataTypes";
 import componentStyles from "./ClassListItem.module.scss";
 import Rating from "./Rating.astro";
 
@@ -21,15 +22,6 @@ if (subject == undefined) {
 const kdbs = getKdbByName(subject.name);
 const kdbTeachers = [...new Set(kdbs.flatMap((kdb) => kdb.instructor.value))];
 
-const calcAve = (numOrObj: number | { sum: number; count: number }) => {
-  if (typeof numOrObj === "number") {
-    return numOrObj;
-  }
-  return Number.isNaN(numOrObj.sum / numOrObj.count)
-    ? 0
-    : numOrObj.sum / numOrObj.count;
-};
-
 const colleges: string[] = [
   ...new Set(kdbs.map((v) => v.affiliation.name)),
 ].flatMap((v) => (v ? [v] : []));
@@ -37,7 +29,8 @@ const teachers: {
   name: string;
   image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
-const rating = calcAve(subject.subject.recommendation_level_of_this_class);
+const rating =
+  calcScoreAverage(subject.subject.recommendation_level_of_this_class) ?? 0;
 const reviewCount = subject.subject.comment.length;
 
 const getRandomColor = () => {

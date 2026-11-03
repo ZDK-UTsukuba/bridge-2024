@@ -7,6 +7,7 @@ import pageStyles from "./page.module.scss";
 import Stars from "../../components/Stars.ClassList.astro";
 import ClassListItem from "../../components/ClassListItem.astro";
 import { similarSubjectsMap } from "../../content/similarSubjects";
+import { calcScoreAverage } from "../../content/subjectsDataTypes";
 
 export function getStaticPaths() {
   return [...subjectMap.keys()].map((subject) => ({
@@ -24,6 +25,7 @@ if (subject == undefined) {
 }
 
 const kdbs = subjectsData.filter((v) => v.name === subject.name);
+const responseCount = subject.subject.num ?? 0;
 
 function syllabiUrl(number: string) {
   return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
@@ -34,17 +36,15 @@ const params =
     ? {
         // 一般
         credit_earnability:
-          subject.subject.credit_earnability.sum /
-          subject.subject.credit_earnability.count,
+          calcScoreAverage(subject.subject.credit_earnability) ?? 0,
         class_preparation_workload:
-          subject.subject.class_preparation_workload.sum /
-          subject.subject.class_preparation_workload.count,
+          calcScoreAverage(subject.subject.class_preparation_workload) ?? 0,
         class_difficulty_level:
-          subject.subject.class_difficulty_level.sum /
-          subject.subject.class_difficulty_level.count,
+          calcScoreAverage(subject.subject.class_difficulty_level) ?? 0,
         recommendation_level_of_this_class:
-          subject.subject.recommendation_level_of_this_class.sum /
-          subject.subject.recommendation_level_of_this_class.count,
+          calcScoreAverage(
+            subject.subject.recommendation_level_of_this_class,
+          ) ?? 0,
         are_materials_distributed_in_class: {
           data: subject.subject.are_materials_distributed_in_class,
         },
@@ -69,30 +69,30 @@ const params =
     : {
         // 体育
         credit_earnability:
-          subject.subject.credit_earnability.sum /
-          subject.subject.credit_earnability.count,
+          calcScoreAverage(subject.subject.credit_earnability) ?? 0,
         class_preparation_workload: null,
         class_difficulty_level: null,
         recommendation_level_of_this_class:
-          subject.subject.recommendation_level_of_this_class.sum /
-          subject.subject.recommendation_level_of_this_class.count,
+          calcScoreAverage(
+            subject.subject.recommendation_level_of_this_class,
+          ) ?? 0,
         are_materials_distributed_in_class: null,
         is_textbook_used_in_class: null,
         prerequisite_knowledge_for_this_class: null,
         class_format: null,
         mode_class_format: null,
         proportion_of_experienced_students:
-          subject.subject.proportion_of_experienced_students.sum /
-          subject.subject.proportion_of_experienced_students.count,
+          calcScoreAverage(
+            subject.subject.proportion_of_experienced_students,
+          ) ?? 0,
         consideration_for_inexperienced_students:
-          subject.subject.consideration_for_inexperienced_students.sum /
-          subject.subject.consideration_for_inexperienced_students.count,
+          calcScoreAverage(
+            subject.subject.consideration_for_inexperienced_students,
+          ) ?? 0,
         exercise_intensity:
-          subject.subject.exercise_intensity.sum /
-          subject.subject.exercise_intensity.count,
+          calcScoreAverage(subject.subject.exercise_intensity) ?? 0,
         male_to_female_ratio:
-          subject.subject.male_to_female_ratio.sum /
-          subject.subject.male_to_female_ratio.count,
+          calcScoreAverage(subject.subject.male_to_female_ratio) ?? 0,
         required_purchases: {
           data: subject.subject.required_purchases,
           detail: subject.subject.required_purchases.detail,
@@ -144,7 +144,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                 グループワーク: "グループワーク",
                 発表: "発表",
               }}
-              n={subject.subject.num}
+              n={responseCount}
               data={{
                 講義: params.class_format.講義,
                 グループワーク: params.class_format.グループワーク,
@@ -179,7 +179,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                 グループワーク: "グループワーク",
                 発表: "発表",
               }}
-              n={subject.subject.num}
+              n={responseCount}
               data={{
                 講義: params.class_format.講義,
                 グループワーク: params.class_format.グループワーク,
@@ -245,7 +245,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "使う",
                     False: "使わない",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.is_textbook_used_in_class.data}
                 />
               </div>
@@ -268,7 +268,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "あり",
                     False: "なし",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.are_materials_distributed_in_class.data}
                 />
               </div>
@@ -335,7 +335,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "あり",
                     False: "なし",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.required_purchases.data}
                 />
                 <ul>
@@ -358,7 +358,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "晴天時と同一",
                     False: "晴天時と異なる",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.rain.data}
                 />
                 <ul>
@@ -381,7 +381,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "あり",
                     False: "なし",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.final.data}
                 />
                 <ul>
@@ -404,7 +404,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "あり",
                     False: "なし",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.weekly_assignments.data}
                 />
                 <ul>
@@ -427,7 +427,7 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
                     True: "あり",
                     False: "なし",
                   }}
-                  n={subject.subject.num}
+                  n={responseCount}
                   data={params.overtime_assignments.data}
                 />
                 <ul>
