@@ -1,0 +1,48 @@
+---
+import pageStyles from "../pages/details/page.module.scss";
+import {
+  calcScoreAverage,
+  calcScoreAverageByPeriod,
+  subjectPeriods,
+  type ScoreValue,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+
+interface Props {
+  label: string;
+  yearlyValues: ValuesByPeriod<ScoreValue>;
+  formatValue?: (value: number) => string;
+}
+
+const {
+  label,
+  yearlyValues,
+  formatValue = (value: number) => value.toFixed(1),
+} = Astro.props;
+const value = calcScoreAverageByPeriod(yearlyValues);
+const ratings = subjectPeriods
+  .flatMap((year) => {
+    const score = yearlyValues[year];
+    return score ? [{ year, value: calcScoreAverage(score) }] : [];
+  })
+  .reverse();
+---
+
+<div class={pageStyles.item}>
+  <div class={pageStyles.headItem}>
+    <div class={pageStyles.label}>{label}</div>
+    <div class={pageStyles.content}>
+      {value === null ? "-" : formatValue(value)}
+    </div>
+  </div>
+  {
+    ratings.map(({ year, value }) => (
+      <div class={pageStyles.yearItem}>
+        <div class={pageStyles.label}>{year}</div>
+        <div class={pageStyles.content}>
+          {value === null ? "-" : formatValue(value)}
+        </div>
+      </div>
+    ))
+  }
+</div>

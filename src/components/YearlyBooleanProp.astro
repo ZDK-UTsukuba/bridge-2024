@@ -1,0 +1,68 @@
+---
+import pageStyles from "../pages/details/page.module.scss";
+import {
+  subjectPeriods,
+  type BooleanSummary,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import LabelPercent from "./LabelPercent.astro";
+
+interface Props {
+  label: string;
+  labels: [True: string, False: string];
+  yearlyValues: ValuesByPeriod<BooleanSummary | null>;
+}
+
+const { label, labels, yearlyValues } = Astro.props;
+const booleanLabels = { True: labels[0], False: labels[1] };
+const values = subjectPeriods
+  .flatMap((year) => {
+    const value = yearlyValues[year];
+    return value ? [{ year, value }] : [];
+  })
+  .reverse();
+const head = values.reduce(
+  (acc, { value }) => ({
+    True: acc.True + value.True,
+    False: acc.False + value.False,
+  }),
+  { True: 0, False: 0 },
+);
+---
+
+<div class={pageStyles.item}>
+  <div class={pageStyles.headItem}>
+    <div class={pageStyles.label}>{label}</div>
+    <div class={pageStyles.content}>
+      {
+        head.True + head.False > 0 ? (
+          <LabelPercent
+            labels={booleanLabels}
+            n={head.True + head.False}
+            data={head}
+          />
+        ) : (
+          "-"
+        )
+      }
+    </div>
+  </div>
+  {
+    values.map(({ year, value }) => (
+      <div class={pageStyles.yearItem}>
+        <div class={pageStyles.label}>{year}</div>
+        <div class={pageStyles.content}>
+          {value.True + value.False > 0 ? (
+            <LabelPercent
+              labels={booleanLabels}
+              n={value.True + value.False}
+              data={value}
+            />
+          ) : (
+            "-"
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>

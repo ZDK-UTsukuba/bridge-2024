@@ -1,0 +1,35 @@
+---
+import pageStyles from "../pages/details/page.module.scss";
+import {
+  subjectPeriods,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+
+interface Props {
+  label: string;
+  yearlyValues: ValuesByPeriod<readonly string[] | null>;
+}
+
+const { label, yearlyValues } = Astro.props;
+const lists = subjectPeriods
+  .flatMap((year) => {
+    const values = yearlyValues[year] ?? [];
+    return values.map((value) => ({ year, value }));
+  })
+  .reverse();
+---
+
+<div class={pageStyles.item}>
+  <div class={pageStyles.label}>{label}</div>
+  <div class={pageStyles.content}>
+    {
+      lists.map(({ year, value }) => (
+        <li class={pageStyles.detail}>
+          <>
+            <span>{value}</span>(<span>{year}</span>)
+          </>
+        </li>
+      ))
+    }
+  </div>
+</div>
