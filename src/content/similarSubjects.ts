@@ -24,7 +24,7 @@ const safeGetProperty = (
     typeof value === "object" &&
     value !== null &&
     "type" in value &&
-    (value.type === "average" || value.type === "aggregate")
+    value.type === "aggregate"
   ) {
     return value as ScoreValue;
   }
@@ -68,14 +68,18 @@ const calculateEvaluationSimilarity = (
       calcAve(safeGetProperty(subj1, "credit_earnability")),
       calcAve(safeGetProperty(subj1, "recommendation_level_of_this_class")),
       calcAve(safeGetProperty(subj1, "proportion_of_experienced_students")),
-      calcAve(safeGetProperty(subj1, "consideration_for_inexperienced_students")),
+      calcAve(
+        safeGetProperty(subj1, "consideration_for_inexperienced_students"),
+      ),
       calcAve(safeGetProperty(subj1, "exercise_intensity")),
     );
     metrics2.push(
       calcAve(safeGetProperty(subj2, "credit_earnability")),
       calcAve(safeGetProperty(subj2, "recommendation_level_of_this_class")),
       calcAve(safeGetProperty(subj2, "proportion_of_experienced_students")),
-      calcAve(safeGetProperty(subj2, "consideration_for_inexperienced_students")),
+      calcAve(
+        safeGetProperty(subj2, "consideration_for_inexperienced_students"),
+      ),
       calcAve(safeGetProperty(subj2, "exercise_intensity")),
     );
   } else {

@@ -5,25 +5,13 @@ import { subjectMap as subjectMap2025fall } from "./subjectsData2025fall";
 import { subjectMap as subjectMap2026spring } from "./subjectsData2026spring";
 import type {
   GeneralSubjectData,
+  GroupedSubject,
   SportSubjectData,
   Subject,
+  SubjectPeriod,
 } from "./subjectsDataTypes";
 
-export const subjectPeriods = [
-  "2023",
-  "2024spring",
-  "2025spring",
-  "2025fall",
-  "2026spring",
-] as const;
 
-export type SubjectPeriod = (typeof subjectPeriods)[number];
-
-type ValuesByPeriod<Value> = Partial<Record<SubjectPeriod, Value>>;
-
-type GroupedSubject<SubjectData extends object> = {
-  readonly [Key in keyof SubjectData]?: ValuesByPeriod<SubjectData[Key]>;
-};
 
 export type subj =
   | {

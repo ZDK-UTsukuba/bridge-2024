@@ -1,15 +1,8 @@
-export type AverageScore = {
-  readonly type: "average";
-  readonly value: number | null;
-};
-
-export type AggregateScore = {
+export type ScoreValue = {
   readonly type: "aggregate";
   readonly sum: number;
   readonly count: number;
 };
-
-export type ScoreValue = AverageScore | AggregateScore;
 
 export type SubjectComment = {
   readonly subject_code: string | null;
@@ -65,7 +58,7 @@ export type GeneralSubjectData = {
   readonly are_materials_distributed_in_class: BooleanSummary;
   readonly is_textbook_used_in_class: BooleanSummary;
   readonly prerequisite_knowledge_for_this_class: readonly string[];
-  readonly class_format: ClassFormatWithOther | ClassFormatWithoutOther | null;
+  readonly class_format: ClassFormat | null;
   readonly mode_class_format: ClassFormatWithOther | null;
   readonly course_college: readonly string[];
 };
@@ -109,28 +102,48 @@ export type SportSubject = {
 
 export type Subject = GeneralSubject | SportSubject;
 
-export const averageScore = (value: number | null): AverageScore => ({
-  type: "average",
-  value,
-});
+export const subjectPeriods = [
+  "2023",
+  "2024spring",
+  "2025spring",
+  "2025fall",
+  "2026spring",
+] as const;
+
+export type SubjectPeriod = (typeof subjectPeriods)[number];
+
+export type ValuesByPeriod<Value> = Partial<Record<SubjectPeriod, Value>>;
+
+export type GroupedSubject<SubjectData extends object> = {
+  readonly [Key in keyof SubjectData]: ValuesByPeriod<SubjectData[Key]>;
+};
 
 export const aggregateScore = (value: {
   readonly sum: number;
   readonly count: number;
-}): AggregateScore => ({
+}): ScoreValue => ({
   type: "aggregate",
   sum: value.sum,
   count: value.count,
 });
 
 export const calcScoreAverage = (score: ScoreValue): number | null => {
-  if (score.type === "average") return score.value;
   if (score.count === 0) return null;
   return score.sum / score.count;
 };
 
-export const getScoreCount = (score: ScoreValue): number =>
-  score.type === "aggregate" ? score.count : 0;
+export const calcScoreAverageByPeriod = (
+  scores: ValuesByPeriod<ScoreValue>,
+): number | null => {
+  return calcScoreAverage(aggregateScore(
+    Object.values(scores).reduce((acc, score) =>  ({
+      sum: acc.sum + score.sum,
+      count: acc.count + score.count,
+    }), { sum: 0, count: 0 })
+  ));
+};
+
+export const getScoreCount = (score: ScoreValue): number => score.count;
 
 export const classFormatWithoutOther = (
   value: Omit<ClassFormatWithoutOther, "type">,
