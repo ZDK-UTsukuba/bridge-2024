@@ -43,10 +43,10 @@ export type ClassFormat = ClassFormatWithoutOther | ClassFormatWithOther;
 
 export type GeneralSubjectData = {
   readonly name: string;
-  readonly num: number | null;
+  readonly num: number;
   readonly subject_code: readonly string[];
   readonly subject_term: string | null;
-  readonly subject_affiliation: string | null;
+  readonly subject_affiliation: string;
   readonly subject_category: string;
   readonly comment: readonly SubjectComment[];
   readonly teachers_email_response_evaluation: ScoreValue | null;
@@ -58,14 +58,14 @@ export type GeneralSubjectData = {
   readonly are_materials_distributed_in_class: BooleanSummary;
   readonly is_textbook_used_in_class: BooleanSummary;
   readonly prerequisite_knowledge_for_this_class: readonly string[];
-  readonly class_format: ClassFormat | null;
+  readonly class_format: ClassFormat;
   readonly mode_class_format: ClassFormatWithOther | null;
   readonly course_college: readonly string[];
 };
 
 export type SportSubjectData = {
   readonly name: string;
-  readonly num: number | null;
+  readonly num: number;
   readonly subject_code: readonly string[];
   readonly subject_term: string | null;
   readonly college_year: string | null;
