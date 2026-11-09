@@ -34,17 +34,11 @@ const head = values.reduce(
   <div class={pageStyles.headItem}>
     <div class={pageStyles.label}>{label}</div>
     <div class={pageStyles.content}>
-      {
-        head.True + head.False > 0 ? (
-          <LabelPercent
-            labels={booleanLabels}
-            n={head.True + head.False}
-            data={head}
-          />
-        ) : (
-          "-"
-        )
-      }
+      <LabelPercent
+        labels={booleanLabels}
+        n={head.True + head.False}
+        data={head}
+      />
     </div>
   </div>
   {
@@ -52,15 +46,11 @@ const head = values.reduce(
       <div class={pageStyles.yearItem}>
         <div class={pageStyles.label}>{year}</div>
         <div class={pageStyles.content}>
-          {value.True + value.False > 0 ? (
-            <LabelPercent
-              labels={booleanLabels}
-              n={value.True + value.False}
-              data={value}
-            />
-          ) : (
-            "-"
-          )}
+          <LabelPercent
+            labels={booleanLabels}
+            n={value.True + value.False}
+            data={value}
+          />
         </div>
       </div>
     ))

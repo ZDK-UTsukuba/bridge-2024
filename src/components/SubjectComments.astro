@@ -1,0 +1,35 @@
+---
+import { subjectPeriods, type SubjectComment, type ValuesByPeriod } from "../content/subjectsDataTypes";
+import pageStyles from "../pages/details/page.module.scss";
+import Stars from "./Stars.ClassList.astro";
+
+interface Props {
+  label: string;
+  comments: ValuesByPeriod<readonly SubjectComment[]>;
+}
+
+const { label, comments: yearlyValues } = Astro.props;
+const comments = subjectPeriods
+  .flatMap((year) => {
+    const values = yearlyValues[year] ?? [];
+    return values.map((comment) => ({ year, comment }));
+  })
+  .reverse();
+---
+
+<div class={pageStyles.item}>
+  <div class={pageStyles.label}>{label}</div>
+  <div class:list={[pageStyles.content, pageStyles.comments]}>
+    {
+      comments.map(({comment, year}) => (
+        <div class={pageStyles.comment}>
+          <div class={pageStyles.commentHeader}>
+            <Stars num={comment.recommendation_level_of_this_class} />
+            <div>{comment.recommendation_level_of_this_class}</div>
+          </div>
+          <span>{comment.comment}</span> <span>({year})</span>
+        </div>
+      ))
+    }
+  </div>
+</div>

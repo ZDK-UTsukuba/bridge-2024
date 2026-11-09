@@ -1,0 +1,114 @@
+---
+import {
+  subjectPeriods,
+  type ClassFormat,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import pageStyles from "../pages/details/page.module.scss";
+import LabelPercent from "./LabelPercent.astro";
+
+interface Props {
+  label: string;
+  data: ValuesByPeriod<ClassFormat | null>;
+  n: ValuesByPeriod<number>;
+  showAverageNote?: boolean;
+}
+
+const { label, data, n, showAverageNote = false } = Astro.props;
+const labels = {
+  講義: "講義",
+  グループワーク: "グループワーク",
+  発表: "発表",
+};
+const values = subjectPeriods
+  .flatMap((year) => {
+    const value = data[year];
+    return value ? [{ year, value, count: n[year] ?? 0 }] : [];
+  })
+  .reverse();
+const head = values.reduce(
+  (acc, { value, count }) => ({
+    count: acc.count + count,
+    data: {
+      講義: acc.data.講義 + value.講義,
+      グループワーク: acc.data.グループワーク + value.グループワーク,
+      発表: acc.data.発表 + value.発表,
+    },
+  }),
+  { count: 0, data: { 講義: 0, グループワーク: 0, 発表: 0 } },
+);
+const details = values.flatMap(({ year, value }) =>
+  value.type === "with_other"
+    ? value.other.map((detail) => ({ year, value: detail }))
+    : [],
+);
+---
+
+<div class={pageStyles.tagWrap}>
+  <div class={pageStyles.tag}>{label}</div>
+  {
+    showAverageNote && (
+      <p class={pageStyles.description}>※ 全ての科目の平均値</p>
+    )
+  }
+</div>
+<div class={pageStyles.card}>
+  <div class={pageStyles.lists}>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.headItem}>
+        <div class={pageStyles.label}>全体</div>
+        <div class={pageStyles.content}>
+          <LabelPercent labels={labels} n={head.count} data={head.data} />
+        </div>
+      </div>
+      {
+        values.map(({ year, value, count }) => (
+          <div class={pageStyles.yearItem}>
+            <div class={pageStyles.label}>{year}</div>
+            <div class={pageStyles.content}>
+              {value.type === "with_other" ? (
+                <LabelPercent
+                  labels={labels}
+                  n={count}
+                  data={{
+                    講義: value.講義,
+                    グループワーク: value.グループワーク,
+                    発表: value.発表,
+                  }}
+                />
+              ) : (
+                <LabelPercent
+                  labels={labels}
+                  n={count}
+                  data={{
+                    講義: value.講義,
+                    グループワーク: value.グループワーク,
+                    発表: value.発表,
+                    パネルディスカッション: value.パネルディスカッション,
+                    対話: value.対話,
+                    オンデマンド: value.オンデマンド,
+                    レポート提出のみ: value.レポート提出のみ,
+                  }}
+                />
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>その他</div>
+      <div class={pageStyles.content}>
+        <ul>
+          {
+            details.map(({ year, value }) => (
+              <li class={pageStyles.detail}>
+                <span>{value}</span> (<span>{year}</span>)
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

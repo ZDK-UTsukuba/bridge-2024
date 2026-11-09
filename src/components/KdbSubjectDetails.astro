@@ -1,0 +1,97 @@
+---
+import type { subjectsData } from "../content/subjectsSchema";
+import pageStyles from "../pages/details/page.module.scss";
+
+interface Props {
+  kdbSubject: (typeof subjectsData)[number];
+}
+
+const { kdbSubject } = Astro.props;
+
+function syllabiUrl(number: string) {
+  return `https://kdb.tsukuba.ac.jp/syllabi/2024/${number}/jpn`;
+}
+---
+
+<div class={pageStyles.tagWrap}>
+  <div class={pageStyles.tag}>科目番号 {kdbSubject.code}</div>
+  <a
+    href={syllabiUrl(kdbSubject.code)}
+    target="_blank"
+    rel="noopener noreferrer external"
+  >
+    シラバス (外部)
+    <div class={pageStyles.iconWrap}>
+      <svg
+        width="45"
+        height="45"
+        viewBox="0 0 45 45"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class={pageStyles.icon}
+      >
+        <path
+          d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+  </a>
+</div>
+<div class={pageStyles.card}>
+  <div class={pageStyles.lists}>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>授業形態</div>
+      <div class={pageStyles.content}>
+        {kdbSubject.instructionalType.value?.text ?? ""}
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>単位</div>
+      <div class={pageStyles.content}>
+        {
+          kdbSubject.credits.value === null ||
+          kdbSubject.credits.value.type === "unknown"
+            ? ""
+            : kdbSubject.credits.value.type === "none"
+              ? "-"
+              : kdbSubject.credits.value.value
+        }
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>標準履修年次</div>
+      <div class={pageStyles.content}>
+        {
+          kdbSubject.year.value.type === "unknown"
+            ? "-"
+            : kdbSubject.year.value.value.join(", ")
+        }
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>学期 曜時限</div>
+      <div class={pageStyles.content}>
+        {
+          kdbSubject.terms.twinsRaw?.module ??
+            `${kdbSubject.terms.module} ${kdbSubject.terms.weekdayAndPeriod}`
+        }
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>担当教員</div>
+      <div class={pageStyles.content}>
+        {kdbSubject.instructor.value.join(", ")}
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>授業概要</div>
+      <div class={pageStyles.content}>
+        {kdbSubject.overview ?? ""}
+      </div>
+    </div>
+    <div class={pageStyles.item}>
+      <div class={pageStyles.label}>備考</div>
+      <div class={pageStyles.content}>{kdbSubject.remarks ?? ""}</div>
+    </div>
+  </div>
+</div>

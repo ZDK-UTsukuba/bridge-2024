@@ -1,9 +1,6 @@
 ---
 import pageStyles from "../pages/details/page.module.scss";
-import {
-  subjectPeriods,
-  type ValuesByPeriod,
-} from "../content/subjectsDataTypes";
+import { subjectPeriods, type ValuesByPeriod } from "../content/subjectsDataTypes";
 
 interface Props {
   label: string;
@@ -22,14 +19,14 @@ const lists = subjectPeriods
 <div class={pageStyles.item}>
   <div class={pageStyles.label}>{label}</div>
   <div class={pageStyles.content}>
-    {
-      lists.map(({ year, value }) => (
-        <li class={pageStyles.detail}>
-          <>
-            <span>{value}</span>(<span>{year}</span>)
-          </>
-        </li>
-      ))
-    }
+    <ul>
+      {
+        lists.map(({ year, value }) => (
+          <li class={pageStyles.detail}>
+            <span>{value}</span> (<span>{year}</span>)
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
