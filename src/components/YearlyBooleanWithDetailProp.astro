@@ -1,7 +1,13 @@
 ---
-import pageStyles from "../pages/details/page.module.scss";
-import { subjectPeriods, type BooleanSummaryWithDetail, type ValuesByPeriod } from "../content/subjectsDataTypes";
+import itemStyles from "./YearlyDetailItem.module.scss";
+import {
+  subjectPeriods,
+  type BooleanSummaryWithDetail,
+  type SubjectPeriod,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
 import LabelPercent from "./LabelPercent.astro";
+import YearlyDetailItem from "./YearlyDetailItem.astro";
 
 interface Props {
   label: string;
@@ -32,43 +38,28 @@ const details = subjectPeriods
   .reverse();
 ---
 
-<div class={pageStyles.item}>
-  <div class={pageStyles.headItem}>
-    <div class={pageStyles.label}>{label}</div>
-    <div class={pageStyles.content}>
-      <LabelPercent
-        labels={booleanLabels}
-        n={head.True + head.False}
-        data={head}
-      /> 
-    </div>
-  </div>
-  {
-    values.map(({ year, value }) => (
-      <div class={pageStyles.yearItem}>
-        <div class={pageStyles.label}>{year}</div>
-        <div class={pageStyles.content}>
-          <LabelPercent
-            labels={booleanLabels}
-            n={value.True + value.False}
-            data={{
-              True: value.True,
-              False: value.False,
-            }}
-          />
-        </div>
-      </div>
-    ))
-  }
-  <div>
+<YearlyDetailItem label={label} getValue={(year) => yearlyValues[year]}>
+  <LabelPercent labels={booleanLabels} n={head.True + head.False} data={head} />
+  <fragment slot="year">
+    {
+      (_year: SubjectPeriod, value: BooleanSummaryWithDetail) => (
+        <LabelPercent
+          labels={booleanLabels}
+          n={value.True + value.False}
+          data={{ True: value.True, False: value.False }}
+        />
+      )
+    }
+  </fragment>
+  <div slot="after-years">
     <ul>
       {
-        details.map(({year, value}) => (
-          <li class={pageStyles.detail}>
+        details.map(({ year, value }) => (
+          <li class={itemStyles.detail}>
             <span>{value}</span> (<span>{year}</span>)
           </li>
         ))
       }
     </ul>
   </div>
-</div>
+</YearlyDetailItem>

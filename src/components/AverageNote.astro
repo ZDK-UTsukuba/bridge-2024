@@ -1,0 +1,15 @@
+---
+import componentStyles from "./AverageNote.module.scss";
+
+interface Props {
+  showAverageNote?: boolean;
+}
+
+const { showAverageNote = false } = Astro.props;
+---
+
+{
+  showAverageNote && (
+    <p class={componentStyles.description}>※ 全ての科目の平均値</p>
+  )
+}

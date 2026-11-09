@@ -1,6 +1,10 @@
 ---
-import pageStyles from "../pages/details/page.module.scss";
-import { subjectPeriods, type ValuesByPeriod } from "../content/subjectsDataTypes";
+import itemStyles from "./YearlyDetailItem.module.scss";
+import DetailItem from "./DetailItem.astro";
+import {
+  subjectPeriods,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
 
 interface Props {
   label: string;
@@ -16,17 +20,14 @@ const lists = subjectPeriods
   .reverse();
 ---
 
-<div class={pageStyles.item}>
-  <div class={pageStyles.label}>{label}</div>
-  <div class={pageStyles.content}>
-    <ul>
-      {
-        lists.map(({ year, value }) => (
-          <li class={pageStyles.detail}>
-            <span>{value}</span> (<span>{year}</span>)
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+<DetailItem label={label}>
+  <ul>
+    {
+      lists.map(({ year, value }) => (
+        <li class={itemStyles.detail}>
+          <span>{value}</span> (<span>{year}</span>)
+        </li>
+      ))
+    }
+  </ul>
+</DetailItem>

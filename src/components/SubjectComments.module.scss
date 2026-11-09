@@ -1,0 +1,41 @@
+.comments {
+  --detail-comment-background-color-light: #ffffff;
+  --detail-comment-background-color-dark: #000000;
+  --detail-comment-background-color: var(
+    --detail-comment-background-color-light
+  );
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  .comment {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: var(--detail-comment-background-color);
+    padding: 16px 18px;
+    line-height: 1.2;
+    border-radius: 20px 20px 0 20px;
+    margin-left: auto;
+    margin-right: 0;
+    &:nth-child(odd) {
+      border-radius: 20px 20px 20px 0;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .commentHeader {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .comments {
+    --detail-comment-background-color: var(
+      --detail-comment-background-color-dark
+    );
+  }
+}

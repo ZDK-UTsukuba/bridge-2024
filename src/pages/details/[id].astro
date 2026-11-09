@@ -7,11 +7,13 @@ import YearlyScoreProp from "../../components/YearlyScoreProp.astro";
 import YearlyBooleanProp from "../../components/YearlyBooleanProp.astro";
 import YearlyTextProp from "../../components/YearlyTextProp.astro";
 import pageStyles from "./page.module.scss";
+import AverageNote from "../../components/AverageNote.astro";
 import SubjectComments from "../../components/SubjectComments.astro";
 import ClassListItem from "../../components/ClassListItem.astro";
 import KdbSubjectDetails from "../../components/KdbSubjectDetails.astro";
+import DetailSection from "../../components/DetailSection.astro";
 import { similarSubjectsMap } from "../../content/similarSubjects";
-import YearlyBooleanWithDetailProp from '@components/YearlyBooleanWithDetailProp.astro';
+import YearlyBooleanWithDetailProp from "@components/YearlyBooleanWithDetailProp.astro";
 
 export function getStaticPaths() {
   return [...subjectMap.keys()].map((subject) => ({
@@ -37,196 +39,42 @@ const similarSubjects = similarSubjectsMap.get(subjectName) || [];
 <Layout title={subjectName}>
   <div class={pageStyles.body}>
     <h1 class={pageStyles.title}>{subject.name}</h1>
-    {
-      [...new Set(kdbs.map((v) => v.affiliation.name))].map(
-        (v) => v && <span class={pageStyles.category}>{v}</span>,
-      )
-    }
-    {
-      subject.type === '一般' && (
-        <ClassFormatProp
-          label="授業形態"
-          data={subject.subject.class_format}
-          n={subject.subject.num}
-          showAverageNote={kdbs.length > 1}
-        />
-      )
-    }
-    {
-      subject.type === '一般' && (
-        <ClassFormatProp
-          label="最も多い授業形態"
-          data={subject.subject.mode_class_format}
-          n={subject.subject.num}
-          showAverageNote={kdbs.length > 1}
-        />
-      )
-    }
+    {[...new Set(kdbs.map((v) => v.affiliation.name))].map((v) => v && <span class={pageStyles.category}>{v}</span>)}
+    {subject.type === "一般" && <ClassFormatProp label="授業形態" data={subject.subject.class_format} n={subject.subject.num} showAverageNote={kdbs.length > 1} />}
+    {subject.type === "一般" && <ClassFormatProp label="最も多い授業形態" data={subject.subject.mode_class_format} n={subject.subject.num} showAverageNote={kdbs.length > 1} />}
 
-    <div class={pageStyles.tagWrap}>
-      <div class={pageStyles.tag}>評価</div>
-      {
-        kdbs.length > 1 && (
-          <p class={pageStyles.description}>※ 全ての科目の平均値</p>
-        )
-      }
-    </div>
-    <div class={pageStyles.card}>
-      <div class={pageStyles.lists}>
-        {
-          subject.type === '一般' && (
-            <YearlyScoreProp
-              label="授業の難易度"
-              yearlyValues={subject.subject.class_difficulty_level}
-            />
-          )
-        }
-        <YearlyScoreProp
-          label="単位の取りやすさ"
-          yearlyValues={subject.subject.credit_earnability}
-        />
-        {
-          subject.type === '一般' && (
-            <YearlyScoreProp
-              label="授業の準備量"
-              yearlyValues={subject.subject.class_preparation_workload}
-            />
-          )
-        }
-        {
-          subject.type === '一般' && (
-            <YearlyBooleanProp
-              label="教科書"
-              labels={["使う", "使わない"]}
-              yearlyValues={subject.subject.is_textbook_used_in_class}
-            />
-          )
-        }
-        <YearlyScoreProp
-          label="オススメ度"
-          yearlyValues={subject.subject.recommendation_level_of_this_class}
-        />
-        {
-          subject.type === '一般' && (
-            <YearlyBooleanProp
-              label="配布資料"
-              labels={["あり", "なし"]}
-              yearlyValues={subject.subject.are_materials_distributed_in_class}
-            />
-          )
-        }
-        {
-          subject.type === '一般' && (
-            <YearlyTextProp
-              label="予備知識"
-              yearlyValues={subject.subject.prerequisite_knowledge_for_this_class}
-            />
-          )
-        }
-        {
-          subject.type === '体育' && (
-            <YearlyScoreProp
-              label="経験者の割合"
-              yearlyValues={subject.subject.proportion_of_experienced_students}
-            />
-          )
-        }
-        {
-          subject.type === '体育' && (
-            <YearlyScoreProp
-              label="未経験者に対する配慮"
-              yearlyValues={subject.subject.consideration_for_inexperienced_students}
-            />
-          )
-        }
-        {
-          subject.type === '体育' && (
-            <YearlyScoreProp
-              label="運動の強度"
-              yearlyValues={subject.subject.exercise_intensity}
-            />
-          )
-        }
-        {
-          subject.type === '体育' && (
-            <YearlyScoreProp
-              label="男女比"
-              yearlyValues={subject.subject.male_to_female_ratio}
-              formatValue={(value) => `${value} : ${10 - value}`}
-            />
-          )
-        }
-        {
-          subject.type === '体育' && (
-              <YearlyBooleanWithDetailProp
-                label="必要な購入物"
-                labels={["あり", "なし"]}
-                yearlyValues={subject.subject.required_purchases}
-              />
-          )
-        }
-        {
-          subject.type === '体育' && (
-              <YearlyBooleanWithDetailProp
-                label="雨天時の授業内容"
-                labels={["晴天時と同一", "晴天時と異なる"]}
-                yearlyValues={subject.subject.rain}
-              />
-          )
-        }
-        {
-          subject.type === '体育' && (
-              <YearlyBooleanWithDetailProp
-                label="期末課題"
-                labels={["あり", "なし"]}
-                yearlyValues={subject.subject.final}
-              />
-          )
-        }
-        {
-          subject.type === '体育' && (
-              <YearlyBooleanWithDetailProp
-                label="毎週提出する課題"
-                labels={["あり", "なし"]}
-                yearlyValues={subject.subject.weekly_assignments}
-              />
-          )
-        }
-        {
-          subject.type === '体育' && (
-              <YearlyBooleanWithDetailProp
-                label="課題や授業時間外の実習"
-                labels={["あり", "なし"]}
-                yearlyValues={subject.subject.overtime_assignments}
-              />
-          )
-        }
-        {
-          subject.type === '体育' && (
-            <YearlyTextProp label="実際の活動" yearlyValues={subject.subject.activity} />
-          )
-        }
-        <SubjectComments label="コメント" comments={subject.subject.comment} />
-      </div>
-    </div>
+    <DetailSection label="評価">
+      <AverageNote slot="header-extra" showAverageNote={kdbs.length > 1} />
+      {subject.type === "一般" && <YearlyScoreProp label="授業の難易度" yearlyValues={subject.subject.class_difficulty_level} />}
+      <YearlyScoreProp label="単位の取りやすさ" yearlyValues={subject.subject.credit_earnability} />
+      {subject.type === "一般" && <YearlyScoreProp label="授業の準備量" yearlyValues={subject.subject.class_preparation_workload} />}
+      {subject.type === "一般" && <YearlyBooleanProp label="教科書" labels={["使う", "使わない"]} yearlyValues={subject.subject.is_textbook_used_in_class} />}
+      <YearlyScoreProp label="オススメ度" yearlyValues={subject.subject.recommendation_level_of_this_class} />
+      {subject.type === "一般" && <YearlyBooleanProp label="配布資料" labels={["あり", "なし"]} yearlyValues={subject.subject.are_materials_distributed_in_class} />}
+      {subject.type === "一般" && <YearlyTextProp label="予備知識" yearlyValues={subject.subject.prerequisite_knowledge_for_this_class} />}
+      {subject.type === "体育" && <YearlyScoreProp label="経験者の割合" yearlyValues={subject.subject.proportion_of_experienced_students} />}
+      {subject.type === "体育" && <YearlyScoreProp label="未経験者に対する配慮" yearlyValues={subject.subject.consideration_for_inexperienced_students} />}
+      {subject.type === "体育" && <YearlyScoreProp label="運動の強度" yearlyValues={subject.subject.exercise_intensity} />}
+      {subject.type === "体育" && <YearlyScoreProp label="男女比" yearlyValues={subject.subject.male_to_female_ratio} formatValue={(value) => `${value} : ${10 - value}`} />}
+      {subject.type === "体育" && <YearlyBooleanWithDetailProp label="必要な購入物" labels={["あり", "なし"]} yearlyValues={subject.subject.required_purchases} />}
+      {subject.type === "体育" && <YearlyBooleanWithDetailProp label="雨天時の授業内容" labels={["晴天時と同一", "晴天時と異なる"]} yearlyValues={subject.subject.rain} />}
+      {subject.type === "体育" && <YearlyBooleanWithDetailProp label="期末課題" labels={["あり", "なし"]} yearlyValues={subject.subject.final} />}
+      {subject.type === "体育" && <YearlyBooleanWithDetailProp label="毎週提出する課題" labels={["あり", "なし"]} yearlyValues={subject.subject.weekly_assignments} />}
+      {subject.type === "体育" && <YearlyBooleanWithDetailProp label="課題や授業時間外の実習" labels={["あり", "なし"]} yearlyValues={subject.subject.overtime_assignments} />}
+      {subject.type === "体育" && <YearlyTextProp label="実際の活動" yearlyValues={subject.subject.activity} />}
+      <SubjectComments label="コメント" comments={subject.subject.comment} />
+    </DetailSection>
 
-    {
-      kdbs.map((kdbSubject) => (
-        <KdbSubjectDetails kdbSubject={kdbSubject} />
-      ))
-    }
+    {kdbs.map((kdbSubject) => <KdbSubjectDetails kdbSubject={kdbSubject} />)}
     {
       similarSubjects.length > 0 && (
-        <>
-          <div class={pageStyles.tagWrap}>
-            <div class={pageStyles.tag}>似た評価の講義</div>
-          </div>
-          <div class={pageStyles.card}>
+        <DetailSection label="似た評価の講義">
+          <div>
             {similarSubjects.map((similarSubjectId) => (
               <ClassListItem subjectId={similarSubjectId} />
             ))}
           </div>
-        </>
+        </DetailSection>
       )
     }
   </div>

@@ -1,0 +1,32 @@
+---
+import componentStyles from "./ExternalLink.module.scss";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a
+  class={componentStyles.link}
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer external"
+>
+  <slot />
+  <div class={componentStyles.iconWrap}>
+    <svg
+      width="45"
+      height="45"
+      viewBox="0 0 45 45"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class={componentStyles.icon}
+    >
+      <path
+        d="M36.5 9C36.5 8.17157 35.8284 7.5 35 7.5H21.5C20.6716 7.5 20 8.17157 20 9C20 9.82843 20.6716 10.5 21.5 10.5H33.5V22.5C33.5 23.3284 34.1716 24 35 24C35.8284 24 36.5 23.3284 36.5 22.5V9ZM10.0607 36.0607L36.0607 10.0607L33.9393 7.93934L7.93934 33.9393L10.0607 36.0607Z"
+        fill="currentColor"></path>
+    </svg>
+  </div>
+</a>

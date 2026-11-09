@@ -1,0 +1,46 @@
+---
+import {
+  subjectPeriods,
+  type SubjectPeriod,
+} from "../content/subjectsDataTypes";
+import componentStyles from "./YearlyDetailItem.module.scss";
+
+interface Props {
+  label: string;
+  getValue: (year: SubjectPeriod) => unknown;
+}
+
+const { label, getValue } = Astro.props;
+const values = subjectPeriods
+  .flatMap((year) => {
+    const value = getValue(year);
+    return value != null ? [{ year, value }] : [];
+  })
+  .reverse();
+const yearContent = await Promise.all(
+  values.map(async ({ year, value }) => ({
+    year,
+    html: await Astro.slots.render("year", [year, value]),
+  })),
+);
+---
+
+<div class={componentStyles.item}>
+  <div class={componentStyles.headItem}>
+    <div class={componentStyles.label}>{label}</div>
+    <div class={componentStyles.content}>
+      <slot />
+    </div>
+  </div>
+  {
+    yearContent.map(({ year, html }) => (
+      <div class={componentStyles.yearItem}>
+        <div class={componentStyles.label}>{year}</div>
+        <div class={componentStyles.content}>
+          <Fragment set:html={html} />
+        </div>
+      </div>
+    ))
+  }
+  <slot name="after-years" />
+</div>

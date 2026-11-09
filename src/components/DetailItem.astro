@@ -1,0 +1,16 @@
+---
+import itemStyles from "./YearlyDetailItem.module.scss";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class={itemStyles.item}>
+  <div class={itemStyles.label}>{label}</div>
+  <div class={itemStyles.content}>
+    <slot />
+  </div>
+</div>

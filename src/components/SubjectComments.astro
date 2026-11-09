@@ -1,6 +1,11 @@
 ---
-import { subjectPeriods, type SubjectComment, type ValuesByPeriod } from "../content/subjectsDataTypes";
-import pageStyles from "../pages/details/page.module.scss";
+import {
+  subjectPeriods,
+  type SubjectComment,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import componentStyles from "./SubjectComments.module.scss";
+import DetailItem from "./DetailItem.astro";
 import Stars from "./Stars.ClassList.astro";
 
 interface Props {
@@ -17,13 +22,12 @@ const comments = subjectPeriods
   .reverse();
 ---
 
-<div class={pageStyles.item}>
-  <div class={pageStyles.label}>{label}</div>
-  <div class:list={[pageStyles.content, pageStyles.comments]}>
+<DetailItem label={label}>
+  <div class={componentStyles.comments}>
     {
-      comments.map(({comment, year}) => (
-        <div class={pageStyles.comment}>
-          <div class={pageStyles.commentHeader}>
+      comments.map(({ comment, year }) => (
+        <div class={componentStyles.comment}>
+          <div class={componentStyles.commentHeader}>
             <Stars num={comment.recommendation_level_of_this_class} />
             <div>{comment.recommendation_level_of_this_class}</div>
           </div>
@@ -32,4 +36,4 @@ const comments = subjectPeriods
       ))
     }
   </div>
-</div>
+</DetailItem>

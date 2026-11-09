@@ -1,0 +1,49 @@
+@use "./var";
+
+.tagWrap {
+  --detail-tag-text-color-light: #5d5d5d;
+  --detail-tag-text-color-dark: #ffffff;
+  --detail-tag-text-color: var(--detail-tag-text-color-light);
+  --detail-tag-background-color-light: #ffffff;
+  --detail-tag-background-color-dark: #101010;
+  --detail-tag-background-color: var(--detail-tag-background-color-light);
+
+  display: flex;
+  gap: 30px;
+  align-items: baseline;
+
+  .tag {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--detail-tag-background-color);
+    color: var(--detail-tag-text-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+  }
+}
+
+.card {
+  display: block;
+  width: 100%;
+  padding: 10px 30px;
+  margin: 10px 0;
+
+  @include var.sp {
+    margin: 0;
+    padding: 0 10px;
+  }
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .tagWrap {
+    --detail-tag-text-color: var(--detail-tag-text-color-dark);
+    --detail-tag-background-color: var(--detail-tag-background-color-dark);
+  }
+}
