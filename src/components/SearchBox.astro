@@ -7,6 +7,8 @@ import componentStyles from "./SearchBox.module.scss";
     <img src="/search.svg" alt="Search" class={componentStyles.icon} />
     <input
       id="searchInput"
+      name="q"
+      aria-label="科目名・教員名・科目番号で検索"
       type="text"
       class={componentStyles.input}
       placeholder={" " /* "" にすると webkit でうまく動作しない */}
@@ -28,38 +30,35 @@ import componentStyles from "./SearchBox.module.scss";
 </form>
 
 <script>
-  if (window.location.pathname.toString().startsWith("/search/")) {
-    const searchInput = document.getElementById(
-      "searchInput",
-    ) as HTMLInputElement;
-    const searchKeywords = decodeURIComponent(
-      window.location.pathname
-        .toString()
-        .replace("/search/", "")
-        .replace("/", ""),
-    );
-    searchInput.value = searchKeywords;
-    document.title = searchKeywords;
-  }
-
-  const searchBoxForm = document.querySelector(
-    "[data-searchbox-form]",
-  ) as HTMLFormElement;
   const searchInput = document.getElementById(
     "searchInput",
   ) as HTMLInputElement;
-  searchBoxForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    location.href = `/search/${encodeURIComponent(searchInput.value)}`;
-  });
+  if (
+    window.location.pathname === "/search/" ||
+    window.location.pathname === "/search"
+  ) {
+    searchInput.value =
+      new URL(window.location.href).searchParams.get("q") ?? "";
+  }
 
-  window.document.addEventListener("keydown", (e) => {
-    if (e.key === "/" && document.activeElement !== searchInput) {
-      e.preventDefault();
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const editing =
+      target instanceof HTMLElement &&
+      (target.isContentEditable ||
+        Boolean(target.closest("input, textarea, select")));
+    if (
+      event.key === "/" &&
+      !editing &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey &&
+      !event.isComposing
+    ) {
+      event.preventDefault();
       searchInput.focus();
     }
-    if (e.key === "Escape" && document.activeElement === searchInput) {
-      e.preventDefault();
+    if (event.key === "Escape" && document.activeElement === searchInput) {
       searchInput.blur();
     }
   });

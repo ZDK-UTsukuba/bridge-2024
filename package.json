@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "scripts": {
+    "test": "node --experimental-strip-types --test scripts/search.test.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "prebuild": "./scripts/fetchSubjects.sh && ./scripts/fetchSummary.sh",

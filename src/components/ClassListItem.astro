@@ -6,9 +6,10 @@ import Rating from "./Rating.astro";
 
 interface Props {
   subjectId: string;
+  searchable?: boolean;
 }
 
-const { subjectId } = Astro.props;
+const { subjectId, searchable = false } = Astro.props;
 
 const getKdbByName = (subject: string) => {
   return subjectsData.filter((v) => v.name === subject);
@@ -45,9 +46,22 @@ const getRandomColor = () => {
 };
 ---
 
-<div class={componentStyles.item}>
+<div
+  class={componentStyles.item}
+  data-search-id={searchable ? subjectId : undefined}
+  data-search-title={searchable ? subject.name : undefined}
+  data-search-fields={searchable
+    ? JSON.stringify([
+        subjectId,
+        ...kdbTeachers,
+        ...colleges,
+        ...subject.subject.subject_code,
+        ...kdbs.map((kdb) => kdb.code),
+      ])
+    : undefined}
+>
   <div class={componentStyles.title}>
-    <a href={`/details/${subjectId}`}>{subject.name}</a>
+    <a href={`/details/${encodeURIComponent(subjectId)}`}>{subject.name}</a>
     {
       colleges.map((college) => (
         <span class={componentStyles.category}>{college}</span>
