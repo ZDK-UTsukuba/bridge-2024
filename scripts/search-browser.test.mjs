@@ -16,6 +16,8 @@ const assert = require("node:assert/strict");
       document.querySelector("[data-search-status]").textContent.includes("68"),
     );
     assert.equal(await visible.count(), 68);
+    const robots = page.locator('head meta[name="robots"]');
+    assert.equal(await robots.count(), 0);
     assert.equal(await page.locator("[data-search-more]").count(), 0);
     assert.equal(await page.locator("html[data-system-fonts]").count(), 0);
     const title = await visible.first().getAttribute("data-search-title");
@@ -26,12 +28,15 @@ const assert = require("node:assert/strict");
       title,
     );
     assert.equal(new URL(page.url()).searchParams.get("q"), title);
+    assert.equal(await robots.count(), 1);
+    assert.equal(await robots.getAttribute("content"), "noindex");
     await page.reload();
     await page.waitForFunction(
       () =>
         document.querySelector("[data-search-status]").textContent.length > 0,
     );
     assert.equal(await input.inputValue(), title);
+    assert.equal(await robots.getAttribute("content"), "noindex");
     await input.fill("zzNONEXISTENT");
     await page.waitForFunction(() =>
       document
@@ -42,6 +47,7 @@ const assert = require("node:assert/strict");
     await input.fill("");
     await input.press("Enter");
     assert.equal(await visible.count(), 68);
+    assert.equal(await robots.count(), 0);
     await input.dispatchEvent("compositionstart");
     await input.evaluate((e) => {
       e.value = "zzNONEXISTENT";
@@ -76,6 +82,27 @@ const assert = require("node:assert/strict");
         .textContent.includes("見つかりません"),
     );
     assert.equal(await page.locator("[data-search-title] img").count(), 0);
+    await page.goto(base + "/search/?q=");
+    await page.waitForFunction(
+      () =>
+        document
+          .querySelector('head meta[name="robots"]')
+          ?.getAttribute("content") === "noindex",
+    );
+    // History navigation must add/remove the tag without creating duplicates.
+    await page.evaluate(() => {
+      history.pushState(null, "", "/search/");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    assert.equal(await robots.count(), 0);
+    await page.goBack();
+    await page.waitForFunction(
+      () =>
+        document
+          .querySelector('head meta[name="robots"]')
+          ?.getAttribute("content") === "noindex",
+    );
+    assert.equal(await robots.count(), 1);
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(
       await page.evaluate(

@@ -44,8 +44,17 @@ import pageStyles from "./page.module.scss";
     ),
   );
   let timer: ReturnType<typeof setTimeout> | undefined;
+  const searchRobots = document.createElement("meta");
+  searchRobots.name = "robots";
+  searchRobots.content = "noindex";
 
   function render() {
+    // Static HTML is shared by all queries; sync robots with the actual URL.
+    if (new URL(window.location.href).searchParams.has("q")) {
+      if (!searchRobots.isConnected) document.head.append(searchRobots);
+    } else {
+      searchRobots.remove();
+    }
     const query = input.value.trim();
     const ids = searchEntries(entries, query);
     const visible = new Set(ids);
