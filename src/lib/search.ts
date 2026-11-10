@@ -42,8 +42,7 @@ export function searchEntries(
       id: entry.id,
       reviewCount: entry.reviewCount,
       order,
-      // Rank title/teacher/code matches ahead of affiliation-only matches.
-      // Count each term once, regardless of duplicate metadata values.
+      // Title relevance comes first; metadata only breaks comment-count ties.
       titleMatches: terms.filter((term) => entry.title.includes(term)).length,
       primaryMatches: terms.filter((term) =>
         entry.primary.some((field) => field.includes(term)),
@@ -62,8 +61,8 @@ export function searchEntries(
       (a, b) =>
         b.rank - a.rank ||
         b.titleMatches - a.titleMatches ||
-        b.primaryMatches - a.primaryMatches ||
         b.reviewCount - a.reviewCount ||
+        b.primaryMatches - a.primaryMatches ||
         a.order - b.order,
     )
     .map((entry) => entry.id);

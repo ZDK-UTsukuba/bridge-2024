@@ -41,7 +41,7 @@ test("empty queries restore all subjects and unknown queries return none", () =>
   assert.deepEqual(searchEntries(entries, "<script>"), []);
 });
 
-test("affiliations remain searchable but rank below titles, teachers, and codes", () => {
+test("with equal comment counts, affiliations rank below titles, teachers, and codes", () => {
   const records = [
     createSearchEntry("college", "数学", [], ["情報学群"]),
     createSearchEntry("teacher", "数学", ["情報 太郎"]),
@@ -59,6 +59,27 @@ test("affiliations remain searchable but rank below titles, teachers, and codes"
     createSearchEntry("code", "講義", ["AB123"]),
   ];
   assert.deepEqual(searchEntries(codes, "AB"), ["code", "affiliation"]);
+});
+
+test("comment counts precede metadata matches when title relevance is tied", () => {
+  const records = [
+    createSearchEntry("teacher", "数学", ["情報 太郎"], [], 2),
+    createSearchEntry("college", "数学", [], ["情報学群"], 20),
+    createSearchEntry("title", "情報数学", [], [], 0),
+    createSearchEntry("code", "数学", ["情報123"], [], 3),
+  ];
+  assert.deepEqual(searchEntries(records, "情報"), [
+    "title",
+    "college",
+    "code",
+    "teacher",
+  ]);
+  assert.deepEqual(searchEntries(records, "数学 情報"), [
+    "title",
+    "college",
+    "code",
+    "teacher",
+  ]);
 });
 
 test("multi-term title matches outrank matches split across title and affiliation", () => {
