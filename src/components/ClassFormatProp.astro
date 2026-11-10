@@ -26,10 +26,11 @@ const labels = {
   グループワーク: "グループワーク",
   発表: "発表",
 };
-const values = groupedToArray(data)
-  .map(({ year, value }) => 
-    ({ year, value, count: n[year] ?? 0 })
-  );
+const values = groupedToArray(data).map(({ year, value }) => ({
+  year,
+  value,
+  count: n[year] ?? 0,
+}));
 const head = values.reduce(
   (acc, { value, count }) => ({
     count: acc.count + count,

@@ -13,8 +13,9 @@ interface Props {
 }
 
 const { label, yearlyValues } = Astro.props;
-const lists = groupedToArray(yearlyValues)
-  .flatMap(({ year, value }) => value.map((v) => ({ year, value: v })));
+const lists = groupedToArray(yearlyValues).flatMap(({ year, value }) =>
+  value.map((v) => ({ year, value: v })),
+);
 ---
 
 <DetailItem label={label}>

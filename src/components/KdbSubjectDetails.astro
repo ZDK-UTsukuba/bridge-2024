@@ -11,7 +11,10 @@ interface Props {
 const { kdbSubject } = Astro.props;
 
 function syllabiUrl(number: string) {
-  const year = ((date) => date.getMonth() < 4 ? date.getFullYear() - 1 : date.getFullYear())(new Date());
+  const year = ((date) =>
+    date.getMonth() < 4 ? date.getFullYear() - 1 : date.getFullYear())(
+    new Date(),
+  );
   return `https://kdb.tsukuba.ac.jp/syllabi/${year}/${number}/jpn`;
 }
 ---

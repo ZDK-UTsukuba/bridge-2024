@@ -126,14 +126,16 @@ export type GroupedSubject<SubjectData extends object> = {
   readonly [Key in keyof SubjectData]: ValuesByPeriod<SubjectData[Key]>;
 };
 
-export const groupedToArray = <Value>(grouped: ValuesByPeriod<Value | null>): {value: Value, year: SubjectPeriod}[] => {
+export const groupedToArray = <Value>(
+  grouped: ValuesByPeriod<Value | null>,
+): { value: Value; year: SubjectPeriod }[] => {
   return subjectPeriods
-  .flatMap((year) => {
-    const value = grouped[year];
-    return value != null ? [{ year, value }] : [];
-  })
-  .reverse();
-}
+    .flatMap((year) => {
+      const value = grouped[year];
+      return value != null ? [{ year, value }] : [];
+    })
+    .reverse();
+};
 
 export const aggregateScore = (value: {
   readonly sum: number;
@@ -165,7 +167,8 @@ export const calcScoreAverageByPeriod = (
   );
 };
 
-export const getScoreCount = (score: ScoreValue): number => score.count;
+export const getScoreCount = (score: ValuesByPeriod<ScoreValue>): number =>
+  groupedToArray(score).reduce((acc, { value }) => acc + value.count, 0);
 
 export const classFormatWithoutOther = (
   value: Omit<ClassFormatWithoutOther, "type">,
