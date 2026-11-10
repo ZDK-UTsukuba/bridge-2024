@@ -11,8 +11,6 @@ import type {
   SubjectPeriod,
 } from "./subjectsDataTypes";
 
-
-
 export type subj =
   | {
       readonly type: "一般";

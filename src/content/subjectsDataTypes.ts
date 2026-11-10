@@ -143,12 +143,17 @@ export const calcScoreAverage = (score: ScoreValue): number | null => {
 export const calcScoreAverageByPeriod = (
   scores: ValuesByPeriod<ScoreValue>,
 ): number | null => {
-  return calcScoreAverage(aggregateScore(
-    Object.values(scores).reduce((acc, score) =>  ({
+  return calcScoreAverage(
+    aggregateScore(
+      Object.values(scores).reduce(
+        (acc, score) => ({
           sum: acc.sum + score.sum,
           count: acc.count + score.count,
-    }), { sum: 0, count: 0 })
-  ));
+        }),
+        { sum: 0, count: 0 },
+      ),
+    ),
+  );
 };
 
 export const getScoreCount = (score: ScoreValue): number => score.count;
