@@ -1,6 +1,6 @@
 ---
 import {
-  subjectPeriods,
+  groupedToArray,
   subjectPeriodText,
   type SubjectComment,
   type ValuesByPeriod,
@@ -15,12 +15,10 @@ interface Props {
 }
 
 const { label, comments: yearlyValues } = Astro.props;
-const comments = subjectPeriods
-  .flatMap((year) => {
-    const values = yearlyValues[year] ?? [];
-    return values.map((comment) => ({ year, comment }));
-  })
-  .reverse();
+const comments = groupedToArray(yearlyValues)
+  .flatMap(({ year, value: values }) => 
+    values.map((comment) => ({ year, comment }))
+  );
 ---
 
 <DetailItem label={label}>

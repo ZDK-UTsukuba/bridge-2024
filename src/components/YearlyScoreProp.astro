@@ -22,7 +22,7 @@ const {
 const value = calcScoreAverageByPeriod(yearlyValues);
 ---
 
-<YearlyDetailItem label={label} getValue={(year) => yearlyValues[year]}>
+<YearlyDetailItem label={label} data={yearlyValues}>
   {value === null ? "-" : formatValue(value)}
   <fragment slot="year">
     {

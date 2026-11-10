@@ -1,7 +1,7 @@
 ---
 import itemStyles from "./YearlyDetailItem.module.scss";
 import {
-  subjectPeriods,
+  groupedToArray,
   subjectPeriodText,
   type BooleanSummaryWithDetail,
   type SubjectPeriod,
@@ -18,12 +18,7 @@ interface Props {
 
 const { label, labels, yearlyValues } = Astro.props;
 const booleanLabels = { True: labels[0], False: labels[1] };
-const values = subjectPeriods
-  .flatMap((year) => {
-    const value = yearlyValues[year];
-    return value ? [{ year, value }] : [];
-  })
-  .reverse();
+const values = groupedToArray(yearlyValues);
 const head = values.reduce(
   (acc, { value }) => ({
     True: acc.True + value.True,
@@ -31,15 +26,10 @@ const head = values.reduce(
   }),
   { True: 0, False: 0 },
 );
-const details = subjectPeriods
-  .flatMap((year) => {
-    const value = yearlyValues[year];
-    return value ? [{ year, value: value.detail }] : [];
-  })
-  .reverse();
+const details = groupedToArray(yearlyValues);
 ---
 
-<YearlyDetailItem label={label} getValue={(year) => yearlyValues[year]}>
+<YearlyDetailItem label={label} data={yearlyValues}>
   <LabelPercent labels={booleanLabels} n={head.True + head.False} data={head} />
   <fragment slot="year">
     {

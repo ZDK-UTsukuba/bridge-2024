@@ -1,6 +1,6 @@
 ---
 import {
-  subjectPeriods,
+  groupedToArray,
   subjectPeriodText,
   type ClassFormat,
   type SubjectPeriod,
@@ -26,12 +26,10 @@ const labels = {
   グループワーク: "グループワーク",
   発表: "発表",
 };
-const values = subjectPeriods
-  .flatMap((year) => {
-    const value = data[year];
-    return value ? [{ year, value, count: n[year] ?? 0 }] : [];
-  })
-  .reverse();
+const values = groupedToArray(data)
+  .map(({ year, value }) => 
+    ({ year, value, count: n[year] ?? 0 })
+  );
 const head = values.reduce(
   (acc, { value, count }) => ({
     count: acc.count + count,
@@ -52,7 +50,7 @@ const details = values.flatMap(({ year, value }) =>
 
 <DetailSection label={label}>
   <AverageNote slot="header-extra" showAverageNote={showAverageNote} />
-  <YearlyDetailItem label="全体" getValue={(year) => data[year]}>
+  <YearlyDetailItem label="全体" data={data}>
     <LabelPercent labels={labels} n={head.count} data={head.data} />
     <fragment slot="year">
       {

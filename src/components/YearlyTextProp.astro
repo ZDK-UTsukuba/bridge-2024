@@ -2,7 +2,7 @@
 import itemStyles from "./YearlyDetailItem.module.scss";
 import DetailItem from "./DetailItem.astro";
 import {
-  subjectPeriods,
+  groupedToArray,
   subjectPeriodText,
   type ValuesByPeriod,
 } from "../content/subjectsDataTypes";
@@ -13,12 +13,8 @@ interface Props {
 }
 
 const { label, yearlyValues } = Astro.props;
-const lists = subjectPeriods
-  .flatMap((year) => {
-    const values = yearlyValues[year] ?? [];
-    return values.map((value) => ({ year, value }));
-  })
-  .reverse();
+const lists = groupedToArray(yearlyValues)
+  .flatMap(({ year, value }) => value.map((v) => ({ year, value: v })));
 ---
 
 <DetailItem label={label}>

@@ -1,23 +1,18 @@
 ---
 import {
-  subjectPeriods,
+  groupedToArray,
   subjectPeriodText,
-  type SubjectPeriod,
+  type ValuesByPeriod
 } from "../content/subjectsDataTypes";
 import componentStyles from "./YearlyDetailItem.module.scss";
 
 interface Props {
   label: string;
-  getValue: (year: SubjectPeriod) => unknown;
+  data: ValuesByPeriod<unknown>;
 }
 
-const { label, getValue } = Astro.props;
-const values = subjectPeriods
-  .flatMap((year) => {
-    const value = getValue(year);
-    return value != null ? [{ year, value }] : [];
-  })
-  .reverse();
+const { label, data } = Astro.props;
+const values = groupedToArray(data);
 const yearContent = await Promise.all(
   values.map(async ({ year, value }) => ({
     year,

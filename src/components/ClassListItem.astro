@@ -1,7 +1,7 @@
 ---
 import { subjectsData } from "../content/subjectsSchema";
-import { subjectMap } from "../content/subjectsData2025spring";
-import { calcScoreAverage } from "../content/subjectsDataTypes";
+import { subjectMap } from "../content/subjectsDataAll";
+import { calcScoreAverageByPeriod, groupedToArray } from "../content/subjectsDataTypes";
 import componentStyles from "./ClassListItem.module.scss";
 import Rating from "./Rating.astro";
 
@@ -30,8 +30,8 @@ const teachers: {
   image?: string;
 }[] = kdbTeachers.map((teacher) => ({ name: teacher }));
 const rating =
-  calcScoreAverage(subject.subject.recommendation_level_of_this_class) ?? 0;
-const reviewCount = subject.subject.comment.length;
+  calcScoreAverageByPeriod(subject.subject.recommendation_level_of_this_class) ?? 0;
+const reviewCount = groupedToArray(subject.subject.num).reduce((acc, {value}) => acc + value, 0);
 
 const getRandomColor = () => {
   return `oklch(75% 0.20 ${Math.random() * 360})`;

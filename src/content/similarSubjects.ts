@@ -1,32 +1,44 @@
-import { subjectMap } from "./subjectsData2025spring";
+import { z } from "astro:content";
+import { subjectMap } from "./subjectsDataAll";
 import { subjectsData } from "./subjectsSchema";
 import type { ModuleTimeTable, TimeTable } from "./subjectsSchema";
 import {
-  calcScoreAverage,
+  calcScoreAverageByPeriod,
   getScoreCount,
+  subjectPeriods,
+  type GeneralSubjectData,
   type ScoreValue,
+  type SportSubjectData,
+  type ValuesByPeriod,
 } from "./subjectsDataTypes";
 
 // subjectMapの値の型を取得
 type SubjectMapValue = NonNullable<ReturnType<typeof subjectMap.get>>;
 type SubjectData = SubjectMapValue["subject"];
 
-const calcAve = (score: ScoreValue | undefined): number =>
-  score ? (calcScoreAverage(score) ?? 0) : 0;
+const calcAve = (score: ValuesByPeriod<ScoreValue> | undefined): number =>
+  score ? (calcScoreAverageByPeriod(score) ?? 0) : 0;
 
 const safeGetProperty = (
   subject: SubjectData,
-  key: string,
-): ScoreValue | undefined => {
+  key: keyof GeneralSubjectData | keyof SportSubjectData,
+): ValuesByPeriod<ScoreValue> | undefined => {
   const value = (subject as unknown as Record<string, unknown>)[key];
 
-  if (
-    typeof value === "object" &&
-    value !== null &&
-    "type" in value &&
-    value.type === "aggregate"
-  ) {
-    return value as ScoreValue;
+  const schema = z.record(
+    z.enum(subjectPeriods),
+    z
+      .object({
+        type: z.literal("aggregate"),
+        sum: z.number(),
+        count: z.number(),
+      })
+      .strict(),
+  );
+
+  const result = schema.safeParse(value);
+  if (result.success) {
+    return result.data;
   }
 
   return undefined;
