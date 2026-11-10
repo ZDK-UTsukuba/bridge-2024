@@ -1,0 +1,106 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ClassListItem from "../../components/ClassListItem.astro";
+import { subjectMap } from "../../content/subjectsDataAll";
+import pageStyles from "./page.module.scss";
+---
+
+<Layout title="検索結果">
+  <div class={pageStyles.body}>
+    <h1 class={pageStyles.title} data-search-title>科目一覧</h1>
+    <p data-search-status role="status" aria-live="polite"></p>
+    <div class={pageStyles.list} data-search-results>
+      {
+        [...subjectMap.keys()].map((subjectId) => (
+          <ClassListItem subjectId={subjectId} searchable />
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { createSearchEntry, searchEntries } from "../../lib/search";
+
+  const results = document.querySelector<HTMLElement>("[data-search-results]")!;
+  const title = document.querySelector<HTMLElement>("[data-search-title]")!;
+  const status = document.querySelector<HTMLElement>("[data-search-status]")!;
+  const form = document.querySelector<HTMLFormElement>(
+    "[data-searchbox-form]",
+  )!;
+  const input = form.querySelector<HTMLInputElement>("[name=q]")!;
+  const cards = new Map(
+    [...results.querySelectorAll<HTMLElement>("[data-search-id]")].map(
+      (card) => [card.dataset.searchId!, card],
+    ),
+  );
+  const entries = [...cards].map(([id, card]) =>
+    createSearchEntry(
+      id,
+      card.dataset.searchTitle!,
+      JSON.parse(card.dataset.searchFields!),
+      JSON.parse(card.dataset.searchAffiliations!),
+      Number(card.dataset.searchReviewCount),
+    ),
+  );
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const searchRobots = document.createElement("meta");
+  searchRobots.name = "robots";
+  searchRobots.content = "noindex";
+
+  function render() {
+    // Static HTML is shared by all queries; sync robots with the actual URL.
+    if (new URL(window.location.href).searchParams.has("q")) {
+      if (!searchRobots.isConnected) document.head.append(searchRobots);
+    } else {
+      searchRobots.remove();
+    }
+    const query = input.value.trim();
+    const ids = searchEntries(entries, query);
+    const visible = new Set(ids);
+    for (const [id, card] of cards) card.hidden = !visible.has(id);
+    for (const id of ids) results.appendChild(cards.get(id)!);
+    title.textContent = query ? `${query} の検索結果` : "科目一覧";
+    document.title = `${title.textContent} - BRIDGE`;
+    status.textContent = ids.length
+      ? `${ids.length} 件の科目`
+      : "結果が見つかりませんでした。検索語を変えてお試しください。";
+  }
+
+  function apply() {
+    clearTimeout(timer);
+    const url = new URL(window.location.href);
+    const query = input.value.trim();
+    if (query) url.searchParams.set("q", query);
+    else url.searchParams.delete("q");
+    window.history.replaceState(null, "", url);
+    render();
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    apply();
+  });
+  input.addEventListener("input", (event) => {
+    clearTimeout(timer);
+    if (!(event as InputEvent).isComposing) timer = setTimeout(apply, 200);
+  });
+  input.addEventListener("compositionstart", () => clearTimeout(timer));
+  input.addEventListener("compositionend", () => {
+    clearTimeout(timer);
+    timer = setTimeout(apply, 200);
+  });
+  function restore() {
+    clearTimeout(timer);
+    input.value = new URL(window.location.href).searchParams.get("q") ?? "";
+    render();
+  }
+  window.addEventListener("popstate", restore);
+  restore();
+</script>
+
+<style>
+  [data-search-results] :global([hidden]) {
+    display: none !important;
+  }
+</style>
