@@ -39,6 +39,8 @@ import pageStyles from "./page.module.scss";
       id,
       card.dataset.searchTitle!,
       JSON.parse(card.dataset.searchFields!),
+      JSON.parse(card.dataset.searchAffiliations!),
+      Number(card.dataset.searchReviewCount),
     ),
   );
   let timer: ReturnType<typeof setTimeout> | undefined;

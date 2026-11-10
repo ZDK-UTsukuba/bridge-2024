@@ -50,11 +50,12 @@ const getRandomColor = () => {
   class={componentStyles.item}
   data-search-id={searchable ? subjectId : undefined}
   data-search-title={searchable ? subject.name : undefined}
+  data-search-review-count={searchable ? reviewCount : undefined}
+  data-search-affiliations={searchable ? JSON.stringify(colleges) : undefined}
   data-search-fields={searchable
     ? JSON.stringify([
         subjectId,
         ...kdbTeachers,
-        ...colleges,
         ...subject.subject.subject_code,
         ...kdbs.map((kdb) => kdb.code),
       ])

@@ -2,11 +2,24 @@ export function normalizeSearch(value: string): string {
   return value.normalize("NFKC").toLowerCase().replace(/\s+/gu, "");
 }
 
-export function createSearchEntry(id: string, title: string, fields: string[]) {
+export function createSearchEntry(
+  id: string,
+  title: string,
+  fields: string[],
+  affiliations: string[] = [],
+  reviewCount = 0,
+) {
+  const primary = fields.map(normalizeSearch);
   return {
     id,
+    reviewCount,
     title: normalizeSearch(title),
-    fields: [title, ...fields].map(normalizeSearch),
+    primary,
+    fields: [
+      normalizeSearch(title),
+      ...primary,
+      ...affiliations.map(normalizeSearch),
+    ],
   };
 }
 
@@ -27,7 +40,14 @@ export function searchEntries(
     )
     .map((entry, order) => ({
       id: entry.id,
+      reviewCount: entry.reviewCount,
       order,
+      // Rank title/teacher/code matches ahead of affiliation-only matches.
+      // Count each term once, regardless of duplicate metadata values.
+      titleMatches: terms.filter((term) => entry.title.includes(term)).length,
+      primaryMatches: terms.filter((term) =>
+        entry.primary.some((field) => field.includes(term)),
+      ).length,
       rank: !phrase
         ? 0
         : entry.title === phrase
@@ -38,6 +58,13 @@ export function searchEntries(
               ? 1
               : 0,
     }))
-    .sort((a, b) => b.rank - a.rank || a.order - b.order)
+    .sort(
+      (a, b) =>
+        b.rank - a.rank ||
+        b.titleMatches - a.titleMatches ||
+        b.primaryMatches - a.primaryMatches ||
+        b.reviewCount - a.reviewCount ||
+        a.order - b.order,
+    )
     .map((entry) => entry.id);
 }
