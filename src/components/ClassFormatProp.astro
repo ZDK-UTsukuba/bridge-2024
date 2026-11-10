@@ -1,6 +1,7 @@
 ---
 import {
   subjectPeriods,
+  subjectPeriodText,
   type ClassFormat,
   type SubjectPeriod,
   type ValuesByPeriod,
@@ -89,7 +90,7 @@ const details = values.flatMap(({ year, value }) =>
       {
         details.map(({ year, value }) => (
           <li class={itemStyles.detail}>
-            <span>{value}</span> (<span>{year}</span>)
+            <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
           </li>
         ))
       }

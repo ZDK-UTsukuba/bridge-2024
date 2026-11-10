@@ -1,6 +1,7 @@
 ---
 import {
   subjectPeriods,
+  subjectPeriodText,
   type SubjectComment,
   type ValuesByPeriod,
 } from "../content/subjectsDataTypes";
@@ -31,7 +32,7 @@ const comments = subjectPeriods
             <Stars num={comment.recommendation_level_of_this_class} />
             <div>{comment.recommendation_level_of_this_class}</div>
           </div>
-          <span>{comment.comment}</span> <span>({year})</span>
+          <span>{comment.comment}</span> (<span>{subjectPeriodText[year]}</span>)
         </div>
       ))
     }

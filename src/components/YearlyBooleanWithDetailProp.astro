@@ -2,6 +2,7 @@
 import itemStyles from "./YearlyDetailItem.module.scss";
 import {
   subjectPeriods,
+  subjectPeriodText,
   type BooleanSummaryWithDetail,
   type SubjectPeriod,
   type ValuesByPeriod,
@@ -56,7 +57,7 @@ const details = subjectPeriods
       {
         details.map(({ year, value }) => (
           <li class={itemStyles.detail}>
-            <span>{value}</span> (<span>{year}</span>)
+            <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
           </li>
         ))
       }

@@ -1,6 +1,7 @@
 ---
 import {
   subjectPeriods,
+  subjectPeriodText,
   type SubjectPeriod,
 } from "../content/subjectsDataTypes";
 import componentStyles from "./YearlyDetailItem.module.scss";
@@ -35,7 +36,7 @@ const yearContent = await Promise.all(
   {
     yearContent.map(({ year, html }) => (
       <div class={componentStyles.yearItem}>
-        <div class={componentStyles.label}>{year}</div>
+        <div class={componentStyles.label}>{subjectPeriodText[year]}</div>
         <div class={componentStyles.content}>
           <Fragment set:html={html} />
         </div>

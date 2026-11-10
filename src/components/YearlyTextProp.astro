@@ -3,6 +3,7 @@ import itemStyles from "./YearlyDetailItem.module.scss";
 import DetailItem from "./DetailItem.astro";
 import {
   subjectPeriods,
+  subjectPeriodText,
   type ValuesByPeriod,
 } from "../content/subjectsDataTypes";
 
@@ -25,7 +26,7 @@ const lists = subjectPeriods
     {
       lists.map(({ year, value }) => (
         <li class={itemStyles.detail}>
-          <span>{value}</span> (<span>{year}</span>)
+          <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
         </li>
       ))
     }

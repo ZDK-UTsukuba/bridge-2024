@@ -112,6 +112,14 @@ export const subjectPeriods = [
 
 export type SubjectPeriod = (typeof subjectPeriods)[number];
 
+export const subjectPeriodText: Record<SubjectPeriod, string> = {
+  "2023": "2023",
+  "2024spring": "2024春",
+  "2025spring": "2025春",
+  "2025fall": "2025秋",
+  "2026spring": "2026春",
+};
+
 export type ValuesByPeriod<Value> = Partial<Record<SubjectPeriod, Value>>;
 
 export type GroupedSubject<SubjectData extends object> = {
@@ -137,8 +145,8 @@ export const calcScoreAverageByPeriod = (
 ): number | null => {
   return calcScoreAverage(aggregateScore(
     Object.values(scores).reduce((acc, score) =>  ({
-      sum: acc.sum + score.sum,
-      count: acc.count + score.count,
+          sum: acc.sum + score.sum,
+          count: acc.count + score.count,
     }), { sum: 0, count: 0 })
   ));
 };
