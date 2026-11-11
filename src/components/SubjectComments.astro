@@ -29,8 +29,12 @@ const comments = groupedToArray(yearlyValues).flatMap(
             <Stars num={comment.recommendation_level_of_this_class} />
             <div>{comment.recommendation_level_of_this_class}</div>
           </div>
-          <span>{comment.comment}</span> (<span>{subjectPeriodText[year]}</span>
-          )
+          <p class={componentStyles.commentBody}>
+            {comment.comment}
+            <span class={componentStyles.period}>
+              ({subjectPeriodText[year]})
+            </span>
+          </p>
         </div>
       ))
     }
