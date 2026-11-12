@@ -1,40 +1,53 @@
-import { subjectMap } from "./subjectsData2025";
+import { z } from "astro:content";
+import { subjectMap } from "./subjectsDataAll";
 import { subjectsData } from "./subjectsSchema";
 import type { ModuleTimeTable, TimeTable } from "./subjectsSchema";
+import {
+  calcScoreAverageByPeriod,
+  getScoreCount,
+  subjectPeriods,
+  type GeneralSubjectData,
+  type ScoreValue,
+  type SportSubjectData,
+  type ValuesByPeriod,
+} from "./subjectsDataTypes";
 
 // subjectMapの値の型を取得
 type SubjectMapValue = NonNullable<ReturnType<typeof subjectMap.get>>;
 type SubjectData = SubjectMapValue["subject"];
 
-// 平均値を計算（省略可能なプロパティに対応）
-const calcAve = (
-  numOrObj: number | { sum?: number; count?: number } | undefined,
-): number => {
-  if (typeof numOrObj === "number") {
-    return numOrObj;
-  }
-  if (!numOrObj || numOrObj.sum === undefined || numOrObj.count === undefined) {
-    return 0;
-  }
-  return Number.isNaN(numOrObj.sum / numOrObj.count)
-    ? 0
-    : numOrObj.sum / numOrObj.count;
-};
+const calcAve = (score: ValuesByPeriod<ScoreValue> | undefined): number =>
+  score ? (calcScoreAverageByPeriod(score) ?? 0) : 0;
 
-// 安全にプロパティにアクセスする補助関数
-const safeGetProperty = <T extends Record<string, unknown>>(
-  obj: T,
-  key: string,
-): { sum?: number; count?: number } | undefined => {
-  return key in obj
-    ? (obj[key] as { sum?: number; count?: number })
-    : undefined;
+const safeGetProperty = (
+  subject: SubjectData,
+  key: keyof GeneralSubjectData | keyof SportSubjectData,
+): ValuesByPeriod<ScoreValue> | undefined => {
+  const value = (subject as unknown as Record<string, unknown>)[key];
+
+  const schema = z.record(
+    z.enum(subjectPeriods),
+    z
+      .object({
+        type: z.literal("aggregate"),
+        sum: z.number(),
+        count: z.number(),
+      })
+      .strict(),
+  );
+
+  const result = schema.safeParse(value);
+  if (result.success) {
+    return result.data;
+  }
+
+  return undefined;
 };
 
 // 評価数を取得
 const getEvaluationCount = (subject: SubjectData): number => {
-  const prop = safeGetProperty(subject, "recommendation_level_of_this_class");
-  return prop?.count || 0;
+  const score = safeGetProperty(subject, "recommendation_level_of_this_class");
+  return score ? getScoreCount(score) : 0;
 };
 
 // 評価類似度を計算（0-1の範囲）

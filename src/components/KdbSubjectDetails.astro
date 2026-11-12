@@ -1,0 +1,59 @@
+---
+import type { subjectsData } from "../content/subjectsSchema";
+import DetailItem from "./DetailItem.astro";
+import DetailSection from "./DetailSection.astro";
+import ExternalLink from "./ExternalLink.astro";
+
+interface Props {
+  kdbSubject: (typeof subjectsData)[number];
+}
+
+const { kdbSubject } = Astro.props;
+
+function syllabiUrl(number: string) {
+  const year = ((date) =>
+    date.getMonth() < 4 ? date.getFullYear() - 1 : date.getFullYear())(
+    new Date(),
+  );
+  return `https://kdb.tsukuba.ac.jp/syllabi/${year}/${number}/jpn`;
+}
+---
+
+<DetailSection label={`科目番号 ${kdbSubject.code}`}>
+  <ExternalLink slot="header-extra" href={syllabiUrl(kdbSubject.code)}>
+    シラバス (外部)
+  </ExternalLink>
+  <DetailItem label="授業形態">
+    {kdbSubject.instructionalType.value?.text ?? ""}
+  </DetailItem>
+  <DetailItem label="単位">
+    {
+      kdbSubject.credits.value === null ||
+      kdbSubject.credits.value.type === "unknown"
+        ? ""
+        : kdbSubject.credits.value.type === "none"
+          ? "-"
+          : kdbSubject.credits.value.value
+    }
+  </DetailItem>
+  <DetailItem label="標準履修年次">
+    {
+      kdbSubject.year.value.type === "unknown"
+        ? "-"
+        : kdbSubject.year.value.value.join(", ")
+    }
+  </DetailItem>
+  <DetailItem label="学期 曜時限">
+    {
+      kdbSubject.terms.twinsRaw?.module ??
+        `${kdbSubject.terms.module} ${kdbSubject.terms.weekdayAndPeriod}`
+    }
+  </DetailItem>
+  <DetailItem label="担当教員">
+    {kdbSubject.instructor.value.join(", ")}
+  </DetailItem>
+  <DetailItem label="授業概要">
+    {kdbSubject.overview ?? ""}
+  </DetailItem>
+  <DetailItem label="備考">{kdbSubject.remarks ?? ""}</DetailItem>
+</DetailSection>

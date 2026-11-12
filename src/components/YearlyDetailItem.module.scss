@@ -1,0 +1,53 @@
+.item {
+  --detail-card-border-color: #bdbdbd;
+
+  position: relative;
+  align-items: baseline;
+  gap: 10px;
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 10px);
+    left: -5px;
+    right: -5px;
+    width: calc(100% + 10px);
+    height: 1px;
+    background-color: var(--detail-card-border-color);
+  }
+  .headItem {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    .label {
+      font-size: 17px;
+      font-family: "ZenKakuGothicNew Medium", sans-serif;
+      flex-shrink: 0;
+      min-width: 120px;
+      margin-right: 5px;
+    }
+    .detail {
+      list-style: square;
+      margin-left: 25px;
+    }
+  }
+  .yearItem {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    .label {
+      font-size: 17px;
+      font-family: "ZenKakuGothicNew Medium", sans-serif;
+      flex-shrink: 0;
+      min-width: 120px;
+      margin-right: 5px;
+      text-align: right;
+    }
+    .detail {
+      list-style: square;
+      margin-left: 25px;
+    }
+  }
+}

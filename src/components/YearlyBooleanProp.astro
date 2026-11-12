@@ -1,0 +1,42 @@
+---
+import YearlyDetailItem from "./YearlyDetailItem.astro";
+import {
+  groupedToArray,
+  type BooleanSummary,
+  type SubjectPeriod,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import LabelPercent from "./LabelPercent.astro";
+
+interface Props {
+  label: string;
+  labels: [True: string, False: string];
+  yearlyValues: ValuesByPeriod<BooleanSummary | null>;
+}
+
+const { label, labels, yearlyValues } = Astro.props;
+const booleanLabels = { True: labels[0], False: labels[1] };
+const values = groupedToArray(yearlyValues);
+const head = values.reduce(
+  (acc, { value }) => ({
+    True: acc.True + value.True,
+    False: acc.False + value.False,
+  }),
+  { True: 0, False: 0 },
+);
+---
+
+<YearlyDetailItem label={label} data={yearlyValues}>
+  <LabelPercent labels={booleanLabels} n={head.True + head.False} data={head} />
+  <fragment slot="year">
+    {
+      (_year: SubjectPeriod, value: BooleanSummary) => (
+        <LabelPercent
+          labels={booleanLabels}
+          n={value.True + value.False}
+          data={value}
+        />
+      )
+    }
+  </fragment>
+</YearlyDetailItem>

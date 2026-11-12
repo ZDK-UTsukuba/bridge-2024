@@ -1,0 +1,35 @@
+---
+import YearlyDetailItem from "./YearlyDetailItem.astro";
+import {
+  calcScoreAverage,
+  calcScoreAverageByPeriod,
+  type ScoreValue,
+  type SubjectPeriod,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+
+interface Props {
+  label: string;
+  yearlyValues: ValuesByPeriod<ScoreValue>;
+  formatValue?: (value: number) => string;
+}
+
+const {
+  label,
+  yearlyValues,
+  formatValue = (value: number) => value.toFixed(1),
+} = Astro.props;
+const value = calcScoreAverageByPeriod(yearlyValues);
+---
+
+<YearlyDetailItem label={label} data={yearlyValues}>
+  {value === null ? "-" : formatValue(value)}
+  <fragment slot="year">
+    {
+      (_year: SubjectPeriod, score: ScoreValue) => {
+        const value = calcScoreAverage(score);
+        return value === null ? "-" : formatValue(value);
+      }
+    }
+  </fragment>
+</YearlyDetailItem>

@@ -1,0 +1,42 @@
+---
+import {
+  groupedToArray,
+  subjectPeriodText,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import componentStyles from "./YearlyDetailItem.module.scss";
+
+interface Props {
+  label: string;
+  data: ValuesByPeriod<unknown>;
+}
+
+const { label, data } = Astro.props;
+const values = groupedToArray(data);
+const yearContent = await Promise.all(
+  values.map(async ({ year, value }) => ({
+    year,
+    html: await Astro.slots.render("year", [year, value]),
+  })),
+);
+---
+
+<div class={componentStyles.item}>
+  <div class={componentStyles.headItem}>
+    <div class={componentStyles.label}>{label}</div>
+    <div class={componentStyles.content}>
+      <slot />
+    </div>
+  </div>
+  {
+    yearContent.map(({ year, html }) => (
+      <div class={componentStyles.yearItem}>
+        <div class={componentStyles.label}>{subjectPeriodText[year]}</div>
+        <div class={componentStyles.content}>
+          <Fragment set:html={html} />
+        </div>
+      </div>
+    ))
+  }
+  <slot name="after-years" />
+</div>

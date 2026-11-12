@@ -1,0 +1,19 @@
+---
+import componentStyles from "./DetailSection.module.scss";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div class={componentStyles.tagWrap}>
+  <div class={componentStyles.tag}>{label}</div>
+  <slot name="header-extra" />
+</div>
+<div class={componentStyles.card}>
+  <div class={componentStyles.lists}>
+    <slot />
+  </div>
+</div>

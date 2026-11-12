@@ -1,0 +1,31 @@
+---
+import itemStyles from "./YearlyDetailItem.module.scss";
+import DetailItem from "./DetailItem.astro";
+import {
+  groupedToArray,
+  subjectPeriodText,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+
+interface Props {
+  label: string;
+  yearlyValues: ValuesByPeriod<readonly string[] | null>;
+}
+
+const { label, yearlyValues } = Astro.props;
+const lists = groupedToArray(yearlyValues).flatMap(({ year, value }) =>
+  value.map((v) => ({ year, value: v })),
+);
+---
+
+<DetailItem label={label}>
+  <ul>
+    {
+      lists.map(({ year, value }) => (
+        <li class={itemStyles.detail}>
+          <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
+        </li>
+      ))
+    }
+  </ul>
+</DetailItem>

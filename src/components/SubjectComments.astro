@@ -1,0 +1,42 @@
+---
+import {
+  groupedToArray,
+  subjectPeriodText,
+  type SubjectComment,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import componentStyles from "./SubjectComments.module.scss";
+import DetailItem from "./DetailItem.astro";
+import Stars from "./Stars.ClassList.astro";
+
+interface Props {
+  label: string;
+  comments: ValuesByPeriod<readonly SubjectComment[]>;
+}
+
+const { label, comments: yearlyValues } = Astro.props;
+const comments = groupedToArray(yearlyValues).flatMap(
+  ({ year, value: values }) => values.map((comment) => ({ year, comment })),
+);
+---
+
+<DetailItem label={label}>
+  <div class={componentStyles.comments}>
+    {
+      comments.map(({ comment, year }) => (
+        <div class={componentStyles.comment}>
+          <div class={componentStyles.commentHeader}>
+            <Stars num={comment.recommendation_level_of_this_class} />
+            <div>{comment.recommendation_level_of_this_class}</div>
+          </div>
+          <p class={componentStyles.commentBody}>
+            {comment.comment}
+            <span class={componentStyles.period}>
+              ({subjectPeriodText[year]})
+            </span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</DetailItem>

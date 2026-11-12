@@ -1,0 +1,98 @@
+---
+import {
+  groupedToArray,
+  subjectPeriodText,
+  type ClassFormat,
+  type SubjectPeriod,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import AverageNote from "./AverageNote.astro";
+import itemStyles from "./YearlyDetailItem.module.scss";
+import DetailItem from "./DetailItem.astro";
+import LabelPercent from "./LabelPercent.astro";
+import DetailSection from "./DetailSection.astro";
+import YearlyDetailItem from "./YearlyDetailItem.astro";
+
+interface Props {
+  label: string;
+  data: ValuesByPeriod<ClassFormat | null>;
+  n: ValuesByPeriod<number>;
+  showAverageNote?: boolean;
+}
+
+const { label, data, n, showAverageNote = false } = Astro.props;
+const labels = {
+  講義: "講義",
+  グループワーク: "グループワーク",
+  発表: "発表",
+};
+const values = groupedToArray(data).map(({ year, value }) => ({
+  year,
+  value,
+  count: n[year] ?? 0,
+}));
+const head = values.reduce(
+  (acc, { value, count }) => ({
+    count: acc.count + count,
+    data: {
+      講義: acc.data.講義 + value.講義,
+      グループワーク: acc.data.グループワーク + value.グループワーク,
+      発表: acc.data.発表 + value.発表,
+    },
+  }),
+  { count: 0, data: { 講義: 0, グループワーク: 0, 発表: 0 } },
+);
+const details = values.flatMap(({ year, value }) =>
+  value.type === "with_other"
+    ? value.other.map((detail) => ({ year, value: detail }))
+    : [],
+);
+---
+
+<DetailSection label={label}>
+  <AverageNote slot="header-extra" showAverageNote={showAverageNote} />
+  <YearlyDetailItem label="全体" data={data}>
+    <LabelPercent labels={labels} n={head.count} data={head.data} />
+    <fragment slot="year">
+      {
+        (year: SubjectPeriod, value: ClassFormat) =>
+          value.type === "with_other" ? (
+            <LabelPercent
+              labels={labels}
+              n={n[year] ?? 0}
+              data={{
+                講義: value.講義,
+                グループワーク: value.グループワーク,
+                発表: value.発表,
+              }}
+            />
+          ) : (
+            <LabelPercent
+              labels={labels}
+              n={n[year] ?? 0}
+              data={{
+                講義: value.講義,
+                グループワーク: value.グループワーク,
+                発表: value.発表,
+                パネルディスカッション: value.パネルディスカッション,
+                対話: value.対話,
+                オンデマンド: value.オンデマンド,
+                レポート提出のみ: value.レポート提出のみ,
+              }}
+            />
+          )
+      }
+    </fragment>
+  </YearlyDetailItem>
+  <DetailItem label="その他">
+    <ul>
+      {
+        details.map(({ year, value }) => (
+          <li class={itemStyles.detail}>
+            <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
+          </li>
+        ))
+      }
+    </ul>
+  </DetailItem>
+</DetailSection>

@@ -1,0 +1,58 @@
+---
+import itemStyles from "./YearlyDetailItem.module.scss";
+import {
+  groupedToArray,
+  subjectPeriodText,
+  type BooleanSummaryWithDetail,
+  type SubjectPeriod,
+  type ValuesByPeriod,
+} from "../content/subjectsDataTypes";
+import LabelPercent from "./LabelPercent.astro";
+import YearlyDetailItem from "./YearlyDetailItem.astro";
+
+interface Props {
+  label: string;
+  labels: [True: string, False: string];
+  yearlyValues: ValuesByPeriod<BooleanSummaryWithDetail | null>;
+}
+
+const { label, labels, yearlyValues } = Astro.props;
+const booleanLabels = { True: labels[0], False: labels[1] };
+const values = groupedToArray(yearlyValues);
+const head = values.reduce(
+  (acc, { value }) => ({
+    True: acc.True + value.True,
+    False: acc.False + value.False,
+  }),
+  { True: 0, False: 0 },
+);
+const details = groupedToArray(yearlyValues).flatMap(({ year, value }) =>
+  value.detail.map((detail) => ({ year, value: detail })),
+);
+---
+
+<YearlyDetailItem label={label} data={yearlyValues}>
+  <LabelPercent labels={booleanLabels} n={head.True + head.False} data={head} />
+  <fragment slot="year">
+    {
+      (_year: SubjectPeriod, value: BooleanSummaryWithDetail) => (
+        <LabelPercent
+          labels={booleanLabels}
+          n={value.True + value.False}
+          data={{ True: value.True, False: value.False }}
+        />
+      )
+    }
+  </fragment>
+  <div slot="after-years">
+    <ul>
+      {
+        details.map(({ year, value }) => (
+          <li class={itemStyles.detail}>
+            <span>{value}</span> (<span>{subjectPeriodText[year]}</span>)
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</YearlyDetailItem>

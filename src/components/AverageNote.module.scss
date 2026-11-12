@@ -1,0 +1,19 @@
+.description {
+  --detail-tag-description-text-color-light: #bdbdbd;
+  --detail-tag-description-text-color-dark: #ffffff;
+  --detail-tag-description-text-color: var(
+    --detail-tag-description-text-color-light
+  );
+
+  color: var(--detail-tag-description-text-color);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .description {
+    --detail-tag-description-text-color: var(
+      --detail-tag-description-text-color-dark
+    );
+  }
+}
