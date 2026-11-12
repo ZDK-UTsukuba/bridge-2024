@@ -11,7 +11,7 @@ interface Props {
   {
     Object.entries(labels).map(([k, v]) => (
       <div>
-        {v}: {((data[k] / n) * 100).toFixed(1)}% ({data[k]}人)
+        {v}: {n === 0 ? '-' : ((data[k] / n) * 100).toFixed(1)}% ({data[k]}人)
       </div>
     ))
   }
