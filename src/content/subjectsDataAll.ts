@@ -121,29 +121,37 @@ const mergeIntoMap = (
     [next.key, mergeSubject(current.get(next.key), next)],
   ]);
 
+const generateSubjectKey = (subject: Subject): string => {
+  if (subject.type === "一般") {
+    return `${subject.subject_category}-${subject.name}`;
+  }
+
+  return `${subject.subject_category}-${subject.name}`;
+};
+
 const subjectsByPeriod: readonly PeriodSubject[] = [
-  ...Array.from(subjectMap2023, ([key, value]) => ({
-    key,
+  ...subjectMap2023.map((value) => ({
+    key: generateSubjectKey(value),
     period: "2023" as const,
     value,
   })),
-  ...Array.from(subjectMap2024spring, ([key, value]) => ({
-    key,
+  ...subjectMap2024spring.map((value) => ({
+    key: generateSubjectKey(value),
     period: "2024spring" as const,
     value,
   })),
-  ...Array.from(subjectMap2025spring, ([key, value]) => ({
-    key,
+  ...subjectMap2025spring.map((value) => ({
+    key: generateSubjectKey(value),
     period: "2025spring" as const,
     value,
   })),
-  ...Array.from(subjectMap2025fall, ([key, value]) => ({
-    key,
+  ...subjectMap2025fall.map((value) => ({
+    key: generateSubjectKey(value),
     period: "2025fall" as const,
     value,
   })),
-  ...Array.from(subjectMap2026spring, ([key, value]) => ({
-    key,
+  ...subjectMap2026spring.map((value) => ({
+    key: generateSubjectKey(value),
     period: "2026spring" as const,
     value,
   })),

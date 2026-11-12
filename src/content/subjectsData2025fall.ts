@@ -166,18 +166,8 @@ const normalizeSportSubject = (
 
 const subjects = z.array(subjectSchema).parse(summaryJson);
 
-export const subjectMap: ReadonlyMap<string, Subject> = new Map<
-  string,
-  Subject
->(
-  subjects.map<[string, Subject]>((source) => {
-    if (source.type === "一般") {
-      return [source.name, normalizeGeneralSubject(source)];
-    }
-
-    return [
-      `${source.term}-${source.subject_category}-${normalizeSportName(source.name)}`,
-      normalizeSportSubject(source),
-    ];
-  }),
+export const subjectMap: Subject[] = subjects.map((source) =>
+  source.type === "一般"
+    ? normalizeGeneralSubject(source)
+    : normalizeSportSubject(source),
 );
