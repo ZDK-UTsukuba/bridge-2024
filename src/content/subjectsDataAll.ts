@@ -123,7 +123,7 @@ const mergeIntoMap = (
 
 const generateSubjectKey = (subject: Subject): string => {
   if (subject.type === "一般") {
-    return `${subject.subject_category}-${subject.name}`;
+    return subject.name;
   }
 
   return `${subject.subject_category}-${subject.name}`;
